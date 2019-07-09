@@ -118,7 +118,7 @@ $(function(){
 	function connect() {
 		var output = $("#output");
 		var outputbox;
-		var ws = new WebSocket("ws://localhost:9999/mgm/echo-ws.do");
+		var ws = new WebSocket("ws://localhost:8888/mgm/echo-ws.do");
 		socket = ws;
 		ws.onopen = function() {/* 이벤트  리스너 커넥션이 연결되었을때 들어옴*/
 			console.log('Info: connection opened.');

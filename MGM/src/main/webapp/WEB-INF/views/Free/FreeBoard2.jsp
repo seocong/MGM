@@ -340,7 +340,15 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-	
+	<script>
+		$(function(){
+			var pagenum = ${page.pagenum};
+			$(".page-link").eq(pagenum).css({
+				"background-color":"#30E3CA",
+				"color":"white"
+			});
+		});
+	</script>
 	
 	<!--<script>
 	$(function(){
