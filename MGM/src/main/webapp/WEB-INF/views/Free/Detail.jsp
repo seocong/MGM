@@ -47,7 +47,8 @@
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-<style>
+
+	<style>
 		#container {
 			width:940px;
 			margin:0 auto;
@@ -91,7 +92,6 @@
 		background-color:#F2F2F2;
 		}
 	</style>
-
 
 </head>
 
@@ -168,12 +168,69 @@
 						============================================= -->
 						<div class="col-lg-9">
 						
-						
-						
 							<div class="row clearfix"> 
-						<!-- <div class="fancy-title title-dotted-border">
+							<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span> 상세보기</h4>
+									<div class="line line-xs line-sports"></div>
+									
+									<div class="table-responsive" style="border: solid 1px #DDD; ">
+						  <table class="table">
+							
+							<tbody>
+							  <tr>
+							  	<td style="width: 100%;  padding: 0px;">
+							  		<table style="width: 100%;" >
+							  		<tr>
+							  			<td style="width: 10%;">제목</td>
+										<td style="width: 60%; float: left;">${Dto.board_title}</td>
+										<td style="width: 30%;">${Dto.board_regdate}</td>	
+							  			</tr>
+							  		</table>
+							  	</td>														
+							  </tr>
+							  <tr >
+							  <td style="width: 100%;  padding: 0px;">
+							  	<table style="width: 100%;">
+							  	<tr>
+								<td style="width: 10%;">작성자</td>
+								<td style="width: 30%; float: left;">${Dto.board_writer}</td>
+								<td style="width: 20%; float: right;">조회수</td>
+								<td style="width: 5%;">${Dto.board_readcount}</td>
+								<td style="width: 30%; float: right;">추천수</td>
+								<td style="width: 5%;">${Dto.board_pushnum}</td>
+							  	</tr>
+							  	</table>
+								
+							  </td>
+							  </tr>
+							 <tr>
+			
+								<td>${Dto.board_contents}</td>
+
+								</tr>
+							</tbody>
+						  </table>
+						</div>
+		
+							</div>
+							</div>
+							<!-- <div class="line"></div> -->
+							<div class="row clearfix"> 
+							<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span>댓글달기</h4>
+									<div class="line line-xs line-sports"></div>
+							<form action="">
+							<div>
+								<textarea rows="6" cols="140"></textarea>
+							</div>
+							<input type="submit" value="댓글등록" style="float: right;" >
+							</form>
+							</div>
+							</div>
+							<div class="row clearfix"> 
 						
-						</div> -->
+						
+					
 						
 								<!-- board name을 div에 불러옴 , script에서 받음 -->
 								<div id="boardname" data-boardname = "${boardname}" ></div>
@@ -223,7 +280,7 @@
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum}&contentnum=20&boardname=${boardDto.board_name}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&boardname=${boardDto.board_name}&pagenum=${page.pagenum}">${boardDto.board_title}</a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>
@@ -241,13 +298,13 @@
    <td colspan="5">
    		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
    	<c:if test="${page.prev}">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+   		<li class="page-item"><a class="page-link" href="javascript:page2(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
    	</c:if>
    	<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
+   		<li class="page-item"><a class="page-link" href="javascript:page2(${idx});">${idx}</a></li>
    	</c:forEach>
    <c:if test="${page.next }">
-   		 <li class="page-item"><a class="page-link" href="javascript:page(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+   		 <li class="page-item"><a class="page-link" href="javascript:page2(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
    	</c:if>
  		</ul>
         </td>
@@ -286,7 +343,6 @@
 							============================================= -->
 						
 						</div>
-						
 						
 						
 					
@@ -328,6 +384,7 @@
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
 	<script src="resources/js/tabsJs.js"></script>
+
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
@@ -345,7 +402,148 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+
+	<!-- ADD-ONS JS FILES -->
 	<script>
+		var tpj=jQuery;
+		var revapi19;
+		tpj(document).ready(function() {
+			if(tpj("#rev_slider_19_1").revolution == undefined){
+				revslider_showDoubleJqueryError("#rev_slider_19_1");
+			}else{
+				revapi19 = tpj("#rev_slider_19_1").show().revolution({
+					sliderType:"carousel",
+					jsFileLocation: "include/rs-plugin/js/",
+					sliderLayout:"fullwidth",
+					dottedOverlay:"none",
+					delay:7000,
+					navigation: {
+						keyboardNavigation:"off",
+						keyboard_direction: "horizontal",
+						mouseScrollNavigation:"off",
+						onHoverStop:"on",
+						tabs: {
+							style:"hesperiden",
+							enable:true,
+							width:260,
+							height:80,
+							min_width:260,
+							wrapper_padding:25,
+							wrapper_color:"#F5F5F5",
+							wrapper_opacity:"1",
+							tmp:'<div class="tp-tab-content">  <span class="tp-tab-date">{{param1}}</span>  <span class="tp-tab-title font-secondary">{{title}}</span> <span class="tp-tab-date tp-tab-para">{{param2}}</span></div><div class="tp-tab-image"></div>',
+							visibleAmount: 9,
+							hide_onmobile: false,
+							hide_under:480,
+							hide_onleave:false,
+							hide_delay:200,
+							direction:"horizontal",
+							span:true,
+							position:"outer-bottom",
+							space:0,
+							h_align:"left",
+							v_align:"bottom",
+							h_offset:0,
+							v_offset:0
+						}
+					},
+					carousel: {
+						horizontal_align: "center",
+						vertical_align: "center",
+						fadeout: "on",
+						vary_fade: "on",
+						maxVisibleItems: 3,
+						infinity: "on",
+						space: 0,
+						stretch: "off",
+						showLayersAllTime: "off",
+						easing: "Power3.easeInOut",
+						speed: "800"
+					},
+					responsiveLevels:[1140,992,768,576],
+					visibilityLevels:[1140,992,768,576],
+					gridwidth:[850,700,400,300],
+					gridheight:[580,600,500,400],
+					lazyType:"single",
+					shadow:0,
+					spinner:"off",
+					stopLoop:"on",
+					stopAfterLoops:-1,
+					stopAtSlide:-1,
+					shuffle:"off",
+					autoHeight:"off",
+					disableProgressBar:"off",
+					hideThumbsOnMobile:"off",
+					hideSliderAtLimit:0,
+					hideCaptionAtLimit:0,
+					hideAllCaptionAtLilmit:0,
+					debugMode:false,
+					fallbacks: {
+						simplifyAll:"off",
+						nextSlideOnWindowFocus:"off",
+						disableFocusListener:false,
+					}
+				});
+			}
+		});	/* Revolution Slider End */
+
+		// Navbar on hover
+		$('.nav.tab-hover a.nav-link').hover(function() {
+			$(this).tab('show');
+		});
+
+		// Current Date
+		var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+			month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			a = new Date();
+
+			jQuery('.date-today').html( weekday[a.getDay()] + ', ' + month[a.getMonth()] + ' ' + a.getDate() );
+
+		// Infinity Scroll
+		jQuery(window).on( 'load', function(){
+
+			var $container = $('.infinity-wrapper');
+
+			$container.infiniteScroll({
+				path: '.load-next-portfolio',
+				button: '.load-next-portfolio',
+				scrollThreshold: false,
+				history: false,
+				status: '.page-load-status'
+			});
+
+			$container.on( 'load.infiniteScroll', function( event, response, path ) {
+				var $items = $( response ).find('.infinity-loader');
+				// append items after images loaded
+				$items.imagesLoaded( function() {
+					$container.append( $items );
+					$container.isotope( 'insert', $items );
+					setTimeout( function(){
+						SEMICOLON.widget.loadFlexSlider();
+					}, 1000 );
+				});
+			});
+
+		});
+
+		$('#oc-news').owlCarousel({
+			items: 1,
+			margin: 20,
+			dots: false,
+			nav: true,
+		    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+			responsive:{
+				0:{ items: 1,dots: true, },
+				576:{ items: 1,dots: true },
+				768:{ items: 2,dots:true },
+				992:{ items: 2 },
+				1200:{ items: 3 }
+			}
+		});
+
+		</script>
+		
+ 	<script>
 		$(function(){
 			var pagenum = ${page.pagenum};
 			$(".page-link").eq(pagenum).css({
@@ -354,21 +552,5 @@
 			});
 		});
 	</script> 
-	
-	<!--<script>
-	$(function(){
-		var boardname = $("#boardname").attr("data-boardname");
-		if(boardname == "free"){
-			$("#freeboard").trigger("click");
-		}else if(boardname == "fun"){
-			$("#funboard").trigger("click");
-		}else if(boardname == "alert"){
-			$("#alertboard").trigger("click");
-		}else if(boardname == "game"){
-			$("#gameboard").trigger("click");
-		}
-	});
-	</script>-->
-
 	</body>
 	</html>

@@ -83,9 +83,8 @@ public class KIMController implements ServletContextAware{
 		String board_name = request.getParameter("boardname");
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
-		
 		pagemaker.setTotalcount(boardService.selectTotalPaging(board_name));//전체 게시글 개수를 저장한다
-		pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음
+		pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음			
 		pagemaker.setContentnum(ccontentnum);//한페이지에 몇개씩 게시글을 보여줄지 지정한다
 		pagemaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현대 페이지 번호를 통해서 지정한다.
 		pagemaker.setLastblock(pagemaker.getTotalcount());//마지막 블록 번호를 전체 게시글 수를 통해서 전한다
@@ -240,18 +239,16 @@ public class KIMController implements ServletContextAware{
 			logger.info("게시판 상세 보기 {}.", locale);
 			boardService.readCount(board_seq);
 			BoardDto boardDto = boardService.getBoard(board_seq);
-			model.addAttribute("boardDto",boardDto);
-			
-			
+			model.addAttribute("Dto",boardDto);
 			PageMaker pagemaker = new PageMaker();
 			String pagenum = request.getParameter("pagenum");
 			String contentnum = request.getParameter("contentnum");
 			String board_name = request.getParameter("boardname");
 			int cpagenum = Integer.parseInt(pagenum);
 			int ccontentnum = Integer.parseInt(contentnum);
-			
+					
 			pagemaker.setTotalcount(boardService.selectTotalPaging(board_name));//전체 게시글 개수를 저장한다
-			pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음
+			pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음			
 			pagemaker.setContentnum(ccontentnum);//한페이지에 몇개씩 게시글을 보여줄지 지정한다
 			pagemaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현대 페이지 번호를 통해서 지정한다.
 			pagemaker.setLastblock(pagemaker.getTotalcount());//마지막 블록 번호를 전체 게시글 수를 통해서 전한다
