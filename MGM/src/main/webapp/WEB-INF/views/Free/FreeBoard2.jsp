@@ -47,7 +47,45 @@
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-
+<style>
+		#container {
+			width:960px;
+			margin:0 auto;
+			text-align:center;
+		}
+		.tab {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		/* Float the list items side by side */
+		.tab li {
+			float: left;
+		}
+		/* Style the links inside the list items */
+		.tab li a {
+			display: inline-block;
+			color: #000;
+			text-align: center;
+			text-decoration: none;
+			padding: 14px 16px;
+			font-size: 17px;
+			transition:0.3s;
+		}
+		/* Style the tab content */
+		.tabcontent {
+			display: block;
+			background-color:rgb(0,154,200);
+			padding: 6px 12px;
+			color:#fff;
+		}
+		ul.tab li.current{
+			background-color: rgb(0,154,200);
+			color: #222;
+		}
+		
+	</style>
 
 
 </head>
@@ -134,29 +172,23 @@
 						
 								<!-- board name을 div에 불러옴 , script에서 받음 -->
 								<div id="boardname" data-boardname = "${boardname}" ></div>
-								
 								<div class="col-md-12 mt-5">
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 커뮤니티</h4>
 									<div class="line line-xs line-sports"></div>									
 
-						<div class="tabs tabs-bordered clearfix" id="tab-2">
+						<div id="container" >
 							
 							
-							<ul class="tab-nav clearfix">
-								<li><a href="#tabs-17"> 공지게시판</a></li>
-								<li><a href="#tabs-18"> 자유게시판</a></li>
-								<li><a href="#tabs-19"> 유머게시판</a></li>
-								<li class="hidden-phone"><a href="#tabs-20"> 게임게시판</a></li>
+							<ul class="tab">
+								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=alert" > 공지게시판</a></li>
+								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=free" > 자유게시판</a></li>
+								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=fun" > 유머게시판</a></li>
+								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=game" > 게임게시판</a></li>
 							</ul>
 
-							<div class="tab-container">
-
-								<div class="tab-content clearfix" id="tabs-17">	
-						
-									
-								</div>
-								<div class="tab-content clearfix" id="tabs-18">
-									<div class="table-responsive">
+							<div >
+								<div class="tabcontent" id="tab4">
+									<div >
 							<table class="table table-striped">
 							<col width="50px"><col width="300px"><col width="100px"><col width="150px"><col width="60px"><col width="50px">
 								<thead>
@@ -186,7 +218,7 @@
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=1&contentnum=20&boardname=${boardDto.board_name}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum}&contentnum=20&boardname=${boardDto.board_name}">${boardDto.board_title}</a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>
@@ -228,14 +260,7 @@
 						</div>	
 									
 								</div>
-								<div class="tab-content clearfix" id="tabs-19">
-									
-									
-								</div>
-								<div class="tab-content clearfix" id="tabs-20">
-									
-									
-								</div>
+								
 
 							</div>
 
@@ -297,7 +322,7 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
-
+	<script src="resources/js/tabsJs.js"></script>
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
@@ -315,154 +340,22 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-
-	<!-- ADD-ONS JS FILES -->
-	<script>
-		var tpj=jQuery;
-		var revapi19;
-		tpj(document).ready(function() {
-			if(tpj("#rev_slider_19_1").revolution == undefined){
-				revslider_showDoubleJqueryError("#rev_slider_19_1");
-			}else{
-				revapi19 = tpj("#rev_slider_19_1").show().revolution({
-					sliderType:"carousel",
-					jsFileLocation: "include/rs-plugin/js/",
-					sliderLayout:"fullwidth",
-					dottedOverlay:"none",
-					delay:7000,
-					navigation: {
-						keyboardNavigation:"off",
-						keyboard_direction: "horizontal",
-						mouseScrollNavigation:"off",
-						onHoverStop:"on",
-						tabs: {
-							style:"hesperiden",
-							enable:true,
-							width:260,
-							height:80,
-							min_width:260,
-							wrapper_padding:25,
-							wrapper_color:"#F5F5F5",
-							wrapper_opacity:"1",
-							tmp:'<div class="tp-tab-content">  <span class="tp-tab-date">{{param1}}</span>  <span class="tp-tab-title font-secondary">{{title}}</span> <span class="tp-tab-date tp-tab-para">{{param2}}</span></div><div class="tp-tab-image"></div>',
-							visibleAmount: 9,
-							hide_onmobile: false,
-							hide_under:480,
-							hide_onleave:false,
-							hide_delay:200,
-							direction:"horizontal",
-							span:true,
-							position:"outer-bottom",
-							space:0,
-							h_align:"left",
-							v_align:"bottom",
-							h_offset:0,
-							v_offset:0
-						}
-					},
-					carousel: {
-						horizontal_align: "center",
-						vertical_align: "center",
-						fadeout: "on",
-						vary_fade: "on",
-						maxVisibleItems: 3,
-						infinity: "on",
-						space: 0,
-						stretch: "off",
-						showLayersAllTime: "off",
-						easing: "Power3.easeInOut",
-						speed: "800"
-					},
-					responsiveLevels:[1140,992,768,576],
-					visibilityLevels:[1140,992,768,576],
-					gridwidth:[850,700,400,300],
-					gridheight:[580,600,500,400],
-					lazyType:"single",
-					shadow:0,
-					spinner:"off",
-					stopLoop:"on",
-					stopAfterLoops:-1,
-					stopAtSlide:-1,
-					shuffle:"off",
-					autoHeight:"off",
-					disableProgressBar:"off",
-					hideThumbsOnMobile:"off",
-					hideSliderAtLimit:0,
-					hideCaptionAtLimit:0,
-					hideAllCaptionAtLilmit:0,
-					debugMode:false,
-					fallbacks: {
-						simplifyAll:"off",
-						nextSlideOnWindowFocus:"off",
-						disableFocusListener:false,
-					}
-				});
-			}
-		});	/* Revolution Slider End */
-
-		// Navbar on hover
-		$('.nav.tab-hover a.nav-link').hover(function() {
-			$(this).tab('show');
-		});
-
-		// Current Date
-		var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-			month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-			a = new Date();
-
-			jQuery('.date-today').html( weekday[a.getDay()] + ', ' + month[a.getMonth()] + ' ' + a.getDate() );
-
-		// Infinity Scroll
-		jQuery(window).on( 'load', function(){
-
-			var $container = $('.infinity-wrapper');
-
-			$container.infiniteScroll({
-				path: '.load-next-portfolio',
-				button: '.load-next-portfolio',
-				scrollThreshold: false,
-				history: false,
-				status: '.page-load-status'
-			});
-
-			$container.on( 'load.infiniteScroll', function( event, response, path ) {
-				var $items = $( response ).find('.infinity-loader');
-				// append items after images loaded
-				$items.imagesLoaded( function() {
-					$container.append( $items );
-					$container.isotope( 'insert', $items );
-					setTimeout( function(){
-						SEMICOLON.widget.loadFlexSlider();
-					}, 1000 );
-				});
-			});
-
-		});
-
-		$('#oc-news').owlCarousel({
-			items: 1,
-			margin: 20,
-			dots: false,
-			nav: true,
-		    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
-			responsive:{
-				0:{ items: 1,dots: true, },
-				576:{ items: 1,dots: true },
-				768:{ items: 2,dots:true },
-				992:{ items: 2 },
-				1200:{ items: 3 }
-			}
-		});
-
-		</script>
-		<script type="text/javascript">
-	function page(idx) {
-		var pagenum = idx;
-		var contentnum = 20;//$("#contentnum option:selected").val();
-		var boardname = $('#boardname').attr("data-boardname");//boardname을 받아옴
-		location.href="freeboard.do?pagenum="+pagenum+"&contentnum="+contentnum+"&boardname="+boardname;
-	}
-</script>
+	
+	
+	<!--<script>
+	$(function(){
+		var boardname = $("#boardname").attr("data-boardname");
+		if(boardname == "free"){
+			$("#freeboard").trigger("click");
+		}else if(boardname == "fun"){
+			$("#funboard").trigger("click");
+		}else if(boardname == "alert"){
+			$("#alertboard").trigger("click");
+		}else if(boardname == "game"){
+			$("#gameboard").trigger("click");
+		}
+	});
+	</script>-->
 
 	</body>
 	</html>
