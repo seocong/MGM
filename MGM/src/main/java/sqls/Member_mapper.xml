@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.gam.Member">
+    	<select id="login" parameterType="Map" resultType="MemberDto">
+    		SELECT MEMBER_ID,MEMBER_PW FROM MGM_MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_PW=#{member_pw}
+    	</select>
+    	
+    	<insert id="signup" parameterType="MemberDto">
+    		INSERT INTO MGM_MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_ADDRESS, MEMBER_NAME, MEMBER_BIRTH, MEMBER_PHNUM, MEMBER_LIKEPLACE, MEMBER_DELFLAG, MEMBER_POINT)
+			VALUES (#{member_id},#{member_pw},#{member_address},#{member_name},#{member_birth},#{member_phnum},#{member_likeplace},'N',100);
+    	</insert>
+  </mapper>

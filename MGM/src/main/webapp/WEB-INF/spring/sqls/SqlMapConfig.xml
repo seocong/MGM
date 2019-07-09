@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+     <typeAliases>
+        
+        <typeAlias type="com.gam.mgm.dto.AnswerDto" alias="AnswerDto"/>
+        <typeAlias type="com.gam.mgm.dto.ChannelDto" alias="ChannelDto"/>
+        <typeAlias type="com.gam.mgm.dto.BoardDto" alias="BoardDto"/>
+        <typeAlias type="com.gam.mgm.dto.MemberDto" alias="MemberDto"/>
+          <typeAlias type="com.gam.mgm.dto.MessageDto" alias="MessageDto"/>
+        <typeAlias type="com.gam.mgm.dto.NewsDto" alias="NewsDto"/>
+        <typeAlias type="com.gam.mgm.dto.PointDto" alias="PointDto"/>
+ 
+     </typeAliases>
+  <mappers>
+     
+     <mapper resource="/sqls/Answer_mapper.xml" />
+     <mapper resource="/sqls/Channel_mapper.xml" />
+     <mapper resource="/sqls/Board_mapper.xml" />
+     <mapper resource="/sqls/News_mapper.xml" />
+     <mapper resource="/sqls/Member_mapper.xml" />
+     <mapper resource="/sqls/Message_mapper.xml" />
+     <mapper resource="/sqls/Point_mapper.xml" />
+  </mappers>
+  
+  
+  </configuration>
+  
+  
+  
+  
+ 

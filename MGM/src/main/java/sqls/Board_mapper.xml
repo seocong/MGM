@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gam.mgm.board">
+  
+  <select id="boardlist" parameterType="Map" resultType="BoardDto">
+  SELECT board_seq,board_group,board_step,board_title,board_writer,board_readcount,
+		board_regdate,board_delflag,board_recommender,board_pushnum, board_name
+		FROM mgm_board where board_name = #{board_name} ORDER BY board_group DESC,board_step ASC LIMIT #{pagenum},#{contentnum}
+  
+  </select>
+   
+    
+   <select id="selectTotalPaging" parameterType="String"  resultType="int">
+		SELECT COUNT(*) FROM mgm_board where board_name = #{board_name}
+	</select> 
+    
+     <insert id="boardinsert" parameterType="BoardDto" >
+     insert into mgm_board(board_seq,board_group,board_step,board_depth,board_title,board_contents,board_writer,board_readcount,board_regdate,
+            board_delflag,board_recommender,board_pushnum, board_name)       
+            select case count(*) when 0 then 1 else max(board_seq) + 1 end ,
+           (SELECT IFNULL(MAX(board_group) + 1, 1) FROM mgm_board b where board_name=#{board_name}),0,0,#{board_title},#{board_contents},#{board_writer},0,now(),'N','null',0,#{board_name} from mgm_board
+  </insert>
+    
+    <select id="boarddetail" parameterType="int"  resultType="BoardDto">
+    SELECT board_seq,board_group,board_step,board_depth,board_contents,board_title,board_writer,board_readcount,
+		board_regdate,board_delflag,board_recommender,board_pushnum,board_name
+		FROM mgm_board WHERE board_seq = #{board_seq}
+    </select>
+    <update id="readcount" parameterType="int">
+    	UPDATE mgm_board SET board_readcount = board_readcount+1 WHERE board_seq=#{board_seq}
+    </update>
+  </mapper>
