@@ -48,6 +48,8 @@
 	============================================= -->
 	<title>커뮤니티</title>
 	
+	
+	
 
 </head>
 
@@ -178,12 +180,14 @@
 								</div> -->
 
 								<div class="col_full">
-									<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">작성 완료</button>
+									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">작성 완료</button>
 									<button class="button button-3d nomargin" type="button" onclick="location.href='freeboard.do?board_name=${board_name}">목록 가기</button>
 								</div>
 
 								<!-- <input type="hidden" name="prefix" value="template-contactform-"> -->
 
+						
+	
 							</form>
 						</div>
 
@@ -215,7 +219,6 @@
 						
 						
 					
-						
 				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
@@ -230,6 +233,11 @@
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
+	<script type="text/javascript" src="resources/js/writeForm.js"></script>
+	<script type="text/javascript" src="resources/smarteditor/js/HuskyEZCreator.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
+	</script>	
 
 	<!-- Go To Top
 	============================================= -->
@@ -237,33 +245,15 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	<script type="text/javascript" src="<c:url value="/resources/smarteditor/js/HuskyEZCreator.js"/>" charset="utf-8"></script>
-	<script type="text/javascript" charset="utf-8" src="<c:url value="/resources/js/writeForm.js"/>"></script>
-	<script type="text/javascript" charset="utf-8">
-		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-	</script>
-	<script src="resources/js/jquery.js"></script>
-	<script src="resources/js/plugins.js"></script>
-	<script src="resources/js/tabsJs.js"></script>
 	
+	<!-- <script src="resources/js/jquery.js"></script> -->
+	<!-- <script src="resources/js/plugins.js"></script> -->
 	
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
-
 	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-	<script src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-	<script src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.carousel.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
-	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+	
 
 	<!-- ADD-ONS JS FILES -->
 	<!-- <script>
