@@ -215,13 +215,16 @@ public class KIMController implements ServletContextAware{
 			 String board_name = request.getParameter("board_name");
 	         String board_title = request.getParameter("board_title");
 	         String smarteditor = request.getParameter("smarteditor");
+	         
+	         System.out.println("board_name:"+board_name);
 	         System.out.println("smarteditor:"+smarteditor);
+	         System.out.println("board_title:"+board_title);
 	         //세션에서 아이디 추출해야함
 	         BoardDto boardDto = new BoardDto();
 	         boardDto.setBoard_contents(smarteditor);
 	         boardDto.setBoard_title(board_title);
 	         boardDto.setBoard_writer("admin");
-	         boardDto.setBoard_name("board_name");
+	         boardDto.setBoard_name(board_name);
 	         boolean isS = boardService.boardInsert(boardDto);
 	         System.out.println("isS:"+isS);
 	         if(isS) {

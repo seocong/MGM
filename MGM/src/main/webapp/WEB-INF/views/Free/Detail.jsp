@@ -170,11 +170,11 @@
 						
 							<div class="row clearfix"> 
 							<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span> 상세보기</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> 상세보기</h4>
 									<div class="line line-xs line-sports"></div>
 									
-									<div class="table-responsive" style="border: solid 1px #DDD; ">
-						  <table class="table">
+									<div class="allmargin-sm">
+						 <%--  <table class="table">
 							
 							<tbody>
 							  <tr>
@@ -209,21 +209,51 @@
 
 								</tr>
 							</tbody>
-						  </table>
+						  </table> --%>
+						  
+						
+							  <div class="row clearfix nobottomborder" style="padding: 20px; border: solid 2px #DDD;" >
+							 
+							  		
+							  			<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;" >제목</div>
+										<div class="col-md-7">${Dto.board_title}</div>
+										<div class="col-md-3" style="border-left : solid 2px #DDD;" ><fmt:formatDate value="${Dto.board_regdate}" pattern="yyyy년MM월dd일HH시mm분"/></div>	
+							  			
+							  													
+							  </div>
+							  <div class="row clearfix" style="padding: 20px; border: solid 2px #DDD;">
+							 							  
+								<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;">작성자</div>
+								<div class="col-md-6">${Dto.board_writer}</div>
+								<div class="col-md-1 t700" style="border-right : solid 2px #DDD;">조회수</div>
+								<div class="col-md-1">${Dto.board_readcount}</div>
+								<div class="col-md-1 t700" style="border-right : solid 2px #DDD;">추천수</div>
+								<div class="col-md-1">${Dto.board_pushnum}</div>
+							  	
+							  	
+							  </div>
+							 <div class="row clearfix topmargin-sm" >
+			
+								<div class="col-md-12">${Dto.board_contents}</div>
+
+								</div>
+								<div class="row clearfix" style="float: right;"> 
+									<a href="#" class="button button-3d button-rounded button-red"><i class="icon-thumbs-up1"></i>추천하기</a>
+								</div>
 						</div>
 		
 							</div>
 							</div>
-							<!-- <div class="line"></div> -->
+							 <div class="line allmargin-sm"></div> 
 							<div class="row clearfix"> 
 							<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span>댓글달기</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-comments"></i></span>댓글달기</h4>
 									<div class="line line-xs line-sports"></div>
 							<form action="">
-							<div>
-								<textarea rows="6" cols="140"></textarea>
+							<div class="allmargin-sm">
+								<textarea rows="6" cols="130"></textarea>
 							</div>
-							<input type="submit" value="댓글등록" style="float: right;" >
+							<button class="button button-3d nomargin" type="submit" value="submit" style="float: right;" >댓글등록</button>
 							</form>
 							</div>
 							</div>

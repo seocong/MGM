@@ -40,7 +40,7 @@
 									찾기</a></small>
 						</div>
 						<div class="center">
-							<small class="mt-5 text-muted font-italic"><a href="#">회원가입</a></small>
+							<small class="mt-5 text-muted font-italic"><a href="signupform.do">회원가입</a></small>
 						</div>
 					</form>
 					</c:if>

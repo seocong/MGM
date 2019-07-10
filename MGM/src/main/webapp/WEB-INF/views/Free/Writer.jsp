@@ -47,8 +47,7 @@
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-	
-	
+
 	
 
 </head>
@@ -126,74 +125,9 @@
 						============================================= -->
 						<div class="col-lg-9">
 						
-							<div class="row clearfix"> 
-							<div class="col-md-12 mt-5">
-
-						<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span> ${board_name}</h4>
-									<div class="line line-xs line-sports"></div>
-
-						<div class="form-widget">
-
-							<div class="form-result"></div>
-
-							<form class="nobottommargin" id="frm" action="write.do" method="post">
-								 <input type="hidden" name="board_name" value="${board_name}">
-								<div class="form-process"></div>
-
-								<!-- <div class="col_one_third">
-									<label for="template-contactform-name">제목<small>*</small></label>
-									<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
-								</div>
-
-								<div class="col_one_third">
-									<label for="template-contactform-email">Email <small>*</small></label>
-									<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
-								</div>
-
-								<div class="col_one_third col_last">
-									<label for="template-contactform-phone">Phone</label>
-									<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
-								</div> -->
-
-								<div class="clear"></div>
-
-								<div class="col_two_third">
-									<label for="template-contactform-subject">제목 <small>*</small></label>
-									<input type="text" id="template-contactform-subject" name="board_title" value="" class="required sm-form-control required" />
-								</div>
-
-								<div class="col_one_third col_last">
-								<label for="template-contactform-name">작성자<small>*</small></label>
-									<input type="text" id="template-contactform-name" name="board_writer" value="아이디들어올곳" class="sm-form-control required" readonly="readonly"/>
-									
-								</div>
-
-								<div class="clear"></div>
-
-								<div class="col_full">
-									<label for="template-contactform-message">내용 <small>*</small></label>
-									<textarea name="smarteditor" id="smarteditor" rows="21" cols="30"  style="width:100%;"></textarea>
-								</div>
-
-								<!-- <div class="col_full hidden">
-									<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-								</div> -->
-
-								<div class="col_full">
-									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">작성 완료</button>
-									<button class="button button-3d nomargin" type="button" onclick="location.href='freeboard.do?board_name=${board_name}'">목록 가기</button>
-								</div>
-
-								<!-- <input type="hidden" name="prefix" value="template-contactform-"> -->
-
 						
-	
-							</form>
-						</div>
-
-					</div>
 						
-					</div>
+					
 										
 										
 										
@@ -219,6 +153,7 @@
 						
 						
 					
+						
 				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
@@ -233,11 +168,6 @@
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
-	<script type="text/javascript" src="resources/js/writeForm.js"></script>
-	<script type="text/javascript" src="resources/smarteditor/js/HuskyEZCreator.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-	</script>	
 
 	<!-- Go To Top
 	============================================= -->
@@ -245,18 +175,30 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	
-	<!-- <script src="resources/js/jquery.js"></script> -->
-	<!-- <script src="resources/js/plugins.js"></script> -->
-	
+	<script src="resources/js/jquery.js"></script>
+	<script src="resources/js/plugins.js"></script>
+	<script src="resources/js/tabsJs.js"></script>
+
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
+
 	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-	
+	<script src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
 	<!-- ADD-ONS JS FILES -->
-	<!-- <script>
+	<script>
 		var tpj=jQuery;
 		var revapi19;
 		tpj(document).ready(function() {
@@ -406,6 +348,6 @@
 				"color":"white"
 			});
 		});
-	</script>  -->
+	</script> 
 	</body>
 	</html>

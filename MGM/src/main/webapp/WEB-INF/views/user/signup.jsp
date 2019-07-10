@@ -47,8 +47,7 @@
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-	
-	
+
 	
 
 </head>
@@ -126,74 +125,144 @@
 						============================================= -->
 						<div class="col-lg-9">
 						
-							<div class="row clearfix"> 
-							<div class="col-md-12 mt-5">
+							<div class="container clearfix">
 
-						<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-sign"></i></span> ${board_name}</h4>
+					<!-- Postcontent
+					============================================= -->
+					
+
+						<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 회원가입</h4>
 									<div class="line line-xs line-sports"></div>
 
 						<div class="form-widget">
 
 							<div class="form-result"></div>
 
-							<form class="nobottommargin" id="frm" action="write.do" method="post">
-								 <input type="hidden" name="board_name" value="${board_name}">
+							<form class="nobottommargin" id="template-contactform" name="template-contactform" action="signup.do" method="post">
+
 								<div class="form-process"></div>
 
-								<!-- <div class="col_one_third">
-									<label for="template-contactform-name">제목<small>*</small></label>
+								<div class="col_one_third">
+									<label for="template-contactform-name t700">아이디 <small>*</small></label>
+									<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" placeholder="졸려서 대충 함 홍민씨가 꾸미는걸로...." />
+								</div>
+								<div class="clear"></div>
+								
+								<div class="col_one_third">
+									<label for="template-contactform-name t700">이름 <small>*</small></label>
 									<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
 								</div>
-
+								<div class="clear"></div>
+								
 								<div class="col_one_third">
-									<label for="template-contactform-email">Email <small>*</small></label>
+									<label for="template-contactform-email t700">비밀번호 <small>*</small></label>
 									<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
 								</div>
 
-								<div class="col_one_third col_last">
-									<label for="template-contactform-phone">Phone</label>
+								<div class="col_one_third ">
+									<label for="template-contactform-phone t700">비밀번호확인</label>
 									<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
-								</div> -->
+								</div>
+				
+								<div class="clear"></div>
+								<div class="col_one_sixth">
+									<label for="template-contactform-service t700">년도</label>
+									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+										<option value="">-태어난해-</option>
+										<option value="2000">2000</option>
+										<option value="1999">1999</option>
+										<option value="1998">1998</option>
+										<option value="1997">1997</option>
+									</select>
+								</div>
+								<div class="col_one_sixth">
+									<label for="template-contactform-service t700">월</label>
+									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+										<option value="">-태어날달-</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+									</select>
+								</div>
+								<div class="col_one_sixth">
+									<label for="template-contactform-service">일</label>
+									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+										<option value="">-태어난날-</option>
+										<option value="01">01</option>
+										<option value="02">02</option>
+										<option value="03">03</option>
+										<option value="04">04</option>
+									</select>
+								</div>
 
 								<div class="clear"></div>
-
+								
+								
+								
+								
+								
+								
+								<div class="col_two_fifth">
+									<label for="template-contactform-phone t700">전화번호</label>
+									<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+								</div>	
+								<div class="col_one_sixth">
+									<label for="template-contactform-phone t700" >인증하기</label>
+									<input type="button" id="template-contactform-phone" name="template-contactform-phone" value="button" class="sm-form-control" />
+								</div>								
+								<div class="clear"></div>
+								
 								<div class="col_two_third">
-									<label for="template-contactform-subject">제목 <small>*</small></label>
-									<input type="text" id="template-contactform-subject" name="board_title" value="" class="required sm-form-control required" />
+									<label for="template-contactform-subject t700">주소 <small>*</small></label>
+									<input type="text" id="template-contactform-subject" name="subject" value="" class="required sm-form-control" />
 								</div>
-
-								<div class="col_one_third col_last">
-								<label for="template-contactform-name">작성자<small>*</small></label>
-									<input type="text" id="template-contactform-name" name="board_writer" value="아이디들어올곳" class="sm-form-control required" readonly="readonly"/>
-									
+								<div class="clear"></div>
+								<div class="col_one_third">
+									<label for="template-contactform-service t700">세부주소</label>
+									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+										<option value="">-- Select One --</option>
+										<option value="신월동">신월동</option>
+										<option value="신정동">신정동</option>
+										<option value="목동">목동</option>
+										<option value="화곡동">화곡동</option>
+									</select>
 								</div>
-
+								<div class="col_one_third">
+									<label for="template-contactform-service t700">세부주소</label>
+									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+										<option value="">-- Select One --</option>
+										<option value="신월동">신월동</option>
+										<option value="신정동">신정동</option>
+										<option value="목동">목동</option>
+										<option value="화곡동">화곡동</option>
+									</select>
+								</div>
 								<div class="clear"></div>
 
-								<div class="col_full">
-									<label for="template-contactform-message">내용 <small>*</small></label>
-									<textarea name="smarteditor" id="smarteditor" rows="21" cols="30"  style="width:100%;"></textarea>
-								</div>
+							
 
-								<!-- <div class="col_full hidden">
+								<div class="col_full hidden">
 									<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-								</div> -->
-
-								<div class="col_full">
-									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">작성 완료</button>
-									<button class="button button-3d nomargin" type="button" onclick="location.href='freeboard.do?board_name=${board_name}'">목록 가기</button>
 								</div>
 
-								<!-- <input type="hidden" name="prefix" value="template-contactform-"> -->
+								<div class="col_full">
+									<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">회원가입</button>
+									<button class="button button-3d nomargin" type="button" onclick="location.href='login.do'">메인가기</button>
+								</div>
 
-						
-	
+								<input type="hidden" name="prefix" value="template-contactform-">
+
 							</form>
 						</div>
 
-					</div>
+					</div><!-- .postcontent end -->
+
+
+				</div>
 						
-					</div>
+					
 										
 										
 										
@@ -219,6 +288,7 @@
 						
 						
 					
+						
 				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
@@ -233,11 +303,6 @@
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
-	<script type="text/javascript" src="resources/js/writeForm.js"></script>
-	<script type="text/javascript" src="resources/smarteditor/js/HuskyEZCreator.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-	</script>	
 
 	<!-- Go To Top
 	============================================= -->
@@ -245,167 +310,29 @@
 
 	<!-- External JavaScripts
 	============================================= -->
-	
-	<!-- <script src="resources/js/jquery.js"></script> -->
-	<!-- <script src="resources/js/plugins.js"></script> -->
-	
+	<script src="resources/js/jquery.js"></script>
+	<script src="resources/js/plugins.js"></script>
+	<script src="resources/js/tabsJs.js"></script>
+
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
+
 	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-	
+	<script src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
 	<!-- ADD-ONS JS FILES -->
-	<!-- <script>
-		var tpj=jQuery;
-		var revapi19;
-		tpj(document).ready(function() {
-			if(tpj("#rev_slider_19_1").revolution == undefined){
-				revslider_showDoubleJqueryError("#rev_slider_19_1");
-			}else{
-				revapi19 = tpj("#rev_slider_19_1").show().revolution({
-					sliderType:"carousel",
-					jsFileLocation: "include/rs-plugin/js/",
-					sliderLayout:"fullwidth",
-					dottedOverlay:"none",
-					delay:7000,
-					navigation: {
-						keyboardNavigation:"off",
-						keyboard_direction: "horizontal",
-						mouseScrollNavigation:"off",
-						onHoverStop:"on",
-						tabs: {
-							style:"hesperiden",
-							enable:true,
-							width:260,
-							height:80,
-							min_width:260,
-							wrapper_padding:25,
-							wrapper_color:"#F5F5F5",
-							wrapper_opacity:"1",
-							tmp:'<div class="tp-tab-content">  <span class="tp-tab-date">{{param1}}</span>  <span class="tp-tab-title font-secondary">{{title}}</span> <span class="tp-tab-date tp-tab-para">{{param2}}</span></div><div class="tp-tab-image"></div>',
-							visibleAmount: 9,
-							hide_onmobile: false,
-							hide_under:480,
-							hide_onleave:false,
-							hide_delay:200,
-							direction:"horizontal",
-							span:true,
-							position:"outer-bottom",
-							space:0,
-							h_align:"left",
-							v_align:"bottom",
-							h_offset:0,
-							v_offset:0
-						}
-					},
-					carousel: {
-						horizontal_align: "center",
-						vertical_align: "center",
-						fadeout: "on",
-						vary_fade: "on",
-						maxVisibleItems: 3,
-						infinity: "on",
-						space: 0,
-						stretch: "off",
-						showLayersAllTime: "off",
-						easing: "Power3.easeInOut",
-						speed: "800"
-					},
-					responsiveLevels:[1140,992,768,576],
-					visibilityLevels:[1140,992,768,576],
-					gridwidth:[850,700,400,300],
-					gridheight:[580,600,500,400],
-					lazyType:"single",
-					shadow:0,
-					spinner:"off",
-					stopLoop:"on",
-					stopAfterLoops:-1,
-					stopAtSlide:-1,
-					shuffle:"off",
-					autoHeight:"off",
-					disableProgressBar:"off",
-					hideThumbsOnMobile:"off",
-					hideSliderAtLimit:0,
-					hideCaptionAtLimit:0,
-					hideAllCaptionAtLilmit:0,
-					debugMode:false,
-					fallbacks: {
-						simplifyAll:"off",
-						nextSlideOnWindowFocus:"off",
-						disableFocusListener:false,
-					}
-				});
-			}
-		});	/* Revolution Slider End */
-
-		// Navbar on hover
-		$('.nav.tab-hover a.nav-link').hover(function() {
-			$(this).tab('show');
-		});
-
-		// Current Date
-		var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-			month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-			a = new Date();
-
-			jQuery('.date-today').html( weekday[a.getDay()] + ', ' + month[a.getMonth()] + ' ' + a.getDate() );
-
-		// Infinity Scroll
-		jQuery(window).on( 'load', function(){
-
-			var $container = $('.infinity-wrapper');
-
-			$container.infiniteScroll({
-				path: '.load-next-portfolio',
-				button: '.load-next-portfolio',
-				scrollThreshold: false,
-				history: false,
-				status: '.page-load-status'
-			});
-
-			$container.on( 'load.infiniteScroll', function( event, response, path ) {
-				var $items = $( response ).find('.infinity-loader');
-				// append items after images loaded
-				$items.imagesLoaded( function() {
-					$container.append( $items );
-					$container.isotope( 'insert', $items );
-					setTimeout( function(){
-						SEMICOLON.widget.loadFlexSlider();
-					}, 1000 );
-				});
-			});
-
-		});
-
-		$('#oc-news').owlCarousel({
-			items: 1,
-			margin: 20,
-			dots: false,
-			nav: true,
-		    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
-			responsive:{
-				0:{ items: 1,dots: true, },
-				576:{ items: 1,dots: true },
-				768:{ items: 2,dots:true },
-				992:{ items: 2 },
-				1200:{ items: 3 }
-			}
-		});
-
-		</script>
-		
- 	<script>
-		$(function(){
-			var pagenum = ${page.pagenum};
-			if(pagenum>=5){
-				pagenum=parseInt(pagenum)-4;
-			}
-			$(".page-link").eq(pagenum).css({
-				"background-color":"#3A486E",
-				"color":"white"
-			});
-		});
-	</script>  -->
+	
 	</body>
 	</html>
