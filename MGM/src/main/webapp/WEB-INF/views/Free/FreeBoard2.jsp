@@ -348,6 +348,9 @@
 	<script>
 		$(function(){
 			var pagenum = ${page.pagenum};
+			if(pagenum>=5){
+				pagenum=parseInt(pagenum)-4;
+			}
 			$(".page-link").eq(pagenum).css({
 				"background-color":"#3A486E",
 				"color":"white"
