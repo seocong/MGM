@@ -80,7 +80,7 @@ public class KIMController implements ServletContextAware{
 		PageMaker pagemaker = new PageMaker();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
-		String board_name = request.getParameter("boardname");
+		String board_name = request.getParameter("board_name");
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
 		pagemaker.setTotalcount(boardService.selectTotalPaging(board_name));//전체 게시글 개수를 저장한다
@@ -97,7 +97,7 @@ public class KIMController implements ServletContextAware{
 		map.put("contentnum", pagemaker.getContentnum());
 		map.put("board_name", board_name);
 		List<BoardDto> list = boardService.getAllList(map);
-		model.addAttribute("boardname",board_name);//board name파라미터를 따로 보냄
+		model.addAttribute("board_name",board_name);//board name파라미터를 따로 보냄
 		model.addAttribute("list", list);
 		model.addAttribute("page", pagemaker);
 		return "Free/FreeBoard2";
@@ -105,10 +105,12 @@ public class KIMController implements ServletContextAware{
 	}
 	
 	 @RequestMapping(value = "/insertform.do", method = RequestMethod.GET)
-		public String ansinsertform(Locale locale, Model model) {
+		public String ansinsertform(Locale locale, Model model,String board_name) {
 			logger.info("자유게시판 글쓰기 이동 {}.", locale);
 			//로그인 정보 확인 처리
-			return "Free/FreeInsert";
+			model.addAttribute("board_name",board_name);
+			System.out.println("board_name111:"+board_name);
+			return "Free/Insert";
 		}
 	 
 		
@@ -210,18 +212,22 @@ public class KIMController implements ServletContextAware{
 		
 		@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	      public ModelAndView write(HttpServletRequest request) throws IOException, FileUploadException {
-	         String title = request.getParameter("title");
+			 String board_name = request.getParameter("board_name");
+	         String board_title = request.getParameter("board_title");
 	         String smarteditor = request.getParameter("smarteditor");
+	         System.out.println("smarteditor:"+smarteditor);
 	         //세션에서 아이디 추출해야함
 	         BoardDto boardDto = new BoardDto();
 	         boardDto.setBoard_contents(smarteditor);
-	         boardDto.setBoard_title(title);
+	         boardDto.setBoard_title(board_title);
 	         boardDto.setBoard_writer("admin");
+	         boardDto.setBoard_name("board_name");
 	         boolean isS = boardService.boardInsert(boardDto);
 	         System.out.println("isS:"+isS);
 	         if(isS) {
 	            ModelAndView model = new ModelAndView("Free/write");
-	            model.addObject("title", title);
+	            model.addObject("title", board_title);
+	            model.addObject("board_name", board_name);
 	            model.addObject("smarteditor", smarteditor);
 	            return model;
 	         }else {
@@ -239,7 +245,7 @@ public class KIMController implements ServletContextAware{
 			logger.info("게시판 상세 보기 {}.", locale);
 			String pagenum = request.getParameter("pagenum");
 			String contentnum = request.getParameter("contentnum");
-			String board_name = request.getParameter("boardname");
+			String board_name = request.getParameter("board_name");
 			if(request.getParameter("board_seq")!=null) {
 				boardService.readCount(Integer.parseInt(request.getParameter("board_seq")));
 				BoardDto boardDto = boardService.getBoard(Integer.parseInt(request.getParameter("board_seq")));
@@ -262,12 +268,12 @@ public class KIMController implements ServletContextAware{
 			map.put("contentnum", pagemaker.getContentnum());
 			map.put("board_name", board_name);
 			List<BoardDto> list = boardService.getAllList(map);
-			model.addAttribute("boardname",board_name);//board name파라미터를 따로 보냄
+			model.addAttribute("board_name",board_name);//board name파라미터를 따로 보냄
 			model.addAttribute("list", list);
 			model.addAttribute("page", pagemaker);
 			return "Free/Detail";
 			}else {
-				return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&boardname="+board_name;
+				return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name;
 			}
 		}
 	 

@@ -233,7 +233,7 @@
 					
 						
 								<!-- board name을 div에 불러옴 , script에서 받음 -->
-								<div id="boardname" data-boardname = "${boardname}" ></div>
+								<div id="board_name" data-board_name = "${board_name}" ></div>
 								<div class="col-md-12 mt-5">
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 커뮤니티</h4>
 									<div class="line line-xs line-sports"></div>									
@@ -242,10 +242,10 @@
 							
 							
 							<ul class="tab">
-								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=alert" > 공지게시판</a></li>
-								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=free" > 자유게시판</a></li>
-								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=fun" > 유머게시판</a></li>
-								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&boardname=game" > 게임게시판</a></li>
+								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" > 공지게시판</a></li>
+								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free" > 자유게시판</a></li>
+								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=fun" > 유머게시판</a></li>
+								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=game" > 게임게시판</a></li>
 							</ul>
 
 							<div >
@@ -280,7 +280,7 @@
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&boardname=${boardDto.board_name}&pagenum=${page.pagenum+1}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&board_name=${boardDto.board_name}&pagenum=${page.pagenum+1}">${boardDto.board_title}</a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>
@@ -311,7 +311,7 @@
         <td>
 				<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="글쓰기" onclick="location.href='insertform.do'">
+                  <input type="button" value="글쓰기" onclick="insertform.do?board_name=${board_name}'">
                 </div>
               </div>
 	

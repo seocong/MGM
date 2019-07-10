@@ -38,10 +38,10 @@
 							<li ><a href="#"><div  style=" font-weight: bold;">커뮤니티</div></a>
 								 <ul>									
 									<li><a href="#"><div  style="font-weight: bold;">공지사항</div></a></li>
-									<li><a href="freeboard.do?pagenum=1&contentnum=20&boardname=free"><div  style="font-weight: bold;">자유게시판</div></a></li>
-									<li><a href="freeboard.do?pagenum=1&contentnum=20&boardname=fun"><div  style="font-weight: bold;">유머게시판</div></a></li>
-									<li><a href="freeboard.do?pagenum=1&contentnum=20&boardname=game"><div  style="font-weight: bold;">게임게시판</div></a></li>
-									<li><a href="freeboard.do?pagenum=1&contentnum=20&boardname=alert"><div  style="font-weight: bold;">문의게시판</div></a></li>
+									<li><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free"><div  style="font-weight: bold;">자유게시판</div></a></li>
+									<li><a href="freeboard.do?pagenum=1&contentnum=20&board_name=fun"><div  style="font-weight: bold;">유머게시판</div></a></li>
+									<li><a href="freeboard.do?pagenum=1&contentnum=20&board_name=game"><div  style="font-weight: bold;">게임게시판</div></a></li>
+									<li><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert"><div  style="font-weight: bold;">문의게시판</div></a></li>
 									
 								</ul> 
 							</li>

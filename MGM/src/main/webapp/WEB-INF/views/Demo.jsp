@@ -47,51 +47,8 @@
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-<style>
-		#container {
-			width:940px;
-			margin:0 auto;
-			text-align:center;
-		}
-		.tab {
-			list-style:none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			
-		}
-		/* Float the list items side by side */
-		.tab li {
-			float: left;
-			
-		}
-		/* Style the links inside the list items */
-		.tab li a {
-			display: inline-block;
-			color: #000;
-			text-align: center;
-			text-decoration: none;
-			padding: 14px 16px;
-			font-size: 14px;
-			transition:0.3s;
-			border: solid #DDD 1px;
-		
-		}
-		/* Style the tab content */
-		.tabcontent {
-			display: block;
-			color:#fff;
-		}
-		ul.tab li.current{
-			background-color: #fff;
-			color: #222;
-			
-		}
-		ul.tab li{
-		background-color:#F2F2F2;
-		}
-	</style>
 
+	
 
 </head>
 
@@ -103,7 +60,7 @@
 
 
 	<!-- <header id="header" class="full-header dark"> -->
-	<jsp:include page="../Header.jsp" />
+	<jsp:include page="Header.jsp" />
 	
 
 		<!-- Slider
@@ -160,7 +117,7 @@
 					<div class="row clearfix">
 
 
-					<jsp:include page="../SideBar.jsp" />
+					<jsp:include page="SideBar.jsp" />
 				 
 
 
@@ -170,141 +127,34 @@
 						
 						
 						
-							<div class="row clearfix"> 
-						<!-- <div class="fancy-title title-dotted-border">
-						
-						</div> -->
-						
-								<!-- board name을 div에 불러옴 , script에서 받음 -->
-								<div id="board_name" data-board_name = "${board_name}" ></div>
-								<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 커뮤니티</h4>
-									<div class="line line-xs line-sports"></div>									
-
-						<div id="container" >
-							
-							
-							<ul class="tab">
-								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" > 공지게시판</a></li>
-								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free" > 자유게시판</a></li>
-								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=fun" > 유머게시판</a></li>
-								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=game" > 게임게시판</a></li>
-							</ul>
-
-							<div >
-								<div class="tabcontent" id="tab4">
-									<div >
-							<table class="table table-striped">
-							<col width="50px"><col width="300px"><col width="100px"><col width="150px"><col width="60px"><col width="50px">
-								<thead>
-								  <tr style="text-align: center;">
-									<th>번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회수</th>
-									<th>추천</th>
-								  </tr>
-								</thead>
-								
-								<tbody>
-								  <c:choose>
-									<c:when test="${empty list}"><!-- empty  null인지 확인 -->
-										<tr><td colspan = "10">---작성된 글이 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="boardDto">
-										<tr>
-					
-												<td  style="text-align: center;">${boardDto.board_group}</td>
-									<c:choose>
-						<c:when test="${baordDto.board_delflag=='Y'}">
-							<td>---삭제된 글입니다.---</td>
-						</c:when>
-						<c:otherwise>    
-					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum+1}&contentnum=20&board_name=${boardDto.board_name}">${boardDto.board_title}</a>
-					        </td>				            									
-						</c:otherwise>
-					</c:choose>
-					<td  style="text-align: center;">${boardDto.board_writer}</td>				
-					<td  style="text-align: center;"> <fmt:formatDate value="${boardDto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
-					<td  style="text-align: center;">${boardDto.board_readcount}</td>	
-					<td  style="text-align: center;">${boardDto.board_pushnum}</td>				
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>	
-			   
-								</tbody>
-							<tr>
-   <td colspan="5">
-   		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
-   	<c:if test="${page.prev}">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-   	</c:if>
-   	<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
-   	</c:forEach>
-   <c:if test="${page.next }">
-   		 <li class="page-item"><a class="page-link" href="javascript:page(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-   	</c:if>
- 		</ul>
-        </td>
-        <td>
-				<div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <input type="button" value="글쓰기" onclick="location.href='insertform.do?board_name=${board_name}'">
-                </div>
-              </div>
-	
-        
-        </td>
-	</tr>
-	</table>
-						</div>	
-									
-								</div>
-								
-
-							</div>
-
-						</div>
-								</div>
-
-								
-								
-								
-							<!-- Ad
-							============================================= -->
-							<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
-							
-							
-							
-							
-							<!-- Articles
-							============================================= -->
-						
-						</div>
-						
-						
-						
 					
 										
 										
 										
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 						
 						<div class="line"></div>
 						
 	
 						
 
-						<!-- Top Sidebar Area
-						============================================= -->
+						
 						
 					
 						
-					<!-- Sidebar End -->
+				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
 				</div>
@@ -314,7 +164,7 @@
 
 		<!-- Footer
 		============================================= -->
-		<jsp:include page="../Footer.jsp" />
+		<jsp:include page="Footer.jsp" />
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
@@ -328,6 +178,7 @@
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
 	<script src="resources/js/tabsJs.js"></script>
+
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
@@ -345,7 +196,148 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+
+	<!-- ADD-ONS JS FILES -->
 	<script>
+		var tpj=jQuery;
+		var revapi19;
+		tpj(document).ready(function() {
+			if(tpj("#rev_slider_19_1").revolution == undefined){
+				revslider_showDoubleJqueryError("#rev_slider_19_1");
+			}else{
+				revapi19 = tpj("#rev_slider_19_1").show().revolution({
+					sliderType:"carousel",
+					jsFileLocation: "include/rs-plugin/js/",
+					sliderLayout:"fullwidth",
+					dottedOverlay:"none",
+					delay:7000,
+					navigation: {
+						keyboardNavigation:"off",
+						keyboard_direction: "horizontal",
+						mouseScrollNavigation:"off",
+						onHoverStop:"on",
+						tabs: {
+							style:"hesperiden",
+							enable:true,
+							width:260,
+							height:80,
+							min_width:260,
+							wrapper_padding:25,
+							wrapper_color:"#F5F5F5",
+							wrapper_opacity:"1",
+							tmp:'<div class="tp-tab-content">  <span class="tp-tab-date">{{param1}}</span>  <span class="tp-tab-title font-secondary">{{title}}</span> <span class="tp-tab-date tp-tab-para">{{param2}}</span></div><div class="tp-tab-image"></div>',
+							visibleAmount: 9,
+							hide_onmobile: false,
+							hide_under:480,
+							hide_onleave:false,
+							hide_delay:200,
+							direction:"horizontal",
+							span:true,
+							position:"outer-bottom",
+							space:0,
+							h_align:"left",
+							v_align:"bottom",
+							h_offset:0,
+							v_offset:0
+						}
+					},
+					carousel: {
+						horizontal_align: "center",
+						vertical_align: "center",
+						fadeout: "on",
+						vary_fade: "on",
+						maxVisibleItems: 3,
+						infinity: "on",
+						space: 0,
+						stretch: "off",
+						showLayersAllTime: "off",
+						easing: "Power3.easeInOut",
+						speed: "800"
+					},
+					responsiveLevels:[1140,992,768,576],
+					visibilityLevels:[1140,992,768,576],
+					gridwidth:[850,700,400,300],
+					gridheight:[580,600,500,400],
+					lazyType:"single",
+					shadow:0,
+					spinner:"off",
+					stopLoop:"on",
+					stopAfterLoops:-1,
+					stopAtSlide:-1,
+					shuffle:"off",
+					autoHeight:"off",
+					disableProgressBar:"off",
+					hideThumbsOnMobile:"off",
+					hideSliderAtLimit:0,
+					hideCaptionAtLimit:0,
+					hideAllCaptionAtLilmit:0,
+					debugMode:false,
+					fallbacks: {
+						simplifyAll:"off",
+						nextSlideOnWindowFocus:"off",
+						disableFocusListener:false,
+					}
+				});
+			}
+		});	/* Revolution Slider End */
+
+		// Navbar on hover
+		$('.nav.tab-hover a.nav-link').hover(function() {
+			$(this).tab('show');
+		});
+
+		// Current Date
+		var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+			month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			a = new Date();
+
+			jQuery('.date-today').html( weekday[a.getDay()] + ', ' + month[a.getMonth()] + ' ' + a.getDate() );
+
+		// Infinity Scroll
+		jQuery(window).on( 'load', function(){
+
+			var $container = $('.infinity-wrapper');
+
+			$container.infiniteScroll({
+				path: '.load-next-portfolio',
+				button: '.load-next-portfolio',
+				scrollThreshold: false,
+				history: false,
+				status: '.page-load-status'
+			});
+
+			$container.on( 'load.infiniteScroll', function( event, response, path ) {
+				var $items = $( response ).find('.infinity-loader');
+				// append items after images loaded
+				$items.imagesLoaded( function() {
+					$container.append( $items );
+					$container.isotope( 'insert', $items );
+					setTimeout( function(){
+						SEMICOLON.widget.loadFlexSlider();
+					}, 1000 );
+				});
+			});
+
+		});
+
+		$('#oc-news').owlCarousel({
+			items: 1,
+			margin: 20,
+			dots: false,
+			nav: true,
+		    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+			responsive:{
+				0:{ items: 1,dots: true, },
+				576:{ items: 1,dots: true },
+				768:{ items: 2,dots:true },
+				992:{ items: 2 },
+				1200:{ items: 3 }
+			}
+		});
+
+		</script>
+		
+ 	<script>
 		$(function(){
 			var pagenum = ${page.pagenum};
 			if(pagenum>=5){
@@ -357,21 +349,5 @@
 			});
 		});
 	</script> 
-	
-	<!--<script>
-	$(function(){
-		var boardname = $("#boardname").attr("data-boardname");
-		if(boardname == "free"){
-			$("#freeboard").trigger("click");
-		}else if(boardname == "fun"){
-			$("#funboard").trigger("click");
-		}else if(boardname == "alert"){
-			$("#alertboard").trigger("click");
-		}else if(boardname == "game"){
-			$("#gameboard").trigger("click");
-		}
-	});
-	</script>-->
-
 	</body>
 	</html>

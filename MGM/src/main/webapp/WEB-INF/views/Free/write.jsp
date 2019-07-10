@@ -12,7 +12,7 @@
 <table border="2" style="width: 460px;">
    <tr>
          <td>제목</td>
-         <td>${title}</td>
+         <td>${board_title}</td>
       </tr>
 <tr>
 <tr><td>본문</td></tr>
