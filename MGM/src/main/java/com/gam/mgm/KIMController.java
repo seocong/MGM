@@ -235,15 +235,16 @@ public class KIMController implements ServletContextAware{
 	      }
 		
 		@RequestMapping(value = "/detail.do", method = RequestMethod.GET)
-		public String freedetail(Locale locale, Model model,HttpServletRequest request,int board_seq) {
+		public String freedetail(Locale locale, Model model,HttpServletRequest request) {
 			logger.info("게시판 상세 보기 {}.", locale);
-			boardService.readCount(board_seq);
-			BoardDto boardDto = boardService.getBoard(board_seq);
-			model.addAttribute("Dto",boardDto);
-			PageMaker pagemaker = new PageMaker();
 			String pagenum = request.getParameter("pagenum");
 			String contentnum = request.getParameter("contentnum");
 			String board_name = request.getParameter("boardname");
+			if(request.getParameter("board_seq")!=null) {
+				boardService.readCount(Integer.parseInt(request.getParameter("board_seq")));
+				BoardDto boardDto = boardService.getBoard(Integer.parseInt(request.getParameter("board_seq")));
+				model.addAttribute("Dto",boardDto);				
+			PageMaker pagemaker = new PageMaker();
 			int cpagenum = Integer.parseInt(pagenum);
 			int ccontentnum = Integer.parseInt(contentnum);
 					
@@ -265,6 +266,9 @@ public class KIMController implements ServletContextAware{
 			model.addAttribute("list", list);
 			model.addAttribute("page", pagemaker);
 			return "Free/Detail";
+			}else {
+				return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&boardname="+board_name;
+			}
 		}
 	 
 }

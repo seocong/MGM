@@ -280,7 +280,7 @@
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&boardname=${boardDto.board_name}&pagenum=${page.pagenum}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&boardname=${boardDto.board_name}&pagenum=${page.pagenum+1}">${boardDto.board_title}</a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>

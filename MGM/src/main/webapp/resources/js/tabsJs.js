@@ -21,9 +21,9 @@ function page(idx) {
 	location.href="freeboard.do?pagenum="+pagenum+"&contentnum="+contentnum+"&boardname="+boardname;
 }
 
-/*function page2(idx) {
+function page2(idx) {
 	var pagenum = idx;
 	var contentnum = 20;//$("#contentnum option:selected").val();
 	var boardname = $('#boardname').attr("data-boardname");//boardname을 받아옴
 	location.href="detail.do?pagenum="+pagenum+"&contentnum="+contentnum+"&boardname="+boardname;
-}*/
+}
