@@ -42,4 +42,8 @@ public class BoardService implements IBoardService{
 		
 		return boardDao.readCount(board_seq);
 	}
+	@Override
+	public BoardDto getUpdateBoard(Map<String, Object> map) {		
+		return boardDao.getUpdateBoard(map);
+	}
 }

@@ -31,4 +31,10 @@
     <update id="readcount" parameterType="int">
     	UPDATE mgm_board SET board_readcount = board_readcount+1 WHERE board_seq=#{board_seq}
     </update>
+    
+    <select id="getupdateboard" parameterType="Map" resultType="BoardDto">
+    	SELECT board_seq,board_group,board_step,board_depth,board_contents,board_title,board_writer,board_readcount,
+		board_regdate,board_delflag,board_recommender,board_pushnum,board_name
+		FROM mgm_board WHERE board_contents = #{board_contents} AND board_title=#{board_title} AND board_name=#{board_name}
+    </select>
   </mapper>

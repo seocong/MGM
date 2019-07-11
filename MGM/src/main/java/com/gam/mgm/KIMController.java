@@ -220,6 +220,11 @@ public class KIMController implements ServletContextAware{
 	         System.out.println("smarteditor:"+smarteditor);
 	         System.out.println("board_title:"+board_title);
 	         //세션에서 아이디 추출해야함
+	         Map<String,Object> map = new HashMap<String,Object>();
+	         map.put("board_title", board_title);
+	         map.put("board_name", board_name);
+	         map.put("board_contents", smarteditor);
+	         
 	         BoardDto boardDto = new BoardDto();
 	         boardDto.setBoard_contents(smarteditor);
 	         boardDto.setBoard_title(board_title);
@@ -228,10 +233,9 @@ public class KIMController implements ServletContextAware{
 	         boolean isS = boardService.boardInsert(boardDto);
 	         System.out.println("isS:"+isS);
 	         if(isS) {
-	            ModelAndView model = new ModelAndView("Free/write");
-	            model.addObject("title", board_title);
-	            model.addObject("board_name", board_name);
-	            model.addObject("smarteditor", smarteditor);
+	        	 BoardDto dto = boardService.getUpdateBoard(map);
+	            ModelAndView model = new ModelAndView("Free/Writer");
+	            model.addObject("dto",dto);
 	            return model;
 	         }else {
 	            ModelAndView model = new ModelAndView("error");

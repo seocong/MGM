@@ -16,4 +16,6 @@ public interface IBoardDao {
 	public BoardDto getBoard(int board_seq);
 
 	public boolean readCount(int board_seq);
+	
+	public BoardDto getUpdateBoard(Map<String, Object> map);
 }

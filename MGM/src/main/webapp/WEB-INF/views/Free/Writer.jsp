@@ -126,7 +126,65 @@
 						<div class="col-lg-9">
 						
 						
+					<div class="row clearfix"> 
+							<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> 미리보기</h4>
+									<div class="line line-xs line-sports"></div>
+									
+									<div class="allmargin-sm">
 						
+						  
+						
+							  <div class="row clearfix nobottomborder" style="padding: 20px; border: solid 2px #DDD;" >
+							 
+							  		
+							  			<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;" >제목</div>
+										<div class="col-md-7">${dto.board_title}</div>
+										 <div class="col-md-3" style="border-left : solid 2px #DDD;" ><fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년MM월dd일HH시mm분"/></div>	
+							  			
+							  													
+							  </div>
+							  <div class="row clearfix" style="padding: 20px; border: solid 2px #DDD;">
+							 							  
+								<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;">작성자</div>
+								<div class="col-md-6">${dto.board_writer}</div>
+								 <div class="col-md-1 t700" style="border-right : solid 2px #DDD;">조회수</div>
+								<div class="col-md-1">${dto.board_readcount}</div>
+								<div class="col-md-1 t700" style="border-right : solid 2px #DDD;">추천수</div>
+								<div class="col-md-1">${dto.board_pushnum}</div>
+							  	
+							  	
+							  </div>
+							 <div class="row clearfix topmargin-sm" >
+			
+								<div class="col-md-12">${dto.board_contents}</div>
+
+								</div>
+						</div>
+								<div class="row clearfix" style="float: right;"> 
+									<a href="update.do?board_seq=${dto.board_seq}" class="button button-3d button-rounded button-red"><i class="icon-thumbs-up1"></i>수정하기</a>
+									<a href="freeboard.do?pagenum=1&contentnum=20&board_name=${dto.board_name}" class="button button-3d button-rounded button-red"><i class="icon-thumbs-up1"></i>목록가기</a>
+								</div> 
+		
+							</div>
+							</div>
+					
+										
+										
+										
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+							
 					
 										
 										

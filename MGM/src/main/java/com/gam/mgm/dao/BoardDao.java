@@ -54,5 +54,9 @@ public class BoardDao implements IBoardDao{
 		int cnt = sqlSession.update(namespace+"readcount", board_seq);
 		return cnt>0?true:false;
 	}
+	@Override
+	public BoardDto getUpdateBoard(Map<String, Object> map) {		
+		return sqlSession.selectOne(namespace+"getupdateboard",map);
+	}
 
 }
