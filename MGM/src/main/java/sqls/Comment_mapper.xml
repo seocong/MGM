@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gam.mgm.comment">
+    	<select id="getallreply" parameterType="Map" resultType="CommentDto">
+    		SELECT comment_seq,comment_group,comment_writer,comment_step,comment_depth,comment_contents,
+		comment_regdate,comment_delflag,comment_recommender,comment_pushnum, comment_name
+		FROM mgm_comment where comment_name = #{comment_name} AND comment_group = #{comment_group} ORDER BY comment_step
+    	</select>
+    	
+    	<insert id="insertreply" parameterType="Map">
+    		INSERT INTO mgm_comment(comment_group ,comment_step,comment_depth,comment_contents,comment_writer,comment_regdate,
+    		comment_delflag,comment_recommender,comment_pushnum,comment_name)
+    		VALUES(#{comment_group},(SELECT IFNULL(MAX(comment_step) + 1, 1) FROM mgm_comment b where comment_name=#{comment_name}),0,#{comment_contents},#{comment_writer},now(),'N','null',0,#{comment_name})
+    	</insert>
+    	
+    	<update id="replyupdate" parameterType="int">
+    		<![CDATA[
+   		UPDATE mgm_comment as a SET comment_STEP=comment_STEP+1 WHERE comment_group=(select * from(SELECT comment_group FROM mgm_comment WHERE comment_SEQ=#{comment_seq})as B)
+		AND comment_STEP > (select * from (SELECT comment_STEP FROM mgm_comment WHERE comment_SEQ=#{comment_seq})as C)
+		]]>  
+    	</update>
+    	<insert id="insertAnsReply" parameterType="CommentDto">
+    		INSERT INTO mgm_comment(comment_group ,comment_step,comment_depth,comment_contents,comment_writer,comment_regdate,
+    		comment_delflag,comment_recommender,comment_pushnum,comment_name)
+    		VALUES(#{comment_group},(select * from(SELECT comment_step FROM mgm_comment WHERE comment_SEQ=#{comment_seq})as A)+1,
+    		(select * from(SELECT comment_depth FROM mgm_comment WHERE comment_seq=#{comment_seq})as b)+1,#{comment_contents},#{comment_writer},now(),'N','null',0,#{comment_name})
+    	</insert>
+    	
+    	<update id="push" parameterType="CommentDto">
+    	UPDATE mgm_comment SET comment_pushnum=comment_pushnum+1,comment_recommender = CONCAT(comment_recommender,'/',#{comment_recommender}) where comment_seq=#{comment_seq}
+    </update>
+    
+      <update id="ansdel" parameterType="int">
+    	UPDATE mgm_comment SET comment_delflag = 'Y' where comment_seq = #{comment_seq}
+    </update>	
+  </mapper>

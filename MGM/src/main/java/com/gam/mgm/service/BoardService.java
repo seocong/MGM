@@ -46,4 +46,18 @@ public class BoardService implements IBoardService{
 	public BoardDto getUpdateBoard(Map<String, Object> map) {		
 		return boardDao.getUpdateBoard(map);
 	}
+
+	@Override
+	public boolean push(BoardDto boardDto) {
+		
+		return boardDao.push(boardDto);
+	}
+
+	@Override
+	public boolean delete(int board_seq) {
+		
+		return boardDao.delete(board_seq);
+	}
+
+	
 }

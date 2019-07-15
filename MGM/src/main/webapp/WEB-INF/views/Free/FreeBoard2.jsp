@@ -218,12 +218,13 @@
 					
 												<td  style="text-align: center;">${boardDto.board_group}</td>
 									<c:choose>
-						<c:when test="${baordDto.board_delflag=='Y'}">
+						<c:when test="${boardDto.board_delflag=='Y'}">
 							<td>---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum+1}&contentnum=20&board_name=${boardDto.board_name}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum+1}&contentnum=20&board_name=${boardDto.board_name}">${boardDto.board_title}
+					         <c:if test="${boardDto.board_replyCnt > 0}"><span class="text-warning">[${boardDto.board_replyCnt}]</span></c:if></a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>

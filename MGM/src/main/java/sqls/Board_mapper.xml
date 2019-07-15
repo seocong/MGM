@@ -5,9 +5,9 @@
   <mapper namespace="com.gam.mgm.board">
   
   <select id="boardlist" parameterType="Map" resultType="BoardDto">
-  SELECT board_seq,board_group,board_step,board_title,board_writer,board_readcount,
-		board_regdate,board_delflag,board_recommender,board_pushnum, board_name
-		FROM mgm_board where board_name = #{board_name} ORDER BY board_group DESC,board_step ASC LIMIT #{pagenum},#{contentnum}
+  SELECT board_seq,board_group,board_title,board_writer,board_readcount,
+		board_regdate,board_delflag,board_recommender,board_pushnum, board_name,(select count(*) from mgm_comment where comment_group = board_group)AS board_replyCnt
+		FROM mgm_board where board_name = #{board_name} ORDER BY board_group DESC LIMIT #{pagenum},#{contentnum}
   
   </select>
    
@@ -17,14 +17,14 @@
 	</select> 
     
      <insert id="boardinsert" parameterType="BoardDto" >
-     insert into mgm_board(board_seq,board_group,board_step,board_depth,board_title,board_contents,board_writer,board_readcount,board_regdate,
+     insert into mgm_board(board_seq,board_group,board_title,board_contents,board_writer,board_readcount,board_regdate,
             board_delflag,board_recommender,board_pushnum, board_name)       
             select case count(*) when 0 then 1 else max(board_seq) + 1 end ,
-           (SELECT IFNULL(MAX(board_group) + 1, 1) FROM mgm_board b where board_name=#{board_name}),0,0,#{board_title},#{board_contents},#{board_writer},0,now(),'N','null',0,#{board_name} from mgm_board
+           (SELECT IFNULL(MAX(board_group) + 1, 1) FROM mgm_board b where board_name=#{board_name}),#{board_title},#{board_contents},#{board_writer},0,now(),'N','null',0,#{board_name} from mgm_board
   </insert>
     
     <select id="boarddetail" parameterType="int"  resultType="BoardDto">
-    SELECT board_seq,board_group,board_step,board_depth,board_contents,board_title,board_writer,board_readcount,
+    SELECT board_seq,board_group,board_contents,board_title,board_writer,board_readcount,
 		board_regdate,board_delflag,board_recommender,board_pushnum,board_name
 		FROM mgm_board WHERE board_seq = #{board_seq}
     </select>
@@ -33,8 +33,17 @@
     </update>
     
     <select id="getupdateboard" parameterType="Map" resultType="BoardDto">
-    	SELECT board_seq,board_group,board_step,board_depth,board_contents,board_title,board_writer,board_readcount,
+    	SELECT board_seq,board_group,board_contents,board_title,board_writer,board_readcount,
 		board_regdate,board_delflag,board_recommender,board_pushnum,board_name
 		FROM mgm_board WHERE board_contents = #{board_contents} AND board_title=#{board_title} AND board_name=#{board_name}
     </select>
+    	
+    <update id="push" parameterType="BoardDto">
+    	UPDATE mgm_board SET board_pushnum=board_pushnum+1,board_recommender = CONCAT(board_recommender,'/',#{board_recommender}) where board_seq=#{board_seq}
+    </update>	
+    
+    
+    <update id="delete" parameterType="int">
+    	UPDATE mgm_board SET board_delflag = 'Y' where board_seq = #{board_seq}
+    </update>
   </mapper>

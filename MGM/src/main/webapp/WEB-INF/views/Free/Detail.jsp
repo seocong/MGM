@@ -92,11 +92,49 @@
 		background-color:#F2F2F2;
 		}
 	</style>
+	<!--  <script>
+		$(document).ready(function(){
+		
+			$("#btnReply").click(function(){
+				var comment_reply = $("#comment_reply").val();
+				var comment_group = "${Dto.board_group}"
+				var comment_name = "${Dto.board_name}"
+				var param="comment_contents="+comment_contents+"&comment_group="+comment_group+"&comment_name="+comment_name;
+				$.ajax({
+					type:"post",
+					url:"commentInsert.do",
+					data:param,
+					success: function(){
+						alert("댓글이 등록되었습니다.");
+						
+					}
+				)};
+			});
+			//게시글 추천시 이벤트 
+			$("#btnPush").click(function(){
+				location.href="pushup.do"
+			});
+			//게시글 삭제 이벤트
+			$("#btnDelete").click(function(){
+				if(comfirm("삭제하시겠습니까?")){
+					location.href = "delete.do";				
+				}
+			});
+			//게시글 수정시 이벤트
+			 $("#btnUpdate").click(function(){
+				 if(comfirm("삭제하시겠습니까?")){
+						location.href = "replyUpdate.do";				
+					}
+			}); 
+		});
+		
 
+	</script> -->
+	
 </head>
 
 <body class="stretched">
-
+<jsp:useBean id="util" class="com.gam.utils.Util"/>
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
@@ -211,7 +249,9 @@
 							</tbody>
 						  </table> --%>
 						  
-						
+							<div id="board_name" data-boardname = "${Dto.board_name}" ></div>
+							<div id="board_seq" data-boardseq = "${Dto.board_seq}" ></div>
+							
 							  <div class="row clearfix nobottomborder" style="padding: 20px; border: solid 2px #DDD;" >
 							 
 							  		
@@ -237,24 +277,81 @@
 								<div class="col-md-12">${Dto.board_contents}</div>
 
 								</div>
+								<c:choose>
+							  <c:when test="${uid.member_id == Dto.board_writer}">
+									<div class="row clearfix" style="float: right;"> 
+									<a href="#" class="button button-3d button-rounded button-red" id="btnUpdate"><i class="icon-thumbs-up1"></i>수정하기</a>
+									<a href="#" class="button button-3d button-rounded button-red" id="btnDelete"><i class="icon-thumbs-up1"></i>삭제하기</a>
+									</div>
+								</c:when>
+								<c:otherwise>  
 								<div class="row clearfix" style="float: right;"> 
-									<a href="#" class="button button-3d button-rounded button-red"><i class="icon-thumbs-up1"></i>추천하기</a>
+									<a href="#" class="button button-3d button-rounded button-red" id="btnPush" onclick="replypushnum('${Dto.board_seq}')"><i class="icon-thumbs-up1" ></i>추천하기</a>
 								</div>
-						</div>
-		
+								</c:otherwise>
+								</c:choose>
+								</div>
+							
 							</div>
 							</div>
 							 <div class="line allmargin-sm"></div> 
 							<div class="row clearfix"> 
 							<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-comments"></i></span>댓글달기</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-comments"></i></span>댓글</h4>
 									<div class="line line-xs line-sports"></div>
-							<form action="">
+									<table class="col-md-12">
+										<c:forEach var="row" items="${replylist}" >
+											<tr>
+											<c:choose>
+											<c:when test="${row.comment_delflag == 'Y' }">
+												<td>삭제된 글입니다.</td>
+											</c:when>
+											<c:otherwise>
+												<td>
+													${row.comment_writer}(<fmt:formatDate value="${row.comment_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)추천수:${row.comment_pushnum}
+													<br>
+													<jsp:setProperty property="arrowNbsp" name="util" value="${row.comment_depth}"/>
+					       	 						<jsp:getProperty property="arrowNbsp" name="util"/>${row.comment_contents}
+					       	 						<c:choose>
+					       	 						<c:when test="${uid.member_id == Dto.board_writer}">
+					       	 							<input type="button" style="float: right;" value="삭제" onclick="delcomment('${row.comment_seq}')"/>														
+													</c:when>
+													<c:otherwise>
+														<input type="button" style="float: right;" value="추천" onclick="replyAnspushnum('${row.comment_seq}')"/>
+													</c:otherwise>
+													</c:choose>
+													
+													
+ 													<input type="button" style="float: right; margin-right:5px;" value="답글" onclick="javascript:ansreplyForm();"/>
+													<div class="line allmargin-sm divcenter" ></div>
+													<div id="replyArea" style="display: none;">
+														<form action="ansreply.do" method="post">
+														<input type="hidden" name="comment_seq" value="${row.comment_seq}">
+														<input type="hidden" name="comment_group" value="${row.comment_group}">
+														<input type="hidden" name="comment_name" value="${row.comment_name}">
+														<input type="hidden"  name="board_seq" value="${Dto.board_seq}"> 
+														<input type="hidden" name= "pagenum" value="${page.pagenum+1}">
+														<textarea rows="2" cols="120" name="comment_contents"></textarea>
+														<button type="submit" style="float: right;"  >등록</button>																											
+														</form>
+														<div class="line allmargin-sm divcenter" ></div>
+													</div>
+												</td>
+												</c:otherwise>
+												</c:choose>
+											</tr>
+										</c:forEach>
+									</table>
+						 	<form action="commentInsert.do" method="post">
+							<input type="hidden" name="comment_group" value="${Dto.board_group}">
+							<input type="hidden" name="comment_name" value="${Dto.board_name}">
+							<input type="hidden"  name="board_seq" value="${Dto.board_seq}"> 
+							<input type="hidden" name= "pagenum" value="${page.pagenum+1}">
 							<div class="allmargin-sm">
-								<textarea rows="6" cols="130"></textarea>
+								<textarea name ="comment_contents" id="comment_contents" rows="4" cols="130" placeholder="댓글을 작성해주세요"></textarea>
 							</div>
-							<button class="button button-3d nomargin" type="submit" value="submit" style="float: right;" >댓글등록</button>
-							</form>
+							<button class="button button-3d nomargin" type="submit" style="float: right;" >댓글등록</button>
+						 	</form> 
 							</div>
 							</div>
 							<div class="row clearfix"> 
@@ -305,12 +402,13 @@
 					
 												<td  style="text-align: center;">${boardDto.board_group}</td>
 									<c:choose>
-						<c:when test="${baordDto.board_delflag=='Y'}">
+						<c:when test="${boardDto.board_delflag=='Y'}">
 							<td>---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise>    
 					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&board_name=${boardDto.board_name}&pagenum=${page.pagenum+1}">${boardDto.board_title}</a>
+					        <a href="detail.do?board_seq=${boardDto.board_seq}&contentnum=20&board_name=${boardDto.board_name}&pagenum=${page.pagenum+1}">${boardDto.board_title}
+					        <c:if test="${boardDto.board_replyCnt > 0}"><span class="text-warning">[${boardDto.board_replyCnt}]</span></c:if></a>
 					        </td>				            									
 						</c:otherwise>
 					</c:choose>
@@ -341,7 +439,7 @@
         <td>
 				<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="글쓰기" onclick="insertform.do?board_name=${board_name}'">
+                 <input type="button" value="글쓰기" onclick="location.href='insertform.do?board_name=${board_name}'">
                 </div>
               </div>
 	
@@ -404,7 +502,8 @@
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
-
+	
+	
 	<!-- Go To Top
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
@@ -432,9 +531,10 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-
+	
+	
 	<!-- ADD-ONS JS FILES -->
-	<script>
+	<!-- <script>
 		var tpj=jQuery;
 		var revapi19;
 		tpj(document).ready(function() {
@@ -571,7 +671,7 @@
 			}
 		});
 
-		</script>
+		</script> -->
 		
  	<script>
 		$(function(){
@@ -584,6 +684,89 @@
 				"color":"white"
 			});
 		});
+	</script> 
+ 	<script type="text/javascript">
+	function ansreplyForm(){
+		if(document.getElementById("replyArea").style.display=='block'){
+			document.getElementById("replyArea").style.display='none';
+		}else{
+			document.getElementById("replyArea").style.display='block'
+		}
+	};	
+	function replypushnum(board_seq){
+		alert("board_seq = ["+board_seq +"]");
+		var board_seq = board_seq;
+		$.ajax({
+			type:"post",
+			async:false,
+			url:"push.do",
+			dataType:"text",
+			data:{board_seq:board_seq},
+			success:function(data,textStatus){
+				if(data=='useble'){
+					alert('추천되었습니다.')
+				}else{
+					alert('추천되지 않았습니다.');
+				}
+			},
+			error:function(data,textStatus){
+				alert("에러발생");
+			},
+		});
+	}
+	
+	function replyAnspushnum(comment_seq){
+		alert("comment_seq = ["+comment_seq +"]");
+		var comment_seq = comment_seq;
+		$.ajax({
+			type:"post",
+			async:false,
+			url:"AnsPush.do",
+			dataType:"text",
+			data:{comment_seq:comment_seq},
+			success:function(data,textStatus){
+				if(data=='useble'){
+					alert('추천되었습니다.')
+				}else{
+					alert('추천되지 않았습니다.');
+				}
+			},
+			error:function(data,textStatus){
+				alert("에러발생");
+			},
+		});
+	}
+	
+	$("#btnDelete").click(function(){
+		alert("삭제안되냐")
+		var board_name = $("#board_name").attr("data-boardname");
+		var board_seq = $("#board_seq").attr("data-boardseq");
+		var pagenum = ${page.pagenum}+1;
+		
+		
+		alert(board_name)
+		if(confirm("삭제하시겠습니까?")){
+			location.href = "delete.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq;				
+		}
+	});
+	function delcomment(comment_seq){
+		alert("삭제되냐")
+		var comment_seq = comment_seq;
+		var board_name = $("#board_name").attr("data-boardname");
+		var board_seq = $("#board_seq").attr("data-boardseq");
+		var pagenum = ${page.pagenum}+1;
+		if(confirm("삭제하시겠습니까?")){
+			location.href = "ansdel.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&comment_seq="+comment_seq+"&board_seq="+board_seq;
+	}
+	}
+	$("#btnUpdate").click(function(){
+		alert("수정합시다")
+		var board_seq = $("#board_seq").attr("data-boardseq");
+
+		if(confirm("수정하시겠습니까?")){
+			location.href = "update.do?board_seq="+board_seq;				
+		}
+	});
 	</script> 
 	</body>
 	</html>

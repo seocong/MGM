@@ -4,4 +4,14 @@
   
   <mapper namespace="com.gam.Answer">
     
+    <select id="selectAnswerPaging"  resultType="int">
+		SELECT COUNT(*) FROM mgm_answerboard
+	</select> 
+    
+    <select id="getAnswerList" parameterType="Map" resultType="BoardDto">
+  SELECT answerboard_seq,answerboard_group,answerboard_step,answerboard_title,answerboard_writer,
+		answerboard_regdate,answerboard_delflag,answerboard_secret,answerboard_depth
+		FROM mgm_answerboard  ORDER BY answerboard_group DESC,answerboard_step ASC LIMIT #{pagenum},#{contentnum}
+  
+  </select>
   </mapper>

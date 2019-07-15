@@ -18,4 +18,10 @@ public interface IBoardDao {
 	public boolean readCount(int board_seq);
 	
 	public BoardDto getUpdateBoard(Map<String, Object> map);
+
+	public boolean push(BoardDto boardDto);
+
+	public boolean delete(int board_seq);
+
+	
 }

@@ -45,7 +45,7 @@
 	<link rel="stylesheet" href="resources/demos/nonprofit/nonprofit.css" type="text/css" />
 	<!-- Document Title
 	============================================= -->
-	<title>News Demo | Canvas</title>
+	<title>묻지마</title>
 
 	<style>
 		/* Revolution Slider Styles */

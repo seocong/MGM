@@ -1,13 +1,29 @@
 package com.gam.mgm.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.gam.mgm.dto.AnswerDto;
 
 @Repository
 public class AnswerDao  implements IAnswerDao {
 	private String namespace = "com.gam.Answer.";
 	 @Autowired
 	   private SqlSessionTemplate sqlSession;
+	 
+	 @Override
+		public int selectAnswerPaging() {		
+			return sqlSession.selectOne(namespace+"selectAnswerPaging");
+		}
+
+	@Override
+	public List<AnswerDto> getAllList(Map<String, Object> map) {
+		
+		return sqlSession.selectList(namespace+"getAnswerList", map);
+	}
 
 }

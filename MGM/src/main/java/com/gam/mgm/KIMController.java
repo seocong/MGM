@@ -19,6 +19,7 @@ import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -31,12 +32,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.context.ServletContextAware;
-import com.gam.mgm.dto.BoardDto;
 
+import com.gam.mgm.dto.AnswerDto;
+import com.gam.mgm.dto.BoardDto;
+import com.gam.mgm.dto.CommentDto;
+import com.gam.mgm.dto.MemberDto;
 import com.gam.mgm.paging.PageMaker;
+import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
+import com.gam.mgm.service.ICommentService;
+
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 /**
@@ -50,6 +58,10 @@ public class KIMController implements ServletContextAware{
 	
 	@Autowired
 	private IBoardService boardService;
+	@Autowired
+	private IAnswerService answerService;
+	@Autowired
+	private ICommentService commentService;
 	
 	@Override
 	public void setServletContext(ServletContext servletContext) {
@@ -76,7 +88,7 @@ public class KIMController implements ServletContextAware{
      }*/
 	@RequestMapping(value = "/freeboard.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String freeboard(Locale locale, Model model,HttpServletRequest request) {
-		logger.info(" 자유게시판 이동하기{}.", locale);
+		logger.info(" 게시판 이동하기{}.", locale);
 		PageMaker pagemaker = new PageMaker();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
@@ -97,6 +109,8 @@ public class KIMController implements ServletContextAware{
 		map.put("contentnum", pagemaker.getContentnum());
 		map.put("board_name", board_name);
 		List<BoardDto> list = boardService.getAllList(map);
+		
+		/*int replyCount = boardService.getCount();*/
 		model.addAttribute("board_name",board_name);//board name파라미터를 따로 보냄
 		model.addAttribute("list", list);
 		model.addAttribute("page", pagemaker);
@@ -104,13 +118,24 @@ public class KIMController implements ServletContextAware{
 		
 	}
 	
+
+	
 	 @RequestMapping(value = "/insertform.do", method = RequestMethod.GET)
-		public String ansinsertform(Locale locale, Model model,String board_name) {
+		public String ansinsertform(Locale locale,HttpSession session, Model model,String board_name) {
 			logger.info("자유게시판 글쓰기 이동 {}.", locale);
 			//로그인 정보 확인 처리
-			model.addAttribute("board_name",board_name);
-			System.out.println("board_name111:"+board_name);
-			return "Free/Insert";
+			MemberDto dto = (MemberDto)session.getAttribute("uid");		
+			if(dto==null) {
+				model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+				model.addAttribute("url","freeboard.do?pagenum=1&contentnum=20&board_name="+board_name);
+				return "Redirect";
+			}else {
+				String board_writer = dto.getMember_id();
+				model.addAttribute("board_name",board_name);
+				model.addAttribute("board_writer",board_writer);
+				System.out.println("board_name111:"+board_name);
+				return "Free/Insert";			
+			}
 		}
 	 
 		
@@ -211,11 +236,13 @@ public class KIMController implements ServletContextAware{
 		}
 		
 		@RequestMapping(value = "/write.do", method = RequestMethod.POST)
-	      public ModelAndView write(HttpServletRequest request) throws IOException, FileUploadException {
+	      public ModelAndView write(HttpServletRequest request,HttpSession session) throws IOException, FileUploadException {
+			MemberDto memberDto = (MemberDto)session.getAttribute("uid");
 			 String board_name = request.getParameter("board_name");
 	         String board_title = request.getParameter("board_title");
 	         String smarteditor = request.getParameter("smarteditor");
-	         
+	         String board_writer = memberDto.getMember_id();
+	         System.out.println("board_writer:"+board_writer);
 	         System.out.println("board_name:"+board_name);
 	         System.out.println("smarteditor:"+smarteditor);
 	         System.out.println("board_title:"+board_title);
@@ -228,7 +255,7 @@ public class KIMController implements ServletContextAware{
 	         BoardDto boardDto = new BoardDto();
 	         boardDto.setBoard_contents(smarteditor);
 	         boardDto.setBoard_title(board_title);
-	         boardDto.setBoard_writer("admin");
+	         boardDto.setBoard_writer(board_writer);
 	         boardDto.setBoard_name(board_name);
 	         boolean isS = boardService.boardInsert(boardDto);
 	         System.out.println("isS:"+isS);
@@ -241,14 +268,11 @@ public class KIMController implements ServletContextAware{
 	            ModelAndView model = new ModelAndView("error");
 	            model.addObject("msg","입력에 실패했습니다.다시 입력해주세요");
 	            return model;
-	         }
-	/*         System.out.println("title = " + title);
-	         System.out.println("content = " + smarteditor);*/
-	      
+	         }      
 	      }
 		
 		@RequestMapping(value = "/detail.do", method = RequestMethod.GET)
-		public String freedetail(Locale locale, Model model,HttpServletRequest request) {
+		public String freedetail(Locale locale,HttpSession session, Model model,HttpServletRequest request) {
 			logger.info("게시판 상세 보기 {}.", locale);
 			String pagenum = request.getParameter("pagenum");
 			String contentnum = request.getParameter("contentnum");
@@ -256,7 +280,13 @@ public class KIMController implements ServletContextAware{
 			if(request.getParameter("board_seq")!=null) {
 				boardService.readCount(Integer.parseInt(request.getParameter("board_seq")));
 				BoardDto boardDto = boardService.getBoard(Integer.parseInt(request.getParameter("board_seq")));
+				Map<String,Object> replyMap = new HashMap<String,Object>();//댓글 리스트 쿼리
+				replyMap.put("comment_group", boardDto.getBoard_group());
+				replyMap.put("comment_name", boardDto.getBoard_name());
+				List<CommentDto> replylist = commentService.getAllReply(replyMap);
 				model.addAttribute("Dto",boardDto);				
+				model.addAttribute("uid",session.getAttribute("uid"));
+				model.addAttribute("replylist",replylist);
 			PageMaker pagemaker = new PageMaker();
 			int cpagenum = Integer.parseInt(pagenum);
 			int ccontentnum = Integer.parseInt(contentnum);
@@ -283,5 +313,212 @@ public class KIMController implements ServletContextAware{
 				return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name;
 			}
 		}
-	 
+		
+			@RequestMapping(value = "/commentInsert.do", method = RequestMethod.POST)
+		public String commentInsert(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
+			logger.info("댓글 추가하기 {}.", locale);
+			int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+			int board_seq = Integer.parseInt(request.getParameter("board_seq"));
+			String comment_contents = request.getParameter("comment_contents");
+			String comment_name = request.getParameter("comment_name");
+			String comment_group = request.getParameter("comment_group");
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq);
+					return "Redirect";
+				}else {		
+				String comment_writer = memberDto.getMember_id();
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("comment_group", comment_group);
+				map.put("comment_name", comment_name);
+				map.put("comment_contents", comment_contents);
+				map.put("comment_writer", comment_writer);
+				boolean isS = commentService.insertReply(map);
+				if(isS) {
+					System.out.println("board_seq:"+board_seq);
+					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+				}else {
+					
+					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+				}
+				}
+		}
+			
+			@RequestMapping(value = "/ansreply.do", method = RequestMethod.POST)
+			public String ansreply(Locale locale, Model model,HttpServletRequest request,HttpSession session,CommentDto dto) {
+				logger.info("답글 추가하기 {}.", locale);
+				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+				String comment_name = request.getParameter("comment_name");
+				int board_seq = Integer.parseInt(request.getParameter("board_seq"));
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq);
+					return "Redirect";
+				}else {					
+				String comment_writer = memberDto.getMember_id();
+				/*String comment_contents = request.getParameter("comment_contents");
+				String comment_group = request.getParameter("comment_group");	*/			
+				/*Map<String,Object> map = new HashMap<String,Object>();
+				map.put("comment_group", comment_group);
+				map.put("comment_name", comment_name);
+				map.put("comment_contents", comment_contents);
+				map.put("comment_writer", comment_writer);*/
+				dto.setComment_writer(comment_writer);
+				boolean isS =  commentService.insertAnsReply(dto);
+				if(isS) {
+					System.out.println("board_seq:"+board_seq);
+					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+				}else {
+					
+					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+				}
+				}
+			}
+			
+			@RequestMapping(value = "/push.do", method = RequestMethod.POST)
+			public void push(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int board_seq) throws IOException {
+				logger.info("답글 추가하기 {}.", locale);
+				int seq = Integer.parseInt(request.getParameter("board_seq"));
+				System.out.println("seq:"+seq);
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				System.out.println("memberDto:"+memberDto);
+				
+					String board_recommender = memberDto.getMember_id();
+					BoardDto boardDto = new BoardDto();
+					boardDto.setBoard_recommender(board_recommender);
+					boardDto.setBoard_seq(seq);
+					PrintWriter writer = response.getWriter();	
+					boolean isS = boardService.push(boardDto);
+					if(isS) {				
+						writer.print("useble");
+					}else {
+						writer.print("not_useble");
+					}
+				}
+				
+			@RequestMapping(value = "/AnsPush.do", method = RequestMethod.POST)
+			public void anspush(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int comment_seq) throws IOException {
+				logger.info("답글 추가하기 {}.", locale);
+				int seq = Integer.parseInt(request.getParameter("comment_seq"));
+				System.out.println("seq:"+seq);
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				System.out.println("memberDto:"+memberDto);
+				
+					String board_recommender = memberDto.getMember_id();
+					CommentDto commentDto = new CommentDto();
+					commentDto.setComment_recommender(board_recommender);
+					commentDto.setComment_seq(seq);
+					PrintWriter writer = response.getWriter();	
+					boolean isS = commentService.push(commentDto);
+					if(isS) {				
+						writer.print("useble");
+					}else {
+						writer.print("not_useble");
+					}
+				}
+			
+			
+			@RequestMapping(value = "/delete.do", method = {RequestMethod.GET,RequestMethod.POST})
+			public String delete(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
+				logger.info("게시글 삭제하기  {}.", locale);
+				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+				String contentnum = request.getParameter("contentnum");
+				String board_name = request.getParameter("board_name");
+				int board_seq = Integer.parseInt(request.getParameter("board_seq"));
+				System.out.println(pagenum);
+				System.out.println(contentnum);
+				System.out.println(board_name);
+				System.out.println(board_seq);
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq);
+					return "Redirect";
+				}else {	
+					boolean  isS = boardService.delete(board_seq);
+					if(isS) {
+						model.addAttribute("msg","삭제를 성공했습니다.");
+						return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name;
+					}else {
+						model.addAttribute("msg","삭제를 실패했습니다.");
+						return "error";
+					}
+				}
+			}
+			
+			@RequestMapping(value = "/ansdel.do", method = {RequestMethod.GET,RequestMethod.POST})
+			public String ansdel(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
+				logger.info("게시글 삭제하기  {}.", locale);
+				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+				String contentnum = request.getParameter("contentnum");
+				String board_name = request.getParameter("board_name");
+				int board_seq = Integer.parseInt(request.getParameter("board_seq"));
+				int comment_seq = Integer.parseInt(request.getParameter("comment_seq"));
+				System.out.println(pagenum);
+				System.out.println(contentnum);
+				System.out.println(board_name);
+				System.out.println(comment_seq);
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq);
+					return "Redirect";
+				}else {	
+					boolean  isS = commentService.ansdel(comment_seq);
+					if(isS) {
+						model.addAttribute("msg","삭제를 성공했습니다.");
+						return "redirect:freeboard.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"board_seq="+board_seq;
+					}else {
+						model.addAttribute("msg","삭제를 실패했습니다.");
+						return "error";
+					}
+				}
+			}
+			
+		
+			 @RequestMapping(value = "/update.do", method = RequestMethod.GET)
+				public String updateform(Locale locale,HttpSession session, Model model,HttpServletRequest request,int board_seq) {
+					logger.info("수정 폼 이동 {}.", locale);
+					BoardDto boardDto = boardService.getBoard(Integer.parseInt(request.getParameter("board_seq")));
+					MemberDto dto = (MemberDto)session.getAttribute("uid");		
+					if(dto==null) {
+						model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+						model.addAttribute("url","freeboard.do?pagenum=1&contentnum=20&board_name="+boardDto.getBoard_name());
+						return "Redirect";
+					}else {
+						model.addAttribute("boardDto",boardDto);
+						System.out.println("boardDto:"+boardDto);
+						return "Free/Update";			
+					}
+				}
+			
+		@RequestMapping(value = "/answerboard.do", method = RequestMethod.GET)
+		public String answerboard(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
+			logger.info(" 문의게시판 이동하기{}.", locale);
+			PageMaker pagemaker = new PageMaker();
+			String pagenum = request.getParameter("pagenum");
+			String contentnum = request.getParameter("contentnum");
+		
+			int cpagenum = Integer.parseInt(pagenum);
+			int ccontentnum = Integer.parseInt(contentnum);
+			pagemaker.setTotalcount(answerService.selectAnswerPaging());//전체 게시글 개수를 저장한다
+			pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음			
+			pagemaker.setContentnum(ccontentnum);//한페이지에 몇개씩 게시글을 보여줄지 지정한다
+			pagemaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현대 페이지 번호를 통해서 지정한다.
+			pagemaker.setLastblock(pagemaker.getTotalcount());//마지막 블록 번호를 전체 게시글 수를 통해서 전한다			
+			pagemaker.prevnext(cpagenum); //현재 페이지 번호로 화살표를 나타낼지 정한다
+			pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
+			pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("pagenum", pagemaker.getPagenum()*20);
+			map.put("contentnum", pagemaker.getContentnum());
+			List<AnswerDto> list = answerService.getAllList(map);
+	/*		model.addAttribute("board_name",board_name);*///board name파라미터를 따로 보냄
+			model.addAttribute("list", list);
+			model.addAttribute("page", pagemaker);
+			return "Answer/AnswerBoard";
+			
+		}
 }

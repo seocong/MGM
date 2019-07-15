@@ -59,4 +59,20 @@ public class BoardDao implements IBoardDao{
 		return sqlSession.selectOne(namespace+"getupdateboard",map);
 	}
 
+	@Override
+	public boolean push(BoardDto boardDto) {
+		int cnt = sqlSession.update(namespace+"push",boardDto);
+				return cnt>0?true:false;
+	}
+
+
+	@Override
+	public boolean delete(int board_seq) {
+		int cnt = sqlSession.update(namespace+"delete",board_seq);
+		return cnt>0?true:false;
+	}
+
+
+	
+
 }
