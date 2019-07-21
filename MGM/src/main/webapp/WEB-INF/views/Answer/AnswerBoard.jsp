@@ -129,7 +129,7 @@
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 문의게시판</h4>
 									<div class="line line-xs line-sports"></div>	
 									<table class="table table-striped">
-							<col width="50px"><col width="300px"><col width="100px"><col width="150px"><%-- <col width="60px"><col width="50px"> --%>
+							<col width="10%"><col width="60%"><col width="15%"><col width="15%"><%-- <col width="60px"><col width="50px"> --%>
 								<thead>
 								  <tr style="text-align: center;">
 									<th>번호</th>
@@ -183,7 +183,7 @@
 			   
 								</tbody>
 							<tr>
-   <td colspan="5">
+   <td colspan="3">
    		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
    	<c:if test="${page.prev}">
    		<li class="page-item"><a class="page-link" href="javascript:page(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -199,7 +199,7 @@
         <td>
 				<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="문의하기" onclick="location.href='ansinsertform.do'">
+                  <button class="button button-3d nomargin" type="button"  onclick="location.href='ansinsertform.do'">문의하기</button>
                 </div>
               </div>
 	

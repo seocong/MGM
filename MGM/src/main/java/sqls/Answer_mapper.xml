@@ -8,17 +8,26 @@
 		SELECT COUNT(*) FROM mgm_answerboard
 	</select> 
     
-    <select id="getAnswerList" parameterType="Map" resultType="BoardDto">
-  SELECT answerboard_seq,answerboard_group,answerboard_step,answerboard_title,answerboard_writer,
+    <select id="getAnswerList" parameterType="Map" resultType="AnswerDto">
+ 		 SELECT answerboard_seq,answerboard_group,answerboard_step,answerboard_title,answerboard_writer,
 		answerboard_regdate,answerboard_delflag,answerboard_secret,answerboard_depth
-		FROM mgm_answerboard  ORDER BY answerboard_group DESC,answerboard_step ASC LIMIT #{pagenum},#{contentnum}
+		FROM mgm_answerboard  ORDER BY answerboard_group DESC,answerboard_step LIMIT #{pagenum},#{contentnum}
   
   </select>
   
   <insert id="ansinsert" parameterType="AnswerDto">
-  	insert into mgm_answerboard(answerboard_group,answerboard_step,answerboard_title,answerboard_contents,answerboard_writer,answerboard_regdate,
-            answerboard_delflag,answerboard_secret,answerboard_depth) VALUES               
-           ((SELECT IFNULL(MAX(answerboard_group) + 1, 1) FROM mgm_answerboard b),0,
-           #{answerboard_title},#{answerboard_contents},#{answerboard_writer},now(),'N',#{answerboard_secret},0 from mgm_answerboard)
+    insert into mgm_answerboard(answerboard_group,answerboard_step,answerboard_title,answerboard_contents,answerboard_writer,
+	 answerboard_regdate,answerboard_delflag,answerboard_secret,answerboard_depth)VALUES       
+((SELECT IFNULL(MAX(answerboard_group) + 1, 1)from mgm_answerboard A),0,#{answerboard_title},#{answerboard_contents},#{answerboard_writer},now(),'N',#{answerboard_secret},0)       
   </insert>
+  
+  <select id="getAnsboard" parameterType="int" resultType="AnswerDto">
+  select answerboard_seq,answerboard_group,answerboard_step,answerboard_title,answerboard_contents,answerboard_writer,
+	 answerboard_regdate,answerboard_delflag,answerboard_secret,answerboard_depth from mgm_answerboard where answerboard_seq = #{answerboard_seq}
+  </select>
+  
+  <update id="ansreply" parameterType="int">
+  UPDATE mgm_answerboard SET answerboard_step = answerboard_step+1 WHERE answerboard_group=(select answerboard_group from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_seq= 2)as D)
+	AND answerboard_step > (select answerboard_step from (SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_seq= 2)as E); 
+  </update>
   </mapper>

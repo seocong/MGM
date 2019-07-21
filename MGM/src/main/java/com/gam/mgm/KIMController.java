@@ -383,6 +383,7 @@ public class KIMController implements ServletContextAware{
 				logger.info("답글 추가하기 {}.", locale);
 				int seq = Integer.parseInt(request.getParameter("board_seq"));
 				System.out.println("seq:"+seq);
+				//중복체크해야함
 				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
 				System.out.println("memberDto:"+memberDto);
 				
@@ -404,6 +405,7 @@ public class KIMController implements ServletContextAware{
 				logger.info("답글 추가하기 {}.", locale);
 				int seq = Integer.parseInt(request.getParameter("comment_seq"));
 				System.out.println("seq:"+seq);
+				//중복체크해야함
 				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
 				System.out.println("memberDto:"+memberDto);
 				
@@ -451,7 +453,7 @@ public class KIMController implements ServletContextAware{
 			
 			@RequestMapping(value = "/ansdel.do", method = {RequestMethod.GET,RequestMethod.POST})
 			public String ansdel(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
-				logger.info("게시글 삭제하기  {}.", locale);
+				logger.info("댓글 삭제하기  {}.", locale);
 				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
 				String contentnum = request.getParameter("contentnum");
 				String board_name = request.getParameter("board_name");
@@ -515,7 +517,10 @@ public class KIMController implements ServletContextAware{
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("pagenum", pagemaker.getPagenum()*20);
 			map.put("contentnum", pagemaker.getContentnum());
+			System.out.println("pagenum:"+ pagemaker.getPagenum()*20);
+			System.out.println("contentnum:"+ pagemaker.getContentnum());
 			List<AnswerDto> list = answerService.getAllList(map);
+			System.out.println("list:"+list);
 	/*		model.addAttribute("board_name",board_name);*///board name파라미터를 따로 보냄
 			model.addAttribute("list", list);
 			model.addAttribute("page", pagemaker);

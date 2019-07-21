@@ -21,8 +21,7 @@ public class AnswerDao  implements IAnswerDao {
 		}
 
 	@Override
-	public List<AnswerDto> getAllList(Map<String, Object> map) {
-		
+	public List<AnswerDto> getAllList(Map<String, Object> map) {		
 		return sqlSession.selectList(namespace+"getAnswerList", map);
 	}
 
