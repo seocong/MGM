@@ -30,8 +30,17 @@
 	 answerboard_regdate,answerboard_delflag,answerboard_secret,answerboard_depth from mgm_answerboard where answerboard_seq = #{answerboard_seq}
   </select>
   
+  <update id="ansUpdate" parameterType="AnswerDto">
+   UPDATE mgm_answerboard SET answerboard_title=#{answerboard_title}, answerboard_contents=#{answerboard_contents},answerboard_regdate=now(),answerboard_secret=#{answerboard_secret}
+		 WHERE answerboard_seq=#{answerboard_seq}
+  </update>
+  
+  <update id="ansDelete" parameterType="int">
+  UPDATE mgm_answerboard SET answerboard_delflag='Y' where answerboard_seq=#{answerboard_seq}
+  </update>
+  
   <update id="ansreply" parameterType="int">
-  UPDATE mgm_answerboard SET answerboard_step = answerboard_step+1 WHERE answerboard_group=(select answerboard_group from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_seq= 2)as D)
-	AND answerboard_step > (select answerboard_step from (SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_seq= 2)as E); 
+  UPDATE mgm_answerboard SET answerboard_step = answerboard_step+1 WHERE answerboard_group=(select answerboard_group from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_seq= #{answerboard_seq})as D)
+	AND answerboard_step > (select answerboard_step from (SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_seq= #{answerboard_seq})as E); 
   </update>
   </mapper>

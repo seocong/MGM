@@ -17,4 +17,8 @@ public interface IAnswerDao {
 
 	public AnswerDto getAnsboard(int answerboard_seq);
 
+	public boolean ansupdate(AnswerDto dto);
+
+	public boolean ansdelete(int answerboard_seq);
+
 }

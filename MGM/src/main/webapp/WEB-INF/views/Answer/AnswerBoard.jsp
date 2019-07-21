@@ -153,7 +153,7 @@
 												<td  style="text-align: center;">${ansboardDto.answerboard_seq}</td>
 									<c:choose>
 						<c:when test="${ansboardDto.answerboard_delflag=='Y'}">
-							<td>---삭제된 글입니다.---</td>
+							<td style="text-align: center;">---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise> 
 						<c:choose>

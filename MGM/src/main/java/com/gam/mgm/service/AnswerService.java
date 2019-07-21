@@ -39,5 +39,15 @@ public class AnswerService implements IAnswerService{
 	public AnswerDto getAnsboard(int answerboard_seq) {
 		return answerDao.getAnsboard(answerboard_seq);
 	}
+
+	@Override
+	public boolean ansupdate(AnswerDto dto) {
+		return answerDao.ansupdate(dto);
+	}
+
+	@Override
+	public boolean ansdelete(int answerboard_seq) {
+		return answerDao.ansdelete(answerboard_seq);
+	}
 	
 }
