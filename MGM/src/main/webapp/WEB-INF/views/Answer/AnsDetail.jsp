@@ -127,56 +127,53 @@
 						
 						
 						
-					
-						<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 문의게시판</h4>
-									<div class="line line-xs line-sports"></div>	
-									<div class="form-result"></div>
-
-							<form class="nobottommargin" action="ansinsert.do" method="post">
+						<div class="row clearfix"> 
+							<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> 상세보기</h4>
+									<div class="line line-xs line-sports"></div>
+								<div class="allmargin-sm">	
+								<div id="answerboard_seq" data-answerboardseq = "${answerDto.answerboard_seq}" ></div>
+								<div class="row clearfix nobottomborder" style="padding: 20px; border: solid 2px #DDD;" >
+							 
+							  		
+							  			<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;" >제목</div>
+										<div class="col-md-7">${answerDto.answerboard_title}</div>
+										<div class="col-md-3" style="border-left : solid 2px #DDD;" ><fmt:formatDate value="${answerDto.answerboard_regdate}" pattern="yyyy년MM월dd일HH시mm분"/></div>	
+							  			
+							  													
+							  </div>
+							  <div class="row clearfix" style="padding: 20px; border: solid 2px #DDD;">
+							 							  
+								<div class="col-md-2 t700 center" style="border-right : solid 2px #DDD;">작성자</div>
+								<div class="col-md-10">${answerDto.answerboard_writer}</div>
 								
-								<div class="form-process"></div>
-
-								<div class="clear"></div>
-
-								<div class="col_two_third">
-									<label for="template-contactform-subject">제목 </label>
-									<input type="text" id="template-contactform-subject" name="answerboard_title" value="" class="required sm-form-control required" />
-								</div>
-
-								<div class="col_one_third col_last">
-								<label for="template-contactform-name">작성자</label>
-									<input type="text" id="template-contactform-name" name="answerboard_writer" value="${answerboard_writer}" class="sm-form-control required" readonly="readonly"/>
-									
-								</div>
-
-								<div class="clear"></div>
-
-								<div class="col_full">
-									<label for="template-contactform-message">내용 </label>
-									<textarea name="answerboard_contents" rows="21" cols="30"  style="width:100%;"></textarea>
-								</div>
-								
-								<div class="clear"></div>
+							  	
+							  	
+							  </div>
+							 <div class="row clearfix topmargin-sm" >
 			
-								<div class="col_full ">
-								<label for="template-contactform-message">비밀글 </label>
-									<input type="radio" name="answerboard_secret" value="N" checked="checked"> 공개 
-									<input type="radio" name="answerboard_secret" value="Y"> 비공개 
-								</div> 
+								<div class="col-md-12">${answerDto.answerboard_contents}</div>
 
-								<div class="col_full">
-									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">작성 완료</button>
-									<button class="button button-3d nomargin" type="button" onclick="location.href='answerboard.do?pagenum=1&contentnum=20'">목록 가기</button>
 								</div>
-
-								<!-- <input type="hidden" name="prefix" value="template-contactform-"> -->
-
-						
-	
-							</form>
-										
+								<c:choose>
+							  <c:when test="${uid.member_id == answerDto.answerboard_writer}">
+									<div class="row clearfix" style="float: right;"> 
+									<a href="#" class="button button-3d button-rounded button-red" id="Update"><i class="icon-thumbs-up1"></i>수정하기</a>
+									<a href="#" class="button button-3d button-rounded button-red" id="btnDelete"><i class="icon-thumbs-up1"></i>삭제하기</a>
+									</div>
+								</c:when>
+								<c:otherwise>  
+								<div class="row clearfix" style="float: right;"> 
+									<a href="#" class="button button-3d button-rounded button-red" id="btnPush" onclick="replypushnum('${answerDto.answerboard_seq}')"><i class="icon-thumbs-up1" ></i>목록가기</a>
+								</div>
+								</c:otherwise>
+								</c:choose>	
 						</div>
+						</div>			
+						</div>				
+										
+										
+						
 						
 						
 						
@@ -256,6 +253,16 @@
 				"color":"white"
 			});
 		});
+	</script>
+	<script type="text/javascript">
+	$("#Update").click(function(){
+		alert("수정합시다")
+		var answerboard_seq = $("#answerboard_seq").attr("data-answerboardseq");
+
+		if(confirm("수정하시겠습니까?")){
+			location.href = "ansupdateform.do?answerboard_seq="+answerboard_seq;				
+		}
+	});
 	</script> 
 	</body>
 	</html>

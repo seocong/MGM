@@ -31,4 +31,14 @@ public class AnswerDao  implements IAnswerDao {
 		return cnt>0?true:false;
 	}
 
+	@Override
+	public String checkedMember(int answerboard_seq) {
+		return sqlSession.selectOne(namespace+"checkedMember", answerboard_seq);
+	}
+
+	@Override
+	public AnswerDto getAnsboard(int answerboard_seq) {
+		return sqlSession.selectOne(namespace+"getAnsboard", answerboard_seq);
+	}
+
 }

@@ -13,4 +13,8 @@ public interface IAnswerDao {
 
 	public boolean ansinsert(AnswerDto dto);
 
+	public String checkedMember(int answerboard_seq);
+
+	public AnswerDto getAnsboard(int answerboard_seq);
+
 }

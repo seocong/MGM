@@ -546,17 +546,52 @@ public class KIMController implements ServletContextAware{
 		@RequestMapping(value = "/ansinsert.do", method = RequestMethod.POST)
 		public String ansinsert(Locale locale, Model model,AnswerDto dto,HttpServletRequest request,HttpSession session) {
 			logger.info("문의내용 추가하기 {}.", locale);
-			
-				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
-			
+
 			boolean isS = answerService.ansinsert(dto);
 			if(isS) {
 				model.addAttribute("msg","입력되었습니다.빠른시간 답변 드리겠습니다.");
-				model.addAttribute("url","ansboard.do");
+				model.addAttribute("url","answerboard.do?pagenum=1&contentnum=20");
 				return "Redirect";
 			}else {
 				model.addAttribute("msg","입력에 실패했습니다.다시 입력해주세요");
 				return "error";
 			}
 		}
+		@RequestMapping(value = "/anssecret.do", method = RequestMethod.GET)
+		public String anssecret(Locale locale, Model model,HttpSession session,int answerboard_seq) {
+			logger.info("비밀글 상세보기 이동 {}.", locale);
+			
+			String answerboard_writer=answerService.checkedMember(answerboard_seq);
+			MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+			String memberID = memberDto.getMember_id();
+			if(answerboard_writer.equals(memberID)){
+				return "redirect:ansdetail.do?answerboard_seq="+answerboard_seq;
+			}else {
+				model.addAttribute("msg","비밀글입니다.본인외에는 열람하실수 없습니다.");
+				model.addAttribute("url","ansboard.do?pagenum=1&contentnum=20");
+				return "Redirect";
+			}
+		
+		}
+			
+			@RequestMapping(value = "/ansdetail.do", method = RequestMethod.GET)
+			public String ansdetail(Locale locale, Model model,HttpSession session,int answerboard_seq) {
+				logger.info("문의글 상세 보기 {}.", locale);
+				AnswerDto answerDto = answerService.getAnsboard(answerboard_seq);
+				model.addAttribute("answerDto", answerDto);
+				model.addAttribute("uid",session.getAttribute("uid"));
+				return "Answer/AnsDetail";
+		}
+			
+			@RequestMapping(value = "/ansupdateform.do", method = RequestMethod.GET)
+			public String ansupdateform(Locale locale, Model model,HttpSession session,int answerboard_seq) {
+				logger.info("수정하기 폼  이동 {}.", locale);
+				AnswerDto answerDto = answerService.getAnsboard(answerboard_seq);
+				model.addAttribute("answerDto", answerDto);
+				model.addAttribute("uid",session.getAttribute("uid"));
+				return "Answer/AnsUpdate";
+				
+			}
+			
+			
 }
