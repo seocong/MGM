@@ -26,4 +26,10 @@ public class AnswerDao  implements IAnswerDao {
 		return sqlSession.selectList(namespace+"getAnswerList", map);
 	}
 
+	@Override
+	public boolean ansinsert(AnswerDto dto) {
+		int cnt = sqlSession.insert(namespace+"ansinsert", dto);
+		return cnt>0?true:false;
+	}
+
 }

@@ -24,5 +24,10 @@ public class AnswerService implements IAnswerService{
 	public List<AnswerDto> getAllList(Map<String, Object> map) {
 		return answerDao.getAllList(map);
 	}
+
+	@Override
+	public boolean ansinsert(AnswerDto dto) {
+		return answerDao.ansinsert(dto);
+	}
 	
 }

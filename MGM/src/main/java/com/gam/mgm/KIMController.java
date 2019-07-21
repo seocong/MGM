@@ -45,6 +45,7 @@ import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.ICommentService;
 
+
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 /**
@@ -520,5 +521,37 @@ public class KIMController implements ServletContextAware{
 			model.addAttribute("page", pagemaker);
 			return "Answer/AnswerBoard";
 			
+		}
+		
+		@RequestMapping(value = "/ansinsertform.do", method = RequestMethod.GET)
+		public String ansinsertform(Locale locale,HttpSession session, Model model) {
+			logger.info("문의입력창 이동 {}.", locale);
+			MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+			if(memberDto==null) {
+				model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+				model.addAttribute("url","answerboard.do?pagenum=1&contentnum=20");
+				return "Redirect";
+			}else {
+				String memberID = memberDto.getMember_id();			
+				model.addAttribute("answerboard_writer",memberID);
+				return "Answer/AnsInsert";
+			}	
+		}
+		
+		@RequestMapping(value = "/ansinsert.do", method = RequestMethod.POST)
+		public String ansinsert(Locale locale, Model model,AnswerDto dto,HttpServletRequest request,HttpSession session) {
+			logger.info("문의내용 추가하기 {}.", locale);
+			
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+			
+			boolean isS = answerService.ansinsert(dto);
+			if(isS) {
+				model.addAttribute("msg","입력되었습니다.빠른시간 답변 드리겠습니다.");
+				model.addAttribute("url","ansboard.do");
+				return "Redirect";
+			}else {
+				model.addAttribute("msg","입력에 실패했습니다.다시 입력해주세요");
+				return "error";
+			}
 		}
 }

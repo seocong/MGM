@@ -7,8 +7,10 @@ import com.gam.mgm.dto.AnswerDto;
 
 public interface IAnswerService {
 
-	int selectAnswerPaging();
+	public int selectAnswerPaging();
 
-	List<AnswerDto> getAllList(Map<String, Object> map);
+	public List<AnswerDto> getAllList(Map<String, Object> map);
+
+	public boolean ansinsert(AnswerDto dto);
 
 }
