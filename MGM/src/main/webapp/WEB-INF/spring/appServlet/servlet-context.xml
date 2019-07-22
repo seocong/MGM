@@ -31,8 +31,7 @@
 			value="text/html; charset=UTF-8" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.gam.mgm" />
+	<context:component-scan base-package="com.gam.mgm" />
 	<!-- websocket handler -->
 	<beans:bean id="echoHandler"
 		class="com.gam.mgm.handler.EchoHandler" />
@@ -46,8 +45,7 @@
 		</websocket:handshake-interceptors>
 	</websocket:handlers>
 
-	<context:component-scan
-		base-package="com.gam.mgm" />
+	<context:component-scan base-package="com.gam.mgm" />
 
 	<!-- multipart요청정보를 받기위한 객체 선언 -->
 	<beans:bean id="multipartResolver"

@@ -9,6 +9,11 @@ public class PointDto {
 	private String point_sign;
 	private int point_price;
 	private Date point_regdate;
+	
+	public PointDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public PointDto(int point_seq, String point_title, String point_id, String point_sign, int point_price,
 			Date point_regdate) {
 		super();

@@ -38,8 +38,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		sessions.add(session);
 		String senderId=getId(session);
 		System.out.println("연결 로그인 회원: "+senderId);
-		userSessions.put(senderId, session);
-		session.sendMessage(new TextMessage(senderId+"님이 입장하셨습니다."));
+		userSessions.put(senderId, session);		
 	}
 	/**
 	 * 두 가지 이벤트를 처리
@@ -57,10 +56,14 @@ public class EchoHandler extends TextWebSocketHandler{
 		System.out.println("loginUser: "+senderId);
 		
 		//전체 메세지 코드
-		for(WebSocketSession sess:sessions) {
-			sess.sendMessage(new TextMessage("<div class='"+senderId+"'>"+senderId+": <br>"+message.getPayload()+"</div>"));
+		/*
+		 * for(WebSocketSession sess:sessions) { sess.sendMessage(new
+		 * TextMessage("<div class='"+senderId+"'>"+senderId+": <br>"+message.getPayload
+		 * ()+"</div>")); }
+		 */
+		for(String id:userSessions.keySet()) {
+			userSessions.get(id).sendMessage(new TextMessage("<div class='"+id+"'>"+senderId+": <br>"+message.getPayload()+"</div"));
 		}
-		
 		//protocol: cmd(command), 댓글작성자, 게시글 작성자, bno(게시글 번호) 
 	}
 	
@@ -84,13 +87,20 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override //커넥션이 종료되었을때 실행
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception{
 		System.out.println("afterConnectionClosed: "+session+":"+status);
-		//		connectedUsers.remove(session);
+				sessions.remove(session);
+				for(String key:userSessions.keySet()) {
+					if(userSessions.get(key) == session) {
+						userSessions.remove(key);
+						System.out.println(session + ": map session 삭제");
+					}
+				}
+				
 		//		for(WebSocketSession webSocketSession : connectedUsers) {
 		//			if(!session.getId().equals(webSocketSession.getId())) {
 		//				webSocketSession.sendMessage(new TextMessage(session.getRemoteAddress().getHostName()+"님이 퇴장했습니다."));
 		//			}
 		//		}
-		//		logger.info(session.getId()+"님이 퇴장했습니다.");
+				logger.info(session.getId()+"님이 퇴장했습니다.");
 	}
 	
 	 @Override

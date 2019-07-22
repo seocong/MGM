@@ -1,5 +1,7 @@
 package com.gam.mgm.service;
 
-public interface IPointService {
+import com.gam.mgm.dto.PointDto;
 
+public interface IPointService {
+	public boolean insertPoint(PointDto pointDto);
 }

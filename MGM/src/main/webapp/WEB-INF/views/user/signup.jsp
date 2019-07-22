@@ -43,13 +43,9 @@
 	<link rel="stylesheet" href="resources/css/colors.php?color=C6C09C" type="text/css" /> <!-- Theme Color -->
 	<link rel="stylesheet" href="resources/demos/nonprofit/css/fonts.css" type="text/css" />
 	<link rel="stylesheet" href="resources/demos/nonprofit/nonprofit.css" type="text/css" />
-	
 	<!-- Document Title
 	============================================= -->
 	<title>커뮤니티</title>
-
-	
-
 </head>
 
 <body class="stretched">
@@ -144,69 +140,70 @@
 								<div class="form-process"></div>
 
 								<div class="col_one_third">
-									<label for="template-contactform-name t700">아이디 <small>*</small></label>
-									<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" placeholder="졸려서 대충 함 홍민씨가 꾸미는걸로...." />
+									<label for="idBox t700">아이디 <small>*</small></label>
+									<input type="text" id="idBox" name="id" class="sm-form-control required mandatory"/>
+									<div id="error_id" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
-									<label for="template-contactform-name t700">이름 <small>*</small></label>
-									<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
+									<label for="nameBox t700">이름 <small>*</small></label>
+									<input type="text" id="nameBox" name="name"  class="sm-form-control required mandatory" />
+									<div id="error_name" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
-									<label for="template-contactform-email t700">비밀번호 <small>*</small></label>
-									<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
+									<label for="pwBox t700">비밀번호 <small>*</small></label>
+									<input type="password" id="pwBox" name="pw"  class="required  sm-form-control mandatory" />
+									<div id="error_pw" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
 								</div>
 
 								<div class="col_one_third ">
-									<label for="template-contactform-phone t700">비밀번호확인</label>
-									<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+									<label for="pwchkBox t700">비밀번호확인</label>
+									<input type="password" id="pwchkBox" name="pwcheck" class="sm-form-control mandatory" />
+									<div id="error_pwchk" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
 								</div>
 				
 								<div class="clear"></div>
-								<div class="col_one_sixth">
-									<label for="template-contactform-service t700">년도</label>
-									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-										<option value="">-태어난해-</option>
-										<option value="2000">2000</option>
-										<option value="1999">1999</option>
-										<option value="1998">1998</option>
-										<option value="1997">1997</option>
-									</select>
+								
+								<div class="col_one_sixth mr-2" style="display:inline;">
+									<label for="yearBox t700">생년월일</label>
+									<input type="text" id="yearBox" name="year" class="sm-form-control mandatory" maxlength="4" placeholder="년(4자)"/>
+									<div id="error_year" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">년도를 입력해주세요.</div>
 								</div>
-								<div class="col_one_sixth">
-									<label for="template-contactform-service t700">월</label>
-									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-										<option value="">-태어날달-</option>
-										<option value="01">01</option>
-										<option value="02">02</option>
-										<option value="03">03</option>
-										<option value="04">04</option>
+								<div class="col_one_sixth mr-2" style="display:inline;">
+									<label for="monthBox t700"><br></label>
+									<select id="monthBox" name="month" class="sm-form-control">
+										<option value="">월</option>
+										<option value="01">1</option>
+										<option value="02">2</option>
+										<option value="03">3</option>
+										<option value="04">4</option>
+										<option value="05">5</option>
+										<option value="06">6</option>
+										<option value="07">7</option>
+										<option value="08">8</option>
+										<option value="09">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
 									</select>
+									<div id="error_month" class="pt-1 click_alert t700" style="color:#E42C3E; font-size:12px; display:none;">년도를 입력해주세요.</div>
 								</div>
-								<div class="col_one_sixth">
-									<label for="template-contactform-service">일</label>
-									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-										<option value="">-태어난날-</option>
-										<option value="01">01</option>
-										<option value="02">02</option>
-										<option value="03">03</option>
-										<option value="04">04</option>
+								<div class="col_one_sixth" style="display:inline;">
+									<label for="dateBox t700"><br></label>
+									<select id="dateBox" name="date" class="sm-form-control">
+										<option value="">일</option>
 									</select>
 								</div>
 
 								<div class="clear"></div>
 								
-								
-								
-								
-								
-								
 								<div class="col_two_fifth">
-									<label for="template-contactform-phone t700">전화번호</label>
-									<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+									<label for="phnumBox t700">전화번호</label>
+									<input type="text" id="phnumBox" name="phnum" value="" class="sm-form-control mandatory" />
+									<div id="error_phnum" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
 								</div>	
 								<div class="col_one_sixth">
 									<label for="template-contactform-phone t700" >인증하기</label>
@@ -214,30 +211,29 @@
 								</div>								
 								<div class="clear"></div>
 								
-								<div class="col_two_third">
-									<label for="template-contactform-subject t700">주소 <small>*</small></label>
-									<input type="text" id="template-contactform-subject" name="subject" value="" class="required sm-form-control" />
+								<div class="col_one_sixth mb-1 mr-3" >
+									<label for="zipcode t700">우편번호 <small>*</small></label>
+									<input type="text" id="zipcode" name="zipcode" readonly="readonly" class="required sm-form-control" />
+								</div>
+								<div class="col_one_sixth mb-1">
+									<label for="searchBtn t700" ><br></label>
+									<input type="button" id="searchBtn" name="template-contactform-phone" value="우편번호 검색" class="sm-form-control t700" onclick="addrApi()"/>
 								</div>
 								<div class="clear"></div>
-								<div class="col_one_third">
-									<label for="template-contactform-service t700">세부주소</label>
-									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-										<option value="">-- Select One --</option>
-										<option value="신월동">신월동</option>
-										<option value="신정동">신정동</option>
-										<option value="목동">목동</option>
-										<option value="화곡동">화곡동</option>
-									</select>
+								<div class="col_half mb-1" >
+									<label for="address t700">주소<small>*</small></label>
+									<input type="text" id="address" name="address" readonly="readonly" class="required sm-form-control" />
+									<div id="error_addr" class="pt-1 t700" style="color:#E42C3E; font-size:12px; display:none;">주소를 입력해주세요.</div>
 								</div>
-								<div class="col_one_third">
-									<label for="template-contactform-service t700">세부주소</label>
-									<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-										<option value="">-- Select One --</option>
-										<option value="신월동">신월동</option>
-										<option value="신정동">신정동</option>
-										<option value="목동">목동</option>
-										<option value="화곡동">화곡동</option>
-									</select>
+								<div class="clear"></div>
+								<div class="col_one_fourth">
+									<label for="detailAddress t700">상세주소<small>*</small></label>
+									<input type="text" id="detailAddress" name="detailAddress"  class="required sm-form-control mandatory" />
+									<div id="error_detailAddr" class="pt-1 blur_alert click_alert t700" style="color:#E42C3E; font-size:12px; display:none;">상세주소를 입력해주세요.</div>
+								</div>
+								<div class="col_one_fourth">
+									<label for="notes t700">참고<small>*</small></label>
+									<input type="text" id="notes" name="notes" class="required sm-form-control" />
 								</div>
 								<div class="clear"></div>
 
@@ -248,7 +244,7 @@
 								</div>
 
 								<div class="col_full">
-									<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">회원가입</button>
+									<button class="button button-3d nomargin" type="submit">회원가입</button>
 									<button class="button button-3d nomargin" type="button" onclick="location.href='login.do'">메인가기</button>
 								</div>
 
@@ -308,12 +304,16 @@
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
 
+	
 	<!-- External JavaScripts
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
 	<script src="resources/js/tabsJs.js"></script>
-
+	<!-- kakao Map api -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<!-- signupForm js -->
+	<script src="resources/js/user/signup.js"></script>
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>

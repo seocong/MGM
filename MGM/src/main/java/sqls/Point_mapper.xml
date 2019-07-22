@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.gam.Point">
-    
-  </mapper>
+
+<mapper namespace="com.gam.Point">
+	<insert id="insertPoint" parameterType="PointDto" >
+		INSERT INTO MGM_POINT(POINT_TITLE,POINT_ID,POINT_SIGN,POINT_PRICE,POINT_REGDATE)
+		VALUES (#{point_title},#{point_id},#{point_sign},#{point_price},now())
+	</insert>
+	
+	<select id="selectPoint" parameterType="String" resultType="PointDto">
+		SELECT POINT_TITLE, POINT_PRICE, POINT_REGDATE, POINT_SIGN FROM MGM_POINT WHERE POINT_ID = #{uid} ORDER BY POINT_REGDATE DESC LIMIT 20
+	</select>
+</mapper>

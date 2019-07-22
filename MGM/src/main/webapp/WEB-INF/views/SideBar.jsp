@@ -46,6 +46,8 @@
 					</c:if>
 					<c:if test="${uid ne null }">
 						<div>${uid.member_id}</div>
+						<div>${uid.member_point }</div>
+						<a href="mypage.do">마이페이지</a>
 						<a href="logout.do">로그아웃</a>
 					</c:if>
 				</div>

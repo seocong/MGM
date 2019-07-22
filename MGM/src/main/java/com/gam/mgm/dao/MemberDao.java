@@ -20,7 +20,16 @@ public class MemberDao implements IMemberDao {
 		return success>0?true:false;
 	}
 	@Override
-	public MemberDto login(Map<String,String> member) {
-		return sqlSession.selectOne(namespace+"login",member);
+	public MemberDto login(Map<String,String> uid) {
+		return sqlSession.selectOne(namespace+"login",uid);
+	}
+	@Override
+	public MemberDto myPage(String uid) {
+		return sqlSession.selectOne(namespace+"mypage",uid);
+	}
+	@Override
+	public boolean withdrawal(String uid) {
+		int success = sqlSession.update(namespace+"withdrawal",uid);
+		return success>0?true:false;
 	}
 }
