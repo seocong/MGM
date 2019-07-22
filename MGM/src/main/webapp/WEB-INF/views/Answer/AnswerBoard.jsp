@@ -153,19 +153,19 @@
 												<td  style="text-align: center;">${ansboardDto.answerboard_seq}</td>
 									<c:choose>
 						<c:when test="${ansboardDto.answerboard_delflag=='Y'}">
-							<td>---삭제된 글입니다.---</td>
+							<td style="text-align: center;">---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise> 
 						<c:choose>
 						<c:when test="${ansboardDto.answerboard_secret=='Y'}">  
 					        <td  style="text-align: center;">
-					        <a href="ansdetail.do?answerboard_seq=${ansboardDto.answerboard_seq}&pagenum=${page.pagenum+1}&contentnum=20">${ansboardDto.answerboard_title}
+					        <a href="anssecret.do?answerboard_seq=${ansboardDto.answerboard_seq}">${ansboardDto.answerboard_title}
 					         </a><span class="text-dark"><i class="icon-lock"></i></span>
 					        </td>
 					        </c:when>
 					        <c:otherwise>
 					        <td  style="text-align: center;">
-					        <a href="ansdetail.do?answerboard_seq=${ansboardDto.answerboard_seq}&pagenum=${page.pagenum+1}&contentnum=20">${ansboardDto.answerboard_title}
+					        <a href="ansdetail.do?answerboard_seq=${ansboardDto.answerboard_seq}">${ansboardDto.answerboard_title}
 					         </a>
 					        </td>
 					        </c:otherwise>
@@ -186,13 +186,13 @@
    <td colspan="3">
    		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
    	<c:if test="${page.prev}">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+   		<li class="page-item"><a class="page-link" href="javascript:page3(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
    	</c:if>
    	<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
+   		<li class="page-item"><a class="page-link" href="javascript:page3(${idx});">${idx}</a></li>
    	</c:forEach>
    <c:if test="${page.next }">
-   		 <li class="page-item"><a class="page-link" href="javascript:page(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+   		 <li class="page-item"><a class="page-link" href="javascript:page3(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
    	</c:if>
  		</ul>
         </td>
@@ -208,10 +208,7 @@
 	</tr>
 	</table>
 								
-								
-								
-								
-								
+
 								
 								
 									
@@ -267,7 +264,7 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
-	<script src="resources/js/tabsJs.js"></script>
+	<!-- <script src="resources/js/tabsJs.js"></script> -->
 
 	<!-- Footer Scripts
 	============================================= -->
@@ -288,7 +285,13 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
 	<!-- ADD-ONS JS FILES -->
-	
+	<script type="text/javascript">
+	function page3(idx) {
+		var pagenum = idx;
+		var contentnum = 20;
+		location.href="answerboard.do?pagenum="+pagenum+"&contentnum="+contentnum;
+	}
+	</script>
 		
  	<script>
 		$(function(){

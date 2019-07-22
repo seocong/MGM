@@ -27,3 +27,4 @@ function page2(idx) {
 	var board_name = $('#board_name').attr("data-board_name");//boardname을 받아옴
 	location.href="detail.do?pagenum="+pagenum+"&contentnum="+contentnum+"&board_name="+board_name;
 }
+

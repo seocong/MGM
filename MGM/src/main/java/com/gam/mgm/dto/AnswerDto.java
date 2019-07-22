@@ -11,7 +11,7 @@ public class AnswerDto {
 	private String answerboard_writer;
 	private Date answerboard_regdate;
 	private String answerboard_delflag;
-	private Date answerboard_secret;
+	private String answerboard_secret;
 	private int answerboard_depth;
 	
 	
@@ -24,7 +24,7 @@ public class AnswerDto {
 
 	public AnswerDto(int answerboard_seq, int answerboard_group, int answerboard_step, String answerboard_title,
 			String answerboard_contents, String answerboard_writer, Date answerboard_regdate,
-			String answerboard_delflag, Date answerboard_secret, int answerboard_depth) {
+			String answerboard_delflag, String answerboard_secret, int answerboard_depth) {
 		super();
 		this.answerboard_seq = answerboard_seq;
 		this.answerboard_group = answerboard_group;
@@ -103,11 +103,11 @@ public class AnswerDto {
 		this.answerboard_delflag = answerboard_delflag;
 	}
 
-	public Date getAnswerboard_secret() {
+	public String getAnswerboard_secret() {
 		return answerboard_secret;
 	}
 
-	public void setAnswerboard_secret(Date answerboard_secret) {
+	public void setAnswerboard_secret(String answerboard_secret) {
 		this.answerboard_secret = answerboard_secret;
 	}
 

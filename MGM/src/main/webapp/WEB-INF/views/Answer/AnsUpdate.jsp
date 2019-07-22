@@ -129,44 +129,52 @@
 						
 					
 						<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 문의게시판</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 수정하기</h4>
 									<div class="line line-xs line-sports"></div>	
 									<div class="form-result"></div>
 
-							<form class="nobottommargin" action="ansinsert.do" method="post">
-								
+							<form class="nobottommargin" action="ansUpdate.do" method="post">
+								<input type="hidden" name="answerboard_seq" value="${answerDto.answerboard_seq}">
 								<div class="form-process"></div>
 
 								<div class="clear"></div>
 
 								<div class="col_two_third">
 									<label for="template-contactform-subject">제목 </label>
-									<input type="text" id="template-contactform-subject" name="answerboard_title" value="" class="required sm-form-control required" />
+									<input type="text" id="template-contactform-subject" name="answerboard_title" value="${answerDto.answerboard_title}" class="required sm-form-control required" />
 								</div>
 
 								<div class="col_one_third col_last">
 								<label for="template-contactform-name">작성자</label>
-									<input type="text" id="template-contactform-name" name="answerboard_writer" value="${answerboard_writer}" class="sm-form-control required" readonly="readonly"/>
-									
+									<input type="text" id="template-contactform-name" name="answerboard_writer" value="${answerDto.answerboard_writer}" class="sm-form-control required" readonly="readonly"/>								
 								</div>
 
 								<div class="clear"></div>
 
 								<div class="col_full">
 									<label for="template-contactform-message">내용 </label>
-									<textarea name="answerboard_contents" rows="21" cols="30"  style="width:100%;"></textarea>
+									<textarea name="answerboard_contents" rows="21" cols="30"  style="width:100%;">${answerDto.answerboard_contents}</textarea>
 								</div>
 								
 								<div class="clear"></div>
 			
 								<div class="col_full ">
+								<c:choose>
+								<c:when test="${answerDto.answerboard_secret=='Y'}">
 								<label for="template-contactform-message">비밀글 </label>
+									<input type="radio" name="answerboard_secret" value="N"> 공개 
+									<input type="radio" name="answerboard_secret" value="Y" checked="checked"> 비공개 
+									</c:when>
+									<c:otherwise>
+									<label for="template-contactform-message">비밀글 </label>
 									<input type="radio" name="answerboard_secret" value="N" checked="checked"> 공개 
 									<input type="radio" name="answerboard_secret" value="Y"> 비공개 
+									</c:otherwise>
+								</c:choose>	
 								</div> 
 
 								<div class="col_full">
-									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">작성 완료</button>
+									<button class="button button-3d nomargin" id="addBtn" type="submit" value="submit">수정 완료</button>
 									<button class="button button-3d nomargin" type="button" onclick="location.href='answerboard.do?pagenum=1&contentnum=20'">목록 가기</button>
 								</div>
 

@@ -308,10 +308,12 @@
 											</c:when>
 											<c:otherwise>
 												<td>
+					       	 						
+												<jsp:setProperty property="arrowNbsp" name="util" value="${row.comment_depth}"/>
+					       	 						<jsp:getProperty property="arrowNbsp" name="util"/>
 													${row.comment_writer}(<fmt:formatDate value="${row.comment_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)추천수:${row.comment_pushnum}
 													<br>
-													<jsp:setProperty property="arrowNbsp" name="util" value="${row.comment_depth}"/>
-					       	 						<jsp:getProperty property="arrowNbsp" name="util"/>${row.comment_contents}
+													${row.comment_contents}
 					       	 						<c:choose>
 					       	 						<c:when test="${uid.member_id == Dto.board_writer}">
 					       	 							<input type="button" style="float: right;" value="삭제" onclick="delcomment('${row.comment_seq}')"/>														

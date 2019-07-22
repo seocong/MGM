@@ -29,5 +29,25 @@ public class AnswerService implements IAnswerService{
 	public boolean ansinsert(AnswerDto dto) {
 		return answerDao.ansinsert(dto);
 	}
+
+	@Override
+	public String checkedMember(int answerboard_seq) {
+		return answerDao.checkedMember(answerboard_seq);
+	}
+
+	@Override
+	public AnswerDto getAnsboard(int answerboard_seq) {
+		return answerDao.getAnsboard(answerboard_seq);
+	}
+
+	@Override
+	public boolean ansupdate(AnswerDto dto) {
+		return answerDao.ansupdate(dto);
+	}
+
+	@Override
+	public boolean ansdelete(int answerboard_seq) {
+		return answerDao.ansdelete(answerboard_seq);
+	}
 	
 }
