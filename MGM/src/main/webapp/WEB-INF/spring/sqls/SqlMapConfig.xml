@@ -14,6 +14,7 @@
         <typeAlias type="com.gam.mgm.dto.NewsDto" alias="NewsDto"/>
         <typeAlias type="com.gam.mgm.dto.PointDto" alias="PointDto"/>
         <typeAlias type="com.gam.mgm.dto.CommentDto" alias="CommentDto"/>
+        <typeAlias type="com.gam.mgm.dto.TrainerDto" alias="TrainerDto"/>
  
      </typeAliases>
   <mappers>
@@ -26,6 +27,7 @@
      <mapper resource="/sqls/Message_mapper.xml" />
      <mapper resource="/sqls/Point_mapper.xml" />
      <mapper resource="/sqls/Comment_mapper.xml" />
+     <mapper resource="/sqls/Trainer_mapper.xml" />
   </mappers>
   
   

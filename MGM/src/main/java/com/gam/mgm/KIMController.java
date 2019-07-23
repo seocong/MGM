@@ -1,10 +1,14 @@
 package com.gam.mgm;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -40,11 +44,12 @@ import com.gam.mgm.dto.AnswerDto;
 import com.gam.mgm.dto.BoardDto;
 import com.gam.mgm.dto.CommentDto;
 import com.gam.mgm.dto.MemberDto;
+import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.ICommentService;
-
+import com.gam.mgm.service.ITrainerService;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -63,6 +68,8 @@ public class KIMController implements ServletContextAware{
 	private IAnswerService answerService;
 	@Autowired
 	private ICommentService commentService;
+	@Autowired
+	private ITrainerService trainerService;
 	
 	@Override
 	public void setServletContext(ServletContext servletContext) {
@@ -143,6 +150,7 @@ public class KIMController implements ServletContextAware{
 		@RequestMapping(value = "/file_uploader_html5.do", method = RequestMethod.POST)
 		public void file_uploader_html5(HttpServletRequest request, HttpServletResponse response) throws IOException {
 			String sFileInfo = "";
+			System.out.println("어디랴?");
 			//파일명 - 싱글파일업로드와 다르게 멀티파일업로드는 HEADER로 넘어옴 
 			String name = request.getHeader("file-name");
 			String ext = name.substring(name.lastIndexOf(".")+1);
@@ -665,6 +673,59 @@ public class KIMController implements ServletContextAware{
 				}
 				}
 			}*/
+			//위에주석된부분은 무시하세요 일단ㅋㅋㅋ
+			@RequestMapping(value = "/trainer.do", method = {RequestMethod.GET,RequestMethod.POST})
+			public String ansdelete(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
+				logger.info("조교사 DB저장하기  {}.", locale);
+				String defaultPath = context.getRealPath("/resources"); //홍민씨 제목부분을 제외한 데이터값만 긁어서 메모장으로 복사 후 저장해서 여기나 혹은 원하는곳에 넣으면 됩니다.혹시몰라 resources 에 넣어놨어요
+				System.out.println(defaultPath);
+				File file = new File(defaultPath+"/trainers.txt");
+				String[] splitedStr = null;
+				System.out.println(file);
+				try {
+					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+					System.out.println(reader);
+						String line = null;
+						splitedStr = null;					
+							while ((line = reader.readLine()) != null) {
+								splitedStr = null;
+								splitedStr = line.split("\\s+");
+
+								for (int i = 0; i < splitedStr.length; i++) {
+									splitedStr[i] = splitedStr[i].trim();
+
+								}
+							
+								TrainerDto trainerDto = new TrainerDto();
+								trainerDto.setTr_name(splitedStr[0]);
+								trainerDto.setTr_part(Integer.valueOf(splitedStr[1]));
+								trainerDto.setTr_birth(splitedStr[2]);
+								trainerDto.setTr_age(Integer.valueOf(splitedStr[3]));
+								trainerDto.setTr_stdate(splitedStr[4]);
+								trainerDto.setTr_rccntt(Integer.valueOf(splitedStr[5]));
+								trainerDto.setTr_ord1cntt(Integer.valueOf(splitedStr[6]));
+								trainerDto.setTr_ord2cntt(Integer.valueOf(splitedStr[7]));
+								trainerDto.setTr_ord3cntt(Integer.valueOf(splitedStr[8]));
+								trainerDto.setTr_rccnty(Integer.valueOf(splitedStr[9]));
+								trainerDto.setTr_ord1cnty(Integer.valueOf(splitedStr[10]));
+								trainerDto.setTr_ord2cnty(Integer.valueOf(splitedStr[11]));
+								trainerDto.setTr_ord3cnty(Integer.valueOf(splitedStr[12]));
+								boolean isS = trainerService.trInsert(trainerDto);
+								if(isS) {
+									System.out.println("입력되었습니다.");
+								}else {
+									System.out.println("입력실패.");
+								}
+							}
+							reader.close();
+
+						} catch (FileNotFoundException fnf) {
+							fnf.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				return "Main2";				
+			}
 			
 			
 }

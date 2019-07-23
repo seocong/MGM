@@ -542,9 +542,8 @@
 								<div class="col-md-7 mt-5">
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size:120%;"><span class="text-success "><i class="icon-gamepad"></i></span> 미니게임존</h4>
 									<div class="line line-xs line-sports"></div>
-								<form action="#">
+								<form action="trainer.do" >
 								<div class="card border">
-											
 											<div class="card-body nopadding">
 									<!-- Post Article -->
 									<article class="ipost">
