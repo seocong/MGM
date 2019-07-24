@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gam.race">
+	<insert id="raceplan" parameterType="Map">
+		INSERT INTO RACEPLAN(ageCond,budam,buga1,buga2,buga3,chaksun1,chaksun2,chaksun3,chaksun4,chaksun5,ilsu,meet,ranks,rcDate,rcDist,rcName,rcNo,schStTime,spRating,stRating)
+		VALUES (#{ageCond},#{budam},#{buga1},#{buga2},#{buga3},#{chaksun1},#{chaksun2},#{chaksun3},#{chaksun4},#{chaksun5},#{ilsu},#{meet},#{ranks},#{rcDate},#{rcDist},#{rcName},#{rcNo},#{schStTime},#{spRating},#{stRating})
+	</insert>
+</mapper>

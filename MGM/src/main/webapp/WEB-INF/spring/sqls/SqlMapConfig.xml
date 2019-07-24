@@ -10,12 +10,12 @@
         <typeAlias type="com.gam.mgm.dto.ChannelDto" alias="ChannelDto"/>
         <typeAlias type="com.gam.mgm.dto.BoardDto" alias="BoardDto"/>
         <typeAlias type="com.gam.mgm.dto.MemberDto" alias="MemberDto"/>
-          <typeAlias type="com.gam.mgm.dto.MessageDto" alias="MessageDto"/>
+        <typeAlias type="com.gam.mgm.dto.MessageDto" alias="MessageDto"/>
         <typeAlias type="com.gam.mgm.dto.NewsDto" alias="NewsDto"/>
         <typeAlias type="com.gam.mgm.dto.PointDto" alias="PointDto"/>
         <typeAlias type="com.gam.mgm.dto.CommentDto" alias="CommentDto"/>
         <typeAlias type="com.gam.mgm.dto.TrainerDto" alias="TrainerDto"/>
- 
+ 		<typeAlias type="com.gam.mgm.dto.TrainerDto" alias="RacePlanitemDto"/>
      </typeAliases>
   <mappers>
      
@@ -28,6 +28,7 @@
      <mapper resource="/sqls/Point_mapper.xml" />
      <mapper resource="/sqls/Comment_mapper.xml" />
      <mapper resource="/sqls/Trainer_mapper.xml" />
+     <mapper resource="/sqls/Raceplan_mapper.xml" />
   </mappers>
   
   
