@@ -15,6 +15,7 @@ public class TrainerDto {
 	private int tr_ord1cnty;
 	private int tr_ord2cnty;
 	private int tr_ord3cnty;
+	private int tr_meet;
 	
 	
 	public TrainerDto() {
@@ -25,7 +26,7 @@ public class TrainerDto {
 
 	public TrainerDto(int tr_seq, String tr_name, int tr_part, String tr_birth, int tr_age, String tr_stdate, int tr_rccntt,
 			int tr_ord1cntt, int tr_ord2cntt, int tr_ord3cntt, int tr_rccnty, int tr_ord1cnty, int tr_ord2cnty,
-			int tr_ord3cnty) {
+			int tr_ord3cnty,int tr_meet) {
 		super();
 		this.tr_seq = tr_seq;
 		this.tr_name = tr_name;
@@ -41,6 +42,7 @@ public class TrainerDto {
 		this.tr_ord1cnty = tr_ord1cnty;
 		this.tr_ord2cnty = tr_ord2cnty;
 		this.tr_ord3cnty = tr_ord3cnty;
+		this.tr_meet = tr_meet;
 	}
 
 
@@ -182,16 +184,23 @@ public class TrainerDto {
 	public void setTr_ord3cnty(int tr_ord3cnty) {
 		this.tr_ord3cnty = tr_ord3cnty;
 	}
+	
+	public int getTr_meet() {
+		return tr_meet;
+	}
+	
+	public void setTr_meet(int tr_meet) {
+		this.tr_meet = tr_meet;
+	}
 
 
 	@Override
 	public String toString() {
-		return "trainerDto [tr_seq=" + tr_seq + ", tr_name=" + tr_name + ", tr_part=" + tr_part + ", tr_birth="
+		return "TrainerDto [tr_seq=" + tr_seq + ", tr_name=" + tr_name + ", tr_part=" + tr_part + ", tr_birth="
 				+ tr_birth + ", tr_age=" + tr_age + ", tr_stdate=" + tr_stdate + ", tr_rccntt=" + tr_rccntt
 				+ ", tr_ord1cntt=" + tr_ord1cntt + ", tr_ord2cntt=" + tr_ord2cntt + ", tr_ord3cntt=" + tr_ord3cntt
 				+ ", tr_rccnty=" + tr_rccnty + ", tr_ord1cnty=" + tr_ord1cnty + ", tr_ord2cnty=" + tr_ord2cnty
-				+ ", tr_ord3cnty=" + tr_ord3cnty + "]";
+				+ ", tr_ord3cnty=" + tr_ord3cnty + ", tr_meet=" + tr_meet + "]";
 	}
-	
 	
 }

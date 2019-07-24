@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gam.mgm.dao.IAnswerDao;
 import com.gam.mgm.dto.AnswerDto;
@@ -48,6 +49,15 @@ public class AnswerService implements IAnswerService{
 	@Override
 	public boolean ansdelete(int answerboard_seq) {
 		return answerDao.ansdelete(answerboard_seq);
+	}
+	
+	@Transactional
+	@Override
+	public boolean ansinsertReply(Map<String, Object> map) {
+		answerDao.ansReplyUpdate((int) map.get("seq"));
+		System.out.println("seq                                                        :"+(int) map.get("seq"));
+		int cnt = answerDao.ansinsertReply(map);
+		return cnt>0?true:false;
 	}
 	
 }

@@ -21,4 +21,8 @@ public interface IAnswerDao {
 
 	public boolean ansdelete(int answerboard_seq);
 
+	public int ansinsertReply(Map<String, Object> map);
+
+	public int ansReplyUpdate(int seq);
+
 }

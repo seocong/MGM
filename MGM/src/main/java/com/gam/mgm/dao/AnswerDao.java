@@ -53,4 +53,14 @@ public class AnswerDao  implements IAnswerDao {
 		return cnt>0?true:false;
 	}
 
+	@Override
+	public int ansinsertReply(Map<String, Object> map) {
+		return sqlSession.insert(namespace+"ansreplyinsert", map);
+	}
+
+	@Override
+	public int ansReplyUpdate(int seq) {
+		return sqlSession.update(namespace+"ansreply",seq);
+	}
+
 }
