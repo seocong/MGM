@@ -21,4 +21,6 @@ public interface IAnswerService {
 
 	public boolean ansdelete(int answerboard_seq);
 
+	public boolean ansinsertReply(Map<String, Object> map);
+
 }

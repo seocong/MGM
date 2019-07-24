@@ -53,14 +53,14 @@
 </head>
 
 <body class="stretched">
-<jsp:useBean id="util" class="com.gam.utils.Util"/>
+
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 
 
 	<!-- <header id="header" class="full-header dark"> -->
-	<jsp:include page="../Header.jsp" />
+	<jsp:include page="Header.jsp" />
 	
 
 		<!-- Slider
@@ -117,7 +117,7 @@
 					<div class="row clearfix">
 
 
-					<jsp:include page="../SideBar.jsp" />
+					<jsp:include page="SideBar.jsp" />
 				 
 
 
@@ -125,125 +125,15 @@
 						============================================= -->
 						<div class="col-lg-9">
 						
-						<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 문의게시판</h4>
-									<div class="line line-xs line-sports"></div>	
-									<table class="table table-striped">
-							<col width="10%"><col width="60%"><col width="15%"><col width="15%"><%-- <col width="60px"><col width="50px"> --%>
-								<thead>
-								  <tr style="text-align: center;">
-									<th>번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<!-- <th>조회수</th>
-									<th>추천</th> -->
-								  </tr>
-								</thead>
-								
-								<tbody>
-								  <c:choose>
-									<c:when test="${empty list}"><!-- empty  null인지 확인 -->
-										<tr><td colspan = "10">---작성된 글이 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="ansboardDto">
-										<tr>
+						<form action="trainer.do">
+						<input type="file" name="text">
+						<input type="text" name="meet">
+						<button class="button button-3d nomargin" type="submit" value="submit">작성 완료</button>
+						</form>
 					
-												<td  style="text-align: center;">${ansboardDto.answerboard_seq}</td>
-									<c:choose>
-						<c:when test="${ansboardDto.answerboard_delflag=='Y'}">
-							<td style="text-align: center;">---삭제된 글입니다.---</td>
-						</c:when>
-						<c:otherwise> 
-						<c:choose>
-						<c:when test="${ansboardDto.answerboard_secret=='Y'}">  
-					        <td><jsp:setProperty property="arrowNbsp" name="util" value="${ansboardDto.answerboard_depth}"/>
-					        <jsp:getProperty property="arrowNbsp" name="util"/>
-					        <a href="anssecret.do?answerboard_seq=${ansboardDto.answerboard_seq}">${ansboardDto.answerboard_title}
-					         </a><span class="text-dark"><i class="icon-lock"></i></span>
-					        </td>
-					        </c:when>
-					        <c:otherwise>
-					        <td  ><jsp:setProperty property="arrowNbsp" name="util" value="${ansboardDto.answerboard_depth}"/>
-					        <jsp:getProperty property="arrowNbsp" name="util"/>
-					        <a href="ansdetail.do?answerboard_seq=${ansboardDto.answerboard_seq}">${ansboardDto.answerboard_title}
-					         </a>
-					        </td>
-					        </c:otherwise>
-					        </c:choose> 				            									
-						</c:otherwise>
-					</c:choose>
-					<td  style="text-align: center;">${ansboardDto.answerboard_writer}</td>				
-					<td  style="text-align: center;"> <fmt:formatDate value="${ansboardDto.answerboard_regdate}" pattern="yyyy년MM월dd일"/> </td>
-					<%-- <td  style="text-align: center;">${boardDto.board_readcount}</td>	
-					<td  style="text-align: center;">${boardDto.board_pushnum}</td>		 --%>		
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>	
-			   
-								</tbody>
-							<tr>
-   <td colspan="3">
-   		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
-   	<c:if test="${page.prev}">
-   		<li class="page-item"><a class="page-link" href="javascript:page3(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-   	</c:if>
-   	<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-   		<li class="page-item"><a class="page-link" href="javascript:page3(${idx});">${idx}</a></li>
-   	</c:forEach>
-   <c:if test="${page.next }">
-   		 <li class="page-item"><a class="page-link" href="javascript:page3(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-   	</c:if>
- 		</ul>
-        </td>
-        <td>
-				<div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <button class="button button-3d nomargin" type="button"  onclick="location.href='ansinsertform.do'">문의하기</button>
-                </div>
-                  
-              </div>
-	
-        
-        </td>
-	</tr>
-	</table>
-								
-
-								
-								
-									
-						</div>			
-						
-					
-										
-										
-										
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 						<div class="line"></div>
-						
-	
-						
 
-						
-						
-					
-						
 				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
@@ -254,7 +144,7 @@
 
 		<!-- Footer
 		============================================= -->
-		<jsp:include page="../Footer.jsp" />
+		<jsp:include page="Footer.jsp" />
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
@@ -267,7 +157,7 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
-	<!-- <script src="resources/js/tabsJs.js"></script> -->
+	<script src="resources/js/tabsJs.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
@@ -288,25 +178,6 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
 	<!-- ADD-ONS JS FILES -->
-	<script type="text/javascript">
-	function page3(idx) {
-		var pagenum = idx;
-		var contentnum = 20;
-		location.href="answerboard.do?pagenum="+pagenum+"&contentnum="+contentnum;
-	}
-	</script>
-		
- 	<script>
-		$(function(){
-			var pagenum = ${page.pagenum};
-			if(pagenum>=5){
-				pagenum=parseInt(pagenum)-4;
-			}
-			$(".page-link").eq(pagenum).css({
-				"background-color":"#3A486E",
-				"color":"white"
-			});
-		});
-	</script> 
+	
 	</body>
 	</html>

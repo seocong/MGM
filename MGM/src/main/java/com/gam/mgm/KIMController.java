@@ -628,7 +628,7 @@ public class KIMController implements ServletContextAware{
 					return "error";
 				}
 			}
-		/*	
+			
 			@RequestMapping(value = "/answerboardReply.do", method = RequestMethod.GET)
 			public String answerboardReplyform(Locale locale,HttpSession session, Model model,int answerboard_seq) {
 				logger.info("문의입력창 이동 {}.", locale);
@@ -640,40 +640,45 @@ public class KIMController implements ServletContextAware{
 				}else {
 					String memberID = memberDto.getMember_id();			
 					model.addAttribute("answerboard_writer",memberID);
+					model.addAttribute("answerboard_seq",answerboard_seq);
 					return "Answer/AnsReplyInsert";
 				}	
 			}
 			
 			@RequestMapping(value = "/ansReplyInsert.do", method = RequestMethod.POST)
-			public String answerboardReply(Locale locale, Model model,HttpServletRequest request,HttpSession session,CommentDto dto) {
-				logger.info("답글 추가하기 {}.", locale);
+			public String answerboardReply(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
+				logger.info("문의답글 추가하기 {}.", locale);
 				
 				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
 				if(memberDto == null) {
 					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
-					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq);
+					model.addAttribute("url","answerboard.do?pagenum=1&contentnum=20");
 					return "Redirect";
 				}else {					
-				String comment_writer = memberDto.getMember_id();
-				String comment_contents = request.getParameter("comment_contents");
-				String comment_group = request.getParameter("comment_group");				
+				String answerboard_writer = request.getParameter("answerboard_writer");
+				String answerboard_title = request.getParameter("answerboard_title");
+				String answerboard_contents = request.getParameter("answerboard_contents");
+				String answerboard_secret = request.getParameter("answerboard_secret");				
+				int seq = Integer.parseInt(request.getParameter("seq"));				
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("comment_group", comment_group);
-				map.put("comment_name", comment_name);
-				map.put("comment_contents", comment_contents);
-				map.put("comment_writer", comment_writer);
-				dto.setComment_writer(comment_writer);
-				boolean isS =  commentService.insertAnsReply(dto);
+				map.put("answerboard_writer", answerboard_writer);
+				map.put("answerboard_title", answerboard_title);
+				map.put("answerboard_contents", answerboard_contents);
+				map.put("answerboard_secret", answerboard_secret);
+				map.put("seq", seq);			
+				boolean isS =  answerService.ansinsertReply(map);
 				if(isS) {
-					System.out.println("board_seq:"+board_seq);
-					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+					return "redirect:answerboard.do?pagenum=1&contentnum=20";
 				}else {
 					
-					return "redirect:detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+comment_name+"&board_seq="+board_seq;
+					return "redirect:answerboard.do?pagenum=1&contentnum=20";
 				}
 				}
-			}*/
-			//위에주석된부분은 무시하세요 일단ㅋㅋㅋ
+			}
+			
+			
+			
+			
 			@RequestMapping(value = "/trainer.do", method = {RequestMethod.GET,RequestMethod.POST})
 			public String ansdelete(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
 				logger.info("조교사 DB저장하기  {}.", locale);
@@ -710,6 +715,7 @@ public class KIMController implements ServletContextAware{
 								trainerDto.setTr_ord1cnty(Integer.valueOf(splitedStr[10]));
 								trainerDto.setTr_ord2cnty(Integer.valueOf(splitedStr[11]));
 								trainerDto.setTr_ord3cnty(Integer.valueOf(splitedStr[12]));
+								trainerDto.setTr_meet(1);
 								boolean isS = trainerService.trInsert(trainerDto);
 								if(isS) {
 									System.out.println("입력되었습니다.");

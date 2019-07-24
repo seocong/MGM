@@ -139,6 +139,7 @@
 									</li>		
 									<li><a href="#"><div  style="font-weight: bold;">정보수정</div></a></li>
 									<li><a href="#"><div  style="font-weight: bold;">회원탈퇴</div></a></li>
+									<li><a href="hrinsert.do"><div  style="font-weight: bold;">임시페이지</div></a></li>
 								</ul>
 							</li>
 							<!-- <li class="#"><a href="#"><div>고객센터</div></a>

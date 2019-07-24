@@ -40,7 +40,16 @@
   </update>
   
   <update id="ansreply" parameterType="int">
-  UPDATE mgm_answerboard SET answerboard_step = answerboard_step+1 WHERE answerboard_group=(select answerboard_group from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_seq= #{answerboard_seq})as D)
-	AND answerboard_step > (select answerboard_step from (SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_seq= #{answerboard_seq})as E); 
+  UPDATE mgm_answerboard SET answerboard_step = answerboard_step+1 WHERE answerboard_group=(select * from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_seq= #{seq})as D)
+	AND answerboard_step > (select * from (SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_seq= #{seq})as E); 
   </update>
+  
+  <insert id="ansreplyinsert" parameterType="Map">
+    		 insert into mgm_answerboard(answerboard_group,answerboard_step,answerboard_depth,answerboard_contents,answerboard_writer,answerboard_title,
+	 answerboard_regdate,answerboard_delflag,answerboard_secret)VALUES
+	    ((select * from(SELECT answerboard_group FROM mgm_answerboard WHERE answerboard_SEQ=#{seq})as C),
+	    (select * from(SELECT answerboard_step FROM mgm_answerboard WHERE answerboard_SEQ=#{seq})as A)+1,
+    	(select * from(SELECT answerboard_depth FROM mgm_answerboard WHERE answerboard_seq=#{seq})as b)+1,
+    	#{answerboard_contents},#{answerboard_writer},#{answerboard_title},now(),'N',#{answerboard_secret})
+    	</insert>
   </mapper>

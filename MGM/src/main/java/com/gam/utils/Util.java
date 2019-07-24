@@ -14,10 +14,10 @@ public class Util {
 		String nbsp="";
 		int depthInt=Integer.parseInt(depth);//int형으로 형변환
 		for (int i = 0; i < depthInt; i++) {
-			nbsp+="&nbsp;&nbsp;&nbsp;";
+			nbsp+="&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 		//조건?true:false--->3항연산자
-		this.arrowNbsp=(depthInt>0?nbsp+"<i class='icon-arrow-right2'></i>":"");
+		this.arrowNbsp=(depthInt>0?nbsp+"<i class='icon-arrow-right2'>RE:</i>":"");
 	}
 	
 	public String getArrowNbsp() {
