@@ -11,6 +11,7 @@ public class MemberDto {
 	private Date member_birth;
 	private String member_phnum;
 	private String member_delflag;
+	
 	private int member_point;
 	private int message_count;
 	private Date member_regdate;
