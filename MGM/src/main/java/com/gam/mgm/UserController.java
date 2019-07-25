@@ -184,10 +184,10 @@ public class UserController {
 		MemberDto userInfo = (MemberDto)session.getAttribute("uid");
 		String id = userInfo.getMember_id();
 		MemberDto member = memberService.myPage(id);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
-		String userBirth = dateFormat.format(member.getMember_birth());
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+//		String userBirth = dateFormat.format(member.getMember_birth());
 		model.addAttribute("userInfo",member);
-		model.addAttribute("userBirth",userBirth);
+//		model.addAttribute("userBirth",userBirth);
 		return "user/userUpdate";
 	}
 }
