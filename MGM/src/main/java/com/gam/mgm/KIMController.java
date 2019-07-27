@@ -690,7 +690,6 @@ public class KIMController implements ServletContextAware{
 				System.out.println(defaultPath);
 				/*File file = new File(defaultPath+"/trainers.txt");*/
 				
-				
 				String[] splitedStr = null;
 				/*InputStream in = null;*/
 				try {
