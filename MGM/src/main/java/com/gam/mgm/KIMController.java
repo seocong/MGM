@@ -697,8 +697,6 @@ public class KIMController implements ServletContextAware{
 				URLConnection urlConn = url.openConnection();
 				InputStream is = urlConn.getInputStream();
 				System.out.println(is);
-				 
-
 
 					/*in = url.openStream();*/
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
