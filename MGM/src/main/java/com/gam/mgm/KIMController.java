@@ -11,6 +11,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -684,15 +688,30 @@ public class KIMController implements ServletContextAware{
 				logger.info("조교사 DB저장하기  {}.", locale);
 				String defaultPath = context.getRealPath("/resources"); //홍민씨 제목부분을 제외한 데이터값만 긁어서 메모장으로 복사 후 저장해서 여기나 혹은 원하는곳에 넣으면 됩니다.혹시몰라 resources 에 넣어놨어요
 				System.out.println(defaultPath);
-				File file = new File(defaultPath+"/trainers.txt");
+				/*File file = new File(defaultPath+"/trainers.txt");*/
+				
+				
 				String[] splitedStr = null;
-				System.out.println(file);
+				/*InputStream in = null;*/
 				try {
-					BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+				URL	url = new URL("http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/trainer/20190725sdb3.txt");
+				URLConnection urlConn = url.openConnection();
+				InputStream is = urlConn.getInputStream();
+				System.out.println(is);
+				 
+
+
+					/*in = url.openStream();*/
+					BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 					System.out.println(reader);
 						String line = null;
 						splitedStr = null;					
 							while ((line = reader.readLine()) != null) {
+								if(line.contains("-")) {
+									System.out.println("나오지마라");
+								}else if(line.contains("조교사명")){
+									System.out.println("너도");
+								}else {
 								splitedStr = null;
 								splitedStr = line.split("\\s+");
 
@@ -703,6 +722,7 @@ public class KIMController implements ServletContextAware{
 							
 								TrainerDto trainerDto = new TrainerDto();
 								trainerDto.setTr_name(splitedStr[0]);
+								System.out.println(splitedStr[0]);
 								trainerDto.setTr_part(Integer.valueOf(splitedStr[1]));
 								trainerDto.setTr_birth(splitedStr[2]);
 								trainerDto.setTr_age(Integer.valueOf(splitedStr[3]));
@@ -721,6 +741,7 @@ public class KIMController implements ServletContextAware{
 									System.out.println("입력되었습니다.");
 								}else {
 									System.out.println("입력실패.");
+								}
 								}
 							}
 							reader.close();
