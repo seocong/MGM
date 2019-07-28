@@ -6,4 +6,6 @@ public interface ITrainerDao {
 
 	public boolean trInsert(TrainerDto trainerDto);
 
+	public boolean trDel();
+
 }

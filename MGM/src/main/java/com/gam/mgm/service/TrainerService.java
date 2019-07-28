@@ -15,4 +15,9 @@ public class TrainerService implements ITrainerService {
 	public boolean trInsert(TrainerDto trainerDto) {
 		return trainerDao.trInsert(trainerDto);
 	}
+
+	@Override
+	public boolean trDel() {
+		return trainerDao.trDel();
+	}
 }

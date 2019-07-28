@@ -23,6 +23,9 @@ public class Util {
 	public String getArrowNbsp() {
 		return arrowNbsp;
 	}
+	public static String isTwo(String s) {
+		return s.length()<2?"0"+s:s;
+	}
 	//문자열 date형식으로 변환
 //	public static Date setToDates(String mDate) throws ParseException {//mDate-->화면으로부터 12자리 문자열을 받게될 파라미터
 //		//date형식: yyyy-MM-dd hh:mm:ss---> 날짜형식으로 변환하려면 date형식으로 모양을 바꿔줘야한다.

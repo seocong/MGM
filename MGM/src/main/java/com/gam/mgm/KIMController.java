@@ -36,6 +36,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,8 +56,7 @@ import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.ICommentService;
 import com.gam.mgm.service.ITrainerService;
 
-import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
+
 /**
  * Handles requests for the application home page.
  */
@@ -680,25 +680,26 @@ public class KIMController implements ServletContextAware{
 				}
 			}
 			
+			/*
 			
 			
 			
 			@RequestMapping(value = "/trainer.do", method = {RequestMethod.GET,RequestMethod.POST})
-			public String ansdelete(Locale locale, Model model,HttpSession session,HttpServletRequest request) {
+			public void trainer(Locale locale, Model model,String yyyyMMdd) {
 				logger.info("조교사 DB저장하기  {}.", locale);
 				String defaultPath = context.getRealPath("/resources"); //홍민씨 제목부분을 제외한 데이터값만 긁어서 메모장으로 복사 후 저장해서 여기나 혹은 원하는곳에 넣으면 됩니다.혹시몰라 resources 에 넣어놨어요
 				System.out.println(defaultPath);
-				/*File file = new File(defaultPath+"/trainers.txt");*/
+				File file = new File(defaultPath+"/trainers.txt");
 				
 				String[] splitedStr = null;
-				/*InputStream in = null;*/
+				InputStream in = null;
 				try {
 				URL	url = new URL("http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/trainer/20190725sdb3.txt");
 				URLConnection urlConn = url.openConnection();
 				InputStream is = urlConn.getInputStream();
 				System.out.println(is);
 
-					/*in = url.openStream();*/
+					in = url.openStream();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 					System.out.println(reader);
 						String line = null;
@@ -748,8 +749,8 @@ public class KIMController implements ServletContextAware{
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-				return "Main2";				
-			}
+					
+			}*/
 			
 			
 }

@@ -17,4 +17,10 @@ public class TrainerDao implements ITrainerDao {
 		int cnt = sqlSession.insert(namespace+"trinsert", trainerDto);
 		return cnt>0?true:false;
 	}
+
+	@Override
+	public boolean trDel() {
+		int cnt = sqlSession.insert(namespace+"trdel");
+		return cnt>0?true:false;
+	}
 }
