@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gam.race">
+	<insert id="schInsert" parameterType="Map">
+		INSERT INTO RACE_SCHEDULE
+		VALUES
+		<foreach collection="schedulelist" item="list" separator=",">
+			(#{list.rcDate},#{list.rcNo},#{list.ilsu},#{list.meet},#{list.schStTime},#{list.rank},#{list.rcDist},#{list.budam},#{list.rcName},#{list.ageCond},#{list.chaksun1},#{list.chaksun2},#{list.chaksun3},#{list.chaksun4},#{list.chaksun5})
+		</foreach>
+	</insert>
+	
+	<delete id="scheduleAllDel">
+		TRUNCATE RACE_SCHEDULE
+	</delete>
+</mapper>
