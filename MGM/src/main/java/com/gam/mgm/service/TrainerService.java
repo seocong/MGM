@@ -33,4 +33,9 @@ public class TrainerService implements ITrainerService {
 	public List<ChampionDto> getChampionList(String tr_name){
 		return trainerDao.getChampionList(tr_name);
 	}
+
+	@Override
+	public TrainerDto getJokyo(String tr_name) {
+		return trainerDao.getJokyo(tr_name);
+	}
 }

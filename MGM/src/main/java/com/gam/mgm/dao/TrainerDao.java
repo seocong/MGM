@@ -37,4 +37,9 @@ public class TrainerDao implements ITrainerDao {
 	public List<ChampionDto> getChampionList(String tr_name){
 		return sqlSession.selectList(namespace+"trChampionList",tr_name);
 	}
+
+	@Override
+	public TrainerDto getJokyo(String tr_name) {
+		return sqlSession.selectOne(namespace+"getjokyo", tr_name);
+	}
 }

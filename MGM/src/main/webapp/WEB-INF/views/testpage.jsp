@@ -8,7 +8,7 @@
 <title>testtest</title>
 </head>
 <body>
-	<c:forEach items="${list}" var="champList">
+	<c:forEach items="${champList}" var="champList">
 		<table>
 			<tr>
 				<td>${champList.rc_date}</td>

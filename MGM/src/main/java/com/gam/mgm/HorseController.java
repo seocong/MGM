@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.service.ITrainerService;
 
@@ -35,7 +37,16 @@ public class HorseController {
 		return "HorseInfo/JokyoInfo";
 	}
 	
-	
+	@RequestMapping(value="/jokyoDetail.do",method=RequestMethod.GET)
+	public String ChampionList(Locale locale, HttpServletRequest request,Model model){
+		System.out.println(request.getParameter("tr_name"));
+		String tr_name=request.getParameter("tr_name");
+		TrainerDto trDto = trainerService.getJokyo(tr_name);		
+		/*List<ChampionDto> list = trainerService.getChampionList(tr_name);*/
+		model.addAttribute("trDto",trDto);
+		/*model.addAttribute("champList",list);*/
+		return "testpage";
+	}
 	
 	
 }

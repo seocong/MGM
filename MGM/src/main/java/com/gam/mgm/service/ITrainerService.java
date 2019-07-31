@@ -14,4 +14,6 @@ public interface ITrainerService {
 	public List<TrainerDto> getAllList(int tr_meet);
 	
 	public List<ChampionDto> getChampionList(String tr_name);
+
+	public TrainerDto getJokyo(String tr_name);
 }

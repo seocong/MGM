@@ -20,4 +20,9 @@
 	<select id="trChampionList" parameterType="String" resultType="ChampionDto">
 		select rc_name, rc_date, hr_name from champion where tr_name=#{tr_name}
 	</select>
+	
+	<select id="getjokyo" parameterType="String" resultType="TrainerDto">
+		select tr_name,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
+		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet from trainers where tr_meet = #{tr_meet}
+	</select>
 </mapper>
