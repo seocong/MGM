@@ -16,6 +16,7 @@
         <typeAlias type="com.gam.mgm.dto.CommentDto" alias="CommentDto"/>
         <typeAlias type="com.gam.mgm.dto.TrainerDto" alias="TrainerDto"/>
  		<typeAlias type="com.gam.mgm.vo.RaceScheduleVo" alias="RaceScheduleVo" />
+ 		<typeAlias type="com.gam.mgm.dto.ChampionDto" alias="ChampionDto" />
      </typeAliases>
      
   <mappers>

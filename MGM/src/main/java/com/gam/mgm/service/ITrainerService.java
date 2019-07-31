@@ -2,6 +2,7 @@ package com.gam.mgm.service;
 
 import java.util.List;
 
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.TrainerDto;
 
 public interface ITrainerService {
@@ -12,4 +13,5 @@ public interface ITrainerService {
 
 	public List<TrainerDto> getAllList(int tr_meet);
 	
+	public List<ChampionDto> getChampionList(String tr_name);
 }

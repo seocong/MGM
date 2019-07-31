@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.ITrainerDao;
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.TrainerDto;
 
 @Service
@@ -26,5 +27,10 @@ public class TrainerService implements ITrainerService {
 	@Override
 	public List<TrainerDto> getAllList(int tr_meet) {
 		return trainerDao.getAllList(tr_meet);
+	}
+	
+	@Override
+	public List<ChampionDto> getChampionList(String tr_name){
+		return trainerDao.getChampionList(tr_name);
 	}
 }
