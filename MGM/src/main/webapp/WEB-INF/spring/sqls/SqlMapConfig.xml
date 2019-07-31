@@ -15,8 +15,9 @@
         <typeAlias type="com.gam.mgm.dto.PointDto" alias="PointDto"/>
         <typeAlias type="com.gam.mgm.dto.CommentDto" alias="CommentDto"/>
         <typeAlias type="com.gam.mgm.dto.TrainerDto" alias="TrainerDto"/>
- 		<typeAlias type="com.gam.mgm.dto.TrainerDto" alias="RacePlanitemDto"/>
+ 		<typeAlias type="com.gam.mgm.vo.RaceScheduleVo" alias="RaceScheduleVo" />
      </typeAliases>
+     
   <mappers>
      
      <mapper resource="/sqls/Answer_mapper.xml" />
@@ -28,7 +29,7 @@
      <mapper resource="/sqls/Point_mapper.xml" />
      <mapper resource="/sqls/Comment_mapper.xml" />
      <mapper resource="/sqls/Trainer_mapper.xml" />
-     <mapper resource="/sqls/Raceplan_mapper.xml" />
+     <mapper resource="/sqls/RaceInfo_mapper.xml" />
   </mappers>
   
   
