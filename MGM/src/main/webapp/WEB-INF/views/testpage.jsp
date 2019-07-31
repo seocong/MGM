@@ -11,9 +11,9 @@
 	<c:forEach items="${list}" var="champList">
 		<table>
 			<tr>
-				<td>${list.rc_date}</td>
-				<td>${list.rc_name}</td>
-				<td>${list.hr_name}</td>
+				<td>${champList.rc_date}</td>
+				<td>${champList.rc_name}</td>
+				<td>${champList.hr_name}</td>
 			</tr>
 		</table>
 	</c:forEach>
