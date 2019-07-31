@@ -112,7 +112,7 @@ public class Util {
 	
 	public static String round(int x,int y){
 		
-		double total =  (x/y)*100;
+		double total =  ((double)x/(double)y)*100;
 		String val = String.format("%.2f", total);
 		val=val+"%";
 		return val;

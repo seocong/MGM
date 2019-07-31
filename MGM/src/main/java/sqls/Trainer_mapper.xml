@@ -23,6 +23,6 @@
 	
 	<select id="getjokyo" parameterType="String" resultType="TrainerDto">
 		select tr_name,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
-		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet from trainers where tr_meet = #{tr_meet}
+		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet from trainers where tr_name = #{tr_name}
 	</select>
 </mapper>
