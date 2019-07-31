@@ -1,23 +1,12 @@
 package com.gam.mgm;
 
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -36,12 +25,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.context.ServletContextAware;
 
@@ -49,12 +36,11 @@ import com.gam.mgm.dto.AnswerDto;
 import com.gam.mgm.dto.BoardDto;
 import com.gam.mgm.dto.CommentDto;
 import com.gam.mgm.dto.MemberDto;
-import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.ICommentService;
-import com.gam.mgm.service.ITrainerService;
+
 
 
 /**
@@ -72,8 +58,6 @@ public class KIMController implements ServletContextAware{
 	private IAnswerService answerService;
 	@Autowired
 	private ICommentService commentService;
-	@Autowired
-	private ITrainerService trainerService;
 	
 	@Override
 	public void setServletContext(ServletContext servletContext) {
@@ -698,7 +682,6 @@ public class KIMController implements ServletContextAware{
 				URLConnection urlConn = url.openConnection();
 				InputStream is = urlConn.getInputStream();
 				System.out.println(is);
-
 					in = url.openStream();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 					System.out.println(reader);

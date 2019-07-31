@@ -1,5 +1,7 @@
 package com.gam.mgm.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,8 +21,13 @@ public class TrainerDao implements ITrainerDao {
 	}
 
 	@Override
-	public boolean trDel() {
-		int cnt = sqlSession.insert(namespace+"trdel");
+	public boolean trDel(int tr_meet) {
+		int cnt = sqlSession.insert(namespace+"trdel",tr_meet);
 		return cnt>0?true:false;
+	}
+
+	@Override
+	public List<TrainerDto> getAllList(int tr_meet) {
+		return sqlSession.selectList(namespace+"getList",tr_meet);
 	}
 }

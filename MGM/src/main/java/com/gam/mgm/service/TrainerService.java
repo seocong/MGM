@@ -1,5 +1,7 @@
 package com.gam.mgm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,12 @@ public class TrainerService implements ITrainerService {
 	}
 
 	@Override
-	public boolean trDel() {
-		return trainerDao.trDel();
+	public boolean trDel(int tr_meet) {
+		return trainerDao.trDel(tr_meet);
+	}
+
+	@Override
+	public List<TrainerDto> getAllList(int tr_meet) {
+		return trainerDao.getAllList(tr_meet);
 	}
 }

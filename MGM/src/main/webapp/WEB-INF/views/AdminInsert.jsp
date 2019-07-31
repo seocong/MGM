@@ -124,12 +124,7 @@
 						<!-- Posts Area
 						============================================= -->
 						<div class="col-lg-9">
-						
-						<form action="trainer.do">
-						<input type="file" name="text">
-						<input type="text" name="meet">
-						<button class="button button-3d nomargin" type="submit" value="submit">작성 완료</button>
-						</form>
+					
 					
 						
 						<div class="line"></div>

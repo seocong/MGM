@@ -13,6 +13,16 @@ $(function() {
 				$("#tabgame").addClass('current');
 			}		
 });
+$(function() {
+	var tr_meet = $("#tr_meet").attr("data-tr_meet");
+	if(tr_meet == 1){
+		$("#tabseoul").addClass('current');
+	}else if(tr_meet == 2){
+		$("#tabjeju").addClass('current');
+	}else if(tr_meet == 3){
+		$("#tabbusan").addClass('current');
+	}	
+});
 
 function page(idx) {
 	var pagenum = idx;

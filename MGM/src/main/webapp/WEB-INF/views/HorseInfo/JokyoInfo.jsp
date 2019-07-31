@@ -91,7 +91,7 @@
 		background-color:#F2F2F2;
 		}
 	</style>
-
+	
 
 </head>
 
@@ -167,146 +167,149 @@
 						<!-- Posts Area
 						============================================= -->
 						<div class="col-lg-9">
-						
-						
-						
-							<div class="row clearfix"> 
-						<!-- <div class="fancy-title title-dotted-border">
-						
-						</div> -->
-						
-								<!-- board name을 div에 불러옴 , script에서 받음 -->
-								<div id="board_name" data-board_name = "${board_name}" ></div>
+
+							
+							<div class="row clearfix">
+							<div id="tr_meet" data-tr_meet = "${tr_meet}" ></div>	
 								<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 커뮤니티</h4>
-									<div class="line line-xs line-sports"></div>									
-
-						<div id="container" >
-							
-							
-							<ul class="tab">
-								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" > 공지게시판</a></li>
-								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free" > 자유게시판</a></li>
-								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=fun" > 유머게시판</a></li>
-								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=game" > 게임게시판</a></li>
-							</ul>
-
-							<div >
-								<div class="tabcontent" id="tab4">
-									<div >
-							<table class="table table-striped">
-							<col width="50px"><col width="300px"><col width="100px"><col width="150px"><col width="60px"><col width="50px">
-								<thead>
-								  <tr style="text-align: center;">
-									<th>번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회수</th>
-									<th>추천</th>
-								  </tr>
-								</thead>
+								<MARQUEE DIRECTION=LEFT>여러분~~정보가 일단 잘 오는지 확인중입니다 ^^ 신경쓰지 마세요. </MARQUEE>
+								<table class="allmargin">
+								<col width="120px">
+								<col width="120px">
+								<col width="120px">
+								<col width="110px">
+								<col width="120px">
+								<col width="110px">
+								<col width="130px">
+								<col width="120px">
 								
-								<tbody>
-								  <c:choose>
-									<c:when test="${empty list}"><!-- empty  null인지 확인 -->
-										<tr><td colspan = "10">---작성된 글이 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="boardDto">
-										<tr>
-					
-												<td  style="text-align: center;">${boardDto.board_group}</td>
-									<c:choose>
-						<c:when test="${boardDto.board_delflag=='Y'}">
-							<td>---삭제된 글입니다.---</td>
-						</c:when>
-						<c:otherwise>    
-					        <td  style="text-align: center;">
-					        <a href="detail.do?board_seq=${boardDto.board_seq}&pagenum=${page.pagenum+1}&contentnum=20&board_name=${boardDto.board_name}">${boardDto.board_title}
-					         <c:if test="${boardDto.board_replyCnt > 0}"><span class="text-warning">[${boardDto.board_replyCnt}]</span></c:if></a>
-					        </td>				            									
-						</c:otherwise>
-					</c:choose>
-					<td  style="text-align: center;">${boardDto.board_writer}</td>				
-					<td  style="text-align: center;"> <fmt:formatDate value="${boardDto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
-					<td  style="text-align: center;">${boardDto.board_readcount}</td>	
-					<td  style="text-align: center;">${boardDto.board_pushnum}</td>				
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>	
-			   
-								</tbody>
-							<tr>
-   <td colspan="5">
-   		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
-   	<c:if test="${page.prev}">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-   	</c:if>
-   	<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
-   		<li class="page-item"><a class="page-link" href="javascript:page(${idx});">${idx}</a></li>
-   	</c:forEach>
-   <c:if test="${page.next }">
-   		 <li class="page-item"><a class="page-link" href="javascript:page(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-   	</c:if>
- 		</ul>
-        </td>
-        <td>
-				<div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <input type="button" value="글쓰기" onclick="location.href='insertform.do?board_name=${board_name}'">
-                </div>
-              </div>
-	
-        
-        </td>
-	</tr>
-	</table>
-						</div>	
-									
+								
+								<tr>
+									<td style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
+									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
+									<td style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
+								</tr>
+								</table>
+								
+								
+								
+								
+									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
+										<span class="text-warning"><i class="icon-user-friends"></i></span>
+										조교사정보<span style="font-size: 60%;">조교사 전적 및 승률 정보</span>
+									</h4>
+									<div class="line line-xs line-sports"></div>
+
+									<div id="container" class="nomargin">
+
+
+										<ul class="tab">
+											<li id="tabseoul"><a href="jokyoInfo.do?tr_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="jokyoInfo.do?tr_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="jokyoInfo.do?tr_meet=2"> 제주경마</a></li>
+										</ul>
+
+										<div>
+											<div class="tabcontent">
+												<div>
+													<table class="table table-bordered table-striped">
+														
+														 <col width="100px">
+														<col width="100px">
+														<col width="100px">
+														<col width="110px">
+														<col width="150px">
+														<col width="150px"> 
+														
+														
+														<thead>
+															<tr style="text-align: center;">
+																
+																<th>조교사명</th>
+																<th>소속조</th>
+																<th>나이</th>
+																<th>데뷔일자</th>
+																<th>최근1년전적</th>
+																<th>통산전적</th>
+															</tr>
+														</thead>
+
+														<tbody>
+
+															<c:forEach items="${list}" var="trDto">
+																<tr>
+																	<td style="text-align: center;"><a href="#">${trDto.tr_name}</a></td>
+																	<td style="text-align: center;"><a href="#">${trDto.tr_part}</a></td>
+																	<td style="text-align: center;">${trDto.tr_age}</td>
+																	<td style="text-align: center;">${trDto.tr_stdate}</td>
+																	<td style="text-align: center;">${trDto.tr_rccnty}(${trDto.tr_ord1cnty}/${trDto.tr_ord2cnty})</td>
+																	<td style="text-align: center;">${trDto.tr_rccntt}(${trDto.tr_ord1cntt}/${trDto.tr_ord2cntt})</td>
+																</tr>
+															</c:forEach>
+
+
+														</tbody>
+
+													</table>
+												</div>
+
+											</div>
+
+
+										</div>
+
+									</div>
 								</div>
-								
 
+
+
+
+								<!-- Ad
+							============================================= -->
+								<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
+
+
+
+
+								<!-- Articles
+							============================================= -->
+								
 							</div>
 
-						</div>
-								</div>
 
-								
-								
-								
-							<!-- Ad
-							============================================= -->
-							<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
-							
-							
-							
-							
-							<!-- Articles
-							============================================= -->
-						
-						</div>
-						
-						
-						
-					
-										
-										
-										
-						
-						<div class="line"></div>
-						
-	
-						
 
-						<!-- Top Sidebar Area
-						============================================= -->
-						
-					
-						
-					<!-- Sidebar End -->
-					</div>                                                              <!-- 본문내용끝 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							<div class="line"></div>
+
+
+
+
+
+
+
+
+
+						</div>
+						<!-- 본문내용끝 -->
 				</div> <!-- Container End -->
 				</div>
 				
@@ -329,6 +332,7 @@
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
 	<script src="resources/js/tabsJs.js"></script>
+
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
@@ -346,33 +350,22 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-	<script>
-		$(function(){
-			var pagenum = ${page.pagenum};
-			if(pagenum>=5){
-				pagenum=parseInt(pagenum)-4;
-			}
-			$(".page-link").eq(pagenum).css({
-				"background-color":"#3A486E",
-				"color":"white"
-			});
-		});
-	</script> 
-	
-	<!--<script>
-	$(function(){
-		var boardname = $("#boardname").attr("data-boardname");
-		if(boardname == "free"){
-			$("#freeboard").trigger("click");
-		}else if(boardname == "fun"){
-			$("#funboard").trigger("click");
-		}else if(boardname == "alert"){
-			$("#alertboard").trigger("click");
-		}else if(boardname == "game"){
-			$("#gameboard").trigger("click");
-		}
-	});
-	</script>-->
 
+	<!-- ADD-ONS JS FILES -->
+	<script>
+	$(function() {
+		var tr_meet = $("#tr_meet").attr("data-tr_meet");
+		if(tr_meet == 1){
+			$("#tabseoul").addClass('current');
+		}else if(tr_meet == 2){
+			$("#tabjeju").addClass('current');
+		}else if(tr_meet == 3){
+			$("#tabbusan").addClass('current');
+		}	
+	});
+
+		</script>
+		
+ 	
 	</body>
 	</html>
