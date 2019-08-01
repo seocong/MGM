@@ -173,25 +173,25 @@
 								<div class="col-md-12 mt-5">
 								<MARQUEE DIRECTION=LEFT>여러분~~정보가 일단 잘 오는지 확인중입니다 ^^ 신경쓰지 마세요. </MARQUEE>
 								<table class="allmargin">
-								<col width="120px">
+								<%-- <col width="120px">
 								<col width="120px">
 								<col width="120px">
 								<col width="110px">
 								<col width="120px">
 								<col width="110px">
 								<col width="130px">
-								<col width="120px">
+								<col width="120px"> --%>
 								
 								
 								<tr>
-									<td style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
-									<td style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
+									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
+									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
+									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
 								</tr>
 								</table>
 								
@@ -218,23 +218,23 @@
 												<div>
 													<table class="table table-bordered table-striped">
 														
-														 <col width="100px">
+														<%--  <col width="100px">
 														<col width="100px">
 														<col width="100px">
 														<col width="110px">
 														<col width="150px">
-														<col width="150px"> 
+														<col width="150px">  --%>
 														
 														
 														<thead>
 															<tr style="text-align: center;">
 																
-																<th>조교사명</th>
-																<th>소속조</th>
-																<th>나이</th>
-																<th>데뷔일자</th>
-																<th>최근1년전적</th>
-																<th>통산전적</th>
+																<th width="15%">조교사명</th>
+																<th width="15%">소속조</th>
+																<th width="15%">나이</th>
+																<th width="15%">데뷔일자</th>
+																<th width="20%">최근1년전적</th>
+																<th width="20%">통산전적</th>
 															</tr>
 														</thead>
 
