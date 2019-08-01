@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gam.horses">
+	<insert id="hrinsert" parameterType="HorsesDto">
+		INSERT INTO HORSES
+		(hr_htName,hr_name,hr_sex,hr_birthday,hr_age,hr_rank,hr_part,hr_trName,hr_owName,hr_meet) 
+		VALUES
+		(#{hr_htName},#{hr_name},#{hr_sex},#{hr_birthday},#{hr_age},#{hr_rank},#{hr_part},#{hr_trName},#{hr_owName},#{hr_meet})
+	</insert>
+	<delete id="hrdel" parameterType="int">
+		delete from horses where hr_meet = #{hr_meet}
+	</delete>
+	
+	<select id="getList" parameterType="int" resultType="HorsesDto">
+		select hr_name,hr_part,hr_age,hr_stdate,hr_rccntt,hr_ord1cntt,hr_ord2cntt,hr_rccnty,hr_ord1cnty,hr_ord2cnty from hrainers where hr_meet = #{hr_meet}
+	</select>
+</mapper>

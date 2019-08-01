@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gam.jockey">
+	<insert id="jkinsert" parameterType="JockeyDto">
+		INSERT INTO jockey 
+		(jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet)
+		VALUES
+		(#{jk_name},#{jk_part},#{jk_birthday},#{jk_age},#{jk_debut},#{jk_wgPart},#{jk_wgOther},#{jk_rcCntT},#{jk_ord1CntT},#{jk_ord2CntT},#{jk_ord3CntT},#{jk_rcCntY},#{jk_ord1CntY},#{jk_ord2CntY},#{jk_ord3CntY},#{jk_meet})
+	</insert>
+	<delete id="jkdel" parameterType="int">
+		DELETE FROM JOCKEY WHERE JK_MEET = #{jk_meet}
+	</delete>
+	
+	<select id="getList" parameterType="int" resultType="JockeyDto">
+		select hr_name,hr_part,hr_age,hr_stdate,hr_rccntt,hr_ord1cntt,hr_ord2cntt,hr_rccnty,hr_ord1cnty,hr_ord2cnty from hrainers where hr_meet = #{hr_meet}
+	</select>
+</mapper>

@@ -24,7 +24,7 @@ public class TrainerDao implements ITrainerDao {
 
 	@Override
 	public boolean trDel(int tr_meet) {
-		int cnt = sqlSession.insert(namespace+"trdel",tr_meet);
+		int cnt = sqlSession.delete(namespace+"trdel",tr_meet);
 		return cnt>0?true:false;
 	}
 
