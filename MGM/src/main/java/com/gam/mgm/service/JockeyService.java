@@ -27,4 +27,9 @@ public class JockeyService implements IJockeyService{
 		return jokeyDao.getAllList(jk_meet);
 	}
 
+	@Override
+	public JockeyDto getKisu(String jk_name) {
+		return jokeyDao.getKisu(jk_name);
+	}
+
 }

@@ -180,7 +180,7 @@
 									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
-									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
 									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
 									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
@@ -193,7 +193,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										조교사정보<span style="font-size: 60%;">조교사 전적 및 승률 정보</span>
+										경주마정보<span style="font-size: 60%;">경주마 전적 및 승률 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -232,10 +232,10 @@
 													<table class="table table-bordered">
 														<tbody>
 																<tr>
-																	<td style="text-align: center;"rowspan="2">구분</td>
-																	<td style="text-align: center;" colspan="6">외산마</td>
-																	<td style="text-align: center;" colspan="8">국산마</td>
-																	<td style="text-align: center;" rowspan="2">합계</td>													
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="6">외산마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="8">국산마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
 																</tr>
 																<tr>
 																	<td style="text-align: center;">1급</td>
@@ -255,19 +255,19 @@
 																</tr>
 																<tr>
 																	<td style="text-align: center;">두수</td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외1"></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
 																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
+																	<td style="text-align: center;"><a href=""></a></td>
 																	<td style="text-align: center;"></td>
 																	<td style="text-align: center;"></td>
 																</tr>
@@ -349,10 +349,13 @@
 		var hr_meet = $("#hr_meet").attr("data-hr_meet");
 		if(hr_meet == 1){
 			$("#tabseoul").addClass('current');
+			$(".titleColor").css("background-color","#fbeae6");
 		}else if(hr_meet == 2){
 			$("#tabjeju").addClass('current');
+			$(".titleColor").css("background-color","#ecf5f9");
 		}else if(hr_meet == 3){
 			$("#tabbusan").addClass('current');
+			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
 

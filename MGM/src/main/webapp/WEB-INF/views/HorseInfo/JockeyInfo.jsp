@@ -171,7 +171,7 @@
 							<div class="row clearfix">
 							<div id="jk_meet" data-jk_meet = "${jk_meet}" ></div>	
 								<div class="col-md-12 mt-5">
-								<MARQUEE DIRECTION=LEFT>여러분~~정보가 일단 잘 오는지 확인중입니다 ^^ 신경쓰지 마세요. </MARQUEE>
+						
 								<table class="allmargin">
 								<%-- <col width="120px">
 								<col width="120px">
@@ -200,7 +200,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										조교사정보<span style="font-size: 60%;">조교사 전적 및 승률 정보</span>
+										기수정보<span style="font-size: 60%;">기수 전적 및 승률 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -227,7 +227,7 @@
 														
 														
 														<thead>
-															<tr style="text-align: center;">
+															<tr class="titleColor" style="text-align: center; ">
 																
 																<th width="15%">기수명</th>
 																<th width="13%">소속조</th>
@@ -243,7 +243,7 @@
 
 															<c:forEach items="${list}" var="jkDto">
 																<tr>
-																	<td style="text-align: center;"><a href="jokyoDetail.do?tr_name=${jkDto.jk_name}">${jkDto.jk_name}</a></td>
+																	<td style="text-align: center;"><a href="jockeyDetail.do?jk_name=${jkDto.jk_name}">${jkDto.jk_name}</a></td>
 																	<td style="text-align: center;">${jkDto.jk_part}</td>
 																	<td style="text-align: center;">${jkDto.jk_age}</td>
 																	<td style="text-align: center;">${jkDto.jk_debut}</td>
@@ -358,13 +358,16 @@
 		var jk_meet = $("#jk_meet").attr("data-jk_meet");
 		if(jk_meet == 1){
 			$("#tabseoul").addClass('current');
+			$(".titleColor").css("background-color","#fbeae6");
 		}else if(jk_meet == 2){
 			$("#tabjeju").addClass('current');
+			$(".titleColor").css("background-color","#ecf5f9");
 		}else if(jk_meet == 3){
 			$("#tabbusan").addClass('current');
+			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
-
+	
 		</script>
 		
  	

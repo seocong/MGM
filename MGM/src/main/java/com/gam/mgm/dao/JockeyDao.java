@@ -31,4 +31,9 @@ public class JockeyDao implements IJockeyDao{
 		return sqlSession.selectList(namespace+"getList",jk_meet);
 	}
 
+	@Override
+	public JockeyDto getKisu(String jk_name) {		
+		return sqlSession.selectOne(namespace+"getkisu", jk_name);
+	}
+
 }

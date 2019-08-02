@@ -172,7 +172,7 @@
 
 							
 							<div class="row clearfix">
-							<div id="tr_meet" data-tr_meet = "${tr_meet}" ></div>	
+							<div id="jk_meet" data-jk_meet = "${jk_meet}" ></div>	
 								<div class="col-md-12 mt-5">
 								
 								<table class="allmargin">
@@ -203,54 +203,58 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										조교사정보<span style="font-size: 60%;">조교사 전적 및 승률 정보</span>
+										기수정보<span style="font-size: 60%;">기수 전적 및 승률 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
 									<div id="container" class="nomargin">
 
 
-										<ul class="tab">
-											<li id="tabseoul"><a href="jokyoInfo.do?tr_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="jokyoInfo.do?tr_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="jokyoInfo.do?tr_meet=2"> 제주경마</a></li>
+										<ul class="tab" style="border-bottom: solid #DDD 1px;">
+											<li id="tabseoul"><a href="jockeyInfo.do?jk_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="jockeyInfo.do?jk_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="jockeyInfo.do?jk_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
 												<div>
-													<table class="table table-bordered" style=" ">
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>기수 프로필</h4>
+													<table class="table table-bordered" >
 														
-														 <col width="100px">
+														<%--  <col width="100px">
 														<col width="140px">
 														<col width="140px">
 														<col width="140px">
-														<col width="140px">
+														<col width="140px"> --%>
 
 														<tbody>
 
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/trainer/070175.jpg"></td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px; background-color: #fbeae6;">성명</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_name}</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">소속조</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_part}</td>
+																	<td style="text-align: center;padding: 0px;" rowspan="4" width="11%"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577.jpg"></td>
+																	<td class="titleColor" style="text-align: center;padding: 0px;" width="19%">성명</td>
+																	<td style="text-align: center;padding: 0px;" width="19%">${jkDto.jk_name}</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;" width="19%">소속조</td>
+																	<td style="text-align: center;padding: 0px;" width="19%">${jkDto.jk_part}</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;" width="12%">복색</td>
 																</tr>
 																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">생년월일</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_birth}(${trDto.tr_age}세)</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">데뷔날짜</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_stdate}</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;">생년월일</td>
+																	<td style="text-align: center;padding: 0px;">${jkDto.jk_birthday}(${jkDto.jk_age}세)</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;">데뷔날짜</td>
+																	<td style="text-align: center;padding: 0px;">${jkDto.jk_debut}</td>
+																	<td style="text-align: center;padding: 0px;" rowspan="3"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577a.jpg"></td>
 																</tr>
 																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">통산전적</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_rccntt}전(${trDto.tr_ord1cntt}/${trDto.tr_ord2cntt})</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;">통산전적</td>
+																	<td style="text-align: center;padding: 0px;">${jkDto.jk_rcCntT}전(${jkDto.jk_ord1CntT}/${jkDto.jk_ord2CntT})</td>
 																	<td style="text-align: center;padding: 0px;">승률 : ${totalWin}</td>
 																	<td style="text-align: center;padding: 0px;">복승률 : ${pass}</td>
 																</tr>
 																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">최근1년</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_rccnty}전(${trDto.tr_ord1cnty}/${trDto.tr_ord2cnty})</td>
+																	<td class="titleColor"  style="text-align: center;padding: 0px;">최근1년</td>
+																	<td style="text-align: center;padding: 0px;">${jkDto.jk_rcCntY}전(${jkDto.jk_ord1CntY}/${jkDto.jk_ord2CntY})</td>
 																	<td style="text-align: center;padding: 0px;">승률 : ${yearWin}</td>
 																	<td style="text-align: center;padding: 0px;">복승률 : ${yearPass}</td>
 																</tr>
@@ -264,8 +268,8 @@
 											<div class="tabs tabs-responsive clearfix">
 
 							<ul class="tab-nav clearfix">
-								<li><a href="#tab-responsive-1">전적 및 상금</a></li>
-								<li><a href="#tab-responsive-2">위탁관리 마필 현황</a></li>
+								<li><a href="#tab-responsive-1">최근6개월 전적</a></li>
+								<li><a href="#tab-responsive-2">년도별월별성적</a></li>								
 							</ul>
 							
 							
@@ -274,7 +278,7 @@
 								<div class="tab-content clearfix" id="tab-responsive-1">
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
-										최근 6개월간 소속조 마필기승 기수 성적
+										최근 6개월간 마필기승 내역
 									</h4>
 									<table class="table table-bordered ">
 										<thead>
@@ -285,7 +289,7 @@
 											<th width="9%">등급</th>
 											<th width="8%">거리</th>
 											<th width="24%">경마종류</th>
-											<th width="10%">기수명</th>
+											<th width="10%">조교사</th>
 											<th width="10%">마주</th>
 											</tr>
 										</thead>
@@ -307,6 +311,7 @@
 														<td></td>
 													</tr>
 												</c:forEach>
+												
 											</c:otherwise>
 											</c:choose>
 										</tbody>
@@ -316,20 +321,19 @@
 									<table class="table table-bordered ">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
-											<th width="15%">마명</th>
-											<th width="15%">마주</th>
-											<th width="10%">산지</th>
-											<th width="10%">성별</th>
-											<th width="10%">연령</th>
-											<th width="10%">소속군</th>
-											<th width="15%">전적</th>
-											<th width="15%">데뷔일자</th>
+											<th width="10%">년도</th>
+											<th width="18%">출추횟수</th>
+											<th width="18%">1착횟수</th>
+											<th width="18%">2착횟수</th>
+											<th width="18%">승률</th>
+											<th width="18%">복승률</th>
+											
 											</tr>
 										</thead>
 										<tbody>
 											<c:choose>
 									<c:when test="${empty list}">
-										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
+										<tr><td colspan = "6">---전적 및 정보가 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach items="${hrList}" var="hrList">
@@ -339,11 +343,17 @@
 														<td></td>
 														<td></td>
 														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td></td>														
 													</tr>
 												</c:forEach>
+												<tr>
+													<td>합계</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>	
+												</tr>
 											</c:otherwise>
 											</c:choose>
 										</tbody>
@@ -416,14 +426,14 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var tr_meet = $("#tr_meet").attr("data-tr_meet");
-		if(tr_meet == 1){
+		var jk_meet = $("#jk_meet").attr("data-jk_meet");
+		if(jk_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(tr_meet == 2){
+		}else if(jk_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(tr_meet == 3){
+		}else if(jk_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
