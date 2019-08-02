@@ -90,6 +90,9 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
+		/* #tableSt td{
+			text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;
+		} */
 	</style>
 	
 
@@ -173,25 +176,25 @@
 								<div class="col-md-12 mt-5">
 								
 								<table class="allmargin">
-								<col width="120px">
+								<%-- <col width="120px">
 								<col width="120px">
 								<col width="120px">
 								<col width="110px">
 								<col width="120px">
 								<col width="110px">
 								<col width="130px">
-								<col width="120px">
+								<col width="120px"> --%>
 								
 								
-								<tr>
-									<td style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
-									<td style="text-align: center;border-right : solid 2px #DDD;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
-									<td style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
+								<tr id="tableSt">
+									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
+									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
+									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
 								</tr>
 								</table>
 								

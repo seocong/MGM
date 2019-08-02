@@ -39,7 +39,7 @@ public class HorseController {
 	}
 	
 	@RequestMapping(value="/jokyoDetail.do",method=RequestMethod.GET)
-	public String ChampionList(Locale locale, HttpServletRequest request,Model model){
+	public String jokyoDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("조교사상세정보", locale);	
 		System.out.println("tr_name:"+request.getParameter("tr_name"));
 		String tr_name=request.getParameter("tr_name");
@@ -72,6 +72,12 @@ public class HorseController {
 		return "HorseInfo/JokyoDetail";
 	}
 	
-	
+	@RequestMapping(value="/horseInfo.do",method=RequestMethod.GET)
+	public String horseInfo(Locale locale, HttpServletRequest request,Model model){
+		logger.info("경주마정보", locale);
+		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
+		model.addAttribute("hr_meet", hr_meet);	
+		return "HorseInfo/HorseInfo";
+	}
 	
 }

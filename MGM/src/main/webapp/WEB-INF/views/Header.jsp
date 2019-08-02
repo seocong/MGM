@@ -49,7 +49,7 @@
 								  <ul>								
 									<li><a href="raceResult.do"><div style="font-weight: bold;">경주성적표</div></a></li>
 									<li><a href="raceInfo.do"><div style="font-weight: bold;">출마표</div></a></li>
-									<li><a href="horseInfo.do"><div style="font-weight: bold;">경주마정보</div></a></li>
+									<li><a href="horseInfo.do?hr_meet=1"><div style="font-weight: bold;">경주마정보</div></a></li>
 									<li><a href="jokyoInfo.do?tr_meet=1"><div style="font-weight: bold;">조교사정보</div></a></li>
 									<li><a href="kisuInfo.do"><div style="font-weight: bold;">기수정보</div></a></li>
 									<li><a href="majuInfo.do"><div style="font-weight: bold;">마주정보</div></a></li>
