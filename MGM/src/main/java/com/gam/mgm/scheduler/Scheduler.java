@@ -14,11 +14,9 @@ import org.springframework.stereotype.Component;
 
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.JockeyDto;
-import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
-import com.gam.mgm.service.IOwnerService;
 import com.gam.mgm.service.ITrainerService;
 import com.gam.utils.Util;
 
@@ -30,8 +28,6 @@ public class Scheduler {
 	private IHorsesService horsesService;
 	@Autowired
 	private IJockeyService jockeyService;
-	@Autowired
-	private IOwnerService ownerService;
 	/*@Scheduled(cron = "0 55 16 ? * SUN,THU")*/
 	@Scheduled(cron = "0 58 06 ? * FRI")
 	public void trainers(){
