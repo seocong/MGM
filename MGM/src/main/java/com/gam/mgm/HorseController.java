@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.TrainerDto;
+import com.gam.mgm.service.IJockeyService;
 import com.gam.mgm.service.ITrainerService;
 import com.gam.utils.Util;
 
@@ -25,7 +27,8 @@ public class HorseController {
 	private static final Logger logger = LoggerFactory.getLogger(HorseController.class);
 	@Autowired
 	private ITrainerService trainerService;
-	
+	@Autowired
+	private IJockeyService jockeyService;
 	
 	@RequestMapping(value = "/jokyoInfo.do", method = RequestMethod.GET)
 	public String jokyoInfo(Locale locale, Model model,HttpServletRequest request) {
@@ -71,6 +74,17 @@ public class HorseController {
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JokyoDetail";
 	}
+	
+	@RequestMapping(value="/jockeyInfo.do",method=RequestMethod.GET)
+	public String jockeyInfo(Locale locale, HttpServletRequest request,Model model){
+		logger.info("기수정보", locale);
+		int jk_meet = Integer.parseInt(request.getParameter("jk_meet"));
+		List<JockeyDto> list = jockeyService.getAllList(jk_meet);
+		model.addAttribute("list", list);	
+		model.addAttribute("jk_meet", jk_meet);	
+		return "HorseInfo/JockeyInfo";
+	}
+	
 	
 	@RequestMapping(value="/horseInfo.do",method=RequestMethod.GET)
 	public String horseInfo(Locale locale, HttpServletRequest request,Model model){

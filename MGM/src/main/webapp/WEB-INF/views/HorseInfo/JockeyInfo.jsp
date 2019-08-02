@@ -90,9 +90,6 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
-		.table td{
-		padding:0.25rem;
-		}
 	</style>
 	
 
@@ -172,15 +169,25 @@
 
 							
 							<div class="row clearfix">
-							<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	
-								<div class="col-md-12 mt-5">							
+							<div id="jk_meet" data-jk_meet = "${jk_meet}" ></div>	
+								<div class="col-md-12 mt-5">
+								<MARQUEE DIRECTION=LEFT>여러분~~정보가 일단 잘 오는지 확인중입니다 ^^ 신경쓰지 마세요. </MARQUEE>
 								<table class="allmargin">
-
+								<%-- <col width="120px">
+								<col width="120px">
+								<col width="120px">
+								<col width="110px">
+								<col width="120px">
+								<col width="110px">
+								<col width="130px">
+								<col width="120px"> --%>
+								
+								
 								<tr>
 									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
-									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
 									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
 									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
@@ -200,77 +207,51 @@
 									<div id="container" class="nomargin">
 
 
-										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="horseInfo.do?hr_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="horseInfo.do?hr_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="horseInfo.do?hr_meet=2"> 제주경마</a></li>
+										<ul class="tab">
+											<li id="tabseoul"><a href="jockeyInfo.do?jk_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="jockeyInfo.do?jk_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="jockeyInfo.do?jk_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
-											
-											<div>
-											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>마명별검색</h4>
-												<table class="table" style="border-bottom: solid #DDD 1px;">
-												<tr>
-												<td>마명입력</td>
-												<td>
-													<form class="form-inline my-2 my-lg-0">
-														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-														<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-													</form>
-												</td>
-											</tr>
-											</table>
-											</div>
-											
-
 												<div>
-												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>등급별 검색(현 경주마)</h4>
-													<table class="table table-bordered">
+													<table class="table table-bordered table-striped">
+														
+														<%--  <col width="100px">
+														<col width="100px">
+														<col width="100px">
+														<col width="110px">
+														<col width="150px">
+														<col width="150px">  --%>
+														
+														
+														<thead>
+															<tr style="text-align: center;">
+																
+																<th width="15%">기수명</th>
+																<th width="13%">소속조</th>
+																<th width="13%">나이</th>
+																<th width="13%">데뷔일자</th>
+																<th width="18%">최근1년전적</th>
+																<th width="18%">통산전적</th>
+																<th width="10%">중량</th>
+															</tr>
+														</thead>
+
 														<tbody>
+
+															<c:forEach items="${list}" var="jkDto">
 																<tr>
-																	<td style="text-align: center;"rowspan="2">구분</td>
-																	<td style="text-align: center;" colspan="6">외산마</td>
-																	<td style="text-align: center;" colspan="8">국산마</td>
-																	<td style="text-align: center;" rowspan="2">합계</td>													
+																	<td style="text-align: center;"><a href="jokyoDetail.do?tr_name=${jkDto.jk_name}">${jkDto.jk_name}</a></td>
+																	<td style="text-align: center;">${jkDto.jk_part}</td>
+																	<td style="text-align: center;">${jkDto.jk_age}</td>
+																	<td style="text-align: center;">${jkDto.jk_debut}</td>
+																	<td style="text-align: center;">${jkDto.jk_rcCntY}(${jkDto.jk_ord1CntY}/${jkDto.jk_ord2CntY})</td>
+																	<td style="text-align: center;">${jkDto.jk_rcCntT}(${jkDto.jk_ord1CntT}/${jkDto.jk_ord2CntT})</td>
+																	<td style="text-align: center;">${jkDto.jk_wgOther}</td>
 																</tr>
-																<tr>
-																	<td style="text-align: center;">1급</td>
-																	<td style="text-align: center;">2급</td>
-																	<td style="text-align: center;">3급</td>
-																	<td style="text-align: center;">4급</td>
-																	<td style="text-align: center;">미검</td>
-																	<td style="text-align: center;">계</td>
-																	<td style="text-align: center;">1급</td>
-																	<td style="text-align: center;">2급</td>
-																	<td style="text-align: center;">3급</td>
-																	<td style="text-align: center;">4급</td>
-																	<td style="text-align: center;">5급</td>
-																	<td style="text-align: center;">6급</td>
-																	<td style="text-align: center;">미검</td>
-																	<td style="text-align: center;">계</td>
-																</tr>
-																<tr>
-																	<td style="text-align: center;">두수</td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"><a></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																</tr>
+															</c:forEach>
 
 
 														</tbody>
@@ -286,8 +267,36 @@
 									</div>
 								</div>
 
+
+
+
+								<!-- Ad
+							============================================= -->
+								<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
+
+
+
+
+								<!-- Articles
+							============================================= -->
 								
 							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 							<div class="line"></div>
@@ -346,12 +355,12 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var hr_meet = $("#hr_meet").attr("data-hr_meet");
-		if(hr_meet == 1){
+		var jk_meet = $("#jk_meet").attr("data-jk_meet");
+		if(jk_meet == 1){
 			$("#tabseoul").addClass('current');
-		}else if(hr_meet == 2){
+		}else if(jk_meet == 2){
 			$("#tabjeju").addClass('current');
-		}else if(hr_meet == 3){
+		}else if(jk_meet == 3){
 			$("#tabbusan").addClass('current');
 		}	
 	});
@@ -361,3 +370,4 @@
  	
 	</body>
 	</html>
+</html>

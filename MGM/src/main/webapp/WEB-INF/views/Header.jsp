@@ -51,7 +51,7 @@
 									<li><a href="raceInfo.do"><div style="font-weight: bold;">출마표</div></a></li>
 									<li><a href="horseInfo.do?hr_meet=1"><div style="font-weight: bold;">경주마정보</div></a></li>
 									<li><a href="jokyoInfo.do?tr_meet=1"><div style="font-weight: bold;">조교사정보</div></a></li>
-									<li><a href="kisuInfo.do"><div style="font-weight: bold;">기수정보</div></a></li>
+									<li><a href="jockeyInfo.do?jk_meet=1"><div style="font-weight: bold;">기수정보</div></a></li>
 									<li><a href="majuInfo.do"><div style="font-weight: bold;">마주정보</div></a></li>
 									<li><a href="raceSchedule.do"><div style="font-weight: bold;">출주예정마필</div></a></li>
 									<li><a href="racePlan.do"><div style="font-weight: bold;">시행정보</div></a></li>
