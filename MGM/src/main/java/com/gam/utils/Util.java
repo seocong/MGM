@@ -118,4 +118,13 @@ public class Util {
 		return val;
 		
 	}
+	
+	public static int toString(String rcCnt) {
+		String[] split=rcCnt.split(",");
+		String rs="";
+		for(int i=0;i<split.length;i++) {
+			rs += split[i];
+		}
+		return Integer.parseInt(rs);
+	}
 }

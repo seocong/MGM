@@ -9,7 +9,7 @@ public class JockeyDto {
 	private String jk_debut;
 	private int jk_wgPart;
 	private int jk_wgOther;
-	private String jk_rcCntT;
+	private int jk_rcCntT;
 	private int jk_ord1CntT;
 	private int jk_ord2CntT;
 	private int jk_ord3CntT;
@@ -25,7 +25,7 @@ public class JockeyDto {
 		// TODO Auto-generated constructor stub
 	}
 	public JockeyDto(int jk_seq, String jk_name, String jk_part, String jk_birthday, int jk_age, String jk_debut,
-			int jk_wgPart, int jk_wgOther, String jk_rcCntT, int jk_ord1CntT, int jk_ord2CntT, int jk_ord3CntT,
+			int jk_wgPart, int jk_wgOther, int jk_rcCntT, int jk_ord1CntT, int jk_ord2CntT, int jk_ord3CntT,
 			int jk_rcCntY, int jk_ord1CntY, int jk_ord2CntY, int jk_ord3CntY, int jk_meet, String jk_profileImg, String jk_clothesImg) {
 		super();
 		this.jk_seq = jk_seq;
@@ -107,10 +107,10 @@ public class JockeyDto {
 	public void setJk_wgOther(int jk_wgOther) {
 		this.jk_wgOther = jk_wgOther;
 	}
-	public String getJk_rcCntT() {
+	public int getJk_rcCntT() {
 		return jk_rcCntT;
 	}
-	public void setJk_rcCntT(String jk_rcCntT) {
+	public void setJk_rcCntT(int jk_rcCntT) {
 		this.jk_rcCntT = jk_rcCntT;
 	}
 	public int getJk_ord1CntT() {
