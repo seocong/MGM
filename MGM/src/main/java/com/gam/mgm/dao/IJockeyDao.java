@@ -10,4 +10,6 @@ public interface IJockeyDao {
 	public boolean jkDel(int jk_meet);
 	
 	public List<JockeyDto> getAllList(int jk_meet);
+
+	public JockeyDto getKisu(String jk_name);
 }

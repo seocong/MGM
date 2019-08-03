@@ -262,7 +262,7 @@ public class Scheduler {
 	}
 
 	//기수 정보
-	@Scheduled(cron = "10 49 21 ? * FRI")
+	@Scheduled(cron = "10 40 02 ? * SAT")
 	public void jockeyInfo() {
 //		Calendar cal = Calendar.getInstance();
 //		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");

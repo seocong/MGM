@@ -186,8 +186,8 @@
 								<tr>
 									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
-									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주마정보</a></td>
-									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jokyoInfo.do?tr_meet=1">기수정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
 									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
 									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
@@ -227,7 +227,7 @@
 														
 														
 														<thead>
-															<tr style="text-align: center;">
+															<tr class="titleColor"  style="text-align: center;">
 																
 																<th width="15%">조교사명</th>
 																<th width="15%">소속조</th>
@@ -243,7 +243,7 @@
 															<c:forEach items="${list}" var="trDto">
 																<tr>
 																	<td style="text-align: center;"><a href="jokyoDetail.do?tr_name=${trDto.tr_name}">${trDto.tr_name}</a></td>
-																	<td style="text-align: center;"><a href="joDetail.do?tr_part=${trDto.tr_part}">${trDto.tr_part}</a></td>
+																	<td style="text-align: center;">${trDto.tr_part}</td>
 																	<td style="text-align: center;">${trDto.tr_age}</td>
 																	<td style="text-align: center;">${trDto.tr_stdate}</td>
 																	<td style="text-align: center;">${trDto.tr_rccnty}(${trDto.tr_ord1cnty}/${trDto.tr_ord2cnty})</td>
@@ -356,13 +356,17 @@
 		var tr_meet = $("#tr_meet").attr("data-tr_meet");
 		if(tr_meet == 1){
 			$("#tabseoul").addClass('current');
+			$(".titleColor").css("background-color","#fbeae6");
 		}else if(tr_meet == 2){
 			$("#tabjeju").addClass('current');
+			$(".titleColor").css("background-color","#ecf5f9");
 		}else if(tr_meet == 3){
 			$("#tabbusan").addClass('current');
+			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
-
+	
+	
 		</script>
 		
  	

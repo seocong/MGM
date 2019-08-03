@@ -85,6 +85,39 @@ public class HorseController {
 		return "HorseInfo/JockeyInfo";
 	}
 	
+	@RequestMapping(value="/jockeyDetail.do",method=RequestMethod.GET)
+	public String jockeyDetail(Locale locale, HttpServletRequest request,Model model){
+		logger.info("기수상세정보", locale);	
+		System.out.println("jk_name:"+request.getParameter("jk_name"));
+		String jk_name=request.getParameter("jk_name");
+		JockeyDto jkDto = jockeyService.getKisu(jk_name);
+		int ord1cntt =jkDto.getJk_ord1CntT();
+		int rccntt = jkDto.getJk_rcCntT();
+		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
+		System.out.println("totalWin:"+totalWin);
+		int ord2cntt = jkDto.getJk_ord2CntT();
+		String pass = Util.round(ord1cntt+ord2cntt, rccntt);//복승률 구하기
+		System.out.println(pass);
+		int ord1cnty =jkDto.getJk_ord1CntY();
+		int rccnty = jkDto.getJk_rcCntY();
+		String yearWin = Util.round(ord1cnty, rccnty);//1년승률구하기
+		System.out.println("yearWin:"+yearWin);
+		int ord2cnty = jkDto.getJk_ord2CntY();
+		String yearPass = Util.round(ord1cnty+ord2cnty, rccnty);//1년복승률 구하기
+		System.out.println("yearPass:"+yearPass);
+		int jk_meet = jkDto.getJk_meet();
+		/*List<ChampionDto> list = trainerService.getChampionList(tr_name);*/
+		//위탁관리 말필도 리스트 SELECT후 반환 (경주마테이블에서 가져오면 될듯)
+		model.addAttribute("jkDto",jkDto);
+		model.addAttribute("totalWin",totalWin);
+		model.addAttribute("pass",pass);
+		model.addAttribute("yearWin",yearWin);
+		model.addAttribute("yearPass",yearPass);
+		model.addAttribute("jk_meet",jk_meet);
+		
+		/*model.addAttribute("list",list);*/
+		return "HorseInfo/JockeyDetail";
+	}
 	
 	@RequestMapping(value="/horseInfo.do",method=RequestMethod.GET)
 	public String horseInfo(Locale locale, HttpServletRequest request,Model model){
@@ -92,6 +125,13 @@ public class HorseController {
 		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
 		model.addAttribute("hr_meet", hr_meet);	
 		return "HorseInfo/HorseInfo";
+	}
+	@RequestMapping(value="/horseInfoList.do",method=RequestMethod.GET)
+	public String horseInfoList(Locale locale, HttpServletRequest request,Model model){
+		logger.info("경주마리스트", locale);
+		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
+		model.addAttribute("hr_meet", hr_meet);	
+		return "HorseInfo/HorseInfoList";
 	}
 	
 }

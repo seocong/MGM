@@ -4,7 +4,7 @@
 
 <mapper namespace="com.gam.jockey">
 	<insert id="jkinsert" parameterType="JockeyDto">
-		INSERT INTO jockey 
+		INSERT INTO JOCKEY 
 		(jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet)
 		VALUES
 		(#{jk_name},#{jk_part},#{jk_birthday},#{jk_age},#{jk_debut},#{jk_wgPart},#{jk_wgOther},#{jk_rcCntT},#{jk_ord1CntT},#{jk_ord2CntT},#{jk_ord3CntT},#{jk_rcCntY},#{jk_ord1CntY},#{jk_ord2CntY},#{jk_ord3CntY},#{jk_meet})
@@ -15,6 +15,11 @@
 	
 	<select id="getList" parameterType="int" resultType="JockeyDto">
 		select jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
-		 from jockey where jk_meet = #{jk_meet}
+		 from JOCKEY where jk_meet = #{jk_meet}
+	</select>
+	
+	<select id="getkisu" parameterType="String" resultType="JockeyDto">
+		select jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
+		 from JOCKEY where jk_name = #{jk_name}
 	</select>
 </mapper>
