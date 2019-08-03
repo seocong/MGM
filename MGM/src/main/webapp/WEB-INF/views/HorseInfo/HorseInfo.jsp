@@ -193,7 +193,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										경주마정보<span style="font-size: 60%;">경주마 전적 및 승률 정보</span>
+										경주마정보<span style="font-size: 60%;">경주마 등급 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 

@@ -53,4 +53,14 @@ public class HorsesDao implements IHorsesDao{
 		return sqlSession.selectOne(namespace+"getjeju");
 	}
 
+	@Override
+	public List<HorsesDto> partList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"horseList",map);
+	}
+
+	@Override
+	public List<HorsesDto> getRankList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"rankList",map);
+	}
+
 }

@@ -25,4 +25,8 @@ public interface IHorsesService {
 	public HrCountDto getCnt(int hr_meet);
 
 	public HrCountDto getJeju();
+
+	public List<HorsesDto> partList(Map<String, Object> map);
+
+	public List<HorsesDto> getRankList(Map<String, Object> map);
 }

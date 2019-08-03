@@ -50,4 +50,16 @@ public class HorsesService implements IHorsesService{
 		return horsesDao.getJeju();
 	}
 
+	@Override
+	public List<HorsesDto> partList(Map<String, Object> map) {
+		return horsesDao.partList(map);
+	}
+
+	@Override
+	public List<HorsesDto> getRankList(Map<String, Object> map) {
+		return horsesDao.getRankList(map);
+	}
+
+	
+
 }

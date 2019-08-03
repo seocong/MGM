@@ -1,7 +1,9 @@
 package com.gam.mgm;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.TrainerDto;
@@ -68,13 +71,18 @@ public class HorseController {
 		int tr_meet = trDto.getTr_meet();
 		/*List<ChampionDto> list = trainerService.getChampionList(tr_name);*/
 		//위탁관리 말필도 리스트 SELECT후 반환 (경주마테이블에서 가져오면 될듯)
+		int hr_part = trDto.getTr_part();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("hr_part", hr_part);
+		map.put("hr_meet", tr_meet);
+		List<HorsesDto> horseList = horsesService.partList(map);
 		model.addAttribute("trDto",trDto);
 		model.addAttribute("totalWin",totalWin);
 		model.addAttribute("pass",pass);
 		model.addAttribute("yearWin",yearWin);
 		model.addAttribute("yearPass",yearPass);
 		model.addAttribute("tr_meet",tr_meet);
-		
+		model.addAttribute("horseList",horseList);		
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JokyoDetail";
 	}
@@ -153,7 +161,34 @@ public class HorseController {
 	public String horseInfoList(Locale locale, HttpServletRequest request,Model model){
 		logger.info("경주마리스트", locale);
 		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
+		String hr_rank = request.getParameter("hr_rank");
+		System.out.println("hr_rank:"+hr_rank);
+		if(hr_meet==2) {
+			HrCountDto hrCnt = horsesService.getJeju();
+			int totalHan= hrCnt.getForeign1()+hrCnt.getForeign2()+hrCnt.getForeign3()+hrCnt.getForeign4();
+			int totalJe = hrCnt.getDomestic1()+hrCnt.getDomestic2()+hrCnt.getDomestic3()+hrCnt.getDomestic4()+hrCnt.getDomestic5()+hrCnt.getDomestic6()+hrCnt.getYetDomestic();
+			int total = totalHan+totalJe;
+			model.addAttribute("totalHan", totalHan);
+			model.addAttribute("totalJe", totalJe);
+			model.addAttribute("total", total);
+			model.addAttribute("hrCnt", hrCnt);
+		}else {
+			HrCountDto hrCnt = horsesService.getCnt(hr_meet);
+			int totalForeign = hrCnt.getForeign1()+hrCnt.getForeign2()+hrCnt.getForeign3()+hrCnt.getForeign4()+hrCnt.getYetForeign();
+			int totalDomestick = hrCnt.getDomestic1()+hrCnt.getDomestic2()+hrCnt.getDomestic3()+hrCnt.getDomestic4()+hrCnt.getDomestic5()+hrCnt.getDomestic6()+hrCnt.getYetDomestic();
+			int total = totalForeign+totalDomestick;
+			model.addAttribute("totalForeign", totalForeign); 
+			model.addAttribute("totalDomestick", totalDomestick); 
+			model.addAttribute("total", total); 
+			model.addAttribute("hrCnt", hrCnt); 
+		}
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("hr_rank", hr_rank);
+		map.put("hr_meet", hr_meet);
+		List<HorsesDto> rankList = horsesService.getRankList(map);
+		System.out.println("rankList:"+rankList);
 		model.addAttribute("hr_meet", hr_meet);	
+		model.addAttribute("rankList", rankList);	
 		return "HorseInfo/HorseInfoList";
 	}
 	

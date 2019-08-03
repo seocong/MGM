@@ -80,7 +80,7 @@
 		/* Style the tab content */
 		.tabcontent {
 			display: block;
-			color:#000;
+			color:#fff;
 		}
 		ul.tab li.current{
 			background-color: #fff;
@@ -90,9 +90,6 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
-		/* #tableSt td{
-			text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;
-		} */
 	</style>
 	
 
@@ -172,9 +169,9 @@
 
 							
 							<div class="row clearfix">
-							<div id="tr_meet" data-tr_meet = "${tr_meet}" ></div>	
+							<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	
 								<div class="col-md-12 mt-5">
-								
+						
 								<table class="allmargin">
 								<%-- <col width="120px">
 								<col width="120px">
@@ -186,7 +183,7 @@
 								<col width="120px"> --%>
 								
 								
-								<tr id="tableSt">
+								<tr>
 									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
@@ -203,7 +200,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										조교사정보<span style="font-size: 60%;">조교사 전적 및 승률 정보</span>
+										경주마정보<span style="font-size: 60%;">경주마 전적 및 등급 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -211,149 +208,168 @@
 
 
 										<ul class="tab">
-											<li id="tabseoul"><a href="jokyoInfo.do?tr_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="jokyoInfo.do?tr_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="jokyoInfo.do?tr_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="horseInfo.do?hr_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="horseInfo.do?hr_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="horseInfo.do?hr_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
+											<div>
+											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>마명별검색</h4>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
+												<tr>
+												<td>마명입력</td>
+												<td>
+													<form class="form-inline my-2 my-lg-0">
+														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+														<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+													</form>
+												</td>
+											</tr>
+											</table>
+											</div>
+											
+
 												<div>
-													<table class="table table-bordered" style=" ">
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>등급별 검색(현 경주마)</h4>
+													<table class="table table-bordered">
+													<c:choose>
+														<c:when test="${hr_meet=='2'}">
+															<tbody>
+																<tr>
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="5">한라마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="7">제주마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">미검마</td>	
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
+																</tr>
+																<tr>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>																
+																	<td style="text-align: center;">계</td>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">5급</td>
+																	<td style="text-align: center;">6급</td>
+																	<td style="text-align: center;">계</td>
+																</tr>
+																<tr>
+																	<td style="text-align: center;">두수</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;">${totalHan}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;">${totalJe}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${total}</td>
+																</tr>
+															</tbody>
+														</c:when>
+														<c:otherwise>
+															<tbody>
+																<tr>
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="6">외산마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="8">국산마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
+																</tr>
+																<tr>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">미검</td>
+																	<td style="text-align: center;">계</td>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">5급</td>
+																	<td style="text-align: center;">6급</td>
+																	<td style="text-align: center;">미검</td>
+																	<td style="text-align: center;">계</td>
+																</tr>
+																<tr>
+																	<td style="text-align: center;">두수</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외미&hr_meet=${hr_meet}">${hrCnt.yetForeign}</a></td>
+																	<td style="text-align: center;">${totalForeign}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${totalDomestick}</td>
+																	<td style="text-align: center;">${total}</td>
+																</tr>
+
+
+														</tbody>
 														
-														 <col width="100px">
-														<col width="140px">
-														<col width="140px">
-														<col width="140px">
-														<col width="140px">
+														</c:otherwise>
+														</c:choose>
+													</table>
+												</div>
+												<div>
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>경주마 등급 검색(현 경주마)</h4>
+													<table class="table table-bordered table-striped">
+														<thead>
+															<tr class="titleColor" style="text-align: center; ">
+																
+																<th width="15%">마명</th>
+																<th width="10%">소속조</th>
+																<th width="9%">산지</th>
+																<th width="9%">성별</th>
+																<th width="9%">연령</th>
+																<th width="9%">등급</th>
+																<th width="15%">통산전적</th>
+																<th width="15%">최근출전일</th>
+																<th width="9%">비고</th>
+																
+															</tr>
+														</thead>
 
 														<tbody>
 
+															<c:forEach items="${rankList}" var="rankList">
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/trainer/070175.jpg"></td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px; background-color: #fbeae6;">성명</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_name}</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">소속조</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_part}</td>
+																	<td style="text-align: center;"><a href="horseDetail.do?hr_htName=${rankList.hr_htName}">${rankList.hr_htName}</a></td>
+																	<td style="text-align: center;">${rankList.hr_part}</td>
+																	<td style="text-align: center;">${rankList.hr_name}</td>
+																	<td style="text-align: center;">${rankList.hr_sex}</td>
+																	<td style="text-align: center;">${rankList.hr_age}</td>
+																	<td style="text-align: center;">${rankList.hr_rank}</td>
+																	<td style="text-align: center;">${rankList.hr_rcCntT}(${rankList.hr_ord1CntT}/${rankList.hr_ord2CntT}/${rankList.hr_ord3CntT})</td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
 																</tr>
-																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">생년월일</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_birth}(${trDto.tr_age}세)</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">데뷔날짜</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_stdate}</td>
-																</tr>
-																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">통산전적</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_rccntt}전(${trDto.tr_ord1cntt}/${trDto.tr_ord2cntt})</td>
-																	<td style="text-align: center;padding: 0px;">승률 : ${totalWin}</td>
-																	<td style="text-align: center;padding: 0px;">복승률 : ${pass}</td>
-																</tr>
-																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">최근1년</td>
-																	<td style="text-align: center;padding: 0px;">${trDto.tr_rccnty}전(${trDto.tr_ord1cnty}/${trDto.tr_ord2cnty})</td>
-																	<td style="text-align: center;padding: 0px;">승률 : ${yearWin}</td>
-																	<td style="text-align: center;padding: 0px;">복승률 : ${yearPass}</td>
-																</tr>
+															</c:forEach>
+
+
 														</tbody>
 
 													</table>
 												</div>
-
-
-
-											<div class="tabs tabs-responsive clearfix">
-
-							<ul class="tab-nav clearfix">
-								<li><a href="#tab-responsive-1">전적 및 상금</a></li>
-								<li><a href="#tab-responsive-2">위탁관리 마필 현황</a></li>
-							</ul>
-							
-							
-							<div class="tab-container">
-
-								<div class="tab-content clearfix" id="tab-responsive-1">
-								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-										<span class="text-dark"><i class="icon-trophy"></i></span>
-										최근 6개월간 소속조 마필기승 기수 성적
-									</h4>
-									<table class="table table-bordered ">
-										<thead>
-										<tr class="titleColor"  style="text-align: center;">
-											<th width="15%">경주일자</th>
-											<th width="15%">기승마필</th>
-											<th width="9%">순위</th>
-											<th width="9%">등급</th>
-											<th width="8%">거리</th>
-											<th width="24%">경마종류</th>
-											<th width="10%">기수명</th>
-											<th width="10%">마주</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:choose>
-									<c:when test="${empty list}">
-										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="list">
-													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-													</tr>
-												</c:forEach>
-											</c:otherwise>
-											</c:choose>
-										</tbody>
-									</table>
-								</div>
-								<div class="tab-content clearfix" id="tab-responsive-2">
-									<table class="table table-bordered ">
-										<thead>
-										<tr class="titleColor"  style="text-align: center;">
-											<th width="15%">마명</th>
-											<th width="15%">마주</th>
-											<th width="10%">산지</th>
-											<th width="10%">성별</th>
-											<th width="10%">연령</th>
-											<th width="10%">소속군</th>
-											<th width="15%">전적</th>
-											<th width="15%">생년월일</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:choose>
-									<c:when test="${empty horseList}">
-										<tr><td colspan = "8">---위탁 말필 정보가 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${horseList}" var="horseList">
-													<tr>
-														<td><a href="horseDetail.do?hr_htName=${horseList.hr_htName}">${horseList.hr_htName}</a></td>
-														<td><a href="horseDetail.do?hr_htName=${horseList.hr_owName}">${horseList.hr_owName}</a></td>
-														<td>${horseList.hr_name}</td>
-														<td>${horseList.hr_sex}</td>
-														<td>${horseList.hr_age}</td>
-														<td>${horseList.hr_rank}</td>
-														<td>${horseList.hr_rcCntT}(${horseList.hr_ord1CntT}/${horseList.hr_ord2CntT})</td>
-														<td>${horseList.hr_birthday}</td>
-													</tr>
-												</c:forEach>
-											</c:otherwise>
-											</c:choose>
-										</tbody>
-									</table>
-								</div>
-								
-
-							</div>
-
-						</div>
 
 											</div>
 
@@ -363,12 +379,47 @@
 									</div>
 								</div>
 
+
+
+
+								<!-- Ad
+							============================================= -->
+								<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
+
+
+
+
+								<!-- Articles
+							============================================= -->
 								
 							</div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 							<div class="line"></div>
+
+
+
+
+
+
+
+
 
 						</div>
 						<!-- 본문내용끝 -->
@@ -416,21 +467,22 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var tr_meet = $("#tr_meet").attr("data-tr_meet");
-		if(tr_meet == 1){
+		var hr_meet = $("#hr_meet").attr("data-hr_meet");
+		if(hr_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(tr_meet == 2){
+		}else if(hr_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(tr_meet == 3){
+		}else if(hr_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
-
+	
 		</script>
 		
  	
 	</body>
 	</html>
+</html>

@@ -336,7 +336,7 @@
 										<tr><td colspan = "6">---전적 및 정보가 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${hrList}" var="hrList">
+												<c:forEach items="${jkList}" var="jkList">
 													<tr>
 														<td></td>
 														<td></td>
