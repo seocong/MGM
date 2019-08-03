@@ -52,4 +52,21 @@
 		HR_HRLASTAMT=#{hr_hrLastAmt}
 		WHERE HR_HTNAME=#{hr_htName}
 	</update>
+	
+	<select id="getCount" parameterType="int" resultType="HrCountDto">
+		select count(if(hr_rank='외1',1,null))as foreign1,count(if(hr_rank='외2',1,null))as foreign2,
+		count(if(hr_rank='외3',1,null))as foreign3,count(if(hr_rank='외4',1,null))as foreign4,
+		count(if(hr_rank='외미',1,null))as YetForeign,count(if(hr_rank='국1',1,null))as domestic1,count(if(hr_rank='국2',1,null))as domestic2,
+		count(if(hr_rank='국3',1,null))as domestic3,count(if(hr_rank='국4',1,null))as domestic4,count(if(hr_rank='국5',1,null))as domestic5,
+		count(if(hr_rank='국6',1,null))as domestic6,count(if(hr_rank='국미',1,null))as YetDomestic from horses where hr_meet=#{hr_meet}
+	</select>
+	
+	
+	<select id="getjeju" resultType="HrCountDto">
+		select count(if(hr_rank='한1',1,null))as foreign1,count(if(hr_rank='한2',1,null))as foreign2,
+		count(if(hr_rank='한3',1,null))as foreign3,count(if(hr_rank='한4',1,null))as foreign4,
+		count(if(hr_rank='제1',1,null))as domestic1,count(if(hr_rank='제2',1,null))as domestic2,
+		count(if(hr_rank='제3',1,null))as domestic3,count(if(hr_rank='제4',1,null))as domestic4,count(if(hr_rank='제5',1,null))as domestic5,
+		count(if(hr_rank='제6',1,null))as domestic6,count(if(hr_rank='미',1,null))as YetDomestic from horses where hr_meet=2
+	</select>
 </mapper>

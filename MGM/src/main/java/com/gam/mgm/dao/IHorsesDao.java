@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.gam.mgm.dto.HorsesDto;
+import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.TrainerDto;
 
 public interface IHorsesDao {
@@ -16,4 +17,8 @@ public interface IHorsesDao {
 	List<String> hrList(int meet);
 
 	boolean hrInfoUpdate(HorsesDto rsMap);
+
+	public HrCountDto getCnt(int hr_meet);
+
+	public HrCountDto getJeju();
 }

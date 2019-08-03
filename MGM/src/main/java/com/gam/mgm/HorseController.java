@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.TrainerDto;
+import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
 import com.gam.mgm.service.ITrainerService;
 import com.gam.utils.Util;
@@ -29,6 +31,8 @@ public class HorseController {
 	private ITrainerService trainerService;
 	@Autowired
 	private IJockeyService jockeyService;
+	@Autowired
+	private IHorsesService horsesService;
 	
 	@RequestMapping(value = "/jokyoInfo.do", method = RequestMethod.GET)
 	public String jokyoInfo(Locale locale, Model model,HttpServletRequest request) {
@@ -123,7 +127,26 @@ public class HorseController {
 	public String horseInfo(Locale locale, HttpServletRequest request,Model model){
 		logger.info("경주마정보", locale);
 		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
-		model.addAttribute("hr_meet", hr_meet);	
+		if(hr_meet==2) {
+			HrCountDto hrCnt = horsesService.getJeju();
+			int totalHan= hrCnt.getForeign1()+hrCnt.getForeign2()+hrCnt.getForeign3()+hrCnt.getForeign4();
+			int totalJe = hrCnt.getDomestic1()+hrCnt.getDomestic2()+hrCnt.getDomestic3()+hrCnt.getDomestic4()+hrCnt.getDomestic5()+hrCnt.getDomestic6()+hrCnt.getYetDomestic();
+			int total = totalHan+totalJe;
+			model.addAttribute("totalHan", totalHan);
+			model.addAttribute("totalJe", totalJe);
+			model.addAttribute("total", total);
+			model.addAttribute("hrCnt", hrCnt);
+		}else {
+			HrCountDto hrCnt = horsesService.getCnt(hr_meet);
+			int totalForeign = hrCnt.getForeign1()+hrCnt.getForeign2()+hrCnt.getForeign3()+hrCnt.getForeign4()+hrCnt.getYetForeign();
+			int totalDomestick = hrCnt.getDomestic1()+hrCnt.getDomestic2()+hrCnt.getDomestic3()+hrCnt.getDomestic4()+hrCnt.getDomestic5()+hrCnt.getDomestic6()+hrCnt.getYetDomestic();
+			int total = totalForeign+totalDomestick;
+			model.addAttribute("totalForeign", totalForeign); 
+			model.addAttribute("totalDomestick", totalDomestick); 
+			model.addAttribute("total", total); 
+			model.addAttribute("hrCnt", hrCnt); 
+		}		
+		model.addAttribute("hr_meet", hr_meet);
 		return "HorseInfo/HorseInfo";
 	}
 	@RequestMapping(value="/horseInfoList.do",method=RequestMethod.GET)

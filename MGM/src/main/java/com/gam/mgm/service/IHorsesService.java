@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gam.mgm.dao.IHorsesDao;
 import com.gam.mgm.dto.HorsesDto;
+import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.TrainerDto;
 
 public interface IHorsesService {
@@ -20,4 +21,8 @@ public interface IHorsesService {
 	List<String> hrList(int meet);
 	
 	boolean hrInfoUpdate(HorsesDto rsMap);
+
+	public HrCountDto getCnt(int hr_meet);
+
+	public HrCountDto getJeju();
 }

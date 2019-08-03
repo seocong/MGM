@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.IHorsesDao;
 import com.gam.mgm.dto.HorsesDto;
+import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.TrainerDto;
 
 @Service
@@ -37,6 +38,16 @@ public class HorsesService implements IHorsesService{
 	@Override
 	public boolean hrInfoUpdate(HorsesDto rsMap) {
 		return horsesDao.hrInfoUpdate(rsMap);
+	}
+
+	@Override
+	public HrCountDto getCnt(int hr_meet) {		
+		return horsesDao.getCnt(hr_meet);
+	}
+
+	@Override
+	public HrCountDto getJeju() {
+		return horsesDao.getJeju();
 	}
 
 }

@@ -20,6 +20,7 @@
  		<typeAlias type="com.gam.mgm.dto.ChampionDto" alias="ChampionDto" />
  		<typeAlias type="com.gam.mgm.dto.HorsesDto" alias="HorsesDto" />
  		<typeAlias type="com.gam.mgm.dto.JockeyDto" alias="JockeyDto" />
+ 		<typeAlias type="com.gam.mgm.dto.HrCountDto" alias="HrCountDto" />
  		<!-- <typeAlias type="com.gam.mgm.dto.OwnerDto" alias="OwnerDto" /> -->
      </typeAliases>
      

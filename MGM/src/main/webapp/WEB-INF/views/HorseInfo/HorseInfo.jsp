@@ -230,7 +230,51 @@
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy"></i></span>등급별 검색(현 경주마)</h4>
 													<table class="table table-bordered">
-														<tbody>
+													<c:choose>
+														<c:when test="${hr_meet=='2'}">
+															<tbody>
+																<tr>
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="5">한라마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="7">제주마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">미검마</td>	
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
+																</tr>
+																<tr>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>																
+																	<td style="text-align: center;">계</td>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">5급</td>
+																	<td style="text-align: center;">6급</td>
+																	<td style="text-align: center;">계</td>
+																</tr>
+																<tr>
+																	<td style="text-align: center;">두수</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;">${totalHan}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;">${totalJe}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${total}</td>
+																</tr>
+															</tbody>
+														</c:when>
+														<c:otherwise>
+															<tbody>
 																<tr>
 																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
 																	<td class="titleColor"  style="text-align: center;" colspan="6">외산마</td>
@@ -255,26 +299,28 @@
 																</tr>
 																<tr>
 																	<td style="text-align: center;">두수</td>
-																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외1"></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"><a href=""></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외미&hr_meet=${hr_meet}">${hrCnt.yetForeign}</a></td>
+																	<td style="text-align: center;">${totalForeign}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${totalDomestick}</td>
+																	<td style="text-align: center;">${total}</td>
 																</tr>
 
 
 														</tbody>
-
+														
+														</c:otherwise>
+														</c:choose>
 													</table>
 												</div>
 

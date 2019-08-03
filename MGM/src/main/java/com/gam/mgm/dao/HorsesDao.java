@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.HorsesDto;
+import com.gam.mgm.dto.HrCountDto;
 
 @Repository
 public class HorsesDao implements IHorsesDao{
@@ -40,6 +41,16 @@ public class HorsesDao implements IHorsesDao{
 	public boolean hrInfoUpdate(HorsesDto rsMap){
 		int rs = sqlSession.update(namespace+"hrInfoUpdate",rsMap);
 		return rs>0?true:false;
+	}
+
+	@Override
+	public HrCountDto getCnt(int hr_meet) {
+		return sqlSession.selectOne(namespace+"getCount", hr_meet);
+	}
+
+	@Override
+	public HrCountDto getJeju() {
+		return sqlSession.selectOne(namespace+"getjeju");
 	}
 
 }
