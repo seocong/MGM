@@ -404,7 +404,7 @@ public class Scheduler {
 	}
 
 	//경주마 정보
-	@Scheduled(cron = "20 58 06 ? * FRI")
+	@Scheduled(cron = "20 00 11 ? * SAT")
 	public void horseInfo() {
 //		Calendar cal = Calendar.getInstance();
 //		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
@@ -477,7 +477,6 @@ public class Scheduler {
 							horsesDto.setHr_rank(splitedStr[5]);
 							horsesDto.setHr_part(Integer.valueOf(splitedStr[6]));
 							horsesDto.setHr_trName(splitedStr[7]);
-							horsesDto.setHr_owName(splitedStr[8]);
 							horsesDto.setHr_meet(1);
 							boolean isS = horsesService.hrInsert(horsesDto);
 							if(isS) {
@@ -537,7 +536,6 @@ public class Scheduler {
 							horsesDto.setHr_rank(splitedStr[5]);
 							horsesDto.setHr_part(Integer.valueOf(splitedStr[6]));
 							horsesDto.setHr_trName(splitedStr[7]);
-							horsesDto.setHr_owName(splitedStr[8]);
 							horsesDto.setHr_meet(3);
 							boolean isS = horsesService.hrInsert(horsesDto);
 							if(isS) {
@@ -596,7 +594,6 @@ public class Scheduler {
 							horsesDto.setHr_rank(splitedStr[5]);
 							horsesDto.setHr_part(Integer.valueOf(splitedStr[6]));
 							horsesDto.setHr_trName(splitedStr[7]);
-							horsesDto.setHr_owName(splitedStr[8]);
 							horsesDto.setHr_meet(2);
 							boolean isS = horsesService.hrInsert(horsesDto);
 							if(isS) {

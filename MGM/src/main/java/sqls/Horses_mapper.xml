@@ -3,17 +3,53 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gam.horses">
-	<insert id="hrinsert" parameterType="HorsesDto">
+	<!-- <insert id="hrinsert" parameterType="HorsesDto">
 		INSERT INTO HORSES
-		(hr_htName,hr_name,hr_sex,hr_birthday,hr_age,hr_rank,hr_part,hr_trName,hr_owName,hr_meet) 
+		(hr_htName,hr_name,hr_sex,hr_birthday,hr_age,hr_rank,hr_part,hr_trName,hr_owName,hr_meet)
 		VALUES
 		(#{hr_htName},#{hr_name},#{hr_sex},#{hr_birthday},#{hr_age},#{hr_rank},#{hr_part},#{hr_trName},#{hr_owName},#{hr_meet})
+	</insert> -->
+	<insert id="hrinsert" parameterType="HorsesDto">
+		INSERT INTO HORSES
+		(
+		HR_HTNAME,HR_NAME,HR_SEX,HR_BIRTHDAY,HR_AGE,HR_RANK,HR_PART,HR_TRNAME,HR_MEET		
+		)
+		VALUES
+		(
+		#{hr_htName},#{hr_name},#{hr_sex},#{hr_birthday},#{hr_age},#{hr_rank},#{hr_part},#{hr_trName},#{hr_meet}
+		)
 	</insert>
 	<delete id="hrdel" parameterType="int">
-		delete from horses where hr_meet = #{hr_meet}
+		delete from horses where
+		hr_meet = #{hr_meet}
 	</delete>
-	
+
 	<select id="getList" parameterType="int" resultType="HorsesDto">
-		select hr_name,hr_part,hr_age,hr_stdate,hr_rccntt,hr_ord1cntt,hr_ord2cntt,hr_rccnty,hr_ord1cnty,hr_ord2cnty from hrainers where hr_meet = #{hr_meet}
+		select
+		hr_name,hr_part,hr_age,hr_stdate,hr_rccntt,hr_ord1cntt,hr_ord2cntt,hr_rccnty,hr_ord1cnty,hr_ord2cnty
+		from hrainers where hr_meet = #{hr_meet}
 	</select>
+
+	<select id="hrList" resultType="String" parameterType="int">
+		SELECT HR_HTNAME FROM HORSES WHERE HR_MEET=#{value}
+	</select>
+
+	<update id="hrInfoUpdate" parameterType="HorsesDto">
+		UPDATE HORSES SET
+		HR_OWNAME=#{hr_owName},
+		HR_RCCNTT=#{hr_rcCntT},
+		HR_ORD1CNTT=#{hr_ord1CntT},
+		HR_ORD2CNTT=#{hr_ord2CntT},
+		HR_ORD3CNTT=#{hr_ord3CntT},
+		HR_RCCNTY=#{hr_rcCntY},
+		HR_ORD1CNTY=#{hr_ord1CntY},
+		HR_ORD2CNTY=#{hr_ord2CntY},
+		HR_ORD3CNTY=#{hr_ord3CntY},
+		HR_FAHRNAME=#{hr_faHrName},
+		HR_MOHRNAME=#{hr_moHrName},
+		HR_CHAKSUNT=#{hr_chaksunT},
+		HR_RATING=#{hr_rating},
+		HR_HRLASTAMT=#{hr_hrLastAmt}
+		WHERE HR_HTNAME=#{hr_htName}
+	</update>
 </mapper>

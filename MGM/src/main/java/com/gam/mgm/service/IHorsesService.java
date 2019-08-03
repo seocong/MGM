@@ -1,6 +1,7 @@
 package com.gam.mgm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,4 +16,8 @@ public interface IHorsesService {
 	public boolean hrDel(int hr_meet);
 	
 	public List<HorsesDto> getAllList(int hr_meet);
+	
+	List<String> hrList(int meet);
+	
+	boolean hrInfoUpdate(HorsesDto rsMap);
 }

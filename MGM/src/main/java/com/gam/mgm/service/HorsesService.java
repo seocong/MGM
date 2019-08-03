@@ -1,6 +1,7 @@
 package com.gam.mgm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,16 @@ public class HorsesService implements IHorsesService{
 	@Override
 	public List<HorsesDto> getAllList(int hr_meet) {
 		return horsesDao.getAllList(hr_meet);
+	}
+
+	@Override
+	public List<String> hrList(int meet) {
+		return horsesDao.hrList(meet);
+	}
+
+	@Override
+	public boolean hrInfoUpdate(HorsesDto rsMap) {
+		return horsesDao.hrInfoUpdate(rsMap);
 	}
 
 }

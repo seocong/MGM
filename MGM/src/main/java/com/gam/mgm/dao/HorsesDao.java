@@ -1,13 +1,13 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.HorsesDto;
-import com.gam.mgm.dto.TrainerDto;
 
 @Repository
 public class HorsesDao implements IHorsesDao{
@@ -29,6 +29,17 @@ public class HorsesDao implements IHorsesDao{
 	@Override
 	public List<HorsesDto> getAllList(int hr_meet) {
 		return sqlSession.selectList(namespace+"getList",hr_meet);
+	}
+	
+	@Override
+	public List<String> hrList(int meet){
+		return sqlSession.selectList(namespace+"hrList",meet);
+	}
+	
+	@Override
+	public boolean hrInfoUpdate(HorsesDto rsMap){
+		int rs = sqlSession.update(namespace+"hrInfoUpdate",rsMap);
+		return rs>0?true:false;
 	}
 
 }
