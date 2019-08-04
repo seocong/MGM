@@ -32,9 +32,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
+import com.gam.mgm.service.IOwnerService;
 import com.gam.mgm.service.IRaceService;
+import com.gam.mgm.vo.OwnerVo;
 import com.gam.mgm.vo.RaceResultVo;
 import com.gam.mgm.vo.RaceResultVo.ResultHeader;
 import com.gam.mgm.vo.RaceScheduleVo;
@@ -54,6 +57,8 @@ public class MgrRaceController {
 	private IJockeyService jockeyService;
 	@Autowired
 	private IHorsesService horsesService;
+	@Autowired
+	private IOwnerService owService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * @throws UnsupportedEncodingException 
@@ -313,110 +318,7 @@ public class MgrRaceController {
 		}
 
 	}
-	/*@RequestMapping(value="/horsesInput.do",method=RequestMethod.GET)
-	public void horses(Model model){
-		int count=0;
-		String[] link = new String[3];
-		link[0] ="http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/horse/20190801sdb1.txt";
-		link[1] ="http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/jeju/horse/20190731cdb1.txt";
-		link[2] ="http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/busan/horse/20190731pdb1.txt";
-		st:for(int i=0;i<link.length;i++) {
-			try {
-				URL	url = new URL(link[i]);
-				//			URL	url = new URL("http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/"+area[i]+"/horse/"+yyyyMMdd+db[i]+".txt");
-				int hr_meet = i+1;
-				String[] splitedStr = null;
-				URLConnection urlConn = url.openConnection();
-				InputStream is = urlConn.getInputStream();
-				System.out.println(is);
-				BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
-				System.out.println(reader);
-				boolean isDel = horsesService.hrDel(hr_meet);
-				if(isDel) {
-					System.out.println("초기화되었습니다");
-				}else{
-					System.out.println("초기화실패하였습니다");
-				}
-				String line = null;
-				splitedStr = null;					
-				while ((line = reader.readLine()) != null) {
-					if(line.contains("-")||line.contains("마명")) {
-						System.out.println("나오지마라");							
-					}else {
-						splitedStr = null;
-						splitedStr = line.split("\\s+");
 
-						for (int j = 0; j < splitedStr.length; j++) {
-							splitedStr[j] = splitedStr[j].trim();
-							//System.out.println(splitedStr[j]);
-						}
-						System.out.println("배열길이:"+splitedStr.length);
-						//말정보 등록
-						StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API8/raceHorseInfo");
-						urlBuilder.append("?"+URLEncoder.encode("ServiceKey","UTF-8")+"=emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
-						urlBuilder.append("&"+URLEncoder.encode("pageNo","UTF-8") +"="+ "1");
-						urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") +"="+ "10");
-						urlBuilder.append("&"+URLEncoder.encode("hr_name","UTF-8") +"="+ splitedStr[0]);
-						URI url2 = new URI(urlBuilder.toString());
-						System.out.println(url2);
-						RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-						RaceResultVo rcResult = restTemplate.getForObject(url2,RaceResultVo.class);
-						ResultHeader result = rcResult.getHeader();
-						if(result.getResultCode()!=0) {
-							System.out.println("result Code: "+result.getResultCode());
-							System.out.println("result Message: "+result.getResultMsg());
-							System.out.println("{RaceSchedule Info error}");
-						}else {
-							RaceResultVo.ResultBody.Items.Item resultList = rcResult.getBody().getItems().getItem();
-							if(resultList!=null) {
-								if(splitedStr.length !=1) {
-									HorsesDto horsesDto = new HorsesDto();
-									horsesDto.setHr_htName(splitedStr[0]);
-									horsesDto.setHr_name(splitedStr[1]);
-									horsesDto.setHr_sex(splitedStr[2]);
-									horsesDto.setHr_birthday(splitedStr[3]);
-									horsesDto.setHr_age(Integer.valueOf(splitedStr[4]));
-									horsesDto.setHr_rank(splitedStr[5]);
-									horsesDto.setHr_part(Integer.valueOf(splitedStr[6]));
-									horsesDto.setHr_trName(splitedStr[7]);
-									horsesDto.setHr_owName(splitedStr[8]);
-									horsesDto.setHr_meet(hr_meet);
-									horsesDto.setHr_faHrName(resultList.getHr_faHrName());
-									horsesDto.setHr_moHrName(resultList.getHr_moHrName());
-									horsesDto.setHr_rcCntT(resultList.getHr_rcCntT());
-									horsesDto.setHr_ord1CntT(resultList.getHr_ord1CntT());
-									horsesDto.setHr_ord2CntT(resultList.getHr_ord2CntT());
-									horsesDto.setHr_ord3CntT(resultList.getHr_ord3CntT());
-									horsesDto.setHr_rcCntY(resultList.getHr_rcCntY());
-									horsesDto.setHr_ord1CntY(resultList.getHr_ord1CntY());
-									horsesDto.setHr_ord2CntY(resultList.getHr_ord2CntY());
-									horsesDto.setHr_ord3CntY(resultList.getHr_ord3CntY());
-									horsesDto.setHr_chaksunT(resultList.getHr_chaksunT());
-									horsesDto.setHr_rating(resultList.getHr_rating());
-									horsesDto.setHr_hrLastAmt(resultList.getHr_hrLastAmt());
-									boolean isS = horsesService.hrInsert(horsesDto);
-									if(isS) {
-										System.out.println(splitedStr[0]+" 말 정보가 입력되었습니다.");
-										count++;
-									}else {
-										System.out.println("입력실패.");
-									}
-								}else {
-									System.out.println("불러올 정보가 없습니다.");
-								}
-							}
-						}
-
-					}
-				}
-				reader.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-				i=0;
-				continue st;
-			} 
-		}
-	}*/
 
 	@RequestMapping(value="/hrUpdate.do",method=RequestMethod.GET)
 	public void hrUpdate() {
@@ -457,7 +359,6 @@ public class MgrRaceController {
 							for(Iterator<String> hrIt = hrNameList.iterator() ; hrIt.hasNext() ;) {
 								String val = hrIt.next();
 								if(val.equals(item.getHr_htName())) {
-									System.out.println("이터레이터 들어옴");
 									hrDto.setHr_htName(item.getHr_htName());
 									hrDto.setHr_owName(item.getHr_owName());
 									hrDto.setHr_faHrName(item.getHr_faHrName());
@@ -474,7 +375,6 @@ public class MgrRaceController {
 									hrDto.setHr_rating(item.getHr_rating());
 									hrDto.setHr_hrLastAmt(item.getHr_hrLastAmt());
 									hrList.add(hrDto);
-									System.out.println("hrDto찍어보기: "+hrDto);
 									horsesService.hrInfoUpdate(hrDto);
 									hrIt.remove();
 								}
@@ -484,7 +384,62 @@ public class MgrRaceController {
 						pageNo++;
 					}else {
 						loop=false;
+						System.out.println("불러올 정보가 없습니다.");
 					}
+				}
+			}
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("시간: "+((end-start)/1000)+"초");
+	}
+
+	@RequestMapping(value="/owInput.do",method=RequestMethod.GET)
+	public void owInput() {
+		long start = System.currentTimeMillis();
+		URI url2=null;
+		for(int meet=1;meet<=3;meet++) {
+			boolean loop = true;
+			int pageNo=1;
+			try {
+				StringBuilder builder = new StringBuilder("http://apis.data.go.kr/B551015/API14/horseOwnerInfo");
+				builder.append("?"+URLEncoder.encode("ServiceKey","UTF-8")+"="+"emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
+				builder.append("&"+URLEncoder.encode("pageNo","UTF-8") +"="+ pageNo);
+				builder.append("&"+URLEncoder.encode("numOfRows","UTF-8") +"="+ "999");
+				builder.append("&"+URLEncoder.encode("meet","UTF-8") +"="+ meet);
+				url2 = new URI(builder.toString());
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch(URISyntaxException uriE) {
+				uriE.printStackTrace();
+			}
+			System.out.println(url2);
+			RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+			OwnerVo rcResult = restTemplate.getForObject(url2,OwnerVo.class);
+			OwnerVo.Header result = rcResult.getHeader();
+			if(result.getResultCode()!=0) {
+				System.out.println("result Code: "+result.getResultCode());
+				System.out.println("result Message: "+result.getResultMsg());
+				System.out.println("{RaceSchedule Info error}");
+			}else {
+				List<OwnerVo.Body.Item> resultList = rcResult.getBody().getItems();
+				if(resultList.size()!=0) {
+					OwnerDto owDto = new OwnerDto();
+					for(OwnerVo.Body.Item item:resultList) {
+						owDto.setOw_name(item.getOw_name());
+						owDto.setOw_totHorses(item.getOw_totHorses());
+						owDto.setOw_cancledHorses(item.getOw_cancledHorses());
+						owDto.setOw_nowHorses(item.getOw_nowHorses());
+						owDto.setOw_stDate(item.getOw_stDate());
+						owDto.setOw_rcCntT(item.getOw_rcCntT());
+						owDto.setOw_rcCntY(item.getOw_rcCntY());
+						owDto.setOw_chaksunT(item.getOw_chaksunT());
+						owDto.setOw_chaksunY(item.getOw_chaksunY());
+						owDto.setOw_meet(meet);
+						owService.owInsert(owDto);
+					}
+				}else {
+					System.out.println("불러올 정보가 없습니다.");
 				}
 			}
 		}
