@@ -16,4 +16,6 @@ public interface ITrainerDao {
 	public List<ChampionDto> getChampionList(String tr_name);
 
 	public TrainerDto getJokyo(String tr_name);
+	
+	public boolean trUpdate(int trno);
 }

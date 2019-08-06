@@ -1,7 +1,6 @@
 package com.gam.mgm.vo;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -51,11 +50,11 @@ public class OwnerVo {
 				@XmlElement(name="owName")
 				private String ow_name;
 				@XmlElement(name="totHorses")
-				private String ow_totHorses;
+				private int ow_totHorses;
 				@XmlElement(name="cancledHorses")
-				private String ow_cancledHorses;
+				private int ow_cancledHorses;
 				@XmlElement(name="ownerHorses")
-				private String ow_nowHorses;
+				private int ow_nowHorses;
 				@XmlElement(name="stDate")
 				private String ow_stDate;
 				@XmlElement(name="rcCntT")
@@ -72,22 +71,22 @@ public class OwnerVo {
 				public void setOw_name(String ow_name) {
 					this.ow_name = ow_name;
 				}
-				public String getOw_totHorses() {
+				public int getOw_totHorses() {
 					return ow_totHorses;
 				}
-				public void setOw_totHorses(String ow_totHorses) {
+				public void setOw_totHorses(int ow_totHorses) {
 					this.ow_totHorses = ow_totHorses;
 				}
-				public String getOw_cancledHorses() {
+				public int getOw_cancledHorses() {
 					return ow_cancledHorses;
 				}
-				public void setOw_cancledHorses(String ow_cancledHorses) {
+				public void setOw_cancledHorses(int ow_cancledHorses) {
 					this.ow_cancledHorses = ow_cancledHorses;
 				}
-				public String getOw_nowHorses() {
+				public int getOw_nowHorses() {
 					return ow_nowHorses;
 				}
-				public void setOw_nowHorses(String ow_nowHorses) {
+				public void setOw_nowHorses(int ow_nowHorses) {
 					this.ow_nowHorses = ow_nowHorses;
 				}
 				public String getOw_stDate() {

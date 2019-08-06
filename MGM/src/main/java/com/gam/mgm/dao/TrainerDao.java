@@ -42,4 +42,10 @@ public class TrainerDao implements ITrainerDao {
 	public TrainerDto getJokyo(String tr_name) {
 		return sqlSession.selectOne(namespace+"getjokyo", tr_name);
 	}
+	
+	@Override
+	public boolean trUpdate(int trno) {
+		int rs = sqlSession.update(namespace+"trUpdate");
+		return rs>0?true:false;
+	}
 }

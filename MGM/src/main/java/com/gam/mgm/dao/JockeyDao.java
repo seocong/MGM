@@ -36,4 +36,9 @@ public class JockeyDao implements IJockeyDao{
 		return sqlSession.selectOne(namespace+"getkisu", jk_name);
 	}
 
+	@Override
+	public boolean jkUpdate(int jkno) {
+		int rs = sqlSession.update(namespace+"jkUpdate");
+		return rs>0?true:false;
+	}
 }

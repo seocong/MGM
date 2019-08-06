@@ -32,4 +32,8 @@ public class JockeyService implements IJockeyService{
 		return jokeyDao.getKisu(jk_name);
 	}
 
+	@Override
+	public boolean jkUpdate(int jkno) {
+		return jokeyDao.jkUpdate(jkno);
+	}
 }

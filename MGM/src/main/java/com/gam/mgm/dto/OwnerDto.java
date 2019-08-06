@@ -3,9 +3,9 @@ package com.gam.mgm.dto;
 public class OwnerDto {
 	private int ow_seq;
 	private String ow_name;
-	private String ow_totHorses;
-	private String ow_cancledHorses;
-	private String ow_nowHorses;
+	private int ow_totHorses;
+	private int ow_cancledHorses;
+	private int ow_nowHorses;
 	private String ow_stDate;
 	private int ow_rcCntT;
 	private int ow_rcCntY;
@@ -16,7 +16,7 @@ public class OwnerDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OwnerDto(int ow_seq, String ow_name, String ow_totHorses, String ow_cancledHorses, String ow_nowHorses,
+	public OwnerDto(int ow_seq, String ow_name, int ow_totHorses, int ow_cancledHorses, int ow_nowHorses,
 			String ow_stDate, int ow_rcCntT, int ow_rcCntY, long ow_chaksunY, long ow_chaksunT, int ow_meet) {
 		super();
 		this.ow_seq = ow_seq;
@@ -43,22 +43,22 @@ public class OwnerDto {
 	public void setOw_name(String ow_name) {
 		this.ow_name = ow_name;
 	}
-	public String getOw_totHorses() {
+	public int getOw_totHorses() {
 		return ow_totHorses;
 	}
-	public void setOw_totHorses(String ow_totHorses) {
+	public void setOw_totHorses(int ow_totHorses) {
 		this.ow_totHorses = ow_totHorses;
 	}
-	public String getOw_cancledHorses() {
+	public int getOw_cancledHorses() {
 		return ow_cancledHorses;
 	}
-	public void setOw_cancledHorses(String ow_cancledHorses) {
+	public void setOw_cancledHorses(int ow_cancledHorses) {
 		this.ow_cancledHorses = ow_cancledHorses;
 	}
-	public String getOw_nowHorses() {
+	public int getOw_nowHorses() {
 		return ow_nowHorses;
 	}
-	public void setOw_nowHorses(String ow_nowHorses) {
+	public void setOw_nowHorses(int ow_nowHorses) {
 		this.ow_nowHorses = ow_nowHorses;
 	}
 	public String getOw_stDate() {

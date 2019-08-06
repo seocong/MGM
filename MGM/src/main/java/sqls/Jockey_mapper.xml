@@ -5,9 +5,9 @@
 <mapper namespace="com.gam.jockey">
 	<insert id="jkinsert" parameterType="JockeyDto">
 		INSERT INTO JOCKEY 
-		(jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet)
+		(jk_name,jk_no, jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet)
 		VALUES
-		(#{jk_name},#{jk_part},#{jk_birthday},#{jk_age},#{jk_debut},#{jk_wgPart},#{jk_wgOther},#{jk_rcCntT},#{jk_ord1CntT},#{jk_ord2CntT},#{jk_ord3CntT},#{jk_rcCntY},#{jk_ord1CntY},#{jk_ord2CntY},#{jk_ord3CntY},#{jk_meet})
+		(#{jk_name},#{jk_no},#{jk_part},#{jk_birthday},#{jk_age},#{jk_debut},#{jk_wgPart},#{jk_wgOther},#{jk_rcCntT},#{jk_ord1CntT},#{jk_ord2CntT},#{jk_ord3CntT},#{jk_rcCntY},#{jk_ord1CntY},#{jk_ord2CntY},#{jk_ord3CntY},#{jk_meet})
 	</insert>
 	<delete id="jkdel" parameterType="int">
 		DELETE FROM JOCKEY WHERE JK_MEET = #{jk_meet}
@@ -22,4 +22,8 @@
 		select jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
 		 from JOCKEY where jk_name = #{jk_name}
 	</select>
+	
+	<update id="jkUpdate" parameterType="int">
+		update jockey set jk_no = #{jk_no} where jk_name = #{jk_name}
+	</update>
 </mapper>

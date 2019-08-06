@@ -11,10 +11,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="response")
 public class RaceResultVo {
-	private ResultHeader header;
-	private ResultBody body;
+	private Header header;
+	private Body body;
 	@XmlRootElement(name="header")
-	public static class ResultHeader{
+	public static class Header{
 		private int resultCode;
 		private String resultMsg;
 		public int getResultCode() {
@@ -32,7 +32,7 @@ public class RaceResultVo {
 	}
 
 	@XmlRootElement(name="body")
-	public static class ResultBody{
+	public static class Body{
 
 		private List<Item> items;
 		
@@ -47,161 +47,246 @@ public class RaceResultVo {
 		}
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
-			public static class Item{
-				@XmlElement(name="hrName")
-				private String hr_htName;
-				@XmlElement(name="faHrName")
-				private String hr_faHrName;
-				@XmlElement(name="moHrName")
-				private String hr_moHrName;
-				@XmlElement(name="owName")
-				private String hr_owName;
-				@XmlElement(name="rcCntT")
-				private int hr_rcCntT;
-				@XmlElement(name="ord1CntT")
-				private int hr_ord1CntT;
-				@XmlElement(name="ord2CntT")
-				private int hr_ord2CntT;
-				@XmlElement(name="ord3CntT")
-				private int hr_ord3CntT;
-				@XmlElement(name="rcCntY")
-				private int hr_rcCntY;
-				@XmlElement(name="ord1CntY")
-				private int hr_ord1CntY;
-				@XmlElement(name="ord2CntY")
-				private int hr_ord2CntY;
-				@XmlElement(name="ord3CntY")
-				private int hr_ord3CntY;
-				@XmlElement(name="chaksunT")
-				private int hr_chaksunT;
-				@XmlElement(name="rating")
-				private int hr_rating;
-				@XmlElement(name="hrLastAmt")
-				private int hr_hrLastAmt;
-				
-				public String getHr_owName() {
-					return hr_owName;
+			public static class Item{  
+				private String rcDate;  
+				private int rcNo;
+				private String hrNo;
+				private String hrName;  
+				private int ord;  
+				private int chulNo;  
+				private String wgBudam;  
+				private String wgHr;  
+				private float rcTime;  
+				private String diffUnit;  
+				private int ordS1f;  
+				private int g8f_1c;  
+				private int g6f_2c;  
+				private int g4f_3c;  
+				private int g3f_4c;  
+				private int g2f;  
+				private int ordG1f;  
+				private float rcTimeS1f;  
+				private float rcTime_1c;  
+				private float rcTime_2c;  
+				private float rcTime_3c;  
+				private float rcTime_4c;  
+				private float rcTimeG3f;  
+				private float rcTimeG2f;  
+				private float rcTimeG1f;  
+				private float winOdds;  
+				private float plcOdds;
+				private String trName;
+				private String owName;
+				private String jkName;
+				private int rating;
+				public String getRcDate() {
+					return rcDate;
 				}
-
-				public void setHr_owName(String hr_owName) {
-					this.hr_owName = hr_owName;
+				public void setRcDate(String rcDate) {
+					this.rcDate = rcDate;
 				}
-
-				public int getHr_rcCntT() {
-					return hr_rcCntT;
+				public int getRcNo() {
+					return rcNo;
 				}
-				
-				public void setHr_rcCntT(int hr_rcCntT) {
-					this.hr_rcCntT = hr_rcCntT;
+				public void setRcNo(int rcNo) {
+					this.rcNo = rcNo;
 				}
-				public int getHr_ord1CntT() {
-					return hr_ord1CntT;
+				public String getHrNo() {
+					return hrNo;
 				}
-				public void setHr_ord1CntT(int hr_ord1CntT) {
-					this.hr_ord1CntT = hr_ord1CntT;
+				public void setHrNo(String hrNo) {
+					this.hrNo = hrNo;
 				}
-				public int getHr_ord2CntT() {
-					return hr_ord2CntT;
+				public String getHrName() {
+					return hrName;
 				}
-				public void setHr_ord2CntT(int hr_ord2CntT) {
-					this.hr_ord2CntT = hr_ord2CntT;
+				public void setHrName(String hrName) {
+					this.hrName = hrName;
 				}
-				public int getHr_ord3CntT() {
-					return hr_ord3CntT;
+				public int getOrd() {
+					return ord;
 				}
-				public void setHr_ord3CntT(int hr_ord3CntT) {
-					this.hr_ord3CntT = hr_ord3CntT;
+				public void setOrd(int ord) {
+					this.ord = ord;
 				}
-				public int getHr_rcCntY() {
-					return hr_rcCntY;
+				public int getChulNo() {
+					return chulNo;
 				}
-				public void setHr_rcCntY(int hr_rcCntY) {
-					this.hr_rcCntY = hr_rcCntY;
+				public void setChulNo(int chulNo) {
+					this.chulNo = chulNo;
 				}
-				public int getHr_ord1CntY() {
-					return hr_ord1CntY;
+				public String getWgBudam() {
+					return wgBudam;
 				}
-				public void setHr_ord1CntY(int hr_ord1CntY) {
-					this.hr_ord1CntY = hr_ord1CntY;
+				public void setWgBudam(String wgBudam) {
+					this.wgBudam = wgBudam;
 				}
-				public int getHr_ord2CntY() {
-					return hr_ord2CntY;
+				public String getWgHr() {
+					return wgHr;
 				}
-				public void setHr_ord2CntY(int hr_ord2CntY) {
-					this.hr_ord2CntY = hr_ord2CntY;
+				public void setWgHr(String wgHr) {
+					this.wgHr = wgHr;
 				}
-				public int getHr_ord3CntY() {
-					return hr_ord3CntY;
+				public float getRcTime() {
+					return rcTime;
 				}
-				public void setHr_ord3CntY(int hr_ord3CntY) {
-					this.hr_ord3CntY = hr_ord3CntY;
+				public void setRcTime(float rcTime) {
+					this.rcTime = rcTime;
 				}
-				public int getHr_chaksunT() {
-					return hr_chaksunT;
+				public String getDiffUnit() {
+					return diffUnit;
 				}
-				public void setHr_chaksunT(int hr_chaksunT) {
-					this.hr_chaksunT = hr_chaksunT;
+				public void setDiffUnit(String diffUnit) {
+					this.diffUnit = diffUnit;
 				}
-				public int getHr_rating() {
-					return hr_rating;
+				public int getOrdS1f() {
+					return ordS1f;
 				}
-				public void setHr_rating(int hr_rating) {
-					this.hr_rating = hr_rating;
+				public void setOrdS1f(int ordS1f) {
+					this.ordS1f = ordS1f;
 				}
-				public String getHr_htName() {
-					return hr_htName;
+				public int getG8f_1c() {
+					return g8f_1c;
 				}
-				public void setHr_htName(String hr_htName) {
-					this.hr_htName = hr_htName;
+				public void setG8f_1c(int g8f_1c) {
+					this.g8f_1c = g8f_1c;
 				}
-
-				public String getHr_faHrName() {
-					return hr_faHrName;
+				public int getG6f_2c() {
+					return g6f_2c;
 				}
-
-				public void setHr_faHrName(String hr_faHrName) {
-					this.hr_faHrName = hr_faHrName;
+				public void setG6f_2c(int g6f_2c) {
+					this.g6f_2c = g6f_2c;
 				}
-
-				public String getHr_moHrName() {
-					return hr_moHrName;
+				public int getG4f_3c() {
+					return g4f_3c;
 				}
-
-				public void setHr_moHrName(String hr_moHrName) {
-					this.hr_moHrName = hr_moHrName;
+				public void setG4f_3c(int g4f_3c) {
+					this.g4f_3c = g4f_3c;
 				}
-
-				public int getHr_hrLastAmt() {
-					return hr_hrLastAmt;
+				public int getG3f_4c() {
+					return g3f_4c;
 				}
-
-				public void setHr_hrLastAmt(int hr_hrLastAmt) {
-					this.hr_hrLastAmt = hr_hrLastAmt;
+				public void setG3f_4c(int g3f_4c) {
+					this.g3f_4c = g3f_4c;
+				}
+				public int getG2f() {
+					return g2f;
+				}
+				public void setG2f(int g2f) {
+					this.g2f = g2f;
+				}
+				public int getOrdG1f() {
+					return ordG1f;
+				}
+				public void setOrdG1f(int ordG1f) {
+					this.ordG1f = ordG1f;
+				}
+				public float getRcTimeS1f() {
+					return rcTimeS1f;
+				}
+				public void setRcTimeS1f(float rcTimeS1f) {
+					this.rcTimeS1f = rcTimeS1f;
+				}
+				public float getRcTime_1c() {
+					return rcTime_1c;
+				}
+				public void setRcTime_1c(float rcTime_1c) {
+					this.rcTime_1c = rcTime_1c;
+				}
+				public float getRcTime_2c() {
+					return rcTime_2c;
+				}
+				public void setRcTime_2c(float rcTime_2c) {
+					this.rcTime_2c = rcTime_2c;
+				}
+				public float getRcTime_3c() {
+					return rcTime_3c;
+				}
+				public void setRcTime_3c(float rcTime_3c) {
+					this.rcTime_3c = rcTime_3c;
+				}
+				public float getRcTime_4c() {
+					return rcTime_4c;
+				}
+				public void setRcTime_4c(float rcTime_4c) {
+					this.rcTime_4c = rcTime_4c;
+				}
+				public float getRcTimeG3f() {
+					return rcTimeG3f;
+				}
+				public void setRcTimeG3f(float rcTimeG3f) {
+					this.rcTimeG3f = rcTimeG3f;
+				}
+				public float getRcTimeG2f() {
+					return rcTimeG2f;
+				}
+				public void setRcTimeG2f(float rcTimeG2f) {
+					this.rcTimeG2f = rcTimeG2f;
+				}
+				public float getRcTimeG1f() {
+					return rcTimeG1f;
+				}
+				public void setRcTimeG1f(float rcTimeG1f) {
+					this.rcTimeG1f = rcTimeG1f;
+				}
+				public float getWinOdds() {
+					return winOdds;
+				}
+				public void setWinOdds(float winOdds) {
+					this.winOdds = winOdds;
+				}
+				public float getPlcOdds() {
+					return plcOdds;
+				}
+				public void setPlcOdds(float plcOdds) {
+					this.plcOdds = plcOdds;
+				}
+				public String getTrName() {
+					return trName;
+				}
+				public void setTrName(String trName) {
+					this.trName = trName;
+				}
+				public String getOwName() {
+					return owName;
+				}
+				public void setOwName(String owName) {
+					this.owName = owName;
+				}
+				public String getJkName() {
+					return jkName;
+				}
+				public void setJkName(String jkName) {
+					this.jkName = jkName;
+				}
+				public int getRating() {
+					return rating;
+				}
+				public void setRating(int rating) {
+					this.rating = rating;
 				}
 				
 			}
-
-
 		}
 
 
 
-	public ResultHeader getHeader() {
+	public Header getHeader() {
 		return header;
 	}
 
 
-	public void setHeader(ResultHeader header) {
+	public void setHeader(Header header) {
 		this.header = header;
 	}
 
 
-	public ResultBody getBody() {
+	public Body getBody() {
 		return body;
 	}
 
 
-	public void setBody(ResultBody body) {
+	public void setBody(Body body) {
 		this.body = body;
 	}
 }

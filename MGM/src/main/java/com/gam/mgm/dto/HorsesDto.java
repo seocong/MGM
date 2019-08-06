@@ -2,13 +2,14 @@ package com.gam.mgm.dto;
 
 public class HorsesDto {
 	private int hr_seq;
-	private String hr_htName;
+	private String hr_no;
+	private String hr_htName;	
 	private String hr_name;
 	private String hr_sex;
 	private String hr_birthday;
 	private int hr_age;
 	private String hr_rank;
-	private int hr_part;
+	private int hr_part;	
 	private String hr_trName;
 	private String hr_owName;
 	private String hr_faHrName;
@@ -25,32 +26,32 @@ public class HorsesDto {
 	private int hr_rating;
 	private int hr_hrLastAmt;
 	private int hr_meet;
+	private String debut;
+	private String recentRcDate;
 	
 	public HorsesDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "HorsesDto [hr_seq=" + hr_seq + ", hr_htName=" + hr_htName + ", hr_name=" + hr_name + ", hr_sex="
 				+ hr_sex + ", hr_birthday=" + hr_birthday + ", hr_age=" + hr_age + ", hr_rank=" + hr_rank + ", hr_part="
-				+ hr_part + ", hr_trName=" + hr_trName + ", hr_owName=" + hr_owName + ", hr_faHrName=" + hr_faHrName
-				+ ", hr_moHrName=" + hr_moHrName + ", hr_rcCntT=" + hr_rcCntT + ", hr_ord1CntT=" + hr_ord1CntT
-				+ ", hr_ord2CntT=" + hr_ord2CntT + ", hr_ord3CntT=" + hr_ord3CntT + ", hr_rcCntY=" + hr_rcCntY
-				+ ", hr_ord1CntY=" + hr_ord1CntY + ", hr_ord2CntY=" + hr_ord2CntY + ", hr_ord3CntY=" + hr_ord3CntY
-				+ ", hr_chaksunT=" + hr_chaksunT + ", hr_rating=" + hr_rating + ", hr_hrLastAmt=" + hr_hrLastAmt
-				+ ", hr_meet=" + hr_meet + "]";
+				+ hr_part + ", hr_no=" + hr_no + ", hr_trName=" + hr_trName + ", hr_owName=" + hr_owName
+				+ ", hr_faHrName=" + hr_faHrName + ", hr_moHrName=" + hr_moHrName + ", hr_rcCntT=" + hr_rcCntT
+				+ ", hr_ord1CntT=" + hr_ord1CntT + ", hr_ord2CntT=" + hr_ord2CntT + ", hr_ord3CntT=" + hr_ord3CntT
+				+ ", hr_rcCntY=" + hr_rcCntY + ", hr_ord1CntY=" + hr_ord1CntY + ", hr_ord2CntY=" + hr_ord2CntY
+				+ ", hr_ord3CntY=" + hr_ord3CntY + ", hr_chaksunT=" + hr_chaksunT + ", hr_rating=" + hr_rating
+				+ ", hr_hrLastAmt=" + hr_hrLastAmt + ", hr_meet=" + hr_meet + ", debut=" + debut + ", recentRcDate="
+				+ recentRcDate + "]";
 	}
 
-
-
 	public HorsesDto(int hr_seq, String hr_htName, String hr_name, String hr_sex, String hr_birthday, int hr_age,
-			String hr_rank, int hr_part, String hr_trName, String hr_owName, String hr_faHrName, String hr_moHrName,
-			int hr_rcCntT, int hr_ord1CntT, int hr_ord2CntT, int hr_ord3CntT, int hr_rcCntY, int hr_ord1CntY,
-			int hr_ord2CntY, int hr_ord3CntY, int hr_chaksunT, int hr_rating, int hr_hrLastAmt, int hr_meet) {
+			String hr_rank, int hr_part, String hr_no, String hr_trName, String hr_owName, String hr_faHrName,
+			String hr_moHrName, int hr_rcCntT, int hr_ord1CntT, int hr_ord2CntT, int hr_ord3CntT, int hr_rcCntY,
+			int hr_ord1CntY, int hr_ord2CntY, int hr_ord3CntY, int hr_chaksunT, int hr_rating, int hr_hrLastAmt,
+			int hr_meet, String debut, String recentRcDate) {
 		super();
 		this.hr_seq = hr_seq;
 		this.hr_htName = hr_htName;
@@ -60,6 +61,7 @@ public class HorsesDto {
 		this.hr_age = hr_age;
 		this.hr_rank = hr_rank;
 		this.hr_part = hr_part;
+		this.hr_no = hr_no;
 		this.hr_trName = hr_trName;
 		this.hr_owName = hr_owName;
 		this.hr_faHrName = hr_faHrName;
@@ -76,6 +78,8 @@ public class HorsesDto {
 		this.hr_rating = hr_rating;
 		this.hr_hrLastAmt = hr_hrLastAmt;
 		this.hr_meet = hr_meet;
+		this.debut = debut;
+		this.recentRcDate = recentRcDate;
 	}
 
 
@@ -274,6 +278,30 @@ public class HorsesDto {
 
 	public void setHr_meet(int hr_meet) {
 		this.hr_meet = hr_meet;
+	}
+
+	public String getDebut() {
+		return debut;
+	}
+
+	public void setDebut(String debut) {
+		this.debut = debut;
+	}
+
+	public String getRecentRcDate() {
+		return recentRcDate;
+	}
+
+	public void setRecentRcDate(String recentRcDate) {
+		this.recentRcDate = recentRcDate;
+	}
+
+	public String getHr_no() {
+		return hr_no;
+	}
+
+	public void setHr_no(String hr_no) {
+		this.hr_no = hr_no;
 	}
 	
 }

@@ -60,6 +60,11 @@ public class HorsesService implements IHorsesService{
 		return horsesDao.getRankList(map);
 	}
 
+	@Override
+	public boolean hrAddInfoUpdate(HorsesDto ai) {
+		return horsesDao.hrAddInfoUpdate(ai);
+	}
+
 	
 
 }

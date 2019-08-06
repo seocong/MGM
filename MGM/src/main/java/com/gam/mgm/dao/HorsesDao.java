@@ -63,4 +63,10 @@ public class HorsesDao implements IHorsesDao{
 		return sqlSession.selectList(namespace+"rankList",map);
 	}
 
+	@Override
+	public boolean hrAddInfoUpdate(HorsesDto ai) {
+		int rs = sqlSession.update(namespace+"addInfo",ai);
+		return rs>0?true:false;
+	}
+
 }

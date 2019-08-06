@@ -2,6 +2,7 @@ package com.gam.mgm.dto;
 
 public class TrainerDto {
 	private int tr_seq;
+	private String tr_no;
 	private String tr_name;
 	private int tr_part;
 	private String tr_birth;
@@ -24,11 +25,12 @@ public class TrainerDto {
 	}
 
 
-	public TrainerDto(int tr_seq, String tr_name, int tr_part, String tr_birth, int tr_age, String tr_stdate, int tr_rccntt,
-			int tr_ord1cntt, int tr_ord2cntt, int tr_ord3cntt, int tr_rccnty, int tr_ord1cnty, int tr_ord2cnty,
-			int tr_ord3cnty,int tr_meet,String tr_profileImg) {
+	public TrainerDto(int tr_seq, String tr_no, String tr_name, int tr_part, String tr_birth, int tr_age, String tr_stdate,
+			int tr_rccntt, int tr_ord1cntt, int tr_ord2cntt, int tr_ord3cntt, int tr_rccnty, int tr_ord1cnty,
+			int tr_ord2cnty, int tr_ord3cnty, int tr_meet, String tr_profileImg) {
 		super();
 		this.tr_seq = tr_seq;
+		this.tr_no = tr_no;
 		this.tr_name = tr_name;
 		this.tr_part = tr_part;
 		this.tr_birth = tr_birth;
@@ -43,7 +45,28 @@ public class TrainerDto {
 		this.tr_ord2cnty = tr_ord2cnty;
 		this.tr_ord3cnty = tr_ord3cnty;
 		this.tr_meet = tr_meet;
-		this.tr_profileImg=tr_profileImg;
+		this.tr_profileImg = tr_profileImg;
+	}
+
+
+	@Override
+	public String toString() {
+		return "TrainerDto [tr_seq=" + tr_seq + ", tr_no=" + tr_no + ", tr_name=" + tr_name + ", tr_part=" + tr_part
+				+ ", tr_birth=" + tr_birth + ", tr_age=" + tr_age + ", tr_stdate=" + tr_stdate + ", tr_rccntt="
+				+ tr_rccntt + ", tr_ord1cntt=" + tr_ord1cntt + ", tr_ord2cntt=" + tr_ord2cntt + ", tr_ord3cntt="
+				+ tr_ord3cntt + ", tr_rccnty=" + tr_rccnty + ", tr_ord1cnty=" + tr_ord1cnty + ", tr_ord2cnty="
+				+ tr_ord2cnty + ", tr_ord3cnty=" + tr_ord3cnty + ", tr_meet=" + tr_meet + ", tr_profileImg="
+				+ tr_profileImg + "]";
+	}
+
+
+	public String getTr_no() {
+		return tr_no;
+	}
+
+
+	public void setTr_no(String tr_no) {
+		this.tr_no = tr_no;
 	}
 
 
@@ -201,16 +224,5 @@ public class TrainerDto {
 
 	public void setTr_profileImg(String tr_profileImg) {
 		this.tr_profileImg = tr_profileImg;
-	}
-
-
-	@Override
-	public String toString() {
-		return "TrainerDto [tr_seq=" + tr_seq + ", tr_name=" + tr_name + ", tr_part=" + tr_part + ", tr_birth="
-				+ tr_birth + ", tr_age=" + tr_age + ", tr_stdate=" + tr_stdate + ", tr_rccntt=" + tr_rccntt
-				+ ", tr_ord1cntt=" + tr_ord1cntt + ", tr_ord2cntt=" + tr_ord2cntt + ", tr_ord3cntt=" + tr_ord3cntt
-				+ ", tr_rccnty=" + tr_rccnty + ", tr_ord1cnty=" + tr_ord1cnty + ", tr_ord2cnty=" + tr_ord2cnty
-				+ ", tr_ord3cnty=" + tr_ord3cnty + ", tr_meet=" + tr_meet + ", tr_profileImg=" + tr_profileImg + "]";
-	}
-	
+	}	
 }

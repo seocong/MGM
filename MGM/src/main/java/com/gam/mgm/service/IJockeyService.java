@@ -14,4 +14,6 @@ public interface IJockeyService {
 	public List<JockeyDto> getAllList(int jk_meet);
 
 	public JockeyDto getKisu(String jk_name);
+	
+	public boolean jkUpdate(int jkno);
 }

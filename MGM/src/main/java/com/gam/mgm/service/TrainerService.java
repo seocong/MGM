@@ -38,4 +38,9 @@ public class TrainerService implements ITrainerService {
 	public TrainerDto getJokyo(String tr_name) {
 		return trainerDao.getJokyo(tr_name);
 	}
+	
+	@Override
+	public boolean trUpdate(int trno) {
+		return trainerDao.trUpdate(trno);
+	}
 }

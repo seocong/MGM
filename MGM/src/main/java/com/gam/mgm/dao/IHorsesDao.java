@@ -16,7 +16,7 @@ public interface IHorsesDao {
 
 	List<String> hrList(int meet);
 
-	boolean hrInfoUpdate(HorsesDto rsMap);
+	public boolean hrInfoUpdate(HorsesDto rsMap);
 
 	public HrCountDto getCnt(int hr_meet);
 
@@ -25,4 +25,6 @@ public interface IHorsesDao {
 	public List<HorsesDto> partList(Map<String, Object> map);
 
 	public List<HorsesDto> getRankList(Map<String, Object> map);
+	
+	public boolean hrAddInfoUpdate(HorsesDto ai);
 }

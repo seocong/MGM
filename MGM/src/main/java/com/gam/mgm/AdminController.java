@@ -20,7 +20,7 @@ public class AdminController {
 	@Autowired
 	private ITrainerService trainerService;
 	@RequestMapping(value="/adminPage.do",method=RequestMethod.GET)
-	public String adminPage() {
+	public String adminPage(Model model) {
 		return "Admin/AdTemp";
 	}
 	

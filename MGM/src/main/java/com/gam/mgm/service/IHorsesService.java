@@ -29,4 +29,6 @@ public interface IHorsesService {
 	public List<HorsesDto> partList(Map<String, Object> map);
 
 	public List<HorsesDto> getRankList(Map<String, Object> map);
+	
+	public boolean hrAddInfoUpdate(HorsesDto ai);
 }

@@ -2,6 +2,7 @@ package com.gam.mgm.dto;
 
 public class JockeyDto {
 	private int jk_seq;
+	private String jk_no;
 	private String jk_name;
 	private String jk_part;
 	private String jk_birthday;
@@ -24,11 +25,14 @@ public class JockeyDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public JockeyDto(int jk_seq, String jk_name, String jk_part, String jk_birthday, int jk_age, String jk_debut,
-			int jk_wgPart, int jk_wgOther, int jk_rcCntT, int jk_ord1CntT, int jk_ord2CntT, int jk_ord3CntT,
-			int jk_rcCntY, int jk_ord1CntY, int jk_ord2CntY, int jk_ord3CntY, int jk_meet, String jk_profileImg, String jk_clothesImg) {
+	
+	public JockeyDto(int jk_seq, String jk_no, String jk_name, String jk_part, String jk_birthday, int jk_age,
+			String jk_debut, int jk_wgPart, int jk_wgOther, int jk_rcCntT, int jk_ord1CntT, int jk_ord2CntT,
+			int jk_ord3CntT, int jk_rcCntY, int jk_ord1CntY, int jk_ord2CntY, int jk_ord3CntY, int jk_meet,
+			String jk_profileImg, String jk_clothesImg) {
 		super();
 		this.jk_seq = jk_seq;
+		this.jk_no = jk_no;
 		this.jk_name = jk_name;
 		this.jk_part = jk_part;
 		this.jk_birthday = jk_birthday;
@@ -48,17 +52,26 @@ public class JockeyDto {
 		this.jk_profileImg = jk_profileImg;
 		this.jk_clothesImg = jk_clothesImg;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "JockeyDto [jk_seq=" + jk_seq + ", jk_name=" + jk_name + ", jk_part=" + jk_part + ", jk_birthday="
-				+ jk_birthday + ", jk_age=" + jk_age + ", jk_debut=" + jk_debut + ", jk_wgPart=" + jk_wgPart
-				+ ", jk_wgOther=" + jk_wgOther + ", jk_rcCntT=" + jk_rcCntT + ", jk_ord1CntT=" + jk_ord1CntT
+		return "JockeyDto [jk_seq=" + jk_seq + ", jk_no=" + jk_no + ", jk_name=" + jk_name + ", jk_part=" + jk_part
+				+ ", jk_birthday=" + jk_birthday + ", jk_age=" + jk_age + ", jk_debut=" + jk_debut + ", jk_wgPart="
+				+ jk_wgPart + ", jk_wgOther=" + jk_wgOther + ", jk_rcCntT=" + jk_rcCntT + ", jk_ord1CntT=" + jk_ord1CntT
 				+ ", jk_ord2CntT=" + jk_ord2CntT + ", jk_ord3CntT=" + jk_ord3CntT + ", jk_rcCntY=" + jk_rcCntY
 				+ ", jk_ord1CntY=" + jk_ord1CntY + ", jk_ord2CntY=" + jk_ord2CntY + ", jk_ord3CntY=" + jk_ord3CntY
 				+ ", jk_meet=" + jk_meet + ", jk_profileImg=" + jk_profileImg + ", jk_clothesImg=" + jk_clothesImg
 				+ "]";
 	}
+
+	public String getJk_no() {
+		return jk_no;
+	}
+
+	public void setJk_no(String jk_no) {
+		this.jk_no = jk_no;
+	}
+
 	public int getJk_seq() {
 		return jk_seq;
 	}

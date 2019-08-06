@@ -3,15 +3,159 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gam.race">
-	<insert id="schInsert" parameterType="Map">
+	<insert id="schInsert" parameterType="RaceScheduleVo">
 		INSERT INTO RACE_SCHEDULE
 		VALUES
-		<foreach collection="schedulelist" item="list" separator=",">
-			(#{list.rcDate},#{list.rcNo},#{list.ilsu},#{list.meet},#{list.schStTime},#{list.rank},#{list.rcDist},#{list.budam},#{list.rcName},#{list.ageCond},#{list.chaksun1},#{list.chaksun2},#{list.chaksun3},#{list.chaksun4},#{list.chaksun5})
-		</foreach>
+		(
+		#{schedulelist.rcDate},
+		#{schedulelist.rcNo},
+		#{schedulelist.ilsu},
+		#{schedulelist.meet},
+		#{schedulelist.schStTime},
+		#{schedulelist.rank},
+		#{schedulelist.rcDist},
+		#{schedulelist.budam},
+		#{schedulelist.rcName},
+		#{schedulelist.ageCond},
+		#{schedulelist.chaksun1},
+		#{schedulelist.chaksun2},
+		#{schedulelist.chaksun3},
+		#{schedulelist.chaksun4},
+		#{schedulelist.chaksun5})
 	</insert>
-	
+
 	<delete id="scheduleAllDel">
 		TRUNCATE RACE_SCHEDULE
 	</delete>
+
+	<insert id="rcResultInsert" parameterType="RaceResultDto">
+		INSERT INTO
+		RACE_RESULT
+		(
+		rr_meet,
+		rr_rcDate,
+		rr_rcNo,
+		rr_hrNo,
+		rr_hrName,
+		rr_ord,
+		rr_chulNo,
+		rr_wgBudam,
+		rr_wgHr,
+		rr_rcTime,
+		rr_diffUnit,
+		rr_ordS1f,
+		rr_g8f_1c,
+		rr_g6f_2c,
+		rr_g4f_3c,
+		rr_g3f_4c,
+		rr_g2f,
+		rr_ordG1f,
+		rr_rcTimeS1f,
+		rr_rcTime_1c,
+		rr_rcTime_2c,
+		rr_rcTime_3c,
+		rr_rcTime_4c,
+		rr_rcTimeG3f,
+		rr_rcTimeG2f,
+		rr_rcTimeG1f,
+		rr_winOdds,
+		rr_plcOdds,
+		rr_trName,
+		rr_jkName,
+		rr_owName,
+		rr_rating
+		)
+		VALUES
+		(
+		#{rr_meet},
+		#{rr_rcDate},
+		#{rr_rcNo},
+		#{rr_hrNo},
+		#{rr_hrName},
+		#{rr_ord},
+		#{rr_chulNo},
+		#{rr_wgBudam},
+		#{rr_wgHr},
+		#{rr_rcTime},
+		#{rr_diffUnit},
+		#{rr_ordS1f},
+		#{rr_g8f_1c},
+		#{rr_g6f_2c},
+		#{rr_g4f_3c},
+		#{rr_g3f_4c},
+		#{rr_g2f},
+		#{rr_ordG1f},
+		#{rr_rcTimeS1f},
+		#{rr_rcTime_1c},
+		#{rr_rcTime_2c},
+		#{rr_rcTime_3c},
+		#{rr_rcTime_4c},
+		#{rr_rcTimeG3f},
+		#{rr_rcTimeG2f},
+		#{rr_rcTimeG1f},
+		#{rr_winOdds},
+		#{rr_plcOdds},
+		#{rr_trName},
+		#{rr_jkName},
+		#{rr_owName},
+		#{rr_rating}
+		)
+	</insert>
+
+	<insert id="rcInfoInsert" parameterType="RaceInfoDto">
+		INSERT INTO RACE_INFO
+		(
+		ri_meet,
+		ri_rcDate,
+		ri_rcNo,
+		ri_ilsu,
+		ri_rcDist,
+		ri_rank,
+		ri_budam,
+		ri_rcName,
+		ri_ageCond,
+		ri_weather,
+		ri_track,
+		ri_chaksun1,
+		ri_chaksun2,
+		ri_chaksun3,
+		ri_chaksun4,
+		ri_chaksun5,
+		ri_winAmt,
+		ri_plcAmt,
+		ri_qnlAmt,
+		ri_exaAmt,
+		ri_qplAmt,
+		ri_tlaAmt,
+		ri_triAmt,
+		ri_totalAmt
+		)
+		VALUES
+		(
+		#{ri_meet},
+		#{ri_rcDate},
+		#{ri_rcNo},
+		#{ri_ilsu},
+		#{ri_rcDist},
+		#{ri_rank},
+		#{ri_budam},
+		#{ri_rcName},
+		#{ri_ageCond},
+		#{ri_weather},
+		#{ri_track},
+		#{ri_chaksun1},
+		#{ri_chaksun2},
+		#{ri_chaksun3},
+		#{ri_chaksun4},
+		#{ri_chaksun5},
+		#{ri_winAmt},
+		#{ri_plcAmt},
+		#{ri_qnlAmt},
+		#{ri_exaAmt},
+		#{ri_qplAmt},
+		#{ri_tlaAmt},
+		#{ri_triAmt},
+		#{ri_totalAmt}
+		)
+	</insert>
 </mapper>
