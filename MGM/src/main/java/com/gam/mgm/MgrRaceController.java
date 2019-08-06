@@ -485,7 +485,9 @@ public class MgrRaceController {
 									hrDto.setHr_ord3CntY(item.getHr_ord3CntY());
 									hrDto.setHr_chaksunT(item.getHr_chaksunT());
 									hrDto.setHr_rating(item.getHr_rating());
-									hrDto.setHr_hrLastAmt(item.getHr_hrLastAmt());									
+									hrDto.setHr_hrLastAmt(item.getHr_hrLastAmt());
+									hrDto.setRhrRegDt1(item.getRhrRegDt1());
+									hrDto.setAuctionMon(item.getAuctionMon());
 									horsesService.hrInfoUpdate(hrDto);
 									hrIt.remove();
 								}

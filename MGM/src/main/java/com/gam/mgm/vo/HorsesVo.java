@@ -79,19 +79,41 @@ public class HorsesVo {
 				private int hr_rating;
 				@XmlElement(name="hrLastAmt")
 				private int hr_hrLastAmt;
-				
+				private String rhrRegDt1; //경주마 등록일
+				private String auctionMon; //최초 경매가
+				public String getHr_htName() {
+					return hr_htName;
+				}
+				public void setHr_htName(String hr_htName) {
+					this.hr_htName = hr_htName;
+				}
+				public String getHrNo() {
+					return hrNo;
+				}
+				public void setHrNo(String hrNo) {
+					this.hrNo = hrNo;
+				}
+				public String getHr_faHrName() {
+					return hr_faHrName;
+				}
+				public void setHr_faHrName(String hr_faHrName) {
+					this.hr_faHrName = hr_faHrName;
+				}
+				public String getHr_moHrName() {
+					return hr_moHrName;
+				}
+				public void setHr_moHrName(String hr_moHrName) {
+					this.hr_moHrName = hr_moHrName;
+				}
 				public String getHr_owName() {
 					return hr_owName;
 				}
-
 				public void setHr_owName(String hr_owName) {
 					this.hr_owName = hr_owName;
 				}
-
 				public int getHr_rcCntT() {
 					return hr_rcCntT;
 				}
-				
 				public void setHr_rcCntT(int hr_rcCntT) {
 					this.hr_rcCntT = hr_rcCntT;
 				}
@@ -149,44 +171,26 @@ public class HorsesVo {
 				public void setHr_rating(int hr_rating) {
 					this.hr_rating = hr_rating;
 				}
-				public String getHr_htName() {
-					return hr_htName;
-				}
-				public void setHr_htName(String hr_htName) {
-					this.hr_htName = hr_htName;
-				}
-
-				public String getHr_faHrName() {
-					return hr_faHrName;
-				}
-
-				public void setHr_faHrName(String hr_faHrName) {
-					this.hr_faHrName = hr_faHrName;
-				}
-
-				public String getHr_moHrName() {
-					return hr_moHrName;
-				}
-
-				public void setHr_moHrName(String hr_moHrName) {
-					this.hr_moHrName = hr_moHrName;
-				}
-
 				public int getHr_hrLastAmt() {
 					return hr_hrLastAmt;
 				}
-
 				public void setHr_hrLastAmt(int hr_hrLastAmt) {
 					this.hr_hrLastAmt = hr_hrLastAmt;
 				}
-
-				public String getHrNo() {
-					return hrNo;
+				public String getRhrRegDt1() {
+					return rhrRegDt1;
 				}
-
-				public void setHrNo(String hrNo) {
-					this.hrNo = hrNo;
-				}	
+				public void setRhrRegDt1(String rhrRegDt1) {
+					this.rhrRegDt1 = rhrRegDt1;
+				}
+				public String getAuctionMon() {
+					return auctionMon;
+				}
+				public void setAuctionMon(String auctionMon) {
+					this.auctionMon = auctionMon;
+				}
+				
+				
 			}
 		}
 
