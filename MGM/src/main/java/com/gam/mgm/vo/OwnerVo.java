@@ -47,6 +47,8 @@ public class OwnerVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{
+				@XmlElement(name="owNo")
+				private String ow_no;
 				@XmlElement(name="owName")
 				private String ow_name;
 				@XmlElement(name="totHorses")
@@ -118,6 +120,12 @@ public class OwnerVo {
 				}
 				public void setOw_chaksunT(long ow_chaksunT) {
 					this.ow_chaksunT = ow_chaksunT;
+				}
+				public String getOw_no() {
+					return ow_no;
+				}
+				public void setOw_no(String ow_no) {
+					this.ow_no = ow_no;
 				}	
 				
 			}

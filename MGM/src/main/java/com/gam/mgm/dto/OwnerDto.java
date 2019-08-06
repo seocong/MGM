@@ -2,6 +2,7 @@ package com.gam.mgm.dto;
 
 public class OwnerDto {
 	private int ow_seq;
+	private String ow_no;
 	private String ow_name;
 	private int ow_totHorses;
 	private int ow_cancledHorses;
@@ -16,10 +17,11 @@ public class OwnerDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OwnerDto(int ow_seq, String ow_name, int ow_totHorses, int ow_cancledHorses, int ow_nowHorses,
+	public OwnerDto(int ow_seq, String ow_no, String ow_name, int ow_totHorses, int ow_cancledHorses, int ow_nowHorses,
 			String ow_stDate, int ow_rcCntT, int ow_rcCntY, long ow_chaksunY, long ow_chaksunT, int ow_meet) {
 		super();
 		this.ow_seq = ow_seq;
+		this.ow_no = ow_no;
 		this.ow_name = ow_name;
 		this.ow_totHorses = ow_totHorses;
 		this.ow_cancledHorses = ow_cancledHorses;
@@ -31,11 +33,24 @@ public class OwnerDto {
 		this.ow_chaksunT = ow_chaksunT;
 		this.ow_meet = ow_meet;
 	}
+	@Override
+	public String toString() {
+		return "OwnerDto [ow_seq=" + ow_seq + ", ow_no=" + ow_no + ", ow_name=" + ow_name + ", ow_totHorses="
+				+ ow_totHorses + ", ow_cancledHorses=" + ow_cancledHorses + ", ow_nowHorses=" + ow_nowHorses
+				+ ", ow_stDate=" + ow_stDate + ", ow_rcCntT=" + ow_rcCntT + ", ow_rcCntY=" + ow_rcCntY
+				+ ", ow_chaksunY=" + ow_chaksunY + ", ow_chaksunT=" + ow_chaksunT + ", ow_meet=" + ow_meet + "]";
+	}
 	public int getOw_seq() {
 		return ow_seq;
 	}
 	public void setOw_seq(int ow_seq) {
 		this.ow_seq = ow_seq;
+	}
+	public String getOw_no() {
+		return ow_no;
+	}
+	public void setOw_no(String ow_no) {
+		this.ow_no = ow_no;
 	}
 	public String getOw_name() {
 		return ow_name;
@@ -97,12 +112,6 @@ public class OwnerDto {
 	public void setOw_meet(int ow_meet) {
 		this.ow_meet = ow_meet;
 	}
-	@Override
-	public String toString() {
-		return "OwnerDto [ow_seq=" + ow_seq + ", ow_name=" + ow_name + ", ow_totHorses=" + ow_totHorses
-				+ ", ow_cancledHorses=" + ow_cancledHorses + ", ow_nowHorses=" + ow_nowHorses + ", ow_stDate="
-				+ ow_stDate + ", ow_rcCntT=" + ow_rcCntT + ", ow_rcCntY=" + ow_rcCntY + ", ow_chaksunY=" + ow_chaksunY
-				+ ", ow_chaksunT=" + ow_chaksunT + ", ow_meet=" + ow_meet + "]";
-	}
+	
 	
 }

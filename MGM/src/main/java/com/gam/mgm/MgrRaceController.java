@@ -592,6 +592,7 @@ public class MgrRaceController {
 				if(resultList.size()!=0) {
 					OwnerDto owDto = new OwnerDto();
 					for(OwnerVo.Body.Item item:resultList) {
+						owDto.setOw_no(item.getOw_no());
 						owDto.setOw_name(item.getOw_name());
 						owDto.setOw_totHorses(item.getOw_totHorses());
 						owDto.setOw_cancledHorses(item.getOw_cancledHorses());
@@ -847,7 +848,7 @@ public class MgrRaceController {
 					List<RaceInfoVo.Body.Item> resultList = rcResult.getBody().getItems();
 					if(resultList.size()!=0) {
 						for(RaceInfoVo.Body.Item item:resultList) {
-							if(Integer.parseInt(item.getRcDate())>=beforeMonth) {
+							if(item.getRcDate()>=beforeMonth) {
 								rcInfoDto.setRi_meet(meet);
 								rcInfoDto.setRi_rcDate(item.getRcDate());
 								rcInfoDto.setRi_rcNo(item.getRcNo());

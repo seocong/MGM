@@ -5,9 +5,9 @@
 <mapper namespace="com.gam.owner">
 	<insert id="owinsert" parameterType="OwnerDto">
 		INSERT INTO owner 
-		(OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE, OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT, OW_CHAKSUNT,OW_MEET)
+		(OW_NO, OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE, OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT, OW_CHAKSUNT,OW_MEET)
 		VALUES
-		(#{ow_name},#{ow_totHorses},#{ow_cancledHorses},#{ow_nowHorses},#{ow_stDate},#{ow_rcCntY},#{ow_chaksunY},#{ow_rcCntT},#{ow_chaksunT},#{ow_meet})
+		(#{ow_no},#{ow_name},#{ow_totHorses},#{ow_cancledHorses},#{ow_nowHorses},#{ow_stDate},#{ow_rcCntY},#{ow_chaksunY},#{ow_rcCntT},#{ow_chaksunT},#{ow_meet})
 	</insert>
 	<delete id="owdel" parameterType="int">
 		DELETE FROM OWNER WHERE OW_MEET = #{ow_meet}

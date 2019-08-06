@@ -2,7 +2,7 @@ package com.gam.mgm.dto;
 
 public class RaceInfoDto {
 	private int ri_meet;
-	private String ri_rcDate;
+	private int ri_rcDate;
 	private int ri_rcNo;
 	private int ri_ilsu;
 	private int ri_rcDist;
@@ -29,7 +29,7 @@ public class RaceInfoDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RaceInfoDto(int ri_meet, String ri_rcDate, int ri_rcNo, int ri_ilsu, int ri_rcDist, String ri_rank,
+	public RaceInfoDto(int ri_meet, int ri_rcDate, int ri_rcNo, int ri_ilsu, int ri_rcDist, String ri_rank,
 			String ri_budam, String ri_rcName, String ri_ageCond, String ri_weather, String ri_track, int ri_chaksun1,
 			int ri_chaksun2, int ri_chaksun3, int ri_chaksun4, int ri_chaksun5, long ri_winAmt, long ri_plcAmt,
 			long ri_qnlAmt, long ri_exaAmt, long ri_qplAmt, long ri_tlaAmt, long ri_triAmt, long ri_totalAmt) {
@@ -65,10 +65,10 @@ public class RaceInfoDto {
 	public void setRi_meet(int ri_meet) {
 		this.ri_meet = ri_meet;
 	}
-	public String getRi_rcDate() {
+	public int getRi_rcDate() {
 		return ri_rcDate;
 	}
-	public void setRi_rcDate(String ri_rcDate) {
+	public void setRi_rcDate(int ri_rcDate) {
 		this.ri_rcDate = ri_rcDate;
 	}
 	public int getRi_rcNo() {
