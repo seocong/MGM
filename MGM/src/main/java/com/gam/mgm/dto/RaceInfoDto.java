@@ -25,6 +25,7 @@ public class RaceInfoDto {
 	private long ri_tlaAmt;
 	private long ri_triAmt;
 	private long ri_totalAmt;
+	private int ri_cnt;
 	public RaceInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -32,7 +33,7 @@ public class RaceInfoDto {
 	public RaceInfoDto(int ri_meet, int ri_rcDate, int ri_rcNo, int ri_ilsu, int ri_rcDist, String ri_rank,
 			String ri_budam, String ri_rcName, String ri_ageCond, String ri_weather, String ri_track, int ri_chaksun1,
 			int ri_chaksun2, int ri_chaksun3, int ri_chaksun4, int ri_chaksun5, long ri_winAmt, long ri_plcAmt,
-			long ri_qnlAmt, long ri_exaAmt, long ri_qplAmt, long ri_tlaAmt, long ri_triAmt, long ri_totalAmt) {
+			long ri_qnlAmt, long ri_exaAmt, long ri_qplAmt, long ri_tlaAmt, long ri_triAmt, long ri_totalAmt,int ri_cnt) {
 		super();
 		this.ri_meet = ri_meet;
 		this.ri_rcDate = ri_rcDate;
@@ -58,6 +59,7 @@ public class RaceInfoDto {
 		this.ri_tlaAmt = ri_tlaAmt;
 		this.ri_triAmt = ri_triAmt;
 		this.ri_totalAmt = ri_totalAmt;
+		this.ri_cnt = ri_cnt;
 	}
 	public int getRi_meet() {
 		return ri_meet;
@@ -202,6 +204,13 @@ public class RaceInfoDto {
 	}
 	public void setRi_totalAmt(long ri_totalAmt) {
 		this.ri_totalAmt = ri_totalAmt;
+	}
+	
+	public int getRi_cnt() {
+		return ri_cnt;
+	}
+	public void setRi_cnt(int ri_cnt) {
+		this.ri_cnt = ri_cnt;
 	}
 	@Override
 	public String toString() {

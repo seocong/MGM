@@ -1,5 +1,6 @@
 package com.gam.mgm.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,26 @@ public class RaceService implements IRaceService{
 	@Override
 	public boolean raceInfoInput(RaceInfoDto riDto) {
 		return raceDao.raceInfoInput(riDto);
+	}
+
+	@Override
+	public List<RaceInfoDto> getCntList(Map<String, Object> map) {
+		return raceDao.getCntList(map);
+	}
+
+	@Override
+	public int getAllCnt(int ri_meet) {
+		return raceDao.getAllCnt(ri_meet);
+	}
+
+	@Override
+	public RaceInfoDto getRiDetail(Map<String, Object> map) {
+		return raceDao.getRiDetail(map);
+	}
+
+	@Override
+	public List<RaceResultDto> getRrDetail(Map<String, Object> map) {
+		return raceDao.getRrDetail(map);
 	}
 	
 	
