@@ -239,7 +239,7 @@ public class HorseController {
 		map.put("ow_meet", ow_meet);
 		map.put("ow_name", ow_name);
 		OwnerDto owDto = ownerService.getOwner(map);
-		List<HorsesDto> hrDto = horsesService.getOwnerList(ow_name);
+		List<HorsesDto> hrDto = horsesService.getOwnerList(map);
 		model.addAttribute("owDto", owDto);
 		model.addAttribute("ow_meet", ow_meet);
 		model.addAttribute("hrDto", hrDto);

@@ -109,7 +109,7 @@
 		,hr_rcCntY,hr_ord1CntY,hr_ord2CntY,hr_ord3CntY,hr_chaksunT,hr_rating,hr_hrLastAmt,recentRcDate,debut,recentRcDate from horses where hr_htName=#{hr_htName} AND hr_meet=#{hr_meet}
 	</select>
 	
-	<select id="getownerlist" parameterType="String" resultType="HorsesDto">
-		select hr_htName,hr_rank,hr_name,hr_sex,hr_age,hr_trName,debut,hr_part from horses where hr_owName = #{ow_name}
+	<select id="getownerlist" parameterType="Map" resultType="HorsesDto">
+		select hr_htName,hr_rank,hr_name,hr_sex,hr_age,hr_trName,debut,hr_part from horses where hr_owName = #{ow_name} AND hr_meet = #{ow_meet}
 	</select>
 </mapper>

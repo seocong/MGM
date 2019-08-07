@@ -75,8 +75,8 @@ public class HorsesDao implements IHorsesDao{
 	}
 
 	@Override
-	public List<HorsesDto> getOwnerList(String ow_name) {
-		return sqlSession.selectList(namespace+"getownerlist",ow_name);
+	public List<HorsesDto> getOwnerList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getownerlist",map);
 	}
 
 }

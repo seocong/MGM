@@ -30,5 +30,5 @@ public interface IHorsesDao {
 
 	public HorsesDto getHorseDetail(Map<String, Object> map);
 
-	public List<HorsesDto> getOwnerList(String ow_name);
+	public List<HorsesDto> getOwnerList(Map<String, Object> map);
 }

@@ -71,8 +71,8 @@ public class HorsesService implements IHorsesService{
 	}
 
 	@Override
-	public List<HorsesDto> getOwnerList(String ow_name) {
-		return horsesDao.getOwnerList(ow_name);
+	public List<HorsesDto> getOwnerList(Map<String, Object> map) {
+		return horsesDao.getOwnerList(map);
 	}
 
 	
