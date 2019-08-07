@@ -271,7 +271,7 @@
 											</tr>
 											<c:forEach items="${hrDto}" var="hrDto">									
 											<tr>
-												<td>${hrDto.hr_htName}</td>
+												<td><a href="horseDetail.do?hr_htName=${hrDto.hr_htName}&hr_meet=${hrDto.hr_meet}">${hrDto.hr_htName}</a></td>
 												<td>${hrDto.hr_rank}</td>
 												<td>${hrDto.hr_name}</td>
 												<td>${hrDto.hr_sex}</td>
