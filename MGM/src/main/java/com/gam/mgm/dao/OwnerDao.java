@@ -1,6 +1,7 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,12 @@ public class OwnerDao implements IOwnerDao{
 	@Override
 	public List<OwnerDto> getAllList(int ow_meet) {
 		return sqlSession.selectList(namespace+"getList",ow_meet);
+	}
+
+
+	@Override
+	public OwnerDto getOwner(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"getowner",map);
 	}
 
 }

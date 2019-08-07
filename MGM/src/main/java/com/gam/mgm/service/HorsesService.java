@@ -65,6 +65,16 @@ public class HorsesService implements IHorsesService{
 		return horsesDao.hrAddInfoUpdate(ai);
 	}
 
+	@Override
+	public HorsesDto getHorseDetail(Map<String, Object> map) {
+		return horsesDao.getHorseDetail(map);
+	}
+
+	@Override
+	public List<HorsesDto> getOwnerList(String ow_name) {
+		return horsesDao.getOwnerList(ow_name);
+	}
+
 	
 
 }

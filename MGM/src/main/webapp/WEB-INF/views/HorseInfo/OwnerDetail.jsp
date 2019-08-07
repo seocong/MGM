@@ -172,7 +172,7 @@
 
 							
 							<div class="row clearfix">
-							<div id="jk_meet" data-jk_meet = "${jk_meet}" ></div>	
+							<div id="ow_meet" data-ow_meet = "${ow_meet}" ></div>	
 								<div class="col-md-12 mt-5">
 								
 								<table class="allmargin">
@@ -203,7 +203,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										기수정보<span style="font-size: 60%;">기수 전적 및 승률 정보</span>
+										마주 상세 정보<span style="font-size: 60%;">마주 보유마필 및 기록 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -211,141 +211,105 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="jockeyInfo.do?jk_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="jockeyInfo.do?jk_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="jockeyInfo.do?jk_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="ownerInfo.do?ow_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="ownerInfo.do?ow_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="ownerInfo.do?ow_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>기수 프로필</h4>
+												<span class="text-dark"><i class="icon-trophy"></i></span>마주 프로필</h4>
 													<table class="table table-bordered" >
-														
-														<%--  <col width="100px">
-														<col width="140px">
-														<col width="140px">
-														<col width="140px">
-														<col width="140px"> --%>
-
 														<tbody>
-
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" width="11%"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577.jpg"></td>
-																	<td class="titleColor" style="text-align: center;padding: 0px;" width="19%">성명</td>
-																	<td style="text-align: center;padding: 0px;" width="19%">${jkDto.jk_name}</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;" width="19%">소속조</td>
-																	<td style="text-align: center;padding: 0px;" width="19%">${jkDto.jk_part}</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;" width="12%">복색</td>
+																	<td class="titleColor" style="text-align: center;"width="15%">성명</td>
+																	<td style="text-align: center;" width="20%">${owDto.ow_name}</td>
+																	<td class="titleColor" style="text-align: center;"width="15%">등록번호</td>
+																	<td style="text-align: center;" width="20%">${owDto.ow_no}</td>
+																	<td class="titleColor" rowspan="2" style="text-align: center;"width="10%">마주복색</td>
+																	<td style="text-align: center;padding: 0px;" width="20%" rowspan="2"><img alt="" src="https://race.kra.co.kr/down/owner_cloth/seoul/117038a.jpg"></td>															
 																</tr>
 																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;">생년월일</td>
-																	<td style="text-align: center;padding: 0px;">${jkDto.jk_birthday}(${jkDto.jk_age}세)</td>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;">데뷔날짜</td>
-																	<td style="text-align: center;padding: 0px;">${jkDto.jk_debut}</td>
-																	<td style="text-align: center;padding: 0px;" rowspan="3"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577a.jpg"></td>
+																	<td class="titleColor"  style="text-align: center;">마주등록일</td>
+																	<td style="text-align: center;">${owDto.ow_stDate}</td>
+																	<td class="titleColor"  style="text-align: center;">보유두수</td>
+																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>															
 																</tr>
-																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;">통산전적</td>
-																	<td style="text-align: center;padding: 0px;">${jkDto.jk_rcCntT}전(${jkDto.jk_ord1CntT}/${jkDto.jk_ord2CntT})</td>
-																	<td style="text-align: center;padding: 0px;">승률 : ${totalWin}</td>
-																	<td style="text-align: center;padding: 0px;">복승률 : ${pass}</td>
-																</tr>
-																<tr>
-																	<td class="titleColor"  style="text-align: center;padding: 0px;">최근1년</td>
-																	<td style="text-align: center;padding: 0px;">${jkDto.jk_rcCntY}전(${jkDto.jk_ord1CntY}/${jkDto.jk_ord2CntY})</td>
-																	<td style="text-align: center;padding: 0px;">승률 : ${yearWin}</td>
-																	<td style="text-align: center;padding: 0px;">복승률 : ${yearPass}</td>
-																</tr>
+																													
 														</tbody>
+													</table>																								
 
-													</table>
 												</div>
-
 
 
 											<div class="tabs tabs-responsive clearfix">
 
 							<ul class="tab-nav clearfix">
-								<li><a href="#tab-responsive-1">최근6개월 전적</a></li>
-								<li><a href="#tab-responsive-2">년도별월별성적</a></li>								
+								<li><a href="#tab-responsive-1">소유말 현황</a></li>
+								<li><a href="#tab-responsive-2">최근 6개월 성적</a></li>								
 							</ul>
 							
 							
 							<div class="tab-container">
 
 								<div class="tab-content clearfix" id="tab-responsive-1">
-								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-										<span class="text-dark"><i class="icon-trophy"></i></span>
-										최근 6개월간 전적 및 수득상금
-									</h4>
-									<table class="table table-bordered ">
-										<thead>
+								
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>소유말 현황</h4>
+													<table class="table table-bordered ">													
 											<tr class="titleColor"  style="text-align: center;">
-												<th width="10%">월별</th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
+												<th width="15%" >마명</th>
+												<th width="10%">등급</th>
+												<th width="10%">산지</th>
+												<th width="10%">성별</th>
+												<th width="10%">연령</th>
+												<th width="20%">조교사(조)</th>
+												<th width="15%">데뷔일자</th>
+												<th width="10%">비고</th>
 											</tr>
-										</thead>
-										<tbody>
+											<c:forEach items="${hrDto}" var="hrDto">									
 											<tr>
-												<td>전적</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td>상금</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<td>${hrDto.hr_htName}</td>
+												<td>${hrDto.hr_rank}</td>
+												<td>${hrDto.hr_name}</td>
+												<td>${hrDto.hr_sex}</td>
+												<td>${hrDto.hr_age}</td>
+												<td>${hrDto.hr_trName}(${hrDto.hr_part}조)</td>
+												<td>${hrDto.debut}</td>
 												<td></td>
 											</tr>
-										</tbody>
+											</c:forEach>
 									</table>
+								
+								
+								
+								
+								
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
-										최근 6개월간 마필기승 내역
-									</h4>
+										대상경주 우승전적
+									</h4>								
 									<table class="table table-bordered ">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
-											<th width="15%">경주일자</th>
-											<th width="15%">기승마필</th>
-											<th width="9%">순위</th>
-											<th width="9%">등급</th>
-											<th width="8%">거리</th>
-											<th width="24%">경마종류</th>
-											<th width="10%">조교사</th>
-											<th width="10%">마주</th>
+											<th width="33%">경주일자</th>
+											<th width="33%">대상경주명</th>
+											<th width="33%">마명</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:choose>
 									<c:when test="${empty list}">
-										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
+										<tr><td colspan = "3">---경주 내역이 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
 												<c:forEach items="${list}" var="list">
 													<tr>
 														<td></td>
 														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td></td>														
 													</tr>
 												</c:forEach>
 												
@@ -354,26 +318,30 @@
 										</tbody>
 									</table>
 								</div>
+								
 								<div class="tab-content clearfix" id="tab-responsive-2">
+								<div>
+								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+										<span class="text-dark"><i class="icon-trophy"></i></span> 최근6개월 성적 </h4>	
 									<table class="table table-bordered ">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
-											<th width="10%">년도</th>
-											<th width="18%">출추횟수</th>
-											<th width="18%">1착횟수</th>
-											<th width="18%">2착횟수</th>
-											<th width="18%">승률</th>
-											<th width="18%">복승률</th>
-											
+											<th width="12%">경주일자</th>
+											<th width="6%">마번</th>
+											<th width="12%">마명</th>
+											<th width="10%">조교사명</th>
+											<th width="6%">격</th>
+											<th width="10%">등급</th>
+											<th width="12%">순위</th>
+											<th width="6%">중량</th>
+											<th width="6%">거리</th>
+											<th width="6%">기록</th>
+											<th width="6%">도착차</th>
+											<th width="8%">마체중</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:choose>
-									<c:when test="${empty list}">
-										<tr><td colspan = "6">---전적 및 정보가 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${jkList}" var="jkList">
+										<c:forEach items="${racelist}" var="racelist">
 													<tr>
 														<td></td>
 														<td></td>
@@ -381,21 +349,23 @@
 														<td></td>
 														<td></td>
 														<td></td>														
+														<td></td>														
+														<td></td>														
+														<td></td>
+														<td></td>														
+														<td></td>														
+														<td></td>														
 													</tr>
-												</c:forEach>
-												<tr>
-													<td>합계</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>	
-												</tr>
-											</c:otherwise>
-											</c:choose>
+												</c:forEach>												
 										</tbody>
 									</table>
+									</div>
+									
+									
+									
+									
 								</div>
+								
 								
 
 							</div>
@@ -463,14 +433,14 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var jk_meet = $("#jk_meet").attr("data-jk_meet");
-		if(jk_meet == 1){
+		var ow_meet = $("#ow_meet").attr("data-ow_meet");
+		if(ow_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(jk_meet == 2){
+		}else if(ow_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(jk_meet == 3){
+		}else if(ow_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	

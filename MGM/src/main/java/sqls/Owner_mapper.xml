@@ -13,7 +13,10 @@
 		DELETE FROM OWNER WHERE OW_MEET = #{ow_meet}
 	</delete>
 	
-	<select id="getList" parameterType="int" resultType="JockeyDto">
-		
+	<select id="getList" parameterType="int" resultType="OwnerDto">
+		select ow_no,ow_name,ow_totHorses,ow_cancledHorses,ow_nowHorses,ow_stDate,ow_rcCntT,ow_rcCntY,ow_chaksunY,ow_chaksunT,ow_meet from owner where ow_meet=#{ow_meet}
+	</select>
+	<select id="getowner" parameterType="Map" resultType="OwnerDto">
+		select ow_no,ow_name,ow_stDate,ow_nowHorses,ow_meet from owner where ow_name=#{ow_name} and ow_meet=#{ow_meet}
 	</select>
 </mapper>

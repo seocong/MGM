@@ -187,14 +187,14 @@
 								
 								
 								<tr id="tableSt">
-									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
-									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
+									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출전정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">경주성적표</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
 									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
-									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
-									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
-									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="ownerInfo.do?ow_meet=1">마주정보</a></td>
+									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출주예정마필</a></td>
+									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="#">시행정보</a></td>
 								</tr>
 								</table>
 								
@@ -274,6 +274,43 @@
 								<div class="tab-content clearfix" id="tab-responsive-1">
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
+										최근 6개월간 전적 및 수득상금
+									</h4>
+									<table class="table table-bordered ">
+										<thead>
+											<tr class="titleColor"  style="text-align: center;">
+												<th width="10%">월별</th>
+												<th width="15%"></th>
+												<th width="15%"></th>
+												<th width="15%"></th>
+												<th width="15%"></th>
+												<th width="15%"></th>
+												<th width="15%"></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>전적</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>상금</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+										<span class="text-dark"><i class="icon-trophy"></i></span>
 										최근 6개월간 소속조 마필기승 기수 성적
 									</h4>
 									<table class="table table-bordered ">
@@ -323,7 +360,7 @@
 											<th width="10%">연령</th>
 											<th width="10%">소속군</th>
 											<th width="15%">전적</th>
-											<th width="15%">생년월일</th>
+											<th width="15%">데뷔날짜</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -341,7 +378,7 @@
 														<td>${horseList.hr_age}</td>
 														<td>${horseList.hr_rank}</td>
 														<td>${horseList.hr_rcCntT}(${horseList.hr_ord1CntT}/${horseList.hr_ord2CntT})</td>
-														<td>${horseList.hr_birthday}</td>
+														<td>${horseList.debut}</td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>

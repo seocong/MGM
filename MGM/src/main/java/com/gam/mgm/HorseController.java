@@ -19,9 +19,11 @@ import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
+import com.gam.mgm.service.IOwnerService;
 import com.gam.mgm.service.ITrainerService;
 import com.gam.utils.Util;
 
@@ -36,6 +38,8 @@ public class HorseController {
 	private IJockeyService jockeyService;
 	@Autowired
 	private IHorsesService horsesService;
+	@Autowired
+	private IOwnerService ownerService;
 	
 	@RequestMapping(value = "/jokyoInfo.do", method = RequestMethod.GET)
 	public String jokyoInfo(Locale locale, Model model,HttpServletRequest request) {
@@ -192,4 +196,55 @@ public class HorseController {
 		return "HorseInfo/HorseInfoList";
 	}
 	
+	@RequestMapping(value="/horseDetail.do",method=RequestMethod.GET)
+	public String horseDetail(Locale locale, HttpServletRequest request,Model model){
+		logger.info("경주마상세보기", locale);
+		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
+		String hr_htName = request.getParameter("hr_htName");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("hr_htName", hr_htName);
+		map.put("hr_meet", hr_meet);
+		HorsesDto hrDto = horsesService.getHorseDetail(map);
+		int ord1cntt =hrDto.getHr_ord1CntT();
+		int rccntt = hrDto.getHr_rcCntT();
+		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
+		System.out.println("totalWin:"+totalWin);
+		int ord2cntt = hrDto.getHr_ord2CntT();
+		String pass = Util.round(ord1cntt+ord2cntt, rccntt);//복승률 구하기
+		model.addAttribute("hr_meet", hr_meet);	
+		model.addAttribute("hrDto", hrDto);	
+		model.addAttribute("totalWin",totalWin);
+		model.addAttribute("pass",pass);
+		return "HorseInfo/HorseDetail";
+	}
+	
+	
+	@RequestMapping(value="/ownerInfo.do",method=RequestMethod.GET)
+	public String ownerInfo(Locale locale, HttpServletRequest request,Model model){
+		logger.info("마주리스트", locale);
+		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
+		List<OwnerDto> owDto = ownerService.getAllList(ow_meet);
+		System.out.println("owDto:"+owDto);
+		model.addAttribute("owDto", owDto);
+		model.addAttribute("ow_meet", ow_meet);
+		return "HorseInfo/OwnerInfo";
+	}
+	
+		@RequestMapping(value="/ownerDetail.do",method=RequestMethod.GET)
+	public String ownerDetail(Locale locale, HttpServletRequest request,Model model){
+		logger.info("마주상세보기", locale);
+		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
+		String ow_name = request.getParameter("ow_name");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("ow_meet", ow_meet);
+		map.put("ow_name", ow_name);
+		OwnerDto owDto = ownerService.getOwner(map);
+		List<HorsesDto> hrDto = horsesService.getOwnerList(ow_name);
+		model.addAttribute("owDto", owDto);
+		model.addAttribute("ow_meet", ow_meet);
+		model.addAttribute("hrDto", hrDto);
+		//대상경주,최근경주성적 
+		return "HorseInfo/OwnerDetail";
+		
+		}
 }

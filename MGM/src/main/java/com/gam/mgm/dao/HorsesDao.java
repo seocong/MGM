@@ -69,4 +69,14 @@ public class HorsesDao implements IHorsesDao{
 		return rs>0?true:false;
 	}
 
+	@Override
+	public HorsesDto getHorseDetail(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"getDetail",map);
+	}
+
+	@Override
+	public List<HorsesDto> getOwnerList(String ow_name) {
+		return sqlSession.selectList(namespace+"getownerlist",ow_name);
+	}
+
 }

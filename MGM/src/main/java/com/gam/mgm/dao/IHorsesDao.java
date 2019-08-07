@@ -27,4 +27,8 @@ public interface IHorsesDao {
 	public List<HorsesDto> getRankList(Map<String, Object> map);
 	
 	public boolean hrAddInfoUpdate(HorsesDto ai);
+
+	public HorsesDto getHorseDetail(Map<String, Object> map);
+
+	public List<HorsesDto> getOwnerList(String ow_name);
 }

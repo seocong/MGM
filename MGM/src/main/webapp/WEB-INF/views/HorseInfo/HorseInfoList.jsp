@@ -184,14 +184,14 @@
 								
 								
 								<tr>
-									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출전정보</a></td>
-									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">경주성적표</a></td>
+									<td width="12%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출전정보</a></td>
+									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">경주성적표</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
 									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
-									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">마주정보</a></td>
-									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">출주예정마필</a></td>
-									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="jokyoInfo.do?tr_meet=1">시행정보</a></td>
+									<td width="11%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="ownerInfo.do?ow_meet=1">마주정보</a></td>
+									<td width="14%" style="text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출주예정마필</a></td>
+									<td width="11%" style="text-align: center;font-size: 120%;font-weight: bold;"><a href="#">시행정보</a></td>
 								</tr>
 								</table>
 								
@@ -353,14 +353,14 @@
 
 															<c:forEach items="${rankList}" var="rankList">
 																<tr>
-																	<td style="text-align: center;"><a href="horseDetail.do?hr_htName=${rankList.hr_htName}">${rankList.hr_htName}</a></td>
+																	<td style="text-align: center;"><a href="horseDetail.do?hr_htName=${rankList.hr_htName}&hr_meet=${rankList.hr_meet}">${rankList.hr_htName}</a></td>
 																	<td style="text-align: center;">${rankList.hr_part}</td>
 																	<td style="text-align: center;">${rankList.hr_name}</td>
 																	<td style="text-align: center;">${rankList.hr_sex}</td>
 																	<td style="text-align: center;">${rankList.hr_age}</td>
 																	<td style="text-align: center;">${rankList.hr_rank}</td>
 																	<td style="text-align: center;">${rankList.hr_rcCntT}(${rankList.hr_ord1CntT}/${rankList.hr_ord2CntT}/${rankList.hr_ord3CntT})</td>
-																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;">${rankList.recentRcDate}</td>
 																	<td style="text-align: center;"></td>
 																</tr>
 															</c:forEach>
