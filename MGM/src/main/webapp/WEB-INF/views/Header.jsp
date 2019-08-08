@@ -47,7 +47,7 @@
 							</li>
 							<li><a href="raceInfo.do"><div  style="font-weight: bold;">경마정보</div></a>
 								  <ul>								
-									<li><a href="raceResult.do"><div style="font-weight: bold;">경주성적표</div></a></li>
+									<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div style="font-weight: bold;">경주성적표</div></a></li>
 									<li><a href="raceInfo.do"><div style="font-weight: bold;">출마표</div></a></li>
 									<li><a href="horseInfo.do?hr_meet=1"><div style="font-weight: bold;">경주마정보</div></a></li>
 									<li><a href="jokyoInfo.do?tr_meet=1"><div style="font-weight: bold;">조교사정보</div></a></li>

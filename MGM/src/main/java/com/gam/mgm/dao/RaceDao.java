@@ -1,5 +1,6 @@
 package com.gam.mgm.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,6 +32,22 @@ public class RaceDao implements IRaceDao{
 	public boolean raceInfoInput(RaceInfoDto riDto) {
 		boolean rs = sqlSession.insert(namespace+"rcInfoInsert",riDto)>0?true:false;
 		return rs;
+	}
+	@Override
+	public List<RaceInfoDto> getCntList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getCntList", map);
+	}
+	@Override
+	public int getAllCnt(int ri_meet) {
+		return sqlSession.selectOne(namespace+"getAllCount", ri_meet);
+	}
+	@Override
+	public RaceInfoDto getRiDetail(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"getridetail", map);
+	}
+	@Override
+	public List<RaceResultDto> getRrDetail(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getrrdetail", map);
 	}
 	
 }
