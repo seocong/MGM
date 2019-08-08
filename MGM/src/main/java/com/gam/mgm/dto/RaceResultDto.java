@@ -30,32 +30,22 @@ public class RaceResultDto {
 	private float rr_winOdds;  
 	private float rr_plcOdds;
 	private String rr_trName;
+	private String rr_trNo;
 	private String rr_owName;
+	private String rr_owNo;
 	private String rr_jkName;
+	private String rr_jkNo;
 	private int rr_rating;
 	public RaceResultDto() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "RaceResultDto [rr_meet=" + rr_meet + ", rr_rcDate=" + rr_rcDate + ", rr_rcNo=" + rr_rcNo + ", rr_hrNo="
-				+ rr_hrNo + ", rr_hrName=" + rr_hrName + ", rr_ord=" + rr_ord + ", rr_chulNo=" + rr_chulNo
-				+ ", rr_wgBudam=" + rr_wgBudam + ", rr_wgHr=" + rr_wgHr + ", rr_rcTime=" + rr_rcTime + ", rr_diffUnit="
-				+ rr_diffUnit + ", rr_ordS1f=" + rr_ordS1f + ", rr_g8f_1c=" + rr_g8f_1c + ", rr_g6f_2c=" + rr_g6f_2c
-				+ ", rr_g4f_3c=" + rr_g4f_3c + ", rr_g3f_4c=" + rr_g3f_4c + ", rr_g2f=" + rr_g2f + ", rr_ordG1f="
-				+ rr_ordG1f + ", rr_rcTimeS1f=" + rr_rcTimeS1f + ", rr_rcTime_1c=" + rr_rcTime_1c + ", rr_rcTime_2c="
-				+ rr_rcTime_2c + ", rr_rcTime_3c=" + rr_rcTime_3c + ", rr_rcTime_4c=" + rr_rcTime_4c + ", rr_rcTimeG3f="
-				+ rr_rcTimeG3f + ", rr_rcTimeG2f=" + rr_rcTimeG2f + ", rr_rcTimeG1f=" + rr_rcTimeG1f + ", rr_winOdds="
-				+ rr_winOdds + ", rr_plcOdds=" + rr_plcOdds + ", rr_trName=" + rr_trName + ", rr_owName=" + rr_owName
-				+ ", rr_jkName=" + rr_jkName + ", rr_rating=" + rr_rating + "]";
 	}
 	public RaceResultDto(int rr_meet, String rr_rcDate, int rr_rcNo, String rr_hrNo, String rr_hrName, int rr_ord,
 			int rr_chulNo, String rr_wgBudam, String rr_wgHr, float rr_rcTime, String rr_diffUnit, int rr_ordS1f,
 			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, float rr_rcTimeS1f,
 			float rr_rcTime_1c, float rr_rcTime_2c, float rr_rcTime_3c, float rr_rcTime_4c, float rr_rcTimeG3f,
 			float rr_rcTimeG2f, float rr_rcTimeG1f, float rr_winOdds, float rr_plcOdds, String rr_trName,
-			String rr_owName, String rr_jkName, int rr_rating) {
+			String rr_trNo, String rr_owName, String rr_owNo, String rr_jkName, String rr_jkNo, int rr_rating) {
 		super();
 		this.rr_meet = rr_meet;
 		this.rr_rcDate = rr_rcDate;
@@ -86,9 +76,26 @@ public class RaceResultDto {
 		this.rr_winOdds = rr_winOdds;
 		this.rr_plcOdds = rr_plcOdds;
 		this.rr_trName = rr_trName;
+		this.rr_trNo = rr_trNo;
 		this.rr_owName = rr_owName;
+		this.rr_owNo = rr_owNo;
 		this.rr_jkName = rr_jkName;
+		this.rr_jkNo = rr_jkNo;
 		this.rr_rating = rr_rating;
+	}
+	@Override
+	public String toString() {
+		return "RaceResultDto [rr_meet=" + rr_meet + ", rr_rcDate=" + rr_rcDate + ", rr_rcNo=" + rr_rcNo + ", rr_hrNo="
+				+ rr_hrNo + ", rr_hrName=" + rr_hrName + ", rr_ord=" + rr_ord + ", rr_chulNo=" + rr_chulNo
+				+ ", rr_wgBudam=" + rr_wgBudam + ", rr_wgHr=" + rr_wgHr + ", rr_rcTime=" + rr_rcTime + ", rr_diffUnit="
+				+ rr_diffUnit + ", rr_ordS1f=" + rr_ordS1f + ", rr_g8f_1c=" + rr_g8f_1c + ", rr_g6f_2c=" + rr_g6f_2c
+				+ ", rr_g4f_3c=" + rr_g4f_3c + ", rr_g3f_4c=" + rr_g3f_4c + ", rr_g2f=" + rr_g2f + ", rr_ordG1f="
+				+ rr_ordG1f + ", rr_rcTimeS1f=" + rr_rcTimeS1f + ", rr_rcTime_1c=" + rr_rcTime_1c + ", rr_rcTime_2c="
+				+ rr_rcTime_2c + ", rr_rcTime_3c=" + rr_rcTime_3c + ", rr_rcTime_4c=" + rr_rcTime_4c + ", rr_rcTimeG3f="
+				+ rr_rcTimeG3f + ", rr_rcTimeG2f=" + rr_rcTimeG2f + ", rr_rcTimeG1f=" + rr_rcTimeG1f + ", rr_winOdds="
+				+ rr_winOdds + ", rr_plcOdds=" + rr_plcOdds + ", rr_trName=" + rr_trName + ", rr_trNo=" + rr_trNo
+				+ ", rr_owName=" + rr_owName + ", rr_owNo=" + rr_owNo + ", rr_jkName=" + rr_jkName + ", rr_jkNo="
+				+ rr_jkNo + ", rr_rating=" + rr_rating + "]";
 	}
 	public int getRr_meet() {
 		return rr_meet;
@@ -264,11 +271,23 @@ public class RaceResultDto {
 	public void setRr_trName(String rr_trName) {
 		this.rr_trName = rr_trName;
 	}
+	public String getRr_trNo() {
+		return rr_trNo;
+	}
+	public void setRr_trNo(String rr_trNo) {
+		this.rr_trNo = rr_trNo;
+	}
 	public String getRr_owName() {
 		return rr_owName;
 	}
 	public void setRr_owName(String rr_owName) {
 		this.rr_owName = rr_owName;
+	}
+	public String getRr_owNo() {
+		return rr_owNo;
+	}
+	public void setRr_owNo(String rr_owNo) {
+		this.rr_owNo = rr_owNo;
 	}
 	public String getRr_jkName() {
 		return rr_jkName;
@@ -276,12 +295,19 @@ public class RaceResultDto {
 	public void setRr_jkName(String rr_jkName) {
 		this.rr_jkName = rr_jkName;
 	}
+	public String getRr_jkNo() {
+		return rr_jkNo;
+	}
+	public void setRr_jkNo(String rr_jkNo) {
+		this.rr_jkNo = rr_jkNo;
+	}
 	public int getRr_rating() {
 		return rr_rating;
 	}
 	public void setRr_rating(int rr_rating) {
 		this.rr_rating = rr_rating;
 	}
+	
 	
 
 }

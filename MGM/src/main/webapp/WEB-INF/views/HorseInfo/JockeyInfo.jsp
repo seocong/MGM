@@ -243,7 +243,7 @@
 
 															<c:forEach items="${list}" var="jkDto">
 																<tr>
-																	<td style="text-align: center;"><a href="jockeyDetail.do?jk_name=${jkDto.jk_name}">${jkDto.jk_name}</a></td>
+																	<td style="text-align: center;"><a href="jockeyDetail.do?jk_no=${jkDto.jk_no}">${jkDto.jk_name}</a></td>
 																	<td style="text-align: center;">${jkDto.jk_part}</td>
 																	<td style="text-align: center;">${jkDto.jk_age}</td>
 																	<td style="text-align: center;">${jkDto.jk_debut}</td>

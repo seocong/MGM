@@ -9,7 +9,13 @@ public class OwnerDto {
 	private int ow_nowHorses;
 	private String ow_stDate;
 	private int ow_rcCntT;
+	private int ow_ord1CntT;
+	private int ow_ord2CntT;
+	private int ow_ord3CntT;
 	private int ow_rcCntY;
+	private int ow_ord1CntY;
+	private int ow_ord2CntY;
+	private int ow_ord3CntY;
 	private long ow_chaksunY;
 	private long ow_chaksunT;
 	private int ow_meet;
@@ -18,7 +24,8 @@ public class OwnerDto {
 		// TODO Auto-generated constructor stub
 	}
 	public OwnerDto(int ow_seq, String ow_no, String ow_name, int ow_totHorses, int ow_cancledHorses, int ow_nowHorses,
-			String ow_stDate, int ow_rcCntT, int ow_rcCntY, long ow_chaksunY, long ow_chaksunT, int ow_meet) {
+			String ow_stDate, int ow_rcCntT, int ow_ord1CntT, int ow_ord2CntT, int ow_ord3CntT, int ow_rcCntY,
+			int ow_ord1CntY, int ow_ord2CntY, int ow_ord3CntY, long ow_chaksunY, long ow_chaksunT, int ow_meet) {
 		super();
 		this.ow_seq = ow_seq;
 		this.ow_no = ow_no;
@@ -28,7 +35,13 @@ public class OwnerDto {
 		this.ow_nowHorses = ow_nowHorses;
 		this.ow_stDate = ow_stDate;
 		this.ow_rcCntT = ow_rcCntT;
+		this.ow_ord1CntT = ow_ord1CntT;
+		this.ow_ord2CntT = ow_ord2CntT;
+		this.ow_ord3CntT = ow_ord3CntT;
 		this.ow_rcCntY = ow_rcCntY;
+		this.ow_ord1CntY = ow_ord1CntY;
+		this.ow_ord2CntY = ow_ord2CntY;
+		this.ow_ord3CntY = ow_ord3CntY;
 		this.ow_chaksunY = ow_chaksunY;
 		this.ow_chaksunT = ow_chaksunT;
 		this.ow_meet = ow_meet;
@@ -37,7 +50,9 @@ public class OwnerDto {
 	public String toString() {
 		return "OwnerDto [ow_seq=" + ow_seq + ", ow_no=" + ow_no + ", ow_name=" + ow_name + ", ow_totHorses="
 				+ ow_totHorses + ", ow_cancledHorses=" + ow_cancledHorses + ", ow_nowHorses=" + ow_nowHorses
-				+ ", ow_stDate=" + ow_stDate + ", ow_rcCntT=" + ow_rcCntT + ", ow_rcCntY=" + ow_rcCntY
+				+ ", ow_stDate=" + ow_stDate + ", ow_rcCntT=" + ow_rcCntT + ", ow_ord1CntT=" + ow_ord1CntT
+				+ ", ow_ord2CntT=" + ow_ord2CntT + ", ow_ord3CntT=" + ow_ord3CntT + ", ow_rcCntY=" + ow_rcCntY
+				+ ", ow_ord1CntY=" + ow_ord1CntY + ", ow_ord2CntY=" + ow_ord2CntY + ", ow_ord3CntY=" + ow_ord3CntY
 				+ ", ow_chaksunY=" + ow_chaksunY + ", ow_chaksunT=" + ow_chaksunT + ", ow_meet=" + ow_meet + "]";
 	}
 	public int getOw_seq() {
@@ -88,11 +103,47 @@ public class OwnerDto {
 	public void setOw_rcCntT(int ow_rcCntT) {
 		this.ow_rcCntT = ow_rcCntT;
 	}
+	public int getOw_ord1CntT() {
+		return ow_ord1CntT;
+	}
+	public void setOw_ord1CntT(int ow_ord1CntT) {
+		this.ow_ord1CntT = ow_ord1CntT;
+	}
+	public int getOw_ord2CntT() {
+		return ow_ord2CntT;
+	}
+	public void setOw_ord2CntT(int ow_ord2CntT) {
+		this.ow_ord2CntT = ow_ord2CntT;
+	}
+	public int getOw_ord3CntT() {
+		return ow_ord3CntT;
+	}
+	public void setOw_ord3CntT(int ow_ord3CntT) {
+		this.ow_ord3CntT = ow_ord3CntT;
+	}
 	public int getOw_rcCntY() {
 		return ow_rcCntY;
 	}
 	public void setOw_rcCntY(int ow_rcCntY) {
 		this.ow_rcCntY = ow_rcCntY;
+	}
+	public int getOw_ord1CntY() {
+		return ow_ord1CntY;
+	}
+	public void setOw_ord1CntY(int ow_ord1CntY) {
+		this.ow_ord1CntY = ow_ord1CntY;
+	}
+	public int getOw_ord2CntY() {
+		return ow_ord2CntY;
+	}
+	public void setOw_ord2CntY(int ow_ord2CntY) {
+		this.ow_ord2CntY = ow_ord2CntY;
+	}
+	public int getOw_ord3CntY() {
+		return ow_ord3CntY;
+	}
+	public void setOw_ord3CntY(int ow_ord3CntY) {
+		this.ow_ord3CntY = ow_ord3CntY;
 	}
 	public long getOw_chaksunY() {
 		return ow_chaksunY;
@@ -112,6 +163,5 @@ public class OwnerDto {
 	public void setOw_meet(int ow_meet) {
 		this.ow_meet = ow_meet;
 	}
-	
 	
 }

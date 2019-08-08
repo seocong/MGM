@@ -61,8 +61,20 @@ public class OwnerVo {
 				private String ow_stDate;
 				@XmlElement(name="rcCntT")
 				private int ow_rcCntT;
+				@XmlElement(name="ord1CntT")
+				private int ow_ord1CntT;
+				@XmlElement(name="ord2CntT")
+				private int ow_ord2CntT;
+				@XmlElement(name="ord3CntT")
+				private int ow_ord3CntT;
 				@XmlElement(name="rcCntY")
 				private int ow_rcCntY;
+				@XmlElement(name="ord1CntY")
+				private int ow_ord1CntY;
+				@XmlElement(name="ord2CntY")
+				private int ow_ord2CntY;
+				@XmlElement(name="ord3CntY")
+				private int ow_ord3CntY;
 				@XmlElement(name="chaksunY")
 				private long ow_chaksunY;
 				@XmlElement(name="chaksunT")
@@ -126,6 +138,42 @@ public class OwnerVo {
 				}
 				public void setOw_no(String ow_no) {
 					this.ow_no = ow_no;
+				}
+				public int getOw_ord1CntT() {
+					return ow_ord1CntT;
+				}
+				public void setOw_ord1CntT(int ow_ord1CntT) {
+					this.ow_ord1CntT = ow_ord1CntT;
+				}
+				public int getOw_ord2CntT() {
+					return ow_ord2CntT;
+				}
+				public void setOw_ord2CntT(int ow_ord2CntT) {
+					this.ow_ord2CntT = ow_ord2CntT;
+				}
+				public int getOw_ord3CntT() {
+					return ow_ord3CntT;
+				}
+				public void setOw_ord3CntT(int ow_ord3CntT) {
+					this.ow_ord3CntT = ow_ord3CntT;
+				}
+				public int getOw_ord1CntY() {
+					return ow_ord1CntY;
+				}
+				public void setOw_ord1CntY(int ow_ord1CntY) {
+					this.ow_ord1CntY = ow_ord1CntY;
+				}
+				public int getOw_ord2CntY() {
+					return ow_ord2CntY;
+				}
+				public void setOw_ord2CntY(int ow_ord2CntY) {
+					this.ow_ord2CntY = ow_ord2CntY;
+				}
+				public int getOw_ord3CntY() {
+					return ow_ord3CntY;
+				}
+				public void setOw_ord3CntY(int ow_ord3CntY) {
+					this.ow_ord3CntY = ow_ord3CntY;
 				}	
 				
 			}

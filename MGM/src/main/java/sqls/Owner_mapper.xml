@@ -4,10 +4,12 @@
 
 <mapper namespace="com.gam.owner">
 	<insert id="owinsert" parameterType="OwnerDto">
-		INSERT INTO owner 
-		(OW_NO, OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE, OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT, OW_CHAKSUNT,OW_MEET)
+		INSERT INTO OWNER 
+		(OW_NO, OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE, OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT, OW_CHAKSUNT,OW_MEET,OW_ORD1CNTT,OW_ORD2CNTT,OW_ORD3CNTT,OW_ORD1CNTY,OW_ORD2CNTY,OW_ORD3CNTY)
 		VALUES
-		(#{ow_no},#{ow_name},#{ow_totHorses},#{ow_cancledHorses},#{ow_nowHorses},#{ow_stDate},#{ow_rcCntY},#{ow_chaksunY},#{ow_rcCntT},#{ow_chaksunT},#{ow_meet})
+		(#{ow_no},#{ow_name},#{ow_totHorses},#{ow_cancledHorses},#{ow_nowHorses},#{ow_stDate},#{ow_rcCntY},#{ow_chaksunY},#{ow_rcCntT},#{ow_chaksunT},#{ow_meet},#{ow_ord1CntT},#{ow_ord2CntT},#{ow_ord3CntT},
+		#{ow_ord1CntY},#{ow_ord2CntY},#{ow_ord3CntY}
+		)
 	</insert>
 	<delete id="owdel" parameterType="int">
 		DELETE FROM OWNER WHERE OW_MEET = #{ow_meet}

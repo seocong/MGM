@@ -30,4 +30,18 @@
 	<update id="trUpdate" parameterType="int">
 		update trainers set tr_no = #{value} where tr_name = #{tr_name}
 	</update>
+	
+	<select id="trRecord" resultType="RecordInfoDto" parameterType="String">
+	SELECT 
+	*,
+	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
+	AS HRCOUNT
+	FROM(
+	SELECT rr.rr_jkName as jkName,rr.rr_owName as owName,RR.RR_TRNAME AS TRNAME, rr.rr_hrName as hrName,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO, RI.RI_MEET AS MEET,
+	RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RI.RI_RCNAME AS RCNAME,rr.rr_ord as ord
+	FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
+	ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET
+	= RR.RR_MEET
+	WHERE RR.RR_trNO =#{value} ) AS RS;
+	</select>
 </mapper>

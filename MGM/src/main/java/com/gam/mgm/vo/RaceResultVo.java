@@ -76,8 +76,11 @@ public class RaceResultVo {
 				private float winOdds;  
 				private float plcOdds;
 				private String trName;
+				private String trNo;
 				private String owName;
+				private String owNo;
 				private String jkName;
+				private String jkNo;
 				private int rating;
 				public String getRcDate() {
 					return rcDate;
@@ -264,6 +267,24 @@ public class RaceResultVo {
 				}
 				public void setRating(int rating) {
 					this.rating = rating;
+				}
+				public String getTrNo() {
+					return trNo;
+				}
+				public void setTrNo(String trNo) {
+					this.trNo = trNo;
+				}
+				public String getOwNo() {
+					return owNo;
+				}
+				public void setOwNo(String owNo) {
+					this.owNo = owNo;
+				}
+				public String getJkNo() {
+					return jkNo;
+				}
+				public void setJkNo(String jkNo) {
+					this.jkNo = jkNo;
 				}
 				
 			}

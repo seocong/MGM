@@ -14,16 +14,30 @@
 	</delete>
 	
 	<select id="getList" parameterType="int" resultType="JockeyDto">
-		select jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
+		select jk_no,jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
 		 from JOCKEY where jk_meet = #{jk_meet}
 	</select>
 	
 	<select id="getkisu" parameterType="String" resultType="JockeyDto">
-		select jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
-		 from JOCKEY where jk_name = #{jk_name}
+		select jk_No,jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
+		 from JOCKEY where jk_name = #{jk_no}
 	</select>
 	
 	<update id="jkUpdate" parameterType="int">
 		update jockey set jk_no = #{jk_no} where jk_name = #{jk_name}
 	</update>
+	
+	<select id="jkRecord" resultType="RecordInfoDto" parameterType="String">
+	SELECT 
+	*,
+	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
+	AS HRCOUNT
+	FROM(
+	SELECT rr.rr_jkName as jkName,rr.rr_owName as owName,RR.RR_TRNAME AS TRNAME, rr.rr_hrName as hrName,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO, RI.RI_MEET AS MEET,
+	RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RI.RI_RCNAME AS RCNAME,rr.rr_ord as ord
+	FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
+	ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET
+	= RR.RR_MEET
+	WHERE RR.RR_JKNO =#{value} ) AS RS;
+	</select>
 </mapper>

@@ -1,52 +1,81 @@
 package com.gam.mgm.dto;
-
+/*
+ * 기수, 경주마, 조교사 디테일 페이지 경주기록 테이블 표시 내용
+ */
 public class RecordInfoDto {
-	private int rcDate; //경주일자
-	private int rcNo; //경주번호
-	private int meet; //경주지역
-	private String ranks; //순위
-	private int hrCount; //경주마 수
-	private int rcDist; // 경주거리
-	private String rcName; //경기 종류(경주이름)
-	private float wgBudam; //부담 중량(메뉴 -> 중량)
-	private String trName; //조교사명
-	private String jkName; //기수명
-	private String owName; //마주명
-	private float rcTime; //
+	private String jkName;
+	private String owName;
+	private String trName;
+	private String hrName;
+	private int rcDate;
+	private int rcNo;
+	private int meet;
+	private String ranks;
+	private int rcDist;
+	private String rcName;
+	private int ord;
+	private int hrCount;
+	private float rcTime;
 	private String wgHr;
 	private int rating;
 	private String track;
-	
+	private float wgBudam;
 	public RecordInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RecordInfoDto(int rcDate, int rcNo, int meet, String ranks, int rcDist, String rcName, float wgBudam,
-			String trName, String jkName, String owName, float rcTime, String wgHr, int rating, String track,
-			int hrCount) {
+	@Override
+	public String toString() {
+		return "RaceRecordDto [jkName=" + jkName + ", owName=" + owName + ", trName=" + trName + ", hrName=" + hrName
+				+ ", rcDate=" + rcDate + ", rcNo=" + rcNo + ", meet=" + meet + ", ranks=" + ranks + ", rcDist=" + rcDist
+				+ ", rcName=" + rcName + ", ord=" + ord + ", hrCount=" + hrCount + ", rcTime=" + rcTime + ", wgHr="
+				+ wgHr + ", rating=" + rating + ", track=" + track + ", wgBudam=" + wgBudam + "]";
+	}
+	public RecordInfoDto(String jkName, String owName, String trName, String hrName, int rcDate, int rcNo, int meet,
+			String ranks, int rcDist, String rcName, int ord, int hrCount, float rcTime, String wgHr, int rating,
+			String track, float wgBudam) {
 		super();
+		this.jkName = jkName;
+		this.owName = owName;
+		this.trName = trName;
+		this.hrName = hrName;
 		this.rcDate = rcDate;
 		this.rcNo = rcNo;
 		this.meet = meet;
 		this.ranks = ranks;
 		this.rcDist = rcDist;
 		this.rcName = rcName;
-		this.wgBudam = wgBudam;
-		this.trName = trName;
-		this.jkName = jkName;
-		this.owName = owName;
+		this.ord = ord;
+		this.hrCount = hrCount;
 		this.rcTime = rcTime;
 		this.wgHr = wgHr;
 		this.rating = rating;
 		this.track = track;
-		this.hrCount = hrCount;
+		this.wgBudam = wgBudam;
 	}
-	@Override
-	public String toString() {
-		return "RecordInfoDto [rcDate=" + rcDate + ", rcNo=" + rcNo + ", meet=" + meet + ", ranks=" + ranks
-				+ ", rcDist=" + rcDist + ", rcName=" + rcName + ", wgBudam=" + wgBudam + ", trName=" + trName
-				+ ", jkName=" + jkName + ", owName=" + owName + ", rcTime=" + rcTime + ", wgHr=" + wgHr + ", rating="
-				+ rating + ", track=" + track + ", hrCount=" + hrCount + "]";
+	public String getJkName() {
+		return jkName;
+	}
+	public void setJkName(String jkName) {
+		this.jkName = jkName;
+	}
+	public String getOwName() {
+		return owName;
+	}
+	public void setOwName(String owName) {
+		this.owName = owName;
+	}
+	public String getTrName() {
+		return trName;
+	}
+	public void setTrName(String trName) {
+		this.trName = trName;
+	}
+	public String getHrName() {
+		return hrName;
+	}
+	public void setHrName(String hrName) {
+		this.hrName = hrName;
 	}
 	public int getRcDate() {
 		return rcDate;
@@ -84,29 +113,17 @@ public class RecordInfoDto {
 	public void setRcName(String rcName) {
 		this.rcName = rcName;
 	}
-	public float getWgBudam() {
-		return wgBudam;
+	public int getOrd() {
+		return ord;
 	}
-	public void setWgBudam(float wgBudam) {
-		this.wgBudam = wgBudam;
+	public void setOrd(int ord) {
+		this.ord = ord;
 	}
-	public String getTrName() {
-		return trName;
+	public int getHrCount() {
+		return hrCount;
 	}
-	public void setTrName(String trName) {
-		this.trName = trName;
-	}
-	public String getJkName() {
-		return jkName;
-	}
-	public void setJkName(String jkName) {
-		this.jkName = jkName;
-	}
-	public String getOwName() {
-		return owName;
-	}
-	public void setOwName(String owName) {
-		this.owName = owName;
+	public void setHrCount(int hrCount) {
+		this.hrCount = hrCount;
 	}
 	public float getRcTime() {
 		return rcTime;
@@ -132,11 +149,12 @@ public class RecordInfoDto {
 	public void setTrack(String track) {
 		this.track = track;
 	}
-	public int getHrCount() {
-		return hrCount;
+	public float getWgBudam() {
+		return wgBudam;
 	}
-	public void setHrCount(int hrCount) {
-		this.hrCount = hrCount;
+	public void setWgBudam(float wgBudam) {
+		this.wgBudam = wgBudam;
 	}
+	
 	
 }

@@ -63,7 +63,10 @@
 		rr_trName,
 		rr_jkName,
 		rr_owName,
-		rr_rating
+		rr_rating,
+		rr_trNo,
+		rr_owNo,
+		rr_jkNo
 		)
 		VALUES
 		(
@@ -98,7 +101,10 @@
 		#{rr_trName},
 		#{rr_jkName},
 		#{rr_owName},
-		#{rr_rating}
+		#{rr_rating},
+		#{rr_trNo},
+		#{rr_owNo},
+		#{rr_jkNo}
 		)
 	</insert>
 

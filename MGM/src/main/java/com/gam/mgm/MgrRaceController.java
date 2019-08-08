@@ -599,7 +599,13 @@ public class MgrRaceController {
 						owDto.setOw_nowHorses(item.getOw_nowHorses());
 						owDto.setOw_stDate(item.getOw_stDate());
 						owDto.setOw_rcCntT(item.getOw_rcCntT());
+						owDto.setOw_ord1CntT(item.getOw_ord1CntT());
+						owDto.setOw_ord2CntT(item.getOw_ord2CntT());
+						owDto.setOw_ord3CntT(item.getOw_ord3CntT());
 						owDto.setOw_rcCntY(item.getOw_rcCntY());
+						owDto.setOw_ord1CntY(item.getOw_ord1CntY());
+						owDto.setOw_ord2CntY(item.getOw_ord2CntY());
+						owDto.setOw_ord3CntY(item.getOw_ord3CntY());
 						owDto.setOw_chaksunT(item.getOw_chaksunT());
 						owDto.setOw_chaksunY(item.getOw_chaksunY());
 						owDto.setOw_meet(meet);
@@ -693,6 +699,10 @@ public class MgrRaceController {
 							raceRsDto.setRr_owName(item.getOwName());
 							raceRsDto.setRr_jkName(item.getJkName());
 							raceRsDto.setRr_rating(item.getRating());
+							System.out.println(item.getTrNo()+','+item.getOwNo()+','+item.getJkNo());
+							raceRsDto.setRr_trNo(item.getTrNo());
+							raceRsDto.setRr_jkNo(item.getJkNo());
+							raceRsDto.setRr_owNo(item.getOwNo());
 							raceService.raceResultInput(raceRsDto);
 						}else {
 							break BB;
@@ -817,9 +827,10 @@ public class MgrRaceController {
 		RaceInfoDto rcInfoDto = new RaceInfoDto();
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH,-5);
+		cal.add(Calendar.YEAR,-1);
 		int month = cal.get(Calendar.MONTH)+1;
 		int beforeMonth = Integer.parseInt(fmt.format(cal.getTime()));
+		System.out.println(beforeMonth);
 		for(int meet=1;meet<=3;meet++) {
 			int pageNo=1;
 			BB:while(true) {
