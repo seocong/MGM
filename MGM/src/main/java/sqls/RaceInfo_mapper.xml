@@ -159,7 +159,7 @@
 		)
 	</insert>
 	<select id="getCntList" parameterType="Map" resultType="RaceInfoDto">
-		select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet =#{ri_meet} group by ri_rcDate DESC limit #{pagenum},#{contentnum}
+		select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet = #{ri_meet} group by ri_rcDate limit #{pagenum},#{contentnum}
 	</select>
 	
 	<select id="getAllCount" parameterType="int" resultType="int">
