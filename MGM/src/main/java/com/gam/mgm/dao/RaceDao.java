@@ -49,5 +49,9 @@ public class RaceDao implements IRaceDao{
 	public List<RaceResultDto> getRrDetail(Map<String, Object> map) {
 		return sqlSession.selectList(namespace+"getrrdetail", map);
 	}
+	@Override
+	public List<RaceInfoDto> getRacePaging(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getracepaging", map);
+	}
 	
 }

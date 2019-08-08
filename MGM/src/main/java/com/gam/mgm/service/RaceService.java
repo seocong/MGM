@@ -55,6 +55,11 @@ public class RaceService implements IRaceService{
 	public List<RaceResultDto> getRrDetail(Map<String, Object> map) {
 		return raceDao.getRrDetail(map);
 	}
+
+	@Override
+	public List<RaceInfoDto> getRacePaging(Map<String, Object> map) {
+		return raceDao.getRacePaging(map);
+	}
 	
 	
 }

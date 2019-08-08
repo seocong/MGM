@@ -192,7 +192,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										경주별 상세 성적표<span style="font-size: 60%;"></span>
+										경주 성적표<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -207,35 +207,36 @@
 
 										<div>
 											<div class="tabcontent">
-											<%-- <div>나중에 하자
-												<table>
+											<br>
+												<div>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
 													<tr>
-														<td>경주</td>
+														<td width="6%" class="titleColor">경주</td>
 														<c:forEach items="${list}" var="list">
-															<td>R</td>
+															<td width="2%" ><a class="link" href="recordDetail.do?ri_meet=${list.ri_meet}&ri_rcNo=${list.ri_rcNo}&ri_rcDate=<fmt:formatDate value="${list.ri_rcDate}" pattern="yyyyMMdd"/>">${list.ri_rcNo}R</a></td>
 														</c:forEach>
 													</tr>
 												</table>
-											</div> --%>
+											</div>
 											<div>
 											 <h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span></h4> 
+												<span class="text-dark"><i class="icon-trophy">경주별 상세 성적표</i></span></h4> 
 												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
-												<td width="84%" colspan="4">${riDto.ri_rcDate} ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</td>
-												<td width="16%">경주시간</td>
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일"/> ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</th>
+												
 											</tr>
 											<tr style="text-align: center;">
-												<td width="26%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
-												<td width="26%">${riDto.ri_rcName}</td>
-												<td width="16%">R1 ~ 35</td>
-												<td width="16%">${riDto.ri_ageCond}</td>
-												<td width="16%"></td>
+												<td width="25%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
+												<td width="25%">${riDto.ri_rcName}</td>
+												<td width="25%">R1 ~ 35</td>
+												<td width="25%">${riDto.ri_ageCond}</td>
+												
 											</tr>
 											</table>
 											<table class="table table-bordered ">
 											<tr style="text-align: center;">
-												<td width="20%" class="titleColor" >순위상금</td>
+												<th width="20%" class="titleColor" >순위상금</th>
 												<td width="16%">${riDto.ri_chaksun1}원</td>
 												<td width="16%">${riDto.ri_chaksun2}원</td>
 												<td width="16%">${riDto.ri_chaksun3}원</td>
@@ -270,7 +271,7 @@
 																<tr style="text-align: center;white-space: nowrap;">
 																	<td >${rrList.rr_ord}</td>
 																	<td >${rrList.rr_chulNo}</td>
-																	<td >${rrList.rr_hrName}</td>
+																	<td><a href="horseDetail.do?hr_htName=${rrList.rr_hrName}&hr_meet=${rrList.rr_meet}">${rrList.rr_hrName}</a></td>
 																	<td >?</td>
 																	<td>?</td>
 																	<td>?세</td>
@@ -321,7 +322,7 @@
 																	<td >0:${rrList.rr_rcTime_4c}</td>
 																	<td >0:${rrList.rr_rcTimeG3f}</td>
 																	<td >0:${rrList.rr_rcTimeG1f}</td>
-																	<td >?</td>
+																	<td >${rrList.rr_rcTime}</td>
 																</tr>
 															</c:forEach>
 														</tbody>
@@ -433,6 +434,14 @@
 		}	
 	});
 	
+	$(function(){
+		var page = ${riDto.ri_rcNo}-1;
+		
+		$(".link").eq(page).css({
+			"background-color":"#3A486E",
+			"color":"white"
+		});
+	});
 		</script>
 		
  	

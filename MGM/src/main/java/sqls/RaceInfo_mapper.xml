@@ -184,4 +184,8 @@
 		,rr_owName,rr_TrName,rr_jkName from race_result where rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo}
 		AND rr_rcDate = #{ri_rcDate}
 	</select>
+	
+	<select id="getracepaging" parameterType="Map" resultType="RaceInfoDto">
+		select ri_meet,ri_rcDate,ri_rcNo from race_info where ri_meet=#{ri_meet} AND ri_rcDate = #{ri_rcDate}  
+	</select>
 </mapper>
