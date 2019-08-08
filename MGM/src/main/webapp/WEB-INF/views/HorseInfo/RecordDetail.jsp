@@ -4,6 +4,7 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="com.gam.utils.Util"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -272,9 +273,9 @@
 																	<td >${rrList.rr_ord}</td>
 																	<td >${rrList.rr_chulNo}</td>
 																	<td><a href="horseDetail.do?hr_htName=${rrList.rr_hrName}&hr_meet=${rrList.rr_meet}">${rrList.rr_hrName}</a></td>
-																	<td >?</td>
-																	<td>?</td>
-																	<td>?세</td>
+																	<td >${rrList.hr_name}</td>
+																	<td>${rrList.hr_sex}</td>
+																	<td>${rrList.hr_age}세</td>
 																	<td>${rrList.rr_wgBudam}</td>
 																	<td>${rrList.rr_rating}</td>
 																	<td>${rrList.rr_jkName}</td>
@@ -312,30 +313,115 @@
 
 															<c:forEach items="${rrList}" var="rrList">
 																<tr style="text-align: center;">
-																	<td >${rrList.rr_ord}</td>
-																	<td >${rrList.rr_chulNo}</td>
+																	<td>${rrList.rr_ord}</td>
+																	<td>${rrList.rr_chulNo}</td>
 																	<td>${rrList.rr_ordS1f} - ${rrList.rr_g8f_1c} - ${rrList.rr_g6f_2c} - ${rrList.rr_g4f_3c} - ${rrList.rr_g3f_4c} - ${rrList.rr_ordG1f}</td>
-																	<td >0:${rrList.rr_rcTimeS1f}</td>
-																	<td ></td>
-																	<td ></td>
-																	<td >0:${rrList.rr_rcTime_3c}</td>
-																	<td >0:${rrList.rr_rcTime_4c}</td>
-																	<td >0:${rrList.rr_rcTimeG3f}</td>
-																	<td >0:${rrList.rr_rcTimeG1f}</td>
-																	<td >${rrList.rr_rcTime}</td>
+																	<td>0:${rrList.rr_rcTimeS1f}</td>
+																	<td></td>
+																	<td></td>
+																	<td>0:${rrList.rr_rcTime_3c}</td>
+																	<td>0:${rrList.rr_rcTime_4c}</td>
+																	<td>0:${rrList.rr_rcTimeG3f}</td>
+																	<td>0:${rrList.rr_rcTimeG1f}</td>
+																	<td>${rrList.rr_rcTime}</td>
 																</tr>
 															</c:forEach>
 														</tbody>
 													</table>
 												</div>
 												<div>
-													<table>
-														<tr style="text-align: center;">
-															<td class="titleColor"  width="10%">우승마</td>
-															<td width="90%">위에 조건중 rr_ord=1일때 추가</td>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">매출액</th>
+															<td width="40%" style="text-align:left;">단승식 : </td>
+															<td width="40%" style="text-align:left;">연승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복승식 : </td>
+															<td style="text-align:left;">쌍승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복연승 : </td>
+															<td style="text-align:left;">삼복승 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">삼쌍승 : </td>
+															<td style="text-align:left;">합계 : </td>
+														</tr>
+													</table>
+													</div>
+													<div>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">배당률</th>
+															<td width="40%" style="text-align:left;">단승식 : </td>
+															<td width="40%" style="text-align:left;">연승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복승식 : </td>
+															<td style="text-align:left;">쌍승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복연승 : </td>
+															<td style="text-align:left;">삼복승 : </td>
+														</tr>
+														<tr>
+															<td colspan="2" style="text-align:left;">삼쌍승 : </td>
 														</tr>
 													</table>
 												</div>
+												<div>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">S-1F</th>
+															<td width="45%" style="text-align:left;"></td>
+															<th class="titleColor"  width="10%" style="text-align: center;">3F</th>
+															<td width="30%" style="text-align:left;"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">1코너</th>
+															<td width="45%" style="text-align:left;"></td>
+															<th class="titleColor"  width="10%" style="text-align: center;">4F</th>
+															<td width="30%" style="text-align:left;"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">2코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">3코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">4코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">G-1F</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+													</table>
+												</div>
+												<div>
+													<table class="table table-bordered ">
+													<tr>
+														<th class="titleColor" style="text-align: center;">재결사항</th>
+													</tr>
+													<tr>
+														<td style="text-align:left;"></td>
+													</tr>
+													</table>
+												</div>
+												<div>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
+													<tr>
+														<td width="6%" class="titleColor">경주</td>
+														<c:forEach items="${list}" var="list">
+															<td width="2%" ><a class="link" href="recordDetail.do?ri_meet=${list.ri_meet}&ri_rcNo=${list.ri_rcNo}&ri_rcDate=<fmt:formatDate value="${list.ri_rcDate}" pattern="yyyyMMdd"/>">${list.ri_rcNo}R</a></td>
+														</c:forEach>
+													</tr>
+												</table>
+											</div>
 											</div>
 
 
@@ -348,32 +434,7 @@
 								
 							</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 							<div class="line"></div>
-
-
-
-
-
-
-
-
 
 						</div>
 						<!-- 본문내용끝 -->

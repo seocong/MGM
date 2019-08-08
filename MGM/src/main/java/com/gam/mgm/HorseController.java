@@ -300,7 +300,8 @@ public class HorseController {
 		List<RaceInfoDto> list = raceService.getRacePaging(map);
 		System.out.println("list:"+list);
 		RaceInfoDto riDto = raceService.getRiDetail(map);
-		List<RaceResultDto> rrList = raceService.getRrDetail(map);		
+		List<RaceResultDto> rrList = raceService.getRrDetail(map);
+		
 		model.addAttribute("riDto", riDto);
 		model.addAttribute("rrList", rrList);
 		model.addAttribute("ri_meet", ri_meet);

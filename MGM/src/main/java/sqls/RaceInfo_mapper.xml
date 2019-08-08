@@ -165,7 +165,7 @@
 		)
 	</insert>
 	<select id="getCntList" parameterType="Map" resultType="RaceInfoDto">
-		select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet = #{ri_meet} group by ri_rcDate limit #{pagenum},#{contentnum}
+		select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet = #{ri_meet} group by ri_rcDate DESC limit #{pagenum},#{contentnum}
 	</select>
 	
 	<select id="getAllCount" parameterType="int" resultType="int">
@@ -179,10 +179,9 @@
 	</select>
 	
 	<select id="getrrdetail" parameterType="Map" resultType="RaceResultDto">
-		select rr_meet,rr_rcDate,rr_rcNo,rr_hrno,rr_hrName,rr_ord,rr_chulNo,rr_wgBudam,rr_wgHr,rr_rcTime,rr_diffUnit,rr_ordS1f,rr_g8f_1c,rr_g6f_2c,rr_g4f_3c,rr_g3f_4c
-		,rr_g2f,rr_ordG1f,rr_rcTimeS1f,rr_rcTime_1c,rr_rcTime_2c,rr_rcTime_3c,rr_rcTime_4c,rr_rcTimeG3f,rr_rcTimeG2f,rr_rcTimeG1f,rr_winOdds,rr_plcOdds,rr_rating
-		,rr_owName,rr_TrName,rr_jkName from race_result where rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo}
-		AND rr_rcDate = #{ri_rcDate}
+		select A.rr_meet,A.rr_rcDate,A.rr_rcNo,A.rr_hrno,A.rr_hrName,A.rr_ord,A.rr_chulNo,A.rr_wgBudam,A.rr_wgHr,A.rr_rcTime,A.rr_diffUnit,A.rr_ordS1f,A.rr_g8f_1c,A.rr_g6f_2c,A.rr_g4f_3c,A.rr_g3f_4c
+		,A.rr_g2f,A.rr_ordG1f,A.rr_rcTimeS1f,A.rr_rcTime_1c,A.rr_rcTime_2c,A.rr_rcTime_3c,A.rr_rcTime_4c,A.rr_rcTimeG3f,A.rr_rcTimeG2f,A.rr_rcTimeG1f,A.rr_winOdds,A.rr_plcOdds,A.rr_rating
+		,A.rr_owName,A.rr_TrName,A.rr_jkName,B.hr_sex,B.hr_age,B.hr_name from race_result A INNER JOIN horses B ON A.rr_hrno = B.hr_no where rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo} AND rr_rcDate = #{ri_rcDate}
 	</select>
 	
 	<select id="getracepaging" parameterType="Map" resultType="RaceInfoDto">
