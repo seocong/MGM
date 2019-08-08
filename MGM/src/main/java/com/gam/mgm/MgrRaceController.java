@@ -665,7 +665,7 @@ public class MgrRaceController {
 				}else {
 					List<RaceResultVo.Body.Item> resultList = rcResult.getBody().getItems();
 					for(RaceResultVo.Body.Item item:resultList) {
-						int date = Integer.parseInt(item.getRcDate());
+						int date = Integer.parseInt(fmt.format(item.getRcDate()));
 						if(date>beforeMonth) {
 							raceRsDto.setRr_meet(meet);
 							raceRsDto.setRr_rcDate(item.getRcDate());
@@ -859,7 +859,7 @@ public class MgrRaceController {
 					List<RaceInfoVo.Body.Item> resultList = rcResult.getBody().getItems();
 					if(resultList.size()!=0) {
 						for(RaceInfoVo.Body.Item item:resultList) {
-							if(item.getRcDate()>=beforeMonth) {
+							if(Integer.parseInt(fmt.format(item.getRcDate()))>=beforeMonth) {
 								rcInfoDto.setRi_meet(meet);
 								rcInfoDto.setRi_rcDate(item.getRcDate());
 								rcInfoDto.setRi_rcNo(item.getRcNo());

@@ -15,13 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceInfoDto;
 import com.gam.mgm.dto.RaceResultDto;
+import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IHorsesService;
@@ -61,9 +61,12 @@ public class HorseController {
 	@RequestMapping(value="/jokyoDetail.do",method=RequestMethod.GET)
 	public String jokyoDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("조교사상세정보", locale);	
-		System.out.println("tr_name:"+request.getParameter("tr_name"));
-		String tr_name=request.getParameter("tr_name");
-		TrainerDto trDto = trainerService.getJokyo(tr_name);
+		String tr_no = request.getParameter("tr_no");
+		System.out.println("tr_no: "+request.getParameter("tr_no"));
+		System.out.println("tr_no: "+tr_no);
+		TrainerDto trDto = trainerService.getJokyo(tr_no);
+		System.out.println("번호확인: "+trDto.getTr_no());
+		List<RecordInfoDto> riDto = trainerService.recordInfo(tr_no);
 		int ord1cntt =trDto.getTr_ord1cntt();
 		int rccntt = trDto.getTr_rccntt();
 		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
@@ -92,7 +95,8 @@ public class HorseController {
 		model.addAttribute("yearWin",yearWin);
 		model.addAttribute("yearPass",yearPass);
 		model.addAttribute("tr_meet",tr_meet);
-		model.addAttribute("horseList",horseList);		
+		model.addAttribute("horseList",horseList);	
+		model.addAttribute("record",riDto);
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JokyoDetail";
 	}

@@ -1,6 +1,5 @@
 package com.gam.mgm.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
 @Repository
@@ -39,13 +39,18 @@ public class TrainerDao implements ITrainerDao {
 	}
 
 	@Override
-	public TrainerDto getJokyo(String tr_name) {
-		return sqlSession.selectOne(namespace+"getjokyo", tr_name);
+	public TrainerDto getJokyo(String tr_no) {
+		return sqlSession.selectOne(namespace+"getjokyo", tr_no);
 	}
 	
 	@Override
-	public boolean trUpdate(int trno) {
+	public boolean trUpdate(String trno) {
 		int rs = sqlSession.update(namespace+"trUpdate");
 		return rs>0?true:false;
+	}
+	
+	@Override
+	public List<RecordInfoDto> recordInfo(String trno) {
+		return sqlSession.selectList(namespace+"recordInfo",trno);
 	}
 }

@@ -230,7 +230,7 @@
 														<tbody>
 
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/trainer/070175.jpg"></td>
+																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img alt="미등록" src="http://race.kra.co.kr/ijrc_pub/photo/trainer/${trDto.tr_no}.jpg"></td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px; background-color: #fbeae6;">성명</td>
 																	<td style="text-align: center;padding: 0px;">${trDto.tr_name}</td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">소속조</td>
@@ -332,16 +332,16 @@
 										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${list}" var="list">
+												<c:forEach items="${record}" var="list">
 													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td>${list.rcDate}</td>
+														<td>${list.hrName}</td>
+														<td>${list.ord}/${list.hrCount}</td>
+														<td>${list.ranks}</td>
+														<td>${list.rcDist}</td>
+														<td>${list.rcName}</td>
+														<td>${list.jkName}</td>
+														<td>${list.owName}</td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>

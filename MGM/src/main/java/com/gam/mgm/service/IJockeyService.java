@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IJockeyService {
 	
@@ -16,4 +17,6 @@ public interface IJockeyService {
 	public JockeyDto getKisu(String jk_name);
 	
 	public boolean jkUpdate(int jkno);
+	
+	public List<RecordInfoDto> recordInfo(int jkno);
 }

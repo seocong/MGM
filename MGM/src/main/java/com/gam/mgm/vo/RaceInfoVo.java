@@ -1,7 +1,7 @@
 package com.gam.mgm.vo;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -48,7 +48,7 @@ public class RaceInfoVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{
-				private int rcDate;
+				private Date rcDate;
 				private int rcNo;
 				private int ilsu;
 				private int rcDist;
@@ -72,10 +72,10 @@ public class RaceInfoVo {
 				private long triAmt;
 				private long totalAmt;
 				
-				public int getRcDate() {
+				public Date getRcDate() {
 					return rcDate;
 				}
-				public void setRcDate(int rcDate) {
+				public void setRcDate(Date rcDate) {
 					this.rcDate = rcDate;
 				}
 				public int getRcNo() {

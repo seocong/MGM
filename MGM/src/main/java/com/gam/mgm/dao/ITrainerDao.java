@@ -3,6 +3,7 @@ package com.gam.mgm.dao;
 import java.util.List;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
 public interface ITrainerDao {
@@ -15,7 +16,9 @@ public interface ITrainerDao {
 	
 	public List<ChampionDto> getChampionList(String tr_name);
 
-	public TrainerDto getJokyo(String tr_name);
+	public TrainerDto getJokyo(String tr_no);
 	
-	public boolean trUpdate(int trno);
+	public boolean trUpdate(String trno);
+	
+	public List<RecordInfoDto> recordInfo(String trno);
 }

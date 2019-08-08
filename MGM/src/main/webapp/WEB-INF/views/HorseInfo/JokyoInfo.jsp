@@ -242,7 +242,7 @@
 
 															<c:forEach items="${list}" var="trDto">
 																<tr>
-																	<td style="text-align: center;"><a href="jokyoDetail.do?tr_name=${trDto.tr_name}">${trDto.tr_name}</a></td>
+																	<td style="text-align: center;"><a href="jokyoDetail.do?tr_no=${trDto.tr_no}">${trDto.tr_name}</a></td>
 																	<td style="text-align: center;">${trDto.tr_part}</td>
 																	<td style="text-align: center;">${trDto.tr_age}</td>
 																	<td style="text-align: center;">${trDto.tr_stdate}</td>

@@ -88,7 +88,7 @@
 		WHERE HR_HTNAME=#{hr_htName}
 	</update>
 	
-	<select id="hrRecord" resultType="RecordInfoDto" parameterType="String">
+	<select id="recordInfo" resultType="RecordInfoDto" parameterType="String">
 	SELECT 
 	*,
 	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)

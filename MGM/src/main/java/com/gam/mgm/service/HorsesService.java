@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gam.mgm.dao.IHorsesDao;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
+import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
 @Service
@@ -73,6 +74,11 @@ public class HorsesService implements IHorsesService{
 	@Override
 	public List<HorsesDto> getOwnerList(Map<String, Object> map) {
 		return horsesDao.getOwnerList(map);
+	}
+
+	@Override
+	public List<RecordInfoDto> recordInfo(int hrno) {
+		return horsesDao.recordInfo(hrno);
 	}
 
 	

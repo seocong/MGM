@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 @Repository
 public class JockeyDao implements IJockeyDao{
@@ -40,5 +41,10 @@ public class JockeyDao implements IJockeyDao{
 	public boolean jkUpdate(int jkno) {
 		int rs = sqlSession.update(namespace+"jkUpdate");
 		return rs>0?true:false;
+	}
+
+	@Override
+	public List<RecordInfoDto> recordInfo(int jkno) {
+		return sqlSession.selectList(namespace+"recordInfo",jkno);
 	}
 }

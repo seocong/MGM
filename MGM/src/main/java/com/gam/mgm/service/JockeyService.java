@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.IJockeyDao;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 @Service
 public class JockeyService implements IJockeyService{
@@ -35,5 +36,10 @@ public class JockeyService implements IJockeyService{
 	@Override
 	public boolean jkUpdate(int jkno) {
 		return jokeyDao.jkUpdate(jkno);
+	}
+
+	@Override
+	public List<RecordInfoDto> recordInfo(int jkno) {
+		return jokeyDao.recordInfo(jkno);
 	}
 }

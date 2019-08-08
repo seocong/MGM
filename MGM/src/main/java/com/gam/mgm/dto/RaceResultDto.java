@@ -1,8 +1,10 @@
 package com.gam.mgm.dto;
 
+import java.util.Date;
+
 public class RaceResultDto {
 	private int rr_meet;  
-	private String rr_rcDate;  
+	private Date rr_rcDate;  
 	private int rr_rcNo;  
 	private String rr_hrNo;
 	private String rr_hrName;  
@@ -40,7 +42,7 @@ public class RaceResultDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RaceResultDto(int rr_meet, String rr_rcDate, int rr_rcNo, String rr_hrNo, String rr_hrName, int rr_ord,
+	public RaceResultDto(int rr_meet, Date rr_rcDate, int rr_rcNo, String rr_hrNo, String rr_hrName, int rr_ord,
 			int rr_chulNo, String rr_wgBudam, String rr_wgHr, float rr_rcTime, String rr_diffUnit, int rr_ordS1f,
 			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, float rr_rcTimeS1f,
 			float rr_rcTime_1c, float rr_rcTime_2c, float rr_rcTime_3c, float rr_rcTime_4c, float rr_rcTimeG3f,
@@ -103,10 +105,10 @@ public class RaceResultDto {
 	public void setRr_meet(int rr_meet) {
 		this.rr_meet = rr_meet;
 	}
-	public String getRr_rcDate() {
+	public Date getRr_rcDate() {
 		return rr_rcDate;
 	}
-	public void setRr_rcDate(String rr_rcDate) {
+	public void setRr_rcDate(Date rr_rcDate) {
 		this.rr_rcDate = rr_rcDate;
 	}
 	public int getRr_rcNo() {

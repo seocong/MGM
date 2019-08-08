@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 @Repository
 public class HorsesDao implements IHorsesDao{
@@ -78,5 +79,9 @@ public class HorsesDao implements IHorsesDao{
 	public List<HorsesDto> getOwnerList(Map<String, Object> map) {
 		return sqlSession.selectList(namespace+"getownerlist",map);
 	}
-
+	
+	@Override
+	public List<RecordInfoDto> recordInfo(int hrno) {
+		return sqlSession.selectList(namespace+"recordInfo",hrno);
+	}
 }

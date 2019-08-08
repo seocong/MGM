@@ -3,6 +3,7 @@ package com.gam.mgm.dao;
 import java.util.List;
 
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IJockeyDao {
 	public boolean jkInsert(JockeyDto jokeyDto);
@@ -14,4 +15,6 @@ public interface IJockeyDao {
 	public JockeyDto getKisu(String jk_name);
 	
 	public boolean jkUpdate(int jkno);
+	
+	public List<RecordInfoDto> recordInfo(int jkno);
 }

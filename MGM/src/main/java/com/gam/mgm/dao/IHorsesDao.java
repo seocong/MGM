@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
-import com.gam.mgm.dto.TrainerDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IHorsesDao {
 	public boolean hrInsert(HorsesDto horsesDto);
@@ -31,4 +31,7 @@ public interface IHorsesDao {
 	public HorsesDto getHorseDetail(Map<String, Object> map);
 
 	public List<HorsesDto> getOwnerList(Map<String, Object> map);
+	
+	
+	public List<RecordInfoDto> recordInfo(int hrno);
 }
