@@ -29,17 +29,17 @@ public class JockeyService implements IJockeyService{
 	}
 
 	@Override
-	public JockeyDto getKisu(String jk_name) {
-		return jokeyDao.getKisu(jk_name);
+	public JockeyDto getKisu(String jk_no) {
+		return jokeyDao.getKisu(jk_no);
 	}
 
 	@Override
-	public boolean jkUpdate(int jkno) {
+	public boolean jkUpdate(String jkno) {
 		return jokeyDao.jkUpdate(jkno);
 	}
 
 	@Override
-	public List<RecordInfoDto> recordInfo(int jkno) {
+	public List<RecordInfoDto> recordInfo(String jkno) {
 		return jokeyDao.recordInfo(jkno);
 	}
 }

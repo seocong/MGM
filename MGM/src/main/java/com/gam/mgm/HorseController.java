@@ -1,5 +1,6 @@
 package com.gam.mgm;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -62,11 +63,10 @@ public class HorseController {
 	public String jokyoDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("조교사상세정보", locale);	
 		String tr_no = request.getParameter("tr_no");
-		System.out.println("tr_no: "+request.getParameter("tr_no"));
-		System.out.println("tr_no: "+tr_no);
 		TrainerDto trDto = trainerService.getJokyo(tr_no);
-		System.out.println("번호확인: "+trDto.getTr_no());
+		System.out.println("기수명: "+trDto.getTr_name());
 		List<RecordInfoDto> riDto = trainerService.recordInfo(tr_no);
+		System.out.println("ridto 확인: "+riDto.size());
 		int ord1cntt =trDto.getTr_ord1cntt();
 		int rccntt = trDto.getTr_rccntt();
 		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
@@ -114,9 +114,9 @@ public class HorseController {
 	@RequestMapping(value="/jockeyDetail.do",method=RequestMethod.GET)
 	public String jockeyDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("기수상세정보", locale);	
-		System.out.println("jk_name:"+request.getParameter("jk_name"));
-		String jk_name=request.getParameter("jk_name");
-		JockeyDto jkDto = jockeyService.getKisu(jk_name);
+		String jk_no = request.getParameter("jk_no");
+		System.out.println("jk_no: "+jk_no);
+		JockeyDto jkDto = jockeyService.getKisu(jk_no);
 		int ord1cntt =jkDto.getJk_ord1CntT();
 		int rccntt = jkDto.getJk_rcCntT();
 		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
@@ -140,7 +140,6 @@ public class HorseController {
 		model.addAttribute("yearWin",yearWin);
 		model.addAttribute("yearPass",yearPass);
 		model.addAttribute("jk_meet",jk_meet);
-		
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JockeyDetail";
 	}
@@ -290,8 +289,10 @@ public class HorseController {
 	@RequestMapping(value="/recordDetail.do",method=RequestMethod.GET)
 	public String recordDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("경주상세성적표", locale);
+		SimpleDateFormat fmt= new SimpleDateFormat("yyyyMMdd");
 		int ri_meet = Integer.parseInt(request.getParameter("ri_meet"));
 		int ri_rcDate = Integer.parseInt(request.getParameter("ri_rcDate"));
+		System.out.println(ri_rcDate);
 		int ri_rcNo = Integer.parseInt(request.getParameter("ri_rcNo"));
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("ri_meet", ri_meet);

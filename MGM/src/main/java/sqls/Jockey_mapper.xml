@@ -19,15 +19,15 @@
 	</select>
 	
 	<select id="getkisu" parameterType="String" resultType="JockeyDto">
-		select jk_No,jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
-		 from JOCKEY where jk_name = #{jk_no}
+		select jk_no,jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
+		 from JOCKEY where jk_no = #{jk_no}
 	</select>
 	
 	<update id="jkUpdate" parameterType="int">
 		update jockey set jk_no = #{jk_no} where jk_name = #{jk_name}
 	</update>
 	
-	<select id="recordInfo" resultType="RecordInfoDto" parameterType="String">
+	<select id="recordInfo" resultType="RecordInfoDto" parameterType="int">
 	SELECT 
 	*,
 	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
@@ -38,6 +38,6 @@
 	FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
 	ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET
 	= RR.RR_MEET
-	WHERE RR.RR_JKNO =#{value} ) AS RS;
+	WHERE RR.RR_JKNO =#{tr_no} ) AS RS;
 	</select>
 </mapper>

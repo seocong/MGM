@@ -12,9 +12,9 @@ public interface IJockeyDao {
 	
 	public List<JockeyDto> getAllList(int jk_meet);
 
-	public JockeyDto getKisu(String jk_name);
+	public JockeyDto getKisu(String jk_no);
 	
-	public boolean jkUpdate(int jkno);
+	public boolean jkUpdate(String jkno);
 	
-	public List<RecordInfoDto> recordInfo(int jkno);
+	public List<RecordInfoDto> recordInfo(String jkno);
 }

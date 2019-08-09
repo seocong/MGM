@@ -1,7 +1,7 @@
 package com.gam.mgm.vo;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -48,107 +48,114 @@ public class RaceSummaryResultVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{  
-				private String ri_winChulNo;
-				private String ri_winOdds;
-				private String ri_plcChulNo;
-				private String ri_plcOdds;
-				private String ri_qnlChulNo;
-				private String ri_qnlOdds;
-				private String ri_exaChulNo;
-				private String ri_exaOdds;
-				private String ri_qplChulNo;
-				private String ri_qplOdds;
-				private String ri_tlaChulNo;
-				private String ri_tlaOdds;
-				private String ri_triChulNo;
-				private String ri_triOdds;
+				private Date rcDate;
+				private String winChulNo;
+				private String winOdds;
+				private String plcChulNo;
+				private String plcOdds;
+				private String qnlChulNo;
+				private String qnlOdds;
+				private String exaChulNo;
+				private String exaOdds;
+				private String qplChulNo;
+				private String qplOdds;
+				private String tlaChulNo;
+				private String tlaOdds;
+				private String triChulNo;
+				private String triOdds;
 				
-				public String getRi_winChulNo() {
-					return ri_winChulNo;
+				public Date getRcDate() {
+					return rcDate;
 				}
-				public void setRi_winChulNo(String ri_winChulNo) {
-					this.ri_winChulNo = ri_winChulNo;
+				public void setRcDate(Date rcDate) {
+					this.rcDate = rcDate;
 				}
-				public String getRi_winOdds() {
-					return ri_winOdds;
+				public String getWinChulNo() {
+					return winChulNo;
 				}
-				public void setRi_winOdds(String ri_winOdds) {
-					this.ri_winOdds = ri_winOdds;
+				public void setWinChulNo(String winChulNo) {
+					this.winChulNo = winChulNo;
 				}
-				public String getRi_plcChulNo() {
-					return ri_plcChulNo;
+				public String getWinOdds() {
+					return winOdds;
 				}
-				public void setRi_plcChulNo(String ri_plcChulNo) {
-					this.ri_plcChulNo = ri_plcChulNo;
+				public void setWinOdds(String winOdds) {
+					this.winOdds = winOdds;
 				}
-				public String getRi_plcOdds() {
-					return ri_plcOdds;
+				public String getPlcChulNo() {
+					return plcChulNo;
 				}
-				public void setRi_plcOdds(String ri_plcOdds) {
-					this.ri_plcOdds = ri_plcOdds;
+				public void setPlcChulNo(String plcChulNo) {
+					this.plcChulNo = plcChulNo;
 				}
-				public String getRi_qnlChulNo() {
-					return ri_qnlChulNo;
+				public String getPlcOdds() {
+					return plcOdds;
 				}
-				public void setRi_qnlChulNo(String ri_qnlChulNo) {
-					this.ri_qnlChulNo = ri_qnlChulNo;
+				public void setPlcOdds(String plcOdds) {
+					this.plcOdds = plcOdds;
 				}
-				public String getRi_qnlOdds() {
-					return ri_qnlOdds;
+				public String getQnlChulNo() {
+					return qnlChulNo;
 				}
-				public void setRi_qnlOdds(String ri_qnlOdds) {
-					this.ri_qnlOdds = ri_qnlOdds;
+				public void setQnlChulNo(String qnlChulNo) {
+					this.qnlChulNo = qnlChulNo;
 				}
-				public String getRi_exaChulNo() {
-					return ri_exaChulNo;
+				public String getQnlOdds() {
+					return qnlOdds;
 				}
-				public void setRi_exaChulNo(String ri_exaChulNo) {
-					this.ri_exaChulNo = ri_exaChulNo;
+				public void setQnlOdds(String qnlOdds) {
+					this.qnlOdds = qnlOdds;
 				}
-				public String getRi_exaOdds() {
-					return ri_exaOdds;
+				public String getExaChulNo() {
+					return exaChulNo;
 				}
-				public void setRi_exaOdds(String ri_exaOdds) {
-					this.ri_exaOdds = ri_exaOdds;
+				public void setExaChulNo(String exaChulNo) {
+					this.exaChulNo = exaChulNo;
 				}
-				public String getRi_qplChulNo() {
-					return ri_qplChulNo;
+				public String getExaOdds() {
+					return exaOdds;
 				}
-				public void setRi_qplChulNo(String ri_qplChulNo) {
-					this.ri_qplChulNo = ri_qplChulNo;
+				public void setExaOdds(String exaOdds) {
+					this.exaOdds = exaOdds;
 				}
-				public String getRi_qplOdds() {
-					return ri_qplOdds;
+				public String getQplChulNo() {
+					return qplChulNo;
 				}
-				public void setRi_qplOdds(String ri_qplOdds) {
-					this.ri_qplOdds = ri_qplOdds;
+				public void setQplChulNo(String qplChulNo) {
+					this.qplChulNo = qplChulNo;
 				}
-				public String getRi_tlaChulNo() {
-					return ri_tlaChulNo;
+				public String getQplOdds() {
+					return qplOdds;
 				}
-				public void setRi_tlaChulNo(String ri_tlaChulNo) {
-					this.ri_tlaChulNo = ri_tlaChulNo;
+				public void setQplOdds(String qplOdds) {
+					this.qplOdds = qplOdds;
 				}
-				public String getRi_tlaOdds() {
-					return ri_tlaOdds;
+				public String getTlaChulNo() {
+					return tlaChulNo;
 				}
-				public void setRi_tlaOdds(String ri_tlaOdds) {
-					this.ri_tlaOdds = ri_tlaOdds;
+				public void setTlaChulNo(String tlaChulNo) {
+					this.tlaChulNo = tlaChulNo;
 				}
-				public String getRi_triChulNo() {
-					return ri_triChulNo;
+				public String getTlaOdds() {
+					return tlaOdds;
 				}
-				public void setRi_triChulNo(String ri_triChulNo) {
-					this.ri_triChulNo = ri_triChulNo;
+				public void setTlaOdds(String tlaOdds) {
+					this.tlaOdds = tlaOdds;
 				}
-				public String getRi_triOdds() {
-					return ri_triOdds;
+				public String getTriChulNo() {
+					return triChulNo;
 				}
-				public void setRi_triOdds(String ri_triOdds) {
-					this.ri_triOdds = ri_triOdds;
+				public void setTriChulNo(String triChulNo) {
+					this.triChulNo = triChulNo;
+				}
+				public String getTriOdds() {
+					return triOdds;
+				}
+				public void setTriOdds(String triOdds) {
+					this.triOdds = triOdds;
 				}
 				
-				
+			
 			}
 		}
 

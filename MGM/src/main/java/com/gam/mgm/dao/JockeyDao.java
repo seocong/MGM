@@ -33,18 +33,18 @@ public class JockeyDao implements IJockeyDao{
 	}
 
 	@Override
-	public JockeyDto getKisu(String jk_name) {		
-		return sqlSession.selectOne(namespace+"getkisu", jk_name);
+	public JockeyDto getKisu(String jk_no) {		
+		return sqlSession.selectOne(namespace+"getkisu", jk_no);
 	}
 
 	@Override
-	public boolean jkUpdate(int jkno) {
+	public boolean jkUpdate(String jkno) {
 		int rs = sqlSession.update(namespace+"jkUpdate");
 		return rs>0?true:false;
 	}
 
 	@Override
-	public List<RecordInfoDto> recordInfo(int jkno) {
+	public List<RecordInfoDto> recordInfo(String jkno) {
 		return sqlSession.selectList(namespace+"recordInfo",jkno);
 	}
 }

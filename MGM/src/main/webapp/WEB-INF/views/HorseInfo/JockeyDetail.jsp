@@ -232,7 +232,7 @@
 														<tbody>
 
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" width="11%"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577.jpg"></td>
+																	<td style="text-align: center;padding: 0px;" rowspan="4" width="11%"><img alt="미등록" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/${jkDto.jk_no}.jpg"></td>
 																	<td class="titleColor" style="text-align: center;padding: 0px;" width="19%">성명</td>
 																	<td style="text-align: center;padding: 0px;" width="19%">${jkDto.jk_name}</td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px;" width="19%">소속조</td>
@@ -244,7 +244,7 @@
 																	<td style="text-align: center;padding: 0px;">${jkDto.jk_birthday}(${jkDto.jk_age}세)</td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px;">데뷔날짜</td>
 																	<td style="text-align: center;padding: 0px;">${jkDto.jk_debut}</td>
-																	<td style="text-align: center;padding: 0px;" rowspan="3"><img alt="" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/080577a.jpg"></td>
+																	<td style="text-align: center;padding: 0px;" rowspan="3"><img alt="미등록" src="http://race.kra.co.kr/ijrc_pub/photo/jcky/${jkDto.jk_no}a.jpg"></td>
 																</tr>
 																<tr>
 																	<td class="titleColor"  style="text-align: center;padding: 0px;">통산전적</td>
