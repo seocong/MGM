@@ -308,5 +308,16 @@ public class HorseController {
 		model.addAttribute("list", list);
 		return "HorseInfo/RecordDetail";
 	}
-		
+	
+	@RequestMapping(value="/racingInfo.do",method=RequestMethod.GET)
+	public String raceInfo(Locale locale, HttpServletRequest request,Model model){
+		logger.info("출전표리스트", locale);
+		return "HorseInfo/RacingInfo";		
+	}
+	
+	@RequestMapping(value="/racingDetail.do",method=RequestMethod.GET)
+	public String raceDetail(Locale locale, HttpServletRequest request,Model model){
+		logger.info("출전상세정보", locale);
+		return "HorseInfo/RacingDetail";		
+	}
 }

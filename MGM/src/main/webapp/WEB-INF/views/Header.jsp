@@ -45,11 +45,11 @@
 									
 								</ul> 
 							</li>
-							<li><a href="raceInfo.do"><div  style="font-weight: bold;">경마정보</div></a>
+							<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div  style="font-weight: bold;">경마정보</div></a>
 								  <ul>								
-									<li><a href="raceInfo.do"><div style="font-weight: bold;">출전정보</div></a>
+									<li><a href="racingInfo.do"><div style="font-weight: bold;">출전정보</div></a>
 										<ul>
-											<li><a href="#"><div  style="font-weight: bold;">출전상세정보</div></a></li>
+											<li><a href="racingInfo.do"><div  style="font-weight: bold;">출전상세정보</div></a></li>
 											<li><a href="#"><div  style="font-weight: bold;">출전내역</div></a></li>
 											<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li>
 											<li><a href="#"><div  style="font-weight: bold;">출전등록현황</div></a></li>
