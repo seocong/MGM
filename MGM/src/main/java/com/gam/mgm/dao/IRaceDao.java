@@ -21,4 +21,6 @@ public interface IRaceDao {
 	
 	public List<RaceResultDto> getRrDetail(Map<String, Object> map);
 	
+	public List<RaceInfoDto> getRacePaging(Map<String, Object> map);
+	
 }

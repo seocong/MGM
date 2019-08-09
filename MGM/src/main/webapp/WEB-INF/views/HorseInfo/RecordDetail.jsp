@@ -4,6 +4,7 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="com.gam.utils.Util"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -192,7 +193,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										경주별 상세 성적표<span style="font-size: 60%;"></span>
+										경주 성적표<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -207,35 +208,36 @@
 
 										<div>
 											<div class="tabcontent">
-											<%-- <div>나중에 하자
-												<table>
+											<br>
+												<div>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
 													<tr>
-														<td>경주</td>
+														<td width="6%" class="titleColor">경주</td>
 														<c:forEach items="${list}" var="list">
-															<td>R</td>
+															<td width="2%" ><a class="link" href="recordDetail.do?ri_meet=${list.ri_meet}&ri_rcNo=${list.ri_rcNo}&ri_rcDate=<fmt:formatDate value="${list.ri_rcDate}" pattern="yyyyMMdd"/>">${list.ri_rcNo}R</a></td>
 														</c:forEach>
 													</tr>
 												</table>
-											</div> --%>
+											</div>
 											<div>
 											 <h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span></h4> 
+												<span class="text-dark"><i class="icon-trophy">경주별 상세 성적표</i></span></h4> 
 												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
-												<td width="84%" colspan="4">${riDto.ri_rcDate} ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</td>
-												<td width="16%">경주시간</td>
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일"/> ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</th>
+												
 											</tr>
 											<tr style="text-align: center;">
-												<td width="26%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
-												<td width="26%">${riDto.ri_rcName}</td>
-												<td width="16%">R1 ~ 35</td>
-												<td width="16%">${riDto.ri_ageCond}</td>
-												<td width="16%"></td>
+												<td width="25%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
+												<td width="25%">${riDto.ri_rcName}</td>
+												<td width="25%">R1 ~ 35</td>
+												<td width="25%">${riDto.ri_ageCond}</td>
+												
 											</tr>
 											</table>
 											<table class="table table-bordered ">
 											<tr style="text-align: center;">
-												<td width="20%" class="titleColor" >순위상금</td>
+												<th width="20%" class="titleColor" >순위상금</th>
 												<td width="16%">${riDto.ri_chaksun1}원</td>
 												<td width="16%">${riDto.ri_chaksun2}원</td>
 												<td width="16%">${riDto.ri_chaksun3}원</td>
@@ -270,10 +272,10 @@
 																<tr style="text-align: center;white-space: nowrap;">
 																	<td >${rrList.rr_ord}</td>
 																	<td >${rrList.rr_chulNo}</td>
-																	<td >${rrList.rr_hrName}</td>
-																	<td >?</td>
-																	<td>?</td>
-																	<td>?세</td>
+																	<td><a href="horseDetail.do?hr_htName=${rrList.rr_hrName}&hr_meet=${rrList.rr_meet}">${rrList.rr_hrName}</a></td>
+																	<td >${rrList.hr_name}</td>
+																	<td>${rrList.hr_sex}</td>
+																	<td>${rrList.hr_age}세</td>
 																	<td>${rrList.rr_wgBudam}</td>
 																	<td>${rrList.rr_rating}</td>
 																	<td>${rrList.rr_jkName}</td>
@@ -311,30 +313,115 @@
 
 															<c:forEach items="${rrList}" var="rrList">
 																<tr style="text-align: center;">
-																	<td >${rrList.rr_ord}</td>
-																	<td >${rrList.rr_chulNo}</td>
+																	<td>${rrList.rr_ord}</td>
+																	<td>${rrList.rr_chulNo}</td>
 																	<td>${rrList.rr_ordS1f} - ${rrList.rr_g8f_1c} - ${rrList.rr_g6f_2c} - ${rrList.rr_g4f_3c} - ${rrList.rr_g3f_4c} - ${rrList.rr_ordG1f}</td>
-																	<td >0:${rrList.rr_rcTimeS1f}</td>
-																	<td ></td>
-																	<td ></td>
-																	<td >0:${rrList.rr_rcTime_3c}</td>
-																	<td >0:${rrList.rr_rcTime_4c}</td>
-																	<td >0:${rrList.rr_rcTimeG3f}</td>
-																	<td >0:${rrList.rr_rcTimeG1f}</td>
-																	<td >?</td>
+																	<td>0:${rrList.rr_rcTimeS1f}</td>
+																	<td></td>
+																	<td></td>
+																	<td>0:${rrList.rr_rcTime_3c}</td>
+																	<td>0:${rrList.rr_rcTime_4c}</td>
+																	<td>0:${rrList.rr_rcTimeG3f}</td>
+																	<td>0:${rrList.rr_rcTimeG1f}</td>
+																	<td>${rrList.rr_rcTime}</td>
 																</tr>
 															</c:forEach>
 														</tbody>
 													</table>
 												</div>
 												<div>
-													<table>
-														<tr style="text-align: center;">
-															<td class="titleColor"  width="10%">우승마</td>
-															<td width="90%">위에 조건중 rr_ord=1일때 추가</td>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">매출액</th>
+															<td width="40%" style="text-align:left;">단승식 : </td>
+															<td width="40%" style="text-align:left;">연승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복승식 : </td>
+															<td style="text-align:left;">쌍승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복연승 : </td>
+															<td style="text-align:left;">삼복승 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">삼쌍승 : </td>
+															<td style="text-align:left;">합계 : </td>
+														</tr>
+													</table>
+													</div>
+													<div>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">배당률</th>
+															<td width="40%" style="text-align:left;">단승식 : </td>
+															<td width="40%" style="text-align:left;">연승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복승식 : </td>
+															<td style="text-align:left;">쌍승식 : </td>
+														</tr>
+														<tr>
+															<td style="text-align:left;">복연승 : </td>
+															<td style="text-align:left;">삼복승 : </td>
+														</tr>
+														<tr>
+															<td colspan="2" style="text-align:left;">삼쌍승 : </td>
 														</tr>
 													</table>
 												</div>
+												<div>
+													<table class="table table-bordered ">
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">S-1F</th>
+															<td width="45%" style="text-align:left;"></td>
+															<th class="titleColor"  width="10%" style="text-align: center;">3F</th>
+															<td width="30%" style="text-align:left;"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">1코너</th>
+															<td width="45%" style="text-align:left;"></td>
+															<th class="titleColor"  width="10%" style="text-align: center;">4F</th>
+															<td width="30%" style="text-align:left;"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">2코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">3코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">4코너</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+														<tr>
+															<th class="titleColor"  width="15%" style="text-align: center;">G-1F</th>
+															<td width="85%" style="text-align:left;" colspan="3"></td>
+														</tr>
+													</table>
+												</div>
+												<div>
+													<table class="table table-bordered ">
+													<tr>
+														<th class="titleColor" style="text-align: center;">재결사항</th>
+													</tr>
+													<tr>
+														<td style="text-align:left;"></td>
+													</tr>
+													</table>
+												</div>
+												<div>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
+													<tr>
+														<td width="6%" class="titleColor">경주</td>
+														<c:forEach items="${list}" var="list">
+															<td width="2%" ><a class="link" href="recordDetail.do?ri_meet=${list.ri_meet}&ri_rcNo=${list.ri_rcNo}&ri_rcDate=<fmt:formatDate value="${list.ri_rcDate}" pattern="yyyyMMdd"/>">${list.ri_rcNo}R</a></td>
+														</c:forEach>
+													</tr>
+												</table>
+											</div>
 											</div>
 
 
@@ -347,32 +434,7 @@
 								
 							</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 							<div class="line"></div>
-
-
-
-
-
-
-
-
 
 						</div>
 						<!-- 본문내용끝 -->
@@ -433,6 +495,14 @@
 		}	
 	});
 	
+	$(function(){
+		var page = ${riDto.ri_rcNo}-1;
+		
+		$(".link").eq(page).css({
+			"background-color":"#3A486E",
+			"color":"white"
+		});
+	});
 		</script>
 		
  	

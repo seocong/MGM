@@ -127,4 +127,17 @@ public class Util {
 		}
 		return Integer.parseInt(rs);
 	}
+	
+	public static String time(int j) {
+		/*int j = Integer.parseInt(i);*/
+		 int MIN = 60;
+		int HOUR = MIN*60;
+		
+		int s = j%MIN;
+		int m = j>HOUR? j/MIN/HOUR : j/MIN;
+		int h = j/HOUR;		
+		
+		String val = m+":"+s;
+		return val;
+	}
 }

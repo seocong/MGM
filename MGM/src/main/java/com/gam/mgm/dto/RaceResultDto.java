@@ -38,6 +38,9 @@ public class RaceResultDto {
 	private String rr_jkName;
 	private String rr_jkNo;
 	private int rr_rating;
+	private int hr_age;
+	private String hr_sex;
+	private String hr_name;
 	public RaceResultDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,7 +50,7 @@ public class RaceResultDto {
 			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, float rr_rcTimeS1f,
 			float rr_rcTime_1c, float rr_rcTime_2c, float rr_rcTime_3c, float rr_rcTime_4c, float rr_rcTimeG3f,
 			float rr_rcTimeG2f, float rr_rcTimeG1f, float rr_winOdds, float rr_plcOdds, String rr_trName,
-			String rr_trNo, String rr_owName, String rr_owNo, String rr_jkName, String rr_jkNo, int rr_rating) {
+			String rr_trNo, String rr_owName, String rr_owNo, String rr_jkName, String rr_jkNo, int rr_rating,int hr_age,String hr_sex,String hr_name) {
 		super();
 		this.rr_meet = rr_meet;
 		this.rr_rcDate = rr_rcDate;
@@ -84,6 +87,27 @@ public class RaceResultDto {
 		this.rr_jkName = rr_jkName;
 		this.rr_jkNo = rr_jkNo;
 		this.rr_rating = rr_rating;
+		this.hr_age = hr_age;
+		this.hr_sex = hr_sex;
+		this.hr_name = hr_name;
+	}
+	public int getHr_age() {
+		return hr_age;
+	}
+	public void setHr_age(int hr_age) {
+		this.hr_age = hr_age;
+	}
+	public String getHr_sex() {
+		return hr_sex;
+	}
+	public void setHr_sex(String hr_sex) {
+		this.hr_sex = hr_sex;
+	}
+	public String getHr_name() {
+		return hr_name;
+	}
+	public void setHr_name(String hr_name) {
+		this.hr_name = hr_name;
 	}
 	@Override
 	public String toString() {

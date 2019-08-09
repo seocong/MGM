@@ -16,4 +16,5 @@ public interface IRaceService {
 	public int getAllCnt(int ri_meet);
 	public RaceInfoDto getRiDetail(Map<String, Object> map);
 	public List<RaceResultDto> getRrDetail(Map<String, Object> map);
+	public List<RaceInfoDto> getRacePaging(Map<String, Object> map);
 }
