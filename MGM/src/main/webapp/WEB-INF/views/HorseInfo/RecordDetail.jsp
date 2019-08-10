@@ -224,8 +224,15 @@
 												<span class="text-dark"><i class="icon-trophy">경주별 상세 성적표</i></span></h4> 
 												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
-												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일"/> ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</th>
-												
+													<c:if test="${riDto.ri_meet == 1}">
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일(E)"/> 제${riDto.ri_rcNo}경주 서울 ${riDto.ri_ilsu}일차  ${riDto.ri_weather} ${riDto.ri_track}</th>
+												</c:if>
+												<c:if test="${riDto.ri_meet == 3}">
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일(E)"/> 제${riDto.ri_rcNo}경주 부산 ${riDto.ri_ilsu}일차  ${riDto.ri_weather} ${riDto.ri_track}</th>
+												</c:if>
+												<c:if test="${riDto.ri_meet == 2}">
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일(E)"/> 제${riDto.ri_rcNo}경주 제주 ${riDto.ri_ilsu}일차  ${riDto.ri_weather} ${riDto.ri_track}</th>
+												</c:if>
 											</tr>
 											<tr style="text-align: center;">
 												<td width="25%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
@@ -497,11 +504,23 @@
 	
 	$(function(){
 		var page = ${riDto.ri_rcNo}-1;
-		
+		var ri_meet = $("#ri_meet").attr("data-ri_meet");
+		if(ri_meet == 1){
 		$(".link").eq(page).css({
-			"background-color":"#3A486E",
+			"background-color":"#b30003",
 			"color":"white"
 		});
+		}else if(ri_meet == 2){
+			$(".link").eq(page).css({
+				"background-color":"#2a4e8b",
+				"color":"white"
+			});
+			}else if(ri_meet == 3){
+				$(".link").eq(page).css({
+					"background-color":"#5a9e01",
+					"color":"white"
+				});
+				}
 	});
 		</script>
 		

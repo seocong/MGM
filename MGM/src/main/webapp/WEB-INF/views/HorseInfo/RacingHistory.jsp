@@ -4,8 +4,6 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 <!DOCTYPE html >
 <html>
 <head>
@@ -171,7 +169,7 @@
 
 							
 							<div class="row clearfix">
-						<%-- 	<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	 --%>
+							<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	
 								<div class="col-md-12 mt-5">
 						
 								<table class="allmargin">
@@ -202,7 +200,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										출전상세정보<span style="font-size: 60%;"></span>
+										경주마정보<span style="font-size: 60%;">경주마 전적 및 등급 정보</span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -217,66 +215,121 @@
 
 										<div>
 											<div class="tabcontent">
-												
+											<div>
+											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>마명별검색</h4>
+												<table class="table" style="border-bottom: solid #DDD 1px;">
+												<tr>
+												<td>마명입력</td>
+												<td>
+													<form class="form-inline my-2 my-lg-0">
+														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+														<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+													</form>
+												</td>
+											</tr>
+											</table>
+											</div>
+											
+
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>일자별 경주정보</h4>
-													<table class="table table-bordered table-striped">
-														<thead>
-															<tr class="titleColor" style="text-align: center;white-space: nowrap; ">
-																
-																<th width="15%">경주일자</th>
-																<th width="5%">경주</th>
-																<th width="10%">등급</th>
-																<th width="8%">거리</th>
-																<th width="6%">편성</th>
-																<th width="6%">출전</th>
-																<th width="20%">경주명</th>
-																<th width="10%">출발시각</th>
-																<th width="10%">비고</th>
-																<th width="10%">PDF</th>
-																
-															</tr>
-														</thead>
-
-														<tbody>
-															<tr >
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="racingDetail.do">디테일가기</a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_190810_01.pdf"><i class="icon-file-pdf1"></i></a></td>
-																</tr>
-															<c:forEach items="${list}" var="list">
+												<span class="text-dark"><i class="icon-trophy"></i></span>등급별 검색(현 경주마)</h4>
+													<table class="table table-bordered">
+													<c:choose>
+														<c:when test="${hr_meet=='2'}">
+															<tbody>
 																<tr>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="racingDetail.do"></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<%-- <c:if test="${fn:length(${list.no})==1}">
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_0${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${fn:length(${list.no})==2}">
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if> --%>
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="5">한라마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="7">제주마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">미검마</td>	
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
 																</tr>
-															</c:forEach>
+																<tr>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>																
+																	<td style="text-align: center;">계</td>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">5급</td>
+																	<td style="text-align: center;">6급</td>
+																	<td style="text-align: center;">계</td>
+																</tr>
+																<tr>
+																	<td style="text-align: center;">두수</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=한4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;">${totalHan}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=제6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;">${totalJe}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${total}</td>
+																</tr>
+															</tbody>
+														</c:when>
+														<c:otherwise>
+															<tbody>
+																<tr>
+																	<td class="titleColor"  style="text-align: center;"rowspan="2">구분</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="6">외산마</td>
+																	<td class="titleColor"  style="text-align: center;" colspan="8">국산마</td>
+																	<td class="titleColor"  style="text-align: center;" rowspan="2">합계</td>													
+																</tr>
+																<tr>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">미검</td>
+																	<td style="text-align: center;">계</td>
+																	<td style="text-align: center;">1급</td>
+																	<td style="text-align: center;">2급</td>
+																	<td style="text-align: center;">3급</td>
+																	<td style="text-align: center;">4급</td>
+																	<td style="text-align: center;">5급</td>
+																	<td style="text-align: center;">6급</td>
+																	<td style="text-align: center;">미검</td>
+																	<td style="text-align: center;">계</td>
+																</tr>
+																<tr>
+																	<td style="text-align: center;">두수</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외1&hr_meet=${hr_meet}">${hrCnt.foreign1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외2&hr_meet=${hr_meet}">${hrCnt.foreign2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외3&hr_meet=${hr_meet}">${hrCnt.foreign3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외4&hr_meet=${hr_meet}">${hrCnt.foreign4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=외미&hr_meet=${hr_meet}">${hrCnt.yetForeign}</a></td>
+																	<td style="text-align: center;">${totalForeign}</td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국1&hr_meet=${hr_meet}">${hrCnt.domestic1}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국2&hr_meet=${hr_meet}">${hrCnt.domestic2}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국3&hr_meet=${hr_meet}">${hrCnt.domestic3}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국4&hr_meet=${hr_meet}">${hrCnt.domestic4}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국5&hr_meet=${hr_meet}">${hrCnt.domestic5}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국6&hr_meet=${hr_meet}">${hrCnt.domestic6}</a></td>
+																	<td style="text-align: center;"><a href="horseInfoList.do?hr_rank=국미&hr_meet=${hr_meet}">${hrCnt.yetDomestic}</a></td>
+																	<td style="text-align: center;">${totalDomestick}</td>
+																	<td style="text-align: center;">${total}</td>
+																</tr>
 
 
 														</tbody>
-
+														
+														</c:otherwise>
+														</c:choose>
 													</table>
 												</div>
+												
 
 											</div>
 
@@ -287,8 +340,34 @@
 								</div>
 
 
+
+
+								<!-- Ad
+							============================================= -->
+								<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
+
+
+
+
+								<!-- Articles
+							============================================= -->
 								
 							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

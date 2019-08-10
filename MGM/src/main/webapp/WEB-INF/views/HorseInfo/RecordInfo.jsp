@@ -217,7 +217,7 @@
 
 															<c:forEach items="${riDto}" var="riDto">
 																<tr>
-																	<td style="text-align: center;"><a href="recordDetail.do?ri_rcDate=<fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyyMMdd"/>&ri_rcNo=1&ri_meet=${ri_meet}"> <fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일"/></a></td>
+																	<td style="text-align: center;"><a href="recordDetail.do?ri_rcDate=<fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyyMMdd"/>&ri_rcNo=1&ri_meet=${ri_meet}"> <fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일 (E)"/></a></td>
 																	<td class="nopadding">
 																	<ul style="list-style: none">
 																	<c:forEach begin="1" end="${riDto.ri_cnt}" var="cnt">
