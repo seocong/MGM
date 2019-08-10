@@ -50,7 +50,7 @@
 									<li><a href="racingInfo.do"><div style="font-weight: bold;">출전정보</div></a>
 										<ul>
 											<li><a href="racingInfo.do"><div  style="font-weight: bold;">출전상세정보</div></a></li>
-											<li><a href="#"><div  style="font-weight: bold;">출전내역</div></a></li>
+											<li><a href="racingHistory.do"><div  style="font-weight: bold;">출전내역</div></a></li>
 											<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li>
 											<li><a href="#"><div  style="font-weight: bold;">출전등록현황</div></a></li>
 										</ul>
@@ -60,7 +60,7 @@
 									<li><a href="jokyoInfo.do?tr_meet=1"><div style="font-weight: bold;">조교사정보</div></a></li>
 									<li><a href="jockeyInfo.do?jk_meet=1"><div style="font-weight: bold;">기수정보</div></a></li>
 									<li><a href="ownerInfo.do?ow_meet=1"><div style="font-weight: bold;">마주정보</div></a></li>
-									<li><a href="racePlan.do"><div style="font-weight: bold;">시행정보</div></a></li>
+									<li><a href="raceoperView.do"><div style="font-weight: bold;">시행정보</div></a></li>
 								</ul> 
 							</li>
 							<li class="#"><a href="#"><div  style="font-weight: bold;">경마채널</div></a>

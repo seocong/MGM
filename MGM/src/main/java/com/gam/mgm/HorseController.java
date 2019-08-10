@@ -320,4 +320,16 @@ public class HorseController {
 		logger.info("출전상세정보", locale);
 		return "HorseInfo/RacingDetail";		
 	}
+	
+	@RequestMapping(value="/racingHistory.do",method=RequestMethod.GET)
+	public String raceHistory(Locale locale, HttpServletRequest request,Model model){
+		logger.info("출전내역", locale);
+		return "HorseInfo/RacingHistory";		
+	}
+	
+	@RequestMapping(value="/raceoperView.do",method=RequestMethod.GET)
+	public String raceoperView(Locale locale, HttpServletRequest request,Model model){
+		logger.info("경마시행개요", locale);
+		return "HorseInfo/RaceoperView";		
+	}
 }
