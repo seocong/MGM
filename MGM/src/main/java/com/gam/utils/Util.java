@@ -134,10 +134,24 @@ public class Util {
 		int HOUR = MIN*60;
 		
 		int s = j%MIN;
-		int m = j>HOUR? j/MIN/HOUR : j/MIN;
-		int h = j/HOUR;		
+		int m = j>=HOUR? j%HOUR/MIN : j/MIN;
+		int h = j/HOUR;
 		
-		String val = m+":"+s;
+		String val = j>=HOUR? h+":"+m+":"+s : m+":"+s;
+		
 		return val;
+	}
+	
+	//String date로 변환
+	public static Date parse(String date) {
+		SimpleDateFormat parse = new SimpleDateFormat("yyyyMMdd");
+		Date stDate = null;
+		try {
+			stDate = parse.parse(date);
+		} catch (ParseException e) {
+			System.out.println("변환실패");
+			e.printStackTrace();
+		}
+		return stDate;
 	}
 }

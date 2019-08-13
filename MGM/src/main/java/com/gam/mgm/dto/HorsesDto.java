@@ -28,8 +28,8 @@ public class HorsesDto {
 	private int hr_meet; //경기장
 	private String debut; //데뷔일
 	private String recentRcDate; //최근 경주일
-	private String rhrRegDt1; //경주마 등록일
-	private String auctionMon; //최초 경매가
+//	private String rhrRegDt1; //경주마 등록일
+//	private String auctionMon; //최초 경매가
 	public HorsesDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -38,7 +38,7 @@ public class HorsesDto {
 			int hr_age, String hr_rank, int hr_part, String hr_trName, String hr_owName, String hr_faHrName,
 			String hr_moHrName, int hr_rcCntT, int hr_ord1CntT, int hr_ord2CntT, int hr_ord3CntT, int hr_rcCntY,
 			int hr_ord1CntY, int hr_ord2CntY, int hr_ord3CntY, int hr_chaksunT, int hr_rating, int hr_hrLastAmt,
-			int hr_meet, String debut, String recentRcDate, String rhrRegDt1, String auctionMon) {
+			int hr_meet, String debut, String recentRcDate) {
 		super();
 		this.hr_seq = hr_seq;
 		this.hr_no = hr_no;
@@ -67,8 +67,6 @@ public class HorsesDto {
 		this.hr_meet = hr_meet;
 		this.debut = debut;
 		this.recentRcDate = recentRcDate;
-		this.rhrRegDt1 = rhrRegDt1;
-		this.auctionMon = auctionMon;
 	}
 	@Override
 	public String toString() {
@@ -79,8 +77,7 @@ public class HorsesDto {
 				+ hr_ord1CntT + ", hr_ord2CntT=" + hr_ord2CntT + ", hr_ord3CntT=" + hr_ord3CntT + ", hr_rcCntY="
 				+ hr_rcCntY + ", hr_ord1CntY=" + hr_ord1CntY + ", hr_ord2CntY=" + hr_ord2CntY + ", hr_ord3CntY="
 				+ hr_ord3CntY + ", hr_chaksunT=" + hr_chaksunT + ", hr_rating=" + hr_rating + ", hr_hrLastAmt="
-				+ hr_hrLastAmt + ", hr_meet=" + hr_meet + ", debut=" + debut + ", recentRcDate=" + recentRcDate
-				+ ", rhrRegDt1=" + rhrRegDt1 + ", auctionMon=" + auctionMon + "]";
+				+ hr_hrLastAmt + ", hr_meet=" + hr_meet + ", debut=" + debut + ", recentRcDate=" + recentRcDate + "]";
 	}
 	public int getHr_seq() {
 		return hr_seq;
@@ -244,19 +241,7 @@ public class HorsesDto {
 	public void setRecentRcDate(String recentRcDate) {
 		this.recentRcDate = recentRcDate;
 	}
-	public String getRhrRegDt1() {
-		return rhrRegDt1;
-	}
-	public void setRhrRegDt1(String rhrRegDt1) {
-		this.rhrRegDt1 = rhrRegDt1;
-	}
-	public String getAuctionMon() {
-		return auctionMon;
-	}
-	public void setAuctionMon(String auctionMon) {
-		this.auctionMon = auctionMon;
-	}
-	
+		
 	
 	
 	

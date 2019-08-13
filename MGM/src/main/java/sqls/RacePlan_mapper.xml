@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gam.racePlan">
+  	<insert id="rcPlanInsert" parameterType="RacePlanDto">
+  		insert into race_plan(
+ 			rp_meet,  
+			rp_rcDate,
+			rp_rcDay,
+			rp_rcNo,  
+			rp_chulNo, 
+			rp_hrName, 
+			rp_hrNo, 
+			rp_prd, 
+			rp_sex, 
+			rp_age, 
+			rp_wgBudam,
+			rp_rating,  
+			rp_jkName, 
+			rp_jkNo,	
+			rp_trName, 
+			rp_trNo, 
+			rp_owName, 
+			rp_owNo, 
+			rp_ilsu,  
+			rp_rcDist,  
+			rp_dusu, 
+			rp_rank,
+			rp_prizeCond, 
+			rp_ageCond, 
+			rp_stTime, 
+			rp_budam, 
+			rp_rcName, 
+			rp_chaksun1,
+			rp_chaksun2,
+			rp_chaksun3,
+			rp_chaksun4, 
+			rp_chaksun5 		
+  		)
+  		values(
+  			#{rp_meet},
+  			DATE_ADD(#{rp_rcDate},INTERVAL 1 DAY),
+  			#{rp_rcDay},
+			#{rp_rcNo},  
+			#{rp_chulNo}, 
+			#{rp_hrName}, 
+			#{rp_hrNo}, 
+			#{rp_prd}, 
+			#{rp_sex}, 
+			#{rp_age}, 
+			#{rp_wgBudam},
+			#{rp_rating},  
+			#{rp_jkName}, 
+			#{rp_jkNo},	
+			#{rp_trName}, 
+			#{rp_trNo}, 
+			#{rp_owName}, 
+			#{rp_owNo}, 
+			#{rp_ilsu},  
+			#{rp_rcDist},  
+			#{rp_dusu}, 
+			#{rp_rank},
+			#{rp_prizeCond}, 
+			#{rp_ageCond}, 
+			#{rp_stTime}, 
+			#{rp_budam}, 
+			#{rp_rcName}, 
+			#{rp_chaksun1},
+			#{rp_chaksun2},
+			#{rp_chaksun3},
+			#{rp_chaksun4}, 
+			#{rp_chaksun5}
+  		)
+  	</insert>
+    <delete id="resetTable">
+    	TRUNCATE RACE_PLAN
+    </delete>
+ 	<update id="resetSeq">
+ 		ALTER TABLE RACE_PLAN AUTO_INCREMENT=1
+ 	</update>
+  </mapper>

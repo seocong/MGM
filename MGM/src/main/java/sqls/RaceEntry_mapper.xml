@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gam.raceEntry">
+	<insert id="rcEntryInsert" parameterType="RaceEntryDto">
+		insert into race_entry(
+		re_meet,
+		re_pgDate,
+		re_pgNo,
+		re_rcName,
+		re_rank,
+		re_rcDist,
+		re_budam,
+		re_prizeCond,
+		re_ageCond,
+		re_chaksun1,
+		re_chaksun2,
+		re_chaksun3,
+		re_chaksun4,
+		re_chaksun5,
+		re_enNo,
+		re_recentRating,
+		re_hrName,
+		re_hrNo,
+		re_name,
+		re_sex,
+		re_age,
+		re_trName,
+		re_trNo,
+		re_owName,
+		re_owNo,
+		re_rcCntY,
+		re_calPrize_6m,
+		re_calPrizeY,
+		re_chaksunT
+		)
+		values(
+		#{re_meet},
+		DATE_ADD(#{re_pgDate},INTERVAL 1 DAY),
+		#{re_pgNo},
+		#{re_rcName},
+		#{re_rank},
+		#{re_rcDist},
+		#{re_budam},
+		#{re_prizeCond},
+		#{re_ageCond},
+		#{re_chaksun1},
+		#{re_chaksun2},
+		#{re_chaksun3},
+		#{re_chaksun4},
+		#{re_chaksun5},
+		#{re_enNo},
+		#{re_recentRating},
+		#{re_hrName},
+		#{re_hrNo},
+		#{re_name},
+		#{re_sex},
+		#{re_age},
+		#{re_trName},
+		#{re_trNo},
+		#{re_owName},
+		#{re_owNo},
+		#{re_rcCntY},
+		#{re_calPrize_6m},
+		#{re_calPrizeY},
+		#{re_chaksunT}
+		)
+	</insert>
+	<delete id="resetTable">
+		TRUNCATE RACE_ENTRY
+	</delete>
+	<update id="resetSeq">
+		ALTER TABLE RACE_ENTRY AUTO_INCREMENT=1
+	</update>
+</mapper>

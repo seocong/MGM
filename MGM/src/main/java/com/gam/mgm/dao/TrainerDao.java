@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
@@ -50,7 +51,12 @@ public class TrainerDao implements ITrainerDao {
 	}
 	
 	@Override
-	public List<RecordInfoDto> recordInfo(String trno) {
-		return sqlSession.selectList(namespace+"recordInfo",trno);
+	public List<RecordInfoDto> recordInfo(String tr_no) {
+		return sqlSession.selectList(namespace+"recordInfo",tr_no);
+	}
+	
+	@Override
+	public List<RaceTotalPrizeDto> rtPrize(String tr_no){
+		return sqlSession.selectList(namespace+"rtPrize",tr_no);
 	}
 }

@@ -79,8 +79,8 @@ public class HorsesVo {
 				private int hr_rating;
 				@XmlElement(name="hrLastAmt")
 				private int hr_hrLastAmt;
-				private String rhrRegDt1; //경주마 등록일
-				private String auctionMon; //최초 경매가
+//				private String rhrRegDt1; //경주마 등록일
+//				private String auctionMon; //최초 경매가
 				public String getHr_htName() {
 					return hr_htName;
 				}
@@ -177,19 +177,19 @@ public class HorsesVo {
 				public void setHr_hrLastAmt(int hr_hrLastAmt) {
 					this.hr_hrLastAmt = hr_hrLastAmt;
 				}
-				public String getRhrRegDt1() {
-					return rhrRegDt1;
-				}
-				public void setRhrRegDt1(String rhrRegDt1) {
-					this.rhrRegDt1 = rhrRegDt1;
-				}
-				public String getAuctionMon() {
-					return auctionMon;
-				}
-				public void setAuctionMon(String auctionMon) {
-					this.auctionMon = auctionMon;
-				}
-				
+//				public String getRhrRegDt1() {
+//					return rhrRegDt1;
+//				}
+//				public void setRhrRegDt1(String rhrRegDt1) {
+//					this.rhrRegDt1 = rhrRegDt1;
+//				}
+//				public String getAuctionMon() {
+//					return auctionMon;
+//				}
+//				public void setAuctionMon(String auctionMon) {
+//					this.auctionMon = auctionMon;
+//				}
+//				
 				
 			}
 		}

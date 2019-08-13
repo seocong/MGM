@@ -22,6 +22,7 @@ import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceInfoDto;
 import com.gam.mgm.dto.RaceResultDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 import com.gam.mgm.paging.PageMaker;
@@ -66,6 +67,7 @@ public class HorseController {
 		TrainerDto trDto = trainerService.getJokyo(tr_no);
 		System.out.println("기수명: "+trDto.getTr_name());
 		List<RecordInfoDto> riDto = trainerService.recordInfo(tr_no);
+		List<RaceTotalPrizeDto> rtpDto = trainerService.rtPrize(tr_no);
 		System.out.println("ridto 확인: "+riDto.size());
 		int ord1cntt =trDto.getTr_ord1cntt();
 		int rccntt = trDto.getTr_rccntt();
@@ -97,6 +99,7 @@ public class HorseController {
 		model.addAttribute("tr_meet",tr_meet);
 		model.addAttribute("horseList",horseList);	
 		model.addAttribute("record",riDto);
+		model.addAttribute("rtprize",rtpDto);
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JokyoDetail";
 	}

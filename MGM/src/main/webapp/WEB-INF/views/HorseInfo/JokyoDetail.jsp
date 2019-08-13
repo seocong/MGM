@@ -230,7 +230,7 @@
 														<tbody>
 
 																<tr>
-																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img alt="미등록" src="http://race.kra.co.kr/ijrc_pub/photo/trainer/${trDto.tr_no}.jpg"></td>
+																	<td style="text-align: center;padding: 0px;" rowspan="4" ><img id="trimg" date-trno="${trDto.tr_no}" alt="미등록" ></td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px; background-color: #fbeae6;">성명</td>
 																	<td style="text-align: center;padding: 0px;">${trDto.tr_name}</td>
 																	<td class="titleColor"  style="text-align: center;padding: 0px;background-color: #fbeae6;">소속조</td>
@@ -277,37 +277,39 @@
 										최근 6개월간 전적 및 수득상금
 									</h4>
 									<table class="table table-bordered ">
+									<c:choose>
+										<c:when test="${empty rtprize}">
+										<tbody>
+											<tr>
+												<td>---전적 및 정보가 없습니다.---</td>
+											</tr>
+										</tbody>
+										</c:when>
+										<c:otherwise>
 										<thead>
 											<tr class="titleColor"  style="text-align: center;">
 												<th width="10%">월별</th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
+												<c:forEach items="${rtprize}" var="list">
+													<th width="15%">${list.raceMonth}</th>
+												</c:forEach>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>전적</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<c:forEach items="${rtprize}" var="list">
+													<td>${list.totalCount}전 ${list.ord1Count}/${list.ord2Count}</td>
+												</c:forEach>
 											</tr>
 											<tr>
 												<td>상금</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<c:forEach items="${rtprize}" var="list">
+													<td><fmt:formatNumber value="${list.totalPrize}" pattern="#,###,###,###" /></td>
+												</c:forEach>
 											</tr>
 										</tbody>
+										</c:otherwise>
+										</c:choose>										
 									</table>
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
@@ -317,31 +319,31 @@
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
 											<th width="15%">경주일자</th>
-											<th width="15%">기승마필</th>
-											<th width="9%">순위</th>
+											<th width="14%">기승마필</th>
+											<th width="6%">순위</th>
 											<th width="9%">등급</th>
-											<th width="8%">거리</th>
-											<th width="24%">경마종류</th>
+											<th width="7%">거리</th>
+											<th width="27%">경마종류</th>
 											<th width="10%">기수명</th>
-											<th width="10%">마주</th>
+											<th width="12%">마주</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:choose>
-									<c:when test="${empty list}">
+									<c:when test="${empty record}">
 										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${record}" var="list">
+												<c:forEach items="${record}" var="record">
 													<tr>
-														<td>${list.rcDate}</td>
-														<td>${list.hrName}</td>
-														<td>${list.ord}/${list.hrCount}</td>
-														<td>${list.ranks}</td>
-														<td>${list.rcDist}</td>
-														<td>${list.rcName}</td>
-														<td>${list.jkName}</td>
-														<td>${list.owName}</td>
+														<td><a href="recordDetail.do?ri_rcDate=<fmt:formatDate value="${record.rcDate}" pattern="yyyyMMdd" />&ri_meet=${record.meet}&ri_rcNo=${record.rcNo}"><fmt:formatDate value="${record.rcDate}" pattern="yyyy-MM-dd" />/${record.rcNo}R</a></td>
+														<td><a href="horseDetail.do?hr_no=${record.hrNo}">${record.hrName}</a></td>
+														<td>${record.ord}/${record.hrCount}</td>
+														<td>${record.ranks}</td>
+														<td>${record.rcDist}</td>
+														<td>${record.rcName}</td>
+														<td><a href="jockeyDetail.do?jk_no=${record.jkNo}">${record.jkName}</a></td>
+														<td><a href="ownerDetail.do?ow_no=${record.owNo}">${record.owName}</a></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -454,13 +456,18 @@
 	<script>
 	$(function() {
 		var tr_meet = $("#tr_meet").attr("data-tr_meet");
+		var tr_no = $("#trimg").attr("date-trno");
+		src="http://race.kra.co.kr/ijrc_pub/photo/trainer/.jpg"
 		if(tr_meet == 1){
+			$("#trimg").attr("src","http://race.kra.co.kr/ijrc_pub/photo/trainer/" + tr_no + ".jpg");
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
 		}else if(tr_meet == 2){
+			$("#trimg").attr("src","http://race.kra.co.kr/jris_pub/photo/trainer/ch" + tr_no + ".jpg");
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
 		}else if(tr_meet == 3){
+			$("#trimg").attr("src","http://race.kra.co.kr/pris_pub/photo/trainer/" + tr_no + ".jpg");
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.ITrainerDao;
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
@@ -46,7 +47,12 @@ public class TrainerService implements ITrainerService {
 	}
 	
 	@Override
-	public List<RecordInfoDto> recordInfo(String trno) {
-		return trainerDao.recordInfo(trno);
+	public List<RecordInfoDto> recordInfo(String tr_no) {
+		return trainerDao.recordInfo(tr_no);
+	}
+	
+	@Override
+	public List<RaceTotalPrizeDto> rtPrize(String tr_no){
+		return trainerDao.rtPrize(tr_no);
 	}
 }

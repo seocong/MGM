@@ -4,44 +4,82 @@
 
 <mapper namespace="com.gam.trainer">
 	<insert id="trinsert" parameterType="TrainerDto">
-		INSERT INTO trainers(tr_name,tr_no,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
+		INSERT INTO
+		trainers(tr_name,tr_no,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
 		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet)
 		VALUES
 		(#{tr_name},#{tr_no},#{tr_part},#{tr_birth},#{tr_age},
 		#{tr_stdate},#{tr_rccntt},#{tr_ord1cntt},#{tr_ord2cntt},#{tr_ord3cntt},#{tr_rccnty},#{tr_ord1cnty},#{tr_ord2cnty},#{tr_ord3cnty},#{tr_meet})
 	</insert>
 	<delete id="trdel" parameterType="int">
-		delete from trainers where tr_meet = #{tr_meet}
+		delete from trainers where
+		tr_meet = #{tr_meet}
 	</delete>
-	
+
 	<select id="getList" parameterType="int" resultType="TrainerDto">
-		select tr_no,tr_name,tr_part,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_rccnty,tr_ord1cnty,tr_ord2cnty from trainers where tr_meet = #{tr_meet}
+		select
+		tr_no,tr_name,tr_part,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_rccnty,tr_ord1cnty,tr_ord2cnty
+		from trainers where tr_meet = #{tr_meet}
 	</select>
-	
-	<select id="trChampionList" parameterType="String" resultType="ChampionDto">
-		select rc_name, rc_date, hr_name from champion where tr_name=#{tr_name}
+
+	<select id="trChampionList" parameterType="String"
+		resultType="ChampionDto">
+		select rc_name, rc_date, hr_name from champion where
+		tr_name=#{tr_name}
 	</select>
-	
-	<select id="getjokyo" parameterType="String" resultType="TrainerDto">
-		select tr_no,tr_name,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
-		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet from trainers where tr_no = #{tr_no}
+
+	<select id="getjokyo" parameterType="String"
+		resultType="TrainerDto">
+		select
+		tr_no,tr_name,tr_part,tr_birth,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_ord3cntt,
+		tr_rccnty,tr_ord1cnty,tr_ord2cnty,tr_ord3cnty,tr_meet from trainers
+		where tr_no = #{tr_no}
 	</select>
-	
+
 	<update id="trUpdate" parameterType="int">
-		update trainers set tr_no = #{value} where tr_name = #{tr_name}
+		update trainers set tr_no =
+		#{value} where tr_name = #{tr_name}
 	</update>
-	
-	<select id="recordInfo" resultType="RecordInfoDto" parameterType="String">
-	SELECT 
-	*,
-	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
-	AS HRCOUNT
-	FROM(
-	SELECT rr.rr_jkName as jkName,rr.rr_owName as owName,RR.RR_TRNAME AS TRNAME, rr.rr_hrName as hrName,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO, RI.RI_MEET AS MEET,
-	RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RI.RI_RCNAME AS RCNAME,rr.rr_ord as ord
-	FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
-	ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET
-	= RR.RR_MEET
-	WHERE RR.RR_trNO =#{trno}) AS RS
+
+	<select id="recordInfo" resultType="RecordInfoDto"
+		parameterType="String">
+		SELECT
+		*,
+		(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND
+		RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
+		AS HRCOUNT
+		FROM(
+		SELECT RR.RR_JKNO AS JKNO,RR.RR_JKNAME AS JKNAME,RR.RR_OWNO AS OWNO,RR.RR_OWNAME AS OWNAME,RR.RR_TRNAME AS TRNAME,RR.RR_TRNO AS TRNO,
+		RR.RR_HRNAME AS HRNAME,RR.RR_HRNO AS HRNO,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO,
+		RI.RI_MEET AS MEET,
+		RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RI.RI_RCNAME AS RCNAME,rr.rr_ord as
+		ord
+		FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
+		ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND
+		RI.RI_MEET
+		= RR.RR_MEET
+		WHERE RR.RR_TRNO =#{tr_no}) AS RS ORDER BY RS.RCDATE DESC;
+	</select>
+
+	<select id="rtPrize" resultType="RTPrizeDto" parameterType="String">
+		SELECT
+		DATE_FORMAT(A.RR_RCDATE,'%Y.%m') AS RACEMONTH,
+		COUNT(*) AS TOTALCOUNT,
+		COUNT(IF(A.RR_ORD=1,A.RR_ORD,NULL)) AS ORD1COUNT,
+		COUNT(IF(A.RR_ORD=2,A.RR_ORD,NULL)) AS ORD2COUNT,
+		SUM(
+		CASE
+		WHEN A.RR_ORD=1 THEN B.RI_CHAKSUN1
+		WHEN A.RR_ORD=2 THEN B.RI_CHAKSUN2
+		WHEN A.RR_ORD=3 THEN B.RI_CHAKSUN3
+		WHEN A.RR_ORD=4 THEN B.RI_CHAKSUN4
+		WHEN A.RR_ORD=5 THEN B.RI_CHAKSUN5
+		ELSE 0
+		END) AS TOTALPRIZE
+		FROM RACE_RESULT A INNER JOIN RACE_INFO B ON A.RR_RCDATE = B.RI_RCDATE AND
+		A.RR_RCNO = B.RI_RCNO AND A.RR_MEET = B.RI_MEET 
+		WHERE A.RR_TRNO = #{tr_no}
+		GROUP BY DATE_FORMAT(A.RR_RCDATE,'%Y%M') ORDER BY A.RR_RCDATE
+		DESC LIMIT 6
 	</select>
 </mapper>

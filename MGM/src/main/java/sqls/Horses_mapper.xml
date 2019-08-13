@@ -50,9 +50,7 @@
 		HR_MOHRNAME=#{hr_moHrName},
 		HR_CHAKSUNT=#{hr_chaksunT},
 		HR_RATING=#{hr_rating},
-		HR_HRLASTAMT=#{hr_hrLastAmt},
-		RHRREGDT1=#{rhrRegDt1},
-		AUCTIONMON=#{auctionMon}
+		HR_HRLASTAMT=#{hr_hrLastAmt}
 		WHERE HR_HTNAME=#{hr_htName}
 	</update>
 	

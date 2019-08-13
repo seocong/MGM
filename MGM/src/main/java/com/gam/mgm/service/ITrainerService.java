@@ -3,6 +3,7 @@ package com.gam.mgm.service;
 import java.util.List;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 import com.gam.mgm.dto.TrainerDto;
 
@@ -20,5 +21,7 @@ public interface ITrainerService {
 	
 	public boolean trUpdate(String trno);
 	
-	public List<RecordInfoDto> recordInfo(String trno);
+	public List<RecordInfoDto> recordInfo(String tr_no);
+	
+	public List<RaceTotalPrizeDto> rtPrize(String tr_no);
 }

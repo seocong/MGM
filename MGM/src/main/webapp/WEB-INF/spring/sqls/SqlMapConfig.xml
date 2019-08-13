@@ -23,6 +23,9 @@
  		<typeAlias type="com.gam.mgm.dto.RaceResultDto" alias="RaceResultDto" />
  		<typeAlias type="com.gam.mgm.dto.RaceInfoDto" alias="RaceInfoDto" />
  		<typeAlias type="com.gam.mgm.dto.RecordInfoDto" alias="RecordInfoDto" />
+ 		<typeAlias type="com.gam.mgm.dto.RaceTotalPrizeDto" alias="RTPrizeDto" />
+ 		<typeAlias type="com.gam.mgm.dto.RacePlanDto" alias="RacePlanDto" />
+ 		<typeAlias type="com.gam.mgm.dto.RaceEntryDto" alias="RaceEntryDto" />
      </typeAliases>
      
   <mappers>
@@ -38,7 +41,9 @@
      <mapper resource="/sqls/RaceInfo_mapper.xml" />
      <mapper resource="/sqls/Horses_mapper.xml" />
      <mapper resource="/sqls/Jockey_mapper.xml" />
-     <mapper resource="/sqls/Owner_mapper.xml" /> 
+     <mapper resource="/sqls/Owner_mapper.xml" />
+     <mapper resource="/sqls/RacePlan_mapper.xml" />
+     <mapper resource="/sqls/RaceEntry_mapper.xml" /> 
   </mappers>
   
   
