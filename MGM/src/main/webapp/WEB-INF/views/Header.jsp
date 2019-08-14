@@ -45,16 +45,22 @@
 									
 								</ul> 
 							</li>
-							<li><a href="raceInfo.do"><div  style="font-weight: bold;">경마정보</div></a>
+							<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div  style="font-weight: bold;">경마정보</div></a>
 								  <ul>								
+									<li><a href="racingInfo.do"><div style="font-weight: bold;">출전정보</div></a>
+										<ul>
+											<li><a href="racingInfo.do"><div  style="font-weight: bold;">출전상세정보</div></a></li>
+											<li><a href="racingHistory.do"><div  style="font-weight: bold;">출전내역</div></a></li>
+											<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li>
+											<li><a href="#"><div  style="font-weight: bold;">출전등록현황</div></a></li>
+										</ul>
 									<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div style="font-weight: bold;">경주성적표</div></a></li>
-									<li><a href="raceInfo.do"><div style="font-weight: bold;">출마표</div></a></li>
+									</li>
 									<li><a href="horseInfo.do?hr_meet=1"><div style="font-weight: bold;">경주마정보</div></a></li>
 									<li><a href="jokyoInfo.do?tr_meet=1"><div style="font-weight: bold;">조교사정보</div></a></li>
 									<li><a href="jockeyInfo.do?jk_meet=1"><div style="font-weight: bold;">기수정보</div></a></li>
 									<li><a href="ownerInfo.do?ow_meet=1"><div style="font-weight: bold;">마주정보</div></a></li>
-									<li><a href="raceSchedule.do"><div style="font-weight: bold;">출주예정마필</div></a></li>
-									<li><a href="racePlan.do"><div style="font-weight: bold;">시행정보</div></a></li>
+									<li><a href="raceoperView.do"><div style="font-weight: bold;">시행정보</div></a></li>
 								</ul> 
 							</li>
 							<li class="#"><a href="#"><div  style="font-weight: bold;">경마채널</div></a>

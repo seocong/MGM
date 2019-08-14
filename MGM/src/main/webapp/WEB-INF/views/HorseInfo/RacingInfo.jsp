@@ -4,6 +4,8 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -90,9 +92,6 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
-		.table td{
-		padding:0.25rem;
-		}
 	</style>
 	
 
@@ -172,10 +171,20 @@
 
 							
 							<div class="row clearfix">
-							<div id="ow_meet" data-ow_meet = "${ow_meet}" ></div>	
-								<div class="col-md-12 mt-5">							
+						<%-- 	<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	 --%>
+								<div class="col-md-12 mt-5">
+						
 								<table class="allmargin">
-
+								<%-- <col width="120px">
+								<col width="120px">
+								<col width="120px">
+								<col width="110px">
+								<col width="120px">
+								<col width="110px">
+								<col width="130px">
+								<col width="120px"> --%>
+								
+								
 								<tr style="text-align: center; white-space: nowrap;">
 									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출전정보</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10">경주성적표</a></td>
@@ -193,7 +202,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										마주 정보<!-- <span style="font-size: 60%;">경주마 등급 정보</span> -->
+										출전상세정보<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -201,67 +210,70 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="ownerInfo.do?ow_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="ownerInfo.do?ow_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="ownerInfo.do?ow_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="horseInfo.do?hr_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="horseInfo.do?hr_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="horseInfo.do?hr_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
-											
-											<div>
-											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>마주 정보 검색</h4>
-												<table class="table" style="border-bottom: solid #DDD 1px;">
-												<tr>
-												<td>마주입력</td>
-												<td>
-													<form class="form-inline my-2 my-lg-0">
-														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-														<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-													</form>
-												</td>
-											</tr>
-											</table>
-											</div>
-											
-
+												
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>마주 정보 목록</h4>
-													<table class="table table-bordered">
-													
-															<tbody>
+												<span class="text-dark"><i class="icon-trophy"></i></span>일자별 경주정보</h4>
+													<table class="table table-bordered table-striped">
+														<thead>
+															<tr class="titleColor" style="text-align: center;white-space: nowrap; ">
+																
+																<th width="15%">경주일자</th>
+																<th width="5%">경주</th>
+																<th width="10%">등급</th>
+																<th width="8%">거리</th>
+																<th width="6%">편성</th>
+																<th width="6%">출전</th>
+																<th width="20%">경주명</th>
+																<th width="10%">출발시각</th>
+																<th width="10%">비고</th>
+																<th width="10%">PDF</th>
+																
+															</tr>
+														</thead>
+
+														<tbody>
+															<tr >
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"><a href="racingDetail.do">디테일가기</a></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_190810_01.pdf"><i class="icon-file-pdf1"></i></a></td>
+																</tr>
+															<c:forEach items="${list}" var="list">
 																<tr>
-																	<td class="titleColor"  style="text-align: center;"rowspan="2">마주명</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="3">말변동현황</td>
-																	<td class="titleColor"  style="text-align: center;"rowspan="2">마주등록일</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="2">최근1년</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="2">통산</td>																											
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"><a href="racingDetail.do"></a></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<td style="text-align: center;"></td>
+																	<%-- <c:if test="${fn:length(${list.no})==1}">
+																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_0${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
+																	<c:if test="${fn:length(${list.no})==2}">
+																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if> --%>
 																</tr>
-																<tr>
-																	<td class="titleColor" style="text-align: center;">총등록</td>
-																	<td class="titleColor" style="text-align: center;">총취소</td>
-																	<td class="titleColor" style="text-align: center;">현소유</td>															
-																	<td class="titleColor" style="text-align: center;">전적</td>
-																	<td class="titleColor" style="text-align: center;">상금</td>
-																	<td class="titleColor" style="text-align: center;">전적</td>
-																	<td class="titleColor" style="text-align: center;">상금</td>															
-																</tr>
-																<c:forEach items="${owDto}" var="owDto">
-																<tr>																
-																	<td style="text-align: center;"><a href="ownerDetail.do?ow_name=${owDto.ow_name}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
-																	<td style="text-align: center;">${owDto.ow_totHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_cancledHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_stDate}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntY}전(//)</td>
-																	<td style="text-align: center;">${owDto.ow_chaksunY}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntT}전(//)</td>
-																	<td style="text-align: center;">${owDto.ow_chaksunT}</td>																
-																</tr>
-																</c:forEach>
-															</tbody>
+															</c:forEach>
+
+
+														</tbody>
 
 													</table>
 												</div>
@@ -274,11 +286,20 @@
 									</div>
 								</div>
 
+
 								
 							</div>
 
 
+
 							<div class="line"></div>
+
+
+
+
+
+
+
 
 
 						</div>
@@ -327,21 +348,22 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var ow_meet = $("#ow_meet").attr("data-ow_meet");
-		if(ow_meet == 1){
+		var hr_meet = $("#hr_meet").attr("data-hr_meet");
+		if(hr_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(ow_meet == 2){
+		}else if(hr_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(ow_meet == 3){
+		}else if(hr_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
-
+	
 		</script>
 		
  	
 	</body>
 	</html>
+</html>

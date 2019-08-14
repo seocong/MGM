@@ -90,9 +90,6 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
-		.table td{
-		padding:0.25rem;
-		}
 	</style>
 	
 
@@ -172,8 +169,9 @@
 
 							
 							<div class="row clearfix">
-							<div id="ow_meet" data-ow_meet = "${ow_meet}" ></div>	
-								<div class="col-md-12 mt-5">							
+							<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	
+								<div class="col-md-12 mt-5">
+						
 								<table class="allmargin">
 
 								<tr style="text-align: center; white-space: nowrap;">
@@ -193,7 +191,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										마주 정보<!-- <span style="font-size: 60%;">경주마 등급 정보</span> -->
+										출전내역<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -201,70 +199,86 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="ownerInfo.do?ow_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="ownerInfo.do?ow_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="ownerInfo.do?ow_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="horseInfo.do?hr_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="horseInfo.do?hr_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="horseInfo.do?hr_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
-											
+											<br>
 											<div>
-											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>마주 정보 검색</h4>
+												<form action="#" method="get">
 												<table class="table" style="border-bottom: solid #DDD 1px;">
 												<tr>
-												<td>마주입력</td>
-												<td>
-													<form class="form-inline my-2 my-lg-0">
-														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-														<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-													</form>
+												
+												<td width="10%">기간선택</td>
+												<td width="15%">
+													<select class="selectpicker" name="date">
+															<%-- <c:forEach items="${list}" var="list">
+  															<option value="<fmt:formatDate value="${list.Date}" pattern="yyyyMMdd"/>"><fmt:formatDate value="${list.Date} pattern="yyyy년MM월dd일 (E)"/></option>
+  															</c:forEach> --%>
+  															<option value="">111111111111</option>
+													</select>
 												</td>
+												<td width="10%">정보선택</td>
+												<td width="35%"><input type="radio" name="Exhibit" value="${list.jockey}" checked="checked" class="radio-style"> 기수 기승현황 
+												<input type="radio" name="Exhibit" value="${list.trainer}" class="radio-style"> 조별 출전현황 
+												<input type="radio" name="Exhibit" value="${list.owner}" class="radio-style"> 마주별 출전현황</td>
+												<td width="10%"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button></td>
+												
 											</tr>
+											
 											</table>
+											</form>
 											</div>
 											
 
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>마주 정보 목록</h4>
-													<table class="table table-bordered">
-													
+												<span class="text-dark"><i class="icon-trophy"></i></span>기수 기승 현황</h4>
+													<table class="table table-bordered table-striped">
 															<tbody>
 																<tr>
-																	<td class="titleColor"  style="text-align: center;"rowspan="2">마주명</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="3">말변동현황</td>
-																	<td class="titleColor"  style="text-align: center;"rowspan="2">마주등록일</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="2">최근1년</td>
-																	<td class="titleColor"  style="text-align: center;" colspan="2">통산</td>																											
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">기수명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="5%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="15" width="85%">경주</th>
 																</tr>
 																<tr>
-																	<td class="titleColor" style="text-align: center;">총등록</td>
-																	<td class="titleColor" style="text-align: center;">총취소</td>
-																	<td class="titleColor" style="text-align: center;">현소유</td>															
-																	<td class="titleColor" style="text-align: center;">전적</td>
-																	<td class="titleColor" style="text-align: center;">상금</td>
-																	<td class="titleColor" style="text-align: center;">전적</td>
-																	<td class="titleColor" style="text-align: center;">상금</td>															
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
 																</tr>
-																<c:forEach items="${owDto}" var="owDto">
-																<tr>																
-																	<td style="text-align: center;"><a href="ownerDetail.do?ow_name=${owDto.ow_name}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
-																	<td style="text-align: center;">${owDto.ow_totHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_cancledHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>
-																	<td style="text-align: center;">${owDto.ow_stDate}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntY}전(//)</td>
-																	<td style="text-align: center;">${owDto.ow_chaksunY}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntT}전(//)</td>
-																	<td style="text-align: center;">${owDto.ow_chaksunT}</td>																
+																<tr>
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																	<td style="text-align: center;"></td>																
+																														
 																</tr>
-																</c:forEach>
-															</tbody>
 
+
+														</tbody>
+														
+													
 													</table>
 												</div>
+												
 
 											</div>
 
@@ -274,11 +288,35 @@
 									</div>
 								</div>
 
+
 								
 							</div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 							<div class="line"></div>
+
+
+
+
+
+
+
 
 
 						</div>
@@ -327,21 +365,22 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var ow_meet = $("#ow_meet").attr("data-ow_meet");
-		if(ow_meet == 1){
+		var hr_meet = $("#hr_meet").attr("data-hr_meet");
+		if(hr_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(ow_meet == 2){
+		}else if(hr_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(ow_meet == 3){
+		}else if(hr_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
 	});
-
+	
 		</script>
 		
  	
 	</body>
 	</html>
+</html>
