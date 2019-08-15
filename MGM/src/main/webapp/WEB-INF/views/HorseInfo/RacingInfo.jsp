@@ -253,12 +253,34 @@
 																	<td style="text-align: center;">${list.rp_rcName}</td>
 																	<td style="text-align: center;">${list.rp_stTime}</td>
 																	<td style="text-align: center;"></td>
-																	  <c:if test="${list.rp_rcNo < 10}">
+																	<c:choose>
+																	<c:when test="${list.rp_meet==1}">
+																		<c:if test="${list.rp_rcNo < 10}">
 																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
 																	</c:if>
 																	<c:if test="${list.rp_rcNo > 9}">
 																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
 																	</c:if>
+																	</c:when>
+																	<c:when test="${list.rp_meet==3}">
+																		<c:if test="${list.rp_rcNo < 10}">	
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
+																	<c:if test="${list.rp_rcNo > 9}">
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
+																	</c:when>
+																	<c:when test="${list.rp_meet==2}">
+																		<c:if test="${list.rp_rcNo < 10}">					 
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
+																	<c:if test="${list.rp_rcNo > 9}">
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
+																	</c:when>
+																	</c:choose>
+																	
+																	  
 																</tr>
 															</c:forEach>
 
