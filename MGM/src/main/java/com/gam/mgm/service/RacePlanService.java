@@ -1,5 +1,7 @@
 package com.gam.mgm.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,11 @@ public class RacePlanService implements IRacePlanService {
 	public boolean resetSeq() {
 		// TODO Auto-generated method stub
 		return rcPlanDao.resetSeq();
+	}
+
+	@Override
+	public List<RacePlanDto> getList(int rp_meet) {
+		return rcPlanDao.getList(rp_meet);
 	}
 
 }

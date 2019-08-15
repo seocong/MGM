@@ -79,4 +79,9 @@
  	<update id="resetSeq">
  		ALTER TABLE RACE_PLAN AUTO_INCREMENT=1
  	</update>
+ 	
+ 	<select id="getlist" parameterType="int" resultType="RacePlanDto">
+ 		select rp_rcDate,rp_rcNo,rp_meet,rp_rank,rp_rcDist,rp_dusu,rp_stTime,rp_rcName,rp_rcDay from race_plan 
+		where rp_meet = #{rp_meet} group by rp_rcDate,rp_rcNo,rp_rcDist,rp_rank,rp_dusu,rp_stTime,rp_rcName,rp_rcDay
+ 	</select>
   </mapper>

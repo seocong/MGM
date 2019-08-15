@@ -21,6 +21,7 @@ import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceInfoDto;
+import com.gam.mgm.dto.RacePlanDto;
 import com.gam.mgm.dto.RaceResultDto;
 import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
@@ -29,6 +30,7 @@ import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
 import com.gam.mgm.service.IOwnerService;
+import com.gam.mgm.service.IRacePlanService;
 import com.gam.mgm.service.IRaceService;
 import com.gam.mgm.service.ITrainerService;
 import com.gam.utils.Util;
@@ -48,6 +50,8 @@ public class HorseController {
 	private IOwnerService ownerService;
 	@Autowired
 	private IRaceService raceService;
+	@Autowired
+	private IRacePlanService racePlanService;
 	
 	@RequestMapping(value = "/jokyoInfo.do", method = RequestMethod.GET)
 	public String jokyoInfo(Locale locale, Model model,HttpServletRequest request) {
@@ -316,6 +320,10 @@ public class HorseController {
 	@RequestMapping(value="/racingInfo.do",method=RequestMethod.GET)
 	public String raceInfo(Locale locale, HttpServletRequest request,Model model){
 		logger.info("출전표리스트", locale);
+		int rp_meet = Integer.parseInt(request.getParameter("rp_meet"));
+		List<RacePlanDto> list = racePlanService.getList(rp_meet);
+		model.addAttribute("list", list);
+		model.addAttribute("rp_meet", rp_meet);
 		return "HorseInfo/RacingInfo";		
 	}
 	

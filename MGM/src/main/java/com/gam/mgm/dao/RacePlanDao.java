@@ -1,5 +1,7 @@
 package com.gam.mgm.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,10 @@ public class RacePlanDao implements IRacePlanDao{
 	@Override
 	public boolean resetSeq() {
 		return sqlSession.update(namespace+"resetSeq")>0?true:false;
+	}
+
+	@Override
+	public List<RacePlanDto> getList(int rp_meet) {
+		return sqlSession.selectList(namespace+"getlist", rp_meet) ;
 	}
 }

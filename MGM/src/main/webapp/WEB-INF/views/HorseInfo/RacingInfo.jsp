@@ -4,7 +4,7 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html >
 <html>
@@ -171,7 +171,7 @@
 
 							
 							<div class="row clearfix">
-						<%-- 	<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	 --%>
+							<div id="rp_meet" data-rp_meet = "${rp_meet}" ></div>	 
 								<div class="col-md-12 mt-5">
 						
 								<table class="allmargin">
@@ -186,7 +186,7 @@
 								
 								
 								<tr style="text-align: center; white-space: nowrap;">
-									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출전정보</a></td>
+									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingInfo.do?rp_meet=1">출전정보</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10">경주성적표</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
 									<td width="11%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
@@ -240,35 +240,25 @@
 														</thead>
 
 														<tbody>
-															<tr >
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="racingDetail.do">디테일가기</a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_190810_01.pdf"><i class="icon-file-pdf1"></i></a></td>
-																</tr>
+															
 															<c:forEach items="${list}" var="list">
-																<tr>
+																<tr style="white-space: nowrap;">
+																
+																	<td style="text-align: center;"><fmt:formatDate value="${list.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${list.rp_rcDay})</td>
+																	<td style="text-align: center;"><a href="racingDetail.do">${list.rp_rcNo}</a></td>
+																	<td style="text-align: center;">${list.rp_rank}</td>
+																	<td style="text-align: center;">${list.rp_rcDist}</td>
+																	<td style="text-align: center;">${list.rp_dusu}</td>
+																	<td style="text-align: center;">${list.rp_dusu}</td>
+																	<td style="text-align: center;">${list.rp_rcName}</td>
+																	<td style="text-align: center;">${list.rp_stTime}</td>
 																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"><a href="racingDetail.do"></a></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<td style="text-align: center;"></td>
-																	<%-- <c:if test="${fn:length(${list.no})==1}">
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_0${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	  <c:if test="${list.rp_rcNo < 10}">
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
 																	</c:if>
-																	<c:if test="${fn:length(${list.no})==2}">
-																	<td style="text-align: center;"><a href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_${list.date}_${list.no}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if> --%>
+																	<c:if test="${list.rp_rcNo > 9}">
+																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
+																	</c:if>
 																</tr>
 															</c:forEach>
 
@@ -348,14 +338,14 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var hr_meet = $("#hr_meet").attr("data-hr_meet");
-		if(hr_meet == 1){
+		var rp_meet = $("#rp_meet").attr("data-rp_meet");
+		if(rp_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(hr_meet == 2){
+		}else if(rp_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(hr_meet == 3){
+		}else if(rp_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
