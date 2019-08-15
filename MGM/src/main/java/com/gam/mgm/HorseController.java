@@ -330,6 +330,7 @@ public class HorseController {
 	@RequestMapping(value="/racingDetail.do",method=RequestMethod.GET)
 	public String raceDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("출전상세정보", locale);
+		
 		return "HorseInfo/RacingDetail";		
 	}
 	
