@@ -172,7 +172,7 @@
 
 							
 							<div class="row clearfix">
-							<%-- <div id="ow_meet" data-ow_meet = "${ow_meet}" ></div>	 --%>
+							 <div id="rp_meet" data-rp_meet = "${rp_meet}" ></div>	
 								<div class="col-md-12 mt-5">
 								
 								<table class="allmargin">
@@ -180,7 +180,7 @@
 								
 								
 								<tr style="text-align: center; white-space: nowrap;">
-									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출전정보</a></td>
+									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingInfo.do?rp_meet=1">출전정보</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10">경주성적표</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="horseInfo.do?hr_meet=1">경주마정보</a></td>
 									<td width="11%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
@@ -204,22 +204,22 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="ownerInfo.do?ow_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="ownerInfo.do?ow_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="ownerInfo.do?ow_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="racingInfo.do?rp_meet=1"> 서울경마</a></li>
+											<li id="tabbusan"><a href="racingInfo.do?rp_meet=3"> 부산경마</a></li>
+											<li id="tabjeju"><a href="racingInfo.do?rp_meet=2"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span></h4>
+												<span class="text-dark"><i class="icon-trophy">라운드별 경주정보</i></span></h4>
 													
 												<table class="table" style="border-bottom: solid #DDD 1px;">
 													<tr>
 														<td width="6%" class="titleColor">경주</td>
-														<c:forEach items="${list}" var="list">
-															<td width="2%" ><a class="link" href="racingDetail.do?ri_meet=${list.ri_meet}&ri_rcNo=${list.ri_rcNo}&ri_rcDate=<fmt:formatDate value="${list.ri_rcDate}" pattern="yyyyMMdd"/>">${list.ri_rcNo}R</a></td>
+														<c:forEach items="${roundlist}" var="roundlist">
+															<td width="2%" ><a class="link" href="racingDetail.do?rp_meet=${roundlist.rp_meet}&rp_rcNo=${roundlist.rp_rcNo}&rp_rcDate=<fmt:formatDate value="${roundlist.rp_rcDate}" pattern="yyyyMMdd"/>">${roundlist.rp_rcNo}R</a></td>
 														</c:forEach>
 													</tr>
 												</table>
@@ -229,25 +229,25 @@
 												<span class="text-dark"><i class="icon-trophy"></i></span>소유말 현황</h4> -->
 												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
-												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일"/> ${riDto.ri_ilsu}일차 제${riDto.ri_rcNo}경주 ${riDto.ri_weather} ${riDto.ri_track}</th>
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${rpDto.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${rpDto.rp_rcDay}) ${rpDto.rp_ilsu}일차 제${rpDto.rp_rcNo}경주 </th>
 												
 											</tr>
 											<tr style="text-align: center;">
-												<td width="25%"> ${riDto.ri_rank} ${riDto.ri_rcDist}${riDto.ri_budam}</td>
-												<td width="25%">${riDto.ri_rcName}</td>
-												<td width="25%">R1 ~ 35</td>
-												<td width="25%">${riDto.ri_ageCond}</td>
+												<td width="25%"> ${rpDto.rp_rank} ${rpDto.rp_rcDist}M ${rpDto.rp_budam}</td>
+												<td width="25%">${rpDto.rp_rcName}</td>
+												<td width="25%">${rpDto.rp_prizeCond}</td>
+												<td width="25%">${rpDto.rp_ageCond}</td>
 												
 											</tr>
 											</table>
 											<table class="table table-bordered ">
 											<tr style="text-align: center;">
 												<th width="20%" class="titleColor" >순위상금</th>
-												<td width="16%">${riDto.ri_chaksun1}원</td>
-												<td width="16%">${riDto.ri_chaksun2}원</td>
-												<td width="16%">${riDto.ri_chaksun3}원</td>
-												<td width="16%">${riDto.ri_chaksun4}원</td>
-												<td width="16%">${riDto.ri_chaksun5}원</td>
+												<td width="16%">${rpDto.rp_chaksun1}원</td>
+												<td width="16%">${rpDto.rp_chaksun2}원</td>
+												<td width="16%">${rpDto.rp_chaksun3}원</td>
+												<td width="16%">${rpDto.rp_chaksun4}원</td>
+												<td width="16%">${rpDto.rp_chaksun5}원</td>
 											</tr>
 											</table>
 											</div>
@@ -267,30 +267,33 @@
 											
 												
 													<table class="table table-bordered table-striped">													
-											<tr class="titleColor"  style="text-align: center;">
+											<tr class="titleColor"  style="text-align: center; white-space:nowrap; ">
+												<th width="5%" >번호</th>
 												<th width="15%" >마명</th>
-												<th width="10%">산지</th>
+												<th width="5%">산지</th>
 												<th width="5%">성별</th>
 												<th width="5%">연령</th>
-												<th width="7%">레이팅</th>
-												<th width="6%">중량</th>
-												<th width="5%">증감</th>
+												<th width="6%">레이팅</th>
+												<th width="5%">중량</th>
 												<th width="10%">기수명</th>
 												<th width="10%">조교사</th>
 												<th width="12%">마주명</th>
-												<th width="5%">훈련횟수</th>
-												<th width="5%">출전주기</th>
-												<th width="10%">특이사항</th>
+												<th width="11%">장구현황</th>
+												<th width="11%">특이사항</th>
 											</tr>
-											<c:forEach items="${hrDto}" var="hrDto">									
+											<c:forEach items="${list}" var="list">									
 											<tr>
-												<td><a href="horseDetail.do?hr_htName=${hrDto.hr_htName}&hr_meet=${hrDto.hr_meet}">${hrDto.hr_htName}</a></td>
-												<td>${hrDto.hr_rank}</td>
-												<td>${hrDto.hr_name}</td>
-												<td>${hrDto.hr_sex}</td>
-												<td>${hrDto.hr_age}</td>
-												<td>${hrDto.hr_trName}(${hrDto.hr_part}조)</td>
-												<td>${hrDto.debut}</td>
+												<td>${list.rp_chulNo}</td>
+												<td><a href="horseDetail.do?hr_htName=${list.rp_hrName}&hr_meet=${list.rp_meet}">${list.rp_hrName}</a></td>
+												<td>${list.rp_prd}</td>
+												<td>${list.rp_sex}</td>
+												<td>${list.rp_age}</td>
+												<td>${list.rp_rating}</td>
+												<td>${list.rp_wgBudam}</td>
+												<td>${list.rp_jkName}</td>
+												<td>${list.rp_trName}</td>
+												<td>${list.rp_owName}</td>
+												<td></td>
 												<td></td>
 											</tr>
 											</c:forEach>
@@ -320,14 +323,14 @@
 											<td>연승률</td>									
 										</tr>
 										<tbody>
-										<c:forEach items="${list1}" var="list1">
+										<c:forEach items="${list}" var="list">
 													<tr>
+														<td><a href="horseDetail.do?hr_htName=${list.rp_hrName}&hr_meet=${list.rp_meet}">${list.rp_hrName}</a></td>
+														<td>${list.hr_rcCntY}(${list.hr_ord1CntY}/${list.hr_ord2CntY}/${list.hr_ord3CntY})</td>
 														<td></td>
 														<td></td>
 														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>														
+														<td>${list.hr_rcCntT}(${list.hr_ord1CntT}/${list.hr_ord2CntT}/${list.hr_ord3CntT})</td>														
 														<td></td>														
 														<td></td>														
 														<td></td>																										
@@ -409,14 +412,14 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var ow_meet = $("#ow_meet").attr("data-ow_meet");
-		if(ow_meet == 1){
+		var rp_meet = $("#rp_meet").attr("data-rp_meet");
+		if(rp_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-		}else if(ow_meet == 2){
+		}else if(rp_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-		}else if(ow_meet == 3){
+		}else if(rp_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	

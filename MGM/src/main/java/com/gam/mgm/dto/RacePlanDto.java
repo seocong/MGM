@@ -36,18 +36,29 @@ public class RacePlanDto {
 	private long rp_chaksun3;
 	private long rp_chaksun4; 
 	private long rp_chaksun5;
+	private int hr_rcCntT;
+	private int hr_ord1CntT;
+	private int hr_ord2CntT;
+	private int hr_ord3CntT;
+	private int hr_rcCntY;
+	private int hr_ord1CntY;
+	private int hr_ord2CntY;
+	private int hr_ord3CntY;
 	
 	public RacePlanDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public RacePlanDto(int rp_meet, Date rp_rcDate, String rp_rcDay, int rp_rcNo, int rp_chulNo, String rp_hrName,
 			String rp_hrNo, String rp_prd, String rp_sex, String rp_age, int rp_wgBudam, int rp_rating,
 			String rp_jkName, String rp_jkNo, String rp_trName, String rp_trNo, String rp_owName, String rp_owNo,
 			int rp_ilsu, int rp_rcDist, int rp_dusu, String rp_rank, String rp_prizeCond, String rp_ageCond,
 			String rp_stTime, String rp_budam, String rp_rcName, long rp_chaksun1, long rp_chaksun2, long rp_chaksun3,
-			long rp_chaksun4, long rp_chaksun5) {
+			long rp_chaksun4, long rp_chaksun5, int hr_rcCntT, int hr_ord1CntT, int hr_ord2CntT, int hr_ord3CntT,
+			int hr_rcCntY, int hr_ord1CntY, int hr_ord2CntY, int hr_ord3CntY) {
 		super();
 		this.rp_meet = rp_meet;
 		this.rp_rcDate = rp_rcDate;
@@ -81,7 +92,17 @@ public class RacePlanDto {
 		this.rp_chaksun3 = rp_chaksun3;
 		this.rp_chaksun4 = rp_chaksun4;
 		this.rp_chaksun5 = rp_chaksun5;
+		this.hr_rcCntT = hr_rcCntT;
+		this.hr_ord1CntT = hr_ord1CntT;
+		this.hr_ord2CntT = hr_ord2CntT;
+		this.hr_ord3CntT = hr_ord3CntT;
+		this.hr_rcCntY = hr_rcCntY;
+		this.hr_ord1CntY = hr_ord1CntY;
+		this.hr_ord2CntY = hr_ord2CntY;
+		this.hr_ord3CntY = hr_ord3CntY;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -351,6 +372,70 @@ public class RacePlanDto {
 
 	public void setRp_chaksun5(long rp_chaksun5) {
 		this.rp_chaksun5 = rp_chaksun5;
+	}
+
+	public int getHr_rcCntT() {
+		return hr_rcCntT;
+	}
+
+	public void setHr_rcCntT(int hr_rcCntT) {
+		this.hr_rcCntT = hr_rcCntT;
+	}
+
+	public int getHr_ord1CntT() {
+		return hr_ord1CntT;
+	}
+
+	public void setHr_ord1CntT(int hr_ord1CntT) {
+		this.hr_ord1CntT = hr_ord1CntT;
+	}
+
+	public int getHr_ord2CntT() {
+		return hr_ord2CntT;
+	}
+
+	public void setHr_ord2CntT(int hr_ord2CntT) {
+		this.hr_ord2CntT = hr_ord2CntT;
+	}
+
+	public int getHr_ord3CntT() {
+		return hr_ord3CntT;
+	}
+
+	public void setHr_ord3CntT(int hr_ord3CntT) {
+		this.hr_ord3CntT = hr_ord3CntT;
+	}
+
+	public int getHr_rcCntY() {
+		return hr_rcCntY;
+	}
+
+	public void setHr_rcCntY(int hr_rcCntY) {
+		this.hr_rcCntY = hr_rcCntY;
+	}
+
+	public int getHr_ord1CntY() {
+		return hr_ord1CntY;
+	}
+
+	public void setHr_ord1CntY(int hr_ord1CntY) {
+		this.hr_ord1CntY = hr_ord1CntY;
+	}
+
+	public int getHr_ord2CntY() {
+		return hr_ord2CntY;
+	}
+
+	public void setHr_ord2CntY(int hr_ord2CntY) {
+		this.hr_ord2CntY = hr_ord2CntY;
+	}
+
+	public int getHr_ord3CntY() {
+		return hr_ord3CntY;
+	}
+
+	public void setHr_ord3CntY(int hr_ord3CntY) {
+		this.hr_ord3CntY = hr_ord3CntY;
 	}
 
 	
