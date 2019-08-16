@@ -373,6 +373,11 @@ public class HorseController {
 			rounds.getHr_ord2CntY();
 			rounds.getHr_ord3CntY();
 			rounds.setTotalWinT(Util.round(rounds.getHr_ord1CntT(), rounds.getHr_rcCntT()));
+			rounds.setWin1T(Util.round(rounds.getHr_ord1CntT()+rounds.getHr_ord2CntT(),rounds.getHr_rcCntT()));
+			rounds.setWin2T(Util.round(rounds.getHr_ord1CntT()+rounds.getHr_ord2CntT()+rounds.getHr_ord3CntT(),rounds.getHr_rcCntT()));
+			rounds.setTotalWinY(Util.round(rounds.getHr_ord1CntY(), rounds.getHr_rcCntY()));
+			rounds.setWin1Y(Util.round(rounds.getHr_ord1CntY()+rounds.getHr_ord2CntY(),rounds.getHr_rcCntY()));
+			rounds.setWin2Y(Util.round(rounds.getHr_ord1CntY()+rounds.getHr_ord2CntY()+rounds.getHr_ord3CntY(),rounds.getHr_rcCntY()));
 		}
 		model.addAttribute("roundlist", roundlist);
 		model.addAttribute("list", list);
