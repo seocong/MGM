@@ -331,7 +331,7 @@
 														<td></td>
 														<td></td>
 														<td>${list.hr_rcCntT}(${list.hr_ord1CntT}/${list.hr_ord2CntT}/${list.hr_ord3CntT})</td>														
-														<td></td>														
+														<td>${list.totalWin}</td>														
 														<td></td>														
 														<td></td>																										
 													</tr>

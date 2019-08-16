@@ -362,7 +362,18 @@ public class HorseController {
 		map.put("rp_rcNo",rp_rcNo);
 		List<RacePlanDto> roundlist = racePlanService.roundlist(map);
 		RacePlanDto rpDto = racePlanService.getDetail(map);
-		List<RacePlanDto> list = racePlanService.getDetailList(map);		
+		List<RacePlanDto> list = racePlanService.getDetailList(map);
+		for(RacePlanDto rounds:list) {
+			rounds.getHr_rcCntT();
+			rounds.getHr_ord1CntT();
+			rounds.getHr_ord2CntT();
+			rounds.getHr_ord3CntT();
+			rounds.getHr_rcCntY();
+			rounds.getHr_ord1CntY();
+			rounds.getHr_ord2CntY();
+			rounds.getHr_ord3CntY();
+			rounds.setTotalWinT(Util.round(rounds.getHr_ord1CntT(), rounds.getHr_rcCntT()));
+		}
 		model.addAttribute("roundlist", roundlist);
 		model.addAttribute("list", list);
 		model.addAttribute("rp_meet", rp_meet);

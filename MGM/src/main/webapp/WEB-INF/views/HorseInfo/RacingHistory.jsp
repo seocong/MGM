@@ -255,6 +255,8 @@
 																	<th style="text-align: center;"></th>																	
 																	<th style="text-align: center;"></th>																	
 																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
+																	<th style="text-align: center;"></th>																	
 																</tr>
 																<tr>
 																	<td style="text-align: center;"></td>																
