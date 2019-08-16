@@ -216,7 +216,7 @@
 										<div>
 											<div class="tabcontent">
 												<div>
-													<table class="table table-bordered table-striped">
+													<table class="table table-bordered table-striped tableColor">
 														
 														<%--  <col width="100px">
 														<col width="100px">
@@ -357,12 +357,15 @@
 		if(tr_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
+			$(".tableColor").css("border-top","solid #b30003 3px");
 		}else if(tr_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
+			$(".tableColor").css("border-top","solid #2a4e8b 3px");
 		}else if(tr_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
+			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
 	});
 	

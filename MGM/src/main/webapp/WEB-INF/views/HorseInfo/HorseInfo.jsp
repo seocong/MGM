@@ -229,7 +229,7 @@
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy"></i></span>등급별 검색(현 경주마)</h4>
-													<table class="table table-bordered">
+													<table class="table table-bordered tableColor">
 													<c:choose>
 														<c:when test="${hr_meet=='2'}">
 															<tbody>
@@ -396,15 +396,18 @@
 		if(hr_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
+			$(".tableColor").css("border-top","solid #b30003 3px")
 		}else if(hr_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
+			$(".tableColor").css("border-top","solid #2a4e8b 3px")
 		}else if(hr_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
+			$(".tableColor").css("border-top","solid #5a9e01 3px")
 		}	
 	});
-
+	
 		</script>
 		
  	
