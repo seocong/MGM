@@ -32,6 +32,7 @@ public class RaceEntryDto {
 	private long re_calPrize_6m; //최근 6개월 상금
 	private long re_calPrizeY; //최근 1년상금
 	private long re_chaksunT; //통산 상금
+	private int entryCnt;
 	public RaceEntryDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,7 +41,7 @@ public class RaceEntryDto {
 			String re_budam, String re_prizeCond, String re_ageCond, long re_chaksun1, long re_chaksun2,
 			long re_chaksun3, long re_chaksun4, long re_chaksun5, int re_enNo, int re_recentRating, String re_hrName,
 			String re_hrNo, String re_name, String re_sex, String re_age, String re_trName, String re_trNo,
-			String re_owName, String re_owNo, int re_rcCntY, long re_calPrize_6m, long re_calPrizeY, long re_chaksunT) {
+			String re_owName, String re_owNo, int re_rcCntY, long re_calPrize_6m, long re_calPrizeY, long re_chaksunT,int entryCnt) {
 		super();
 		this.re_meet = re_meet;
 		this.re_pgDate = re_pgDate;
@@ -71,6 +72,7 @@ public class RaceEntryDto {
 		this.re_calPrize_6m = re_calPrize_6m;
 		this.re_calPrizeY = re_calPrizeY;
 		this.re_chaksunT = re_chaksunT;
+		this.entryCnt = entryCnt;
 	}
 	@Override
 	public String toString() {
@@ -258,5 +260,12 @@ public class RaceEntryDto {
 	public void setRe_chaksunT(long re_chaksunT) {
 		this.re_chaksunT = re_chaksunT;
 	}
+	public int getEntryCnt() {
+		return entryCnt;
+	}
+	public void setEntryCnt(int entryCnt) {
+		this.entryCnt = entryCnt;
+	}
+	
 	
 }

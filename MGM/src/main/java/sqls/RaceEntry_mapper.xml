@@ -73,4 +73,22 @@
 	<update id="resetSeq">
 		ALTER TABLE RACE_ENTRY AUTO_INCREMENT=1
 	</update>
+	<select id="getlist" parameterType="Map" resultType="RaceEntryDto">
+		select re_pgDate,re_pgNo,re_meet,re_rank,re_rcDist,re_budam,re_rcName,count(*)as entryCnt from race_entry 
+		where re_meet = #{re_meet} group by re_pgDate,re_pgNo,re_rcDist,re_rank,re_budam,re_rcName order by re_pgDate DESC LIMIT #{pagenum},#{contentnum}
+	</select>
+	<select id="getCnt" parameterType="int" resultType="int">
+		select count(*) from (select re_pgDate,re_pgNo,count(*) as re_cnt from race_entry where re_meet =#{re_meet} group by re_pgDate,re_pgNo)as B
+	</select>
+	
+	<select id="getDetail" parameterType="Map" resultType="RaceEntryDto">
+		select re_pgDate,re_meet,re_pgNo,re_rank,re_rcDist,re_rcName,re_budam,re_prizeCond,re_ageCond,re_chaksun1,re_chaksun2,re_chaksun3,re_chaksun4,re_chaksun5 
+		from race_entry where re_pgDate =#{re_pgDate} and re_meet=#{re_meet} and re_pgNo =#{re_pgNo} 
+		group by re_pgDate,re_meet,re_pgNo,re_rank,re_rcDist,re_rcName,re_budam,re_prizeCond,re_ageCond,re_chaksun1,re_chaksun2,re_chaksun3,re_chaksun4,re_chaksun5
+	</select>
+	
+	<select id="getDetailList" parameterType="Map" resultType="RaceEntryDto">
+		select re_hrName,re_recentRating,re_meet,re_name,re_sex,re_age,re_trName,re_owName,re_rcCntY,re_calPrize_6m,re_calPrizeY,re_chaksunT 
+		from race_entry where re_pgDate =#{re_pgDate} and re_meet=#{re_meet} and re_pgNo =#{re_pgNo}
+	</select>
 </mapper>

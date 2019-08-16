@@ -211,7 +211,7 @@
 	<select id="getAllCount" parameterType="int" resultType="int">
 		select
 		count(*) from (select ri_rcDate,count(*) as ri_cnt from race_info
-		where ri_meet =#{ri_meet} group by ri_rcDate)as B;
+		where ri_meet =#{ri_meet} group by ri_rcDate)as B
 	</select>
 
 	<select id="getridetail" parameterType="Map"

@@ -47,12 +47,12 @@
 							</li>
 							<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div  style="font-weight: bold;">경마정보</div></a>
 								  <ul>								
-									<li><a href="racingInfo.do"><div style="font-weight: bold;">출전정보</div></a>
+									<li><a href="racingInfo.do?rp_meet=1"><div style="font-weight: bold;">출전정보</div></a>
 										<ul>
 											<li><a href="racingInfo.do?rp_meet=1"><div  style="font-weight: bold;">출전상세정보</div></a></li>
 											<li><a href="racingHistory.do"><div  style="font-weight: bold;">출전내역</div></a></li>
-											<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li>
-											<li><a href="#"><div  style="font-weight: bold;">출전등록현황</div></a></li>
+										<!-- 	<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li> -->
+											<li><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10"><div  style="font-weight: bold;">출전등록현황</div></a></li>
 										</ul>
 									<li><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"><div style="font-weight: bold;">경주성적표</div></a></li>
 									</li>
