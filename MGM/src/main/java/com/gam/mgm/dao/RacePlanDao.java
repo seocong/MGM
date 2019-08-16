@@ -1,6 +1,7 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,21 @@ public class RacePlanDao implements IRacePlanDao{
 
 	@Override
 	public List<RacePlanDto> getList(int rp_meet) {
-		return sqlSession.selectList(namespace+"getlist", rp_meet) ;
+		return sqlSession.selectList(namespace+"getlist", rp_meet);
+	}
+
+	@Override
+	public RacePlanDto getDetail(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"getDetail", map);
+	}
+
+	@Override
+	public List<RacePlanDto> getDetailList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getdetaillist", map);
+	}
+
+	@Override
+	public List<RacePlanDto> roundlist(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"roundlist", map);
 	}
 }

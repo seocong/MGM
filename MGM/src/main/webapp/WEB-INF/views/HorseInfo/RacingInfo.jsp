@@ -245,7 +245,7 @@
 																<tr style="white-space: nowrap;">
 																
 																	<td style="text-align: center;"><fmt:formatDate value="${list.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${list.rp_rcDay})</td>
-																	<td style="text-align: center;"><a href="racingDetail.do">${list.rp_rcNo}</a></td>
+																	<td style="text-align: center;"><a href="racingDetail.do?rp_rcDate=<fmt:formatDate value="${list.rp_rcDate}" pattern="yyyyMMdd"/>&rp_meet=${list.rp_meet}&rp_rcNo=${list.rp_rcNo}">${list.rp_rcNo}</a></td>
 																	<td style="text-align: center;">${list.rp_rank}</td>
 																	<td style="text-align: center;">${list.rp_rcDist}</td>
 																	<td style="text-align: center;">${list.rp_dusu}</td>

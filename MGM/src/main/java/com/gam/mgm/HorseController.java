@@ -353,7 +353,20 @@ public class HorseController {
 	@RequestMapping(value="/racingDetail.do",method=RequestMethod.GET)
 	public String raceDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("출전상세정보", locale);
-		
+		int rp_meet = Integer.parseInt(request.getParameter("rp_meet"));
+		int rp_rcNo = Integer.parseInt(request.getParameter("rp_rcNo"));
+		int rp_rcDate = Integer.parseInt(request.getParameter("rp_rcDate"));
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("rp_meet", rp_meet);
+		map.put("rp_rcDate", rp_rcDate);
+		map.put("rp_rcNo",rp_rcNo);
+		List<RacePlanDto> roundlist = racePlanService.roundlist(map);
+		RacePlanDto rpDto = racePlanService.getDetail(map);
+		List<RacePlanDto> list = racePlanService.getDetailList(map);		
+		model.addAttribute("roundlist", roundlist);
+		model.addAttribute("list", list);
+		model.addAttribute("rp_meet", rp_meet);
+		model.addAttribute("rpDto", rpDto);
 		return "HorseInfo/RacingDetail";		
 	}
 	
