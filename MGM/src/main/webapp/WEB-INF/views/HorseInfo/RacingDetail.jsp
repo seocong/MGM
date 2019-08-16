@@ -214,8 +214,8 @@
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy">라운드별 경주정보</i></span></h4>
-													
-												<table class="table" style="border-bottom: solid #DDD 1px;">
+												
+												<table class="table" style="border-bottom: solid #DDD 1px;" >
 													<tr>
 														<td width="6%" class="titleColor">경주</td>
 														<c:forEach items="${roundlist}" var="roundlist">
@@ -224,10 +224,10 @@
 													</tr>
 												</table>
 											</div>
-											<div>
+											<div >
 											<!-- 	<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy"></i></span>소유말 현황</h4> -->
-												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
+												<table class="table table-bordered tableColor" style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
 												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${rpDto.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${rpDto.rp_rcDay}) ${rpDto.rp_ilsu}일차 제${rpDto.rp_rcNo}경주 </th>
 												
@@ -266,7 +266,7 @@
 								
 											
 												
-													<table class="table table-bordered table-striped">													
+													<table class="table table-bordered table-striped tableColor">													
 											<tr class="titleColor"  style="text-align: center; white-space:nowrap; ">
 												<th width="5%" >번호</th>
 												<th width="15%" >마명</th>
@@ -305,7 +305,7 @@
 								<div>
 								<!-- <h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span> 최근6개월 성적 </h4>	 -->
-									<table class="table table-bordered table-striped">
+									<table  class="table table-bordered table-striped tableColor">
 										
 										<tr class="titleColor"  style="text-align: center;">
 											<th width="16%" rowspan="2">마명</th>
@@ -327,13 +327,13 @@
 													<tr>
 														<td><a href="horseDetail.do?hr_htName=${list.rp_hrName}&hr_meet=${list.rp_meet}">${list.rp_hrName}</a></td>
 														<td>${list.hr_rcCntY}(${list.hr_ord1CntY}/${list.hr_ord2CntY}/${list.hr_ord3CntY})</td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td>${list.totalWinY}</td>														
+														<td>${list.win1Y}</td>														
+														<td>${list.win2Y}</td>
 														<td>${list.hr_rcCntT}(${list.hr_ord1CntT}/${list.hr_ord2CntT}/${list.hr_ord3CntT})</td>														
-														<td>${list.totalWin}</td>														
-														<td></td>														
-														<td></td>																										
+														<td>${list.totalWinT}</td>														
+														<td>${list.win1T}</td>														
+														<td>${list.win2T}</td>																										
 													</tr>
 												</c:forEach>												
 										</tbody>
@@ -416,12 +416,15 @@
 		if(rp_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
+			$(".tableColor").css("border-top","solid #b30003 3px");
 		}else if(rp_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
+			$(".tableColor").css("border-top","solid #2a4e8b 3px");
 		}else if(rp_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
+			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
 	});
 

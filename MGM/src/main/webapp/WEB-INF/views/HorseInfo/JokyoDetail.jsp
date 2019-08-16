@@ -219,7 +219,7 @@
 										<div>
 											<div class="tabcontent">
 												<div>
-													<table class="table table-bordered" style=" ">
+													<table class="table table-bordered tableColor">
 														
 														 <col width="100px">
 														<col width="140px">
@@ -276,7 +276,7 @@
 										<span class="text-dark"><i class="icon-trophy"></i></span>
 										최근 6개월간 전적 및 수득상금
 									</h4>
-									<table class="table table-bordered ">
+									<table class="table table-bordered tableColor">
 									<c:choose>
 										<c:when test="${empty rtprize}">
 										<tbody>
@@ -315,7 +315,7 @@
 										<span class="text-dark"><i class="icon-trophy"></i></span>
 										최근 6개월간 소속조 마필기승 기수 성적
 									</h4>
-									<table class="table table-bordered ">
+									<table class="table table-bordered tableColor">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
 											<th width="15%">경주일자</th>
@@ -352,7 +352,7 @@
 									</table>
 								</div>
 								<div class="tab-content clearfix" id="tab-responsive-2">
-									<table class="table table-bordered ">
+									<table class="table table-bordered tableColor">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
 											<th width="15%">마명</th>
@@ -462,14 +462,17 @@
 			$("#trimg").attr("src","http://race.kra.co.kr/ijrc_pub/photo/trainer/" + tr_no + ".jpg");
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
+			$(".tableColor").css("border-top","solid #b30003 3px");
 		}else if(tr_meet == 2){
 			$("#trimg").attr("src","http://race.kra.co.kr/jris_pub/photo/trainer/ch" + tr_no + ".jpg");
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
+			$(".tableColor").css("border-top","solid #2a4e8b 3px");
 		}else if(tr_meet == 3){
 			$("#trimg").attr("src","http://race.kra.co.kr/pris_pub/photo/trainer/" + tr_no + ".jpg");
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
+			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
 	});
 

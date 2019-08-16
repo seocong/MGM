@@ -210,7 +210,7 @@
 											<div class="tabcontent">
 											<br>
 												<div>
-												<table class="table" style="border-bottom: solid #DDD 1px;">
+												<table class="table " style="border-bottom: solid #DDD 1px;">
 													<tr>
 														<td width="6%" class="titleColor">경주</td>
 														<c:forEach items="${list}" var="list">
@@ -222,7 +222,7 @@
 											<div>
 											 <h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy">경주별 상세 성적표</i></span></h4> 
-												<table class="table table-bordered " style="border-bottom: solid #DDD 1px;">
+												<table class="table table-bordered tableColor" style="border-bottom: solid #DDD 1px;">
 												<tr style="text-align: center;">
 													<c:if test="${riDto.ri_meet == 1}">
 												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${riDto.ri_rcDate}" pattern="yyyy년MM월dd일(E)"/> 제${riDto.ri_rcNo}경주 서울 ${riDto.ri_ilsu}일차  ${riDto.ri_weather} ${riDto.ri_track}</th>
@@ -255,7 +255,7 @@
 											</div>
 											
 												<div>												
-													<table class="table table-bordered table-striped">
+													<table class="table table-bordered table-striped tableColor">
 													
 															
 																<tr class="titleColor" style="text-align: center; ">
@@ -297,7 +297,7 @@
 													</table>
 												</div>
 												<div>
-													<table class="table table-bordered table-striped">
+													<table class="table table-bordered table-striped tableColor">
 														<thead>
 															<tr class="titleColor" style="text-align: center;white-space: nowrap; ">
 																
@@ -337,7 +337,7 @@
 													</table>
 												</div>
 												<div>
-													<table class="table table-bordered ">
+													<table class="table table-bordered tableColor">
 														<tr>
 															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">매출액</th>
 															<td width="40%" style="text-align:left;">단승식 : <fmt:formatNumber value="${riDto.ri_winAmt}" type="number" /></td>
@@ -358,7 +358,7 @@
 													</table>
 													</div>
 													<div>
-													<table class="table table-bordered oddsTable" height="100%">
+													<table class="table table-bordered oddsTable tableColor" height="100%">
 														<tr>
 															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">배당률</th>
 															<td width="40%" style="text-align:left;" data-winNo="${riDto.ri_winChulNo}" data-winOdds="${riDto.ri_winOdds}">단승식 : </td>
@@ -386,7 +386,7 @@
 													</table>
 												</div>										
 												<div>
-													<table class="table table-bordered ">
+													<table class="table table-bordered tableColor">
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">S-1F</th>
 															<td width="45%" style="text-align:left;">${riDto.ri_passrankS1f}</td>
@@ -418,7 +418,7 @@
 													</table>
 												</div>
 												<div>
-													<table class="table table-bordered ">
+													<table class="table table-bordered tableColor">
 														<tr>
 															<th class="titleColor" colspan="6"
 																style="text-align: center;">재결사항</th>
@@ -529,12 +529,15 @@
 		if(ri_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
+			$(".tableColor").css("border-top","solid #b30003 3px")
 		}else if(ri_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
+			$(".tableColor").css("border-top","solid #2a4e8b 3px")
 		}else if(ri_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
+			$(".tableColor").css("border-top","solid #5a9e01 3px")
 		}	
 	});
 	

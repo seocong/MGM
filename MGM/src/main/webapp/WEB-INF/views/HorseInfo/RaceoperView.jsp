@@ -205,7 +205,7 @@
 									</h5><span style="font-size: 80%;float: right;" >(단위:두)</span>							
 									</div>
 									<div>
-										<table class=" table table-bordered" style="text-align: center; white-space: nowrap;">
+										<table class=" table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 											<tr>
 												<th rowspan="2" width="10%">구분</th>
 												<th width="30%" colspan="3">서울</th>
@@ -243,7 +243,7 @@
 									</h5><span style="font-size: 80%;float: right;" >(단위:명)</span>							
 									</div>
 									<div>
-									<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+									<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="10%">구분</th>
 											<th width="30%">조교시</th>
@@ -278,7 +278,7 @@
 									<span style="font-size: 80%;float: right;" >(단위:일,경주)</span>							
 									</div>
 									<div>
-									<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+									<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="40%" colspan="2">구분</th>
 											<th width="20%">서울</th>
@@ -337,7 +337,7 @@
   										<p><strong>경마장별 휴장기 운영</strong></p>
 										</div>
 										<div>
-										<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+										<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="15%">구분</th>
 											<th width="10%">서울</th>
@@ -410,7 +410,7 @@
 											<p><strong>요일별 기본 발매경주 수</strong></p>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="10%">구분</th>
 											<th width="30%">금요일</th>
@@ -431,7 +431,7 @@
 										<p class="nomargin">o 서울</p><span style="float: right;font-size: 80%;" >(단위:일,경주)</span>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="8%">구분</th>
 											<th width="7%">1월</th>
@@ -487,7 +487,7 @@
 											<p class="nomargin">o 부경</p><span style="float: right;font-size: 80%;" >(단위:일,경주)</span>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="8%">구분</th>
 											<th width="7%">1월</th>
@@ -545,7 +545,7 @@
 											</h5><p><span style="font-size: 80%;"><strong>시기별 경마 시행형태</strong></span></p>										
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="10%">구분</th>
 											<th width="30%" colspan="2">서울</th>
@@ -572,7 +572,7 @@
 											<p>o 주간경마</p>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="25%">출발시간</th>
 											<th width="25%">금요일</th>
@@ -595,7 +595,7 @@
 											<p>o 야간경마</p>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="25%">출발시간</th>
 											<th width="25%">금요일</th>
@@ -621,7 +621,7 @@
 											<p><strong>하절기 경마장별 경마 시행형태</strong></p>
 										</div>
 										<div>
-											<table class="table table-bordered" style="text-align: center; white-space: nowrap;">
+											<table class="table table-bordered" style="text-align: center; white-space: nowrap;border-top: solid #3A486E 3px;">
 										<tr>
 											<th width="25%" colspan="2">구분</th>
 											<th width="25%">금요일</th>
