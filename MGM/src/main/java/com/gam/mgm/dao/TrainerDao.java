@@ -24,8 +24,8 @@ public class TrainerDao implements ITrainerDao {
 	}
 
 	@Override
-	public boolean trDel(int tr_meet) {
-		int cnt = sqlSession.delete(namespace+"trdel",tr_meet);
+	public boolean trDel() {
+		int cnt = sqlSession.delete(namespace+"trdel");
 		return cnt>0?true:false;
 	}
 
@@ -58,5 +58,10 @@ public class TrainerDao implements ITrainerDao {
 	@Override
 	public List<RaceTotalPrizeDto> rtPrize(String tr_no){
 		return sqlSession.selectList(namespace+"rtPrize",tr_no);
+	}
+
+	@Override
+	public boolean resetSeq() {
+		return sqlSession.update(namespace+"resetSeq")>0?true:false;
 	}
 }

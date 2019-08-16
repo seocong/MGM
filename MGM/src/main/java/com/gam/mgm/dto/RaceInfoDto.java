@@ -52,28 +52,28 @@ public class RaceInfoDto {
 	private int ri_dist_8f;
 	private int ri_dist_9f;
 	private int ri_dist_10f;
-	private float ri_time_1f;
-	private float ri_time_2f;
-	private float ri_time_3f;
-	private float ri_time_4f;
-	private float ri_time_5f;
-	private float ri_time_6f;
-	private float ri_time_7f;
-	private float ri_time_8f;
-	private float ri_time_9f;
-	private float ri_time_10f;
-	private float ri_time_11f;
-	private float ri_time_12f;
-	private float ri_passTime_1f;
-	private float ri_passTime_2f;
-	private float ri_passTime_3f;
-	private float ri_passTime_4f;
-	private float ri_passTime_5f;
-	private float ri_passTime_6f;
-	private float ri_passTime_7f;
-	private float ri_passTime_8f;
-	private float ri_passTime_9f;
-	private float ri_passTime_10f;
+	private double ri_time_1f;
+	private double ri_time_2f;
+	private double ri_time_3f;
+	private double ri_time_4f;
+	private double ri_time_5f;
+	private double ri_time_6f;
+	private double ri_time_7f;
+	private double ri_time_8f;
+	private double ri_time_9f;
+	private double ri_time_10f;
+	private double ri_time_11f;
+	private double ri_time_12f;
+	private double ri_passTime_1f;
+	private double ri_passTime_2f;
+	private double ri_passTime_3f;
+	private double ri_passTime_4f;
+	private double ri_passTime_5f;
+	private double ri_passTime_6f;
+	private double ri_passTime_7f;
+	private double ri_passTime_8f;
+	private double ri_passTime_9f;
+	private double ri_passTime_10f;
 	private String ri_passrankS1f;
 	private String ri_passrankG8f_1c;
 	private String ri_passrankG6f_2c;
@@ -93,12 +93,12 @@ public class RaceInfoDto {
 			String ri_qnlChulNo, String ri_qnlOdds, String ri_exaChulNo, String ri_exaOdds, String ri_qplChulNo,
 			String ri_qplOdds, String ri_tlaChulNo, String ri_tlaOdds, String ri_triChulNo, String ri_triOdds,
 			int ri_dist_1f, int ri_dist_2f, int ri_dist_3f, int ri_dist_4f, int ri_dist_5f, int ri_dist_6f,
-			int ri_dist_7f, int ri_dist_8f, int ri_dist_9f, int ri_dist_10f, float ri_time_1f, float ri_time_2f,
-			float ri_time_3f, float ri_time_4f, float ri_time_5f, float ri_time_6f, float ri_time_7f, float ri_time_8f,
-			float ri_time_9f, float ri_time_10f, float ri_time_11f, float ri_time_12f, float ri_passTime_1f,
-			float ri_passTime_2f, float ri_passTime_3f, float ri_passTime_4f, float ri_passTime_5f,
-			float ri_passTime_6f, float ri_passTime_7f, float ri_passTime_8f, float ri_passTime_9f,
-			float ri_passTime_10f, String ri_passrankS1f, String ri_passrankG8f_1c, String ri_passrankG6f_2c,
+			int ri_dist_7f, int ri_dist_8f, int ri_dist_9f, int ri_dist_10f, double ri_time_1f, double ri_time_2f,
+			double ri_time_3f, double ri_time_4f, double ri_time_5f, double ri_time_6f, double ri_time_7f, double ri_time_8f,
+			double ri_time_9f, double ri_time_10f, double ri_time_11f, double ri_time_12f, double ri_passTime_1f,
+			double ri_passTime_2f, double ri_passTime_3f, double ri_passTime_4f, double ri_passTime_5f,
+			double ri_passTime_6f, double ri_passTime_7f, double ri_passTime_8f, double ri_passTime_9f,
+			double ri_passTime_10f, String ri_passrankS1f, String ri_passrankG8f_1c, String ri_passrankG6f_2c,
 			String ri_passrankG4f_3c, String ri_passrankG3f_4c, String ri_passrankG2f, String ri_passrankG1f) {
 		super();
 		this.ri_meet = ri_meet;
@@ -504,136 +504,136 @@ public class RaceInfoDto {
 	public void setRi_dist_10f(int ri_dist_10f) {
 		this.ri_dist_10f = ri_dist_10f;
 	}
-	public float getRi_time_1f() {
+	public double getRi_time_1f() {
 		return ri_time_1f;
 	}
-	public void setRi_time_1f(float ri_time_1f) {
+	public void setRi_time_1f(double ri_time_1f) {
 		this.ri_time_1f = ri_time_1f;
 	}
-	public float getRi_time_2f() {
+	public double getRi_time_2f() {
 		return ri_time_2f;
 	}
-	public void setRi_time_2f(float ri_time_2f) {
+	public void setRi_time_2f(double ri_time_2f) {
 		this.ri_time_2f = ri_time_2f;
 	}
-	public float getRi_time_3f() {
+	public double getRi_time_3f() {
 		return ri_time_3f;
 	}
-	public void setRi_time_3f(float ri_time_3f) {
+	public void setRi_time_3f(double ri_time_3f) {
 		this.ri_time_3f = ri_time_3f;
 	}
-	public float getRi_time_4f() {
+	public double getRi_time_4f() {
 		return ri_time_4f;
 	}
-	public void setRi_time_4f(float ri_time_4f) {
+	public void setRi_time_4f(double ri_time_4f) {
 		this.ri_time_4f = ri_time_4f;
 	}
-	public float getRi_time_5f() {
+	public double getRi_time_5f() {
 		return ri_time_5f;
 	}
-	public void setRi_time_5f(float ri_time_5f) {
+	public void setRi_time_5f(double ri_time_5f) {
 		this.ri_time_5f = ri_time_5f;
 	}
-	public float getRi_time_6f() {
+	public double getRi_time_6f() {
 		return ri_time_6f;
 	}
-	public void setRi_time_6f(float ri_time_6f) {
+	public void setRi_time_6f(double ri_time_6f) {
 		this.ri_time_6f = ri_time_6f;
 	}
-	public float getRi_time_7f() {
+	public double getRi_time_7f() {
 		return ri_time_7f;
 	}
-	public void setRi_time_7f(float ri_time_7f) {
+	public void setRi_time_7f(double ri_time_7f) {
 		this.ri_time_7f = ri_time_7f;
 	}
-	public float getRi_time_8f() {
+	public double getRi_time_8f() {
 		return ri_time_8f;
 	}
-	public void setRi_time_8f(float ri_time_8f) {
+	public void setRi_time_8f(double ri_time_8f) {
 		this.ri_time_8f = ri_time_8f;
 	}
-	public float getRi_time_9f() {
+	public double getRi_time_9f() {
 		return ri_time_9f;
 	}
-	public void setRi_time_9f(float ri_time_9f) {
+	public void setRi_time_9f(double ri_time_9f) {
 		this.ri_time_9f = ri_time_9f;
 	}
-	public float getRi_time_10f() {
+	public double getRi_time_10f() {
 		return ri_time_10f;
 	}
-	public void setRi_time_10f(float ri_time_10f) {
+	public void setRi_time_10f(double ri_time_10f) {
 		this.ri_time_10f = ri_time_10f;
 	}
-	public float getRi_time_11f() {
+	public double getRi_time_11f() {
 		return ri_time_11f;
 	}
-	public void setRi_time_11f(float ri_time_11f) {
+	public void setRi_time_11f(double ri_time_11f) {
 		this.ri_time_11f = ri_time_11f;
 	}
-	public float getRi_time_12f() {
+	public double getRi_time_12f() {
 		return ri_time_12f;
 	}
-	public void setRi_time_12f(float ri_time_12f) {
+	public void setRi_time_12f(double ri_time_12f) {
 		this.ri_time_12f = ri_time_12f;
 	}
-	public float getRi_passTime_1f() {
+	public double getRi_passTime_1f() {
 		return ri_passTime_1f;
 	}
-	public void setRi_passTime_1f(float ri_passTime_1f) {
+	public void setRi_passTime_1f(double ri_passTime_1f) {
 		this.ri_passTime_1f = ri_passTime_1f;
 	}
-	public float getRi_passTime_2f() {
+	public double getRi_passTime_2f() {
 		return ri_passTime_2f;
 	}
-	public void setRi_passTime_2f(float ri_passTime_2f) {
+	public void setRi_passTime_2f(double ri_passTime_2f) {
 		this.ri_passTime_2f = ri_passTime_2f;
 	}
-	public float getRi_passTime_3f() {
+	public double getRi_passTime_3f() {
 		return ri_passTime_3f;
 	}
-	public void setRi_passTime_3f(float ri_passTime_3f) {
+	public void setRi_passTime_3f(double ri_passTime_3f) {
 		this.ri_passTime_3f = ri_passTime_3f;
 	}
-	public float getRi_passTime_4f() {
+	public double getRi_passTime_4f() {
 		return ri_passTime_4f;
 	}
-	public void setRi_passTime_4f(float ri_passTime_4f) {
+	public void setRi_passTime_4f(double ri_passTime_4f) {
 		this.ri_passTime_4f = ri_passTime_4f;
 	}
-	public float getRi_passTime_5f() {
+	public double getRi_passTime_5f() {
 		return ri_passTime_5f;
 	}
-	public void setRi_passTime_5f(float ri_passTime_5f) {
+	public void setRi_passTime_5f(double ri_passTime_5f) {
 		this.ri_passTime_5f = ri_passTime_5f;
 	}
-	public float getRi_passTime_6f() {
+	public double getRi_passTime_6f() {
 		return ri_passTime_6f;
 	}
-	public void setRi_passTime_6f(float ri_passTime_6f) {
+	public void setRi_passTime_6f(double ri_passTime_6f) {
 		this.ri_passTime_6f = ri_passTime_6f;
 	}
-	public float getRi_passTime_7f() {
+	public double getRi_passTime_7f() {
 		return ri_passTime_7f;
 	}
-	public void setRi_passTime_7f(float ri_passTime_7f) {
+	public void setRi_passTime_7f(double ri_passTime_7f) {
 		this.ri_passTime_7f = ri_passTime_7f;
 	}
-	public float getRi_passTime_8f() {
+	public double getRi_passTime_8f() {
 		return ri_passTime_8f;
 	}
-	public void setRi_passTime_8f(float ri_passTime_8f) {
+	public void setRi_passTime_8f(double ri_passTime_8f) {
 		this.ri_passTime_8f = ri_passTime_8f;
 	}
-	public float getRi_passTime_9f() {
+	public double getRi_passTime_9f() {
 		return ri_passTime_9f;
 	}
-	public void setRi_passTime_9f(float ri_passTime_9f) {
+	public void setRi_passTime_9f(double ri_passTime_9f) {
 		this.ri_passTime_9f = ri_passTime_9f;
 	}
-	public float getRi_passTime_10f() {
+	public double getRi_passTime_10f() {
 		return ri_passTime_10f;
 	}
-	public void setRi_passTime_10f(float ri_passTime_10f) {
+	public void setRi_passTime_10f(double ri_passTime_10f) {
 		this.ri_passTime_10f = ri_passTime_10f;
 	}
 	public String getRi_passrankS1f() {

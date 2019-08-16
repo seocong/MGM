@@ -48,7 +48,7 @@ public class RaceInfoVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{
-				private Date rcDate;
+				private String rcDate;
 				private int rcNo;
 				private int ilsu;
 				private int rcDist;
@@ -72,10 +72,10 @@ public class RaceInfoVo {
 				private long triAmt;
 				private long totalAmt;
 				
-				public Date getRcDate() {
+				public String getRcDate() {
 					return rcDate;
 				}
-				public void setRcDate(Date rcDate) {
+				public void setRcDate(String rcDate) {
 					this.rcDate = rcDate;
 				}
 				public int getRcNo() {

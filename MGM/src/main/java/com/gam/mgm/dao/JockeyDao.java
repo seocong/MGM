@@ -1,12 +1,15 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 
 @Repository
@@ -44,7 +47,17 @@ public class JockeyDao implements IJockeyDao{
 	}
 
 	@Override
-	public List<RecordInfoDto> recordInfo(String jkno) {
-		return sqlSession.selectList(namespace+"recordInfo",jkno);
+	public List<RecordInfoDto> recordInfo(String jk_no) {
+		return sqlSession.selectList(namespace+"recordInfo",jk_no);
+	}
+	
+	@Override
+	public List<RaceTotalPrizeDto> rtPrize(String jk_no){
+		return sqlSession.selectList(namespace+"rtPrize",jk_no);
+	}
+
+	@Override
+	public List<ChampionDto> selChampion(String jk_name) {
+		return sqlSession.selectList(namespace+"selChampion",jk_name);
 	}
 }

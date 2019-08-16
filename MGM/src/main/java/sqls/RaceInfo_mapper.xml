@@ -3,30 +3,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gam.race">
-	<insert id="schInsert" parameterType="RaceScheduleVo">
-		INSERT INTO RACE_SCHEDULE
-		VALUES
-		(
-		#{schedulelist.rcDate},
-		#{schedulelist.rcNo},
-		#{schedulelist.ilsu},
-		#{schedulelist.meet},
-		#{schedulelist.schStTime},
-		#{schedulelist.rank},
-		#{schedulelist.rcDist},
-		#{schedulelist.budam},
-		#{schedulelist.rcName},
-		#{schedulelist.ageCond},
-		#{schedulelist.chaksun1},
-		#{schedulelist.chaksun2},
-		#{schedulelist.chaksun3},
-		#{schedulelist.chaksun4},
-		#{schedulelist.chaksun5})
-	</insert>
-
-	<delete id="scheduleAllDel">
-		TRUNCATE RACE_SCHEDULE
-	</delete>
 
 	<insert id="rcResultInsert" parameterType="RaceResultDto">
 		INSERT INTO
@@ -71,7 +47,7 @@
 		VALUES
 		(
 		#{rr_meet},
-		#{rr_rcDate},
+		DATE_ADD(#{rr_rcDate},INTERVAL 1 DAY),
 		#{rr_rcNo},
 		#{rr_hrNo},
 		#{rr_hrName},
@@ -139,7 +115,7 @@
 		VALUES
 		(
 		#{ri_meet},
-		#{ri_rcDate},
+		DATE_ADD(#{ri_rcDate},INTERVAL 1 DAY),
 		#{ri_rcNo},
 		#{ri_ilsu},
 		#{ri_rcDist},
@@ -164,27 +140,137 @@
 		#{ri_totalAmt}
 		)
 	</insert>
-	<select id="getCntList" parameterType="Map" resultType="RaceInfoDto">
-		select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet = #{ri_meet} group by ri_rcDate limit #{pagenum},#{contentnum}
+	<update id="raceInfoUpdate1" parameterType="RaceSummaryResultVo">
+		UPDATE RACE_INFO SET
+		ri_winChulNo=#{winChulNo},
+		ri_winOdds=#{winOdds},
+		ri_plcChulNo=#{plcChulNo},
+		ri_plcOdds=#{plcOdds},
+		ri_qnlChulNo=#{qnlChulNo},
+		ri_qnlOdds=#{qnlOdds},
+		ri_exaChulNo=#{exaChulNo},
+		ri_exaOdds=#{exaOdds},
+		ri_qplChulNo=#{qplChulNo},
+		ri_qplOdds=#{qplOdds},
+		ri_tlaChulNo=#{tlaChulNo},
+		ri_tlaOdds=#{tlaOdds},
+		ri_triChulNo=#{triChulNo},
+		ri_triOdds=#{triOdds}
+		WHERE RI_MEET = #{meet} AND RI_RCDATE = #{rcDate} AND RI_RCNO = #{rcNo}
+	</update>
+	<update id="raceInfoUpdate2" parameterType="RaceSectionRecordVo">
+		UPDATE RACE_INFO SET
+		ri_dist_1f=#{dist_1f},
+		ri_dist_2f=#{dist_2f},
+		ri_dist_3f=#{dist_3f},
+		ri_dist_4f=#{dist_4f},
+		ri_dist_5f=#{dist_5f},
+		ri_dist_6f=#{dist_6f},
+		ri_dist_7f=#{dist_7f},
+		ri_dist_8f=#{dist_8f},
+		ri_dist_9f=#{dist_9f},
+		ri_dist_10f=#{dist_10f},
+		ri_time_1f=#{time_1f},
+		ri_time_2f=#{time_2f},
+		ri_time_3f=#{time_3f},
+		ri_time_4f=#{time_4f},
+		ri_time_5f=#{time_5f},
+		ri_time_6f=#{time_6f},
+		ri_time_7f=#{time_7f},
+		ri_time_8f=#{time_8f},
+		ri_time_9f=#{time_9f},
+		ri_time_10f=#{time_10f},
+		ri_time_11f=#{time_11f},
+		ri_time_12f=#{time_12f},
+		ri_passTime_1f=#{passtime_1f},
+		ri_passTime_2f=#{passtime_2f},
+		ri_passTime_3f=#{passtime_3f},
+		ri_passTime_4f=#{passtime_4f},
+		ri_passTime_5f=#{passtime_5f},
+		ri_passTime_6f=#{passtime_6f},
+		ri_passTime_7f=#{passtime_7f},
+		ri_passTime_8f=#{passtime_8f},
+		ri_passTime_9f=#{passtime_9f},
+		ri_passTime_10f=#{passtime_10f},
+		ri_passrankS1f=#{passrankS1f},
+		ri_passrankG8f_1c=#{passrankG8f_1c},
+		ri_passrankG6f_2c=#{passrankG6f_2c},
+		ri_passrankG4f_3c=#{passrankG4f_3c},
+		ri_passrankG3f_4c=#{passrankG3f_4c},
+		ri_passrankG2f=#{passrankG2f},
+		ri_passrankG1f=#{passrankG1f}
+		WHERE Ri_RCDATE = #{rcDate} AND RI_MEET = ${meet} AND RI_RCNO = #{rcNo}
+
+	</update>
+	<select id="getCntList" parameterType="Map"
+		resultType="RaceInfoDto">
+		select ri_rcDate,count(*) as ri_cnt from race_info where
+		ri_meet = #{ri_meet} group by ri_rcDate limit #{pagenum},#{contentnum}
 	</select>
-	
+
 	<select id="getAllCount" parameterType="int" resultType="int">
-		select count(*) from (select ri_rcDate,count(*) as ri_cnt from race_info where ri_meet =#{ri_meet} group by ri_rcDate)as B;	
+		select
+		count(*) from (select ri_rcDate,count(*) as ri_cnt from race_info
+		where ri_meet =#{ri_meet} group by ri_rcDate)as B;
 	</select>
-	
-	<select id="getridetail" parameterType="Map" resultType="RaceInfoDto">
-		select ri_meet,ri_rcDate,ri_rcNo,ri_ilsu,ri_rcDist,ri_rank,ri_budam,ri_rcName,ri_ageCond,ri_weather,ri_track,ri_chaksun1,ri_chaksun2,ri_chaksun3,ri_chaksun4
-		,ri_chaksun5,ri_winAmt,ri_plcAmt,ri_qnlAmt,ri_exaAmt,ri_qplAmt,ri_tlaAmt,ri_triAmt,ri_totalAmt from race_info where ri_meet=#{ri_meet} AND ri_rcNo=#{ri_rcNo}
-		AND ri_rcDate = #{ri_rcDate}
+
+	<select id="getridetail" parameterType="Map"
+		resultType="RaceInfoDto">
+		select
+		*
+		from race_info where ri_meet=#{ri_meet} AND ri_rcNo=#{ri_rcNo}
+		AND
+		ri_rcDate = #{ri_rcDate}
 	</select>
-	
-	<select id="getrrdetail" parameterType="Map" resultType="RaceResultDto">
-		select A.rr_meet,A.rr_rcDate,A.rr_rcNo,A.rr_hrno,A.rr_hrName,A.rr_ord,A.rr_chulNo,A.rr_wgBudam,A.rr_wgHr,A.rr_rcTime,A.rr_diffUnit,A.rr_ordS1f,A.rr_g8f_1c,A.rr_g6f_2c,A.rr_g4f_3c,A.rr_g3f_4c
+
+	<select id="getrrdetail" parameterType="Map"
+		resultType="RaceResultDto">
+		select
+		A.rr_meet,A.rr_rcDate,A.rr_rcNo,A.rr_hrno,A.rr_hrName,A.rr_ord,A.rr_chulNo,A.rr_wgBudam,A.rr_wgHr,A.rr_rcTime,A.rr_diffUnit,A.rr_ordS1f,A.rr_g8f_1c,A.rr_g6f_2c,A.rr_g4f_3c,A.rr_g3f_4c
 		,A.rr_g2f,A.rr_ordG1f,A.rr_rcTimeS1f,A.rr_rcTime_1c,A.rr_rcTime_2c,A.rr_rcTime_3c,A.rr_rcTime_4c,A.rr_rcTimeG3f,A.rr_rcTimeG2f,A.rr_rcTimeG1f,A.rr_winOdds,A.rr_plcOdds,A.rr_rating
-		,A.rr_owName,A.rr_TrName,A.rr_jkName,B.hr_sex,B.hr_age,B.hr_name from race_result A INNER JOIN horses B ON A.rr_hrno = B.hr_no where rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo} AND rr_rcDate = #{ri_rcDate}
+		,A.rr_owName,A.rr_TrName,A.rr_jkName,B.hr_sex,B.hr_age,B.hr_name from
+		race_result A INNER JOIN horses B ON A.rr_hrno = B.hr_no where
+		rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo} AND rr_rcDate = #{ri_rcDate}
+	</select>
+
+	<select id="getracepaging" parameterType="Map"
+		resultType="RaceInfoDto">
+		select ri_meet,ri_rcDate,ri_rcNo from race_info where
+		ri_meet=#{ri_meet} AND ri_rcDate = #{ri_rcDate}
 	</select>
 	
-	<select id="getracepaging" parameterType="Map" resultType="RaceInfoDto">
-		select ri_meet,ri_rcDate,ri_rcNo from race_info where ri_meet=#{ri_meet} AND ri_rcDate = #{ri_rcDate}  
+	<insert id="refreeInsert" parameterType="RaceRefreeVo">
+		insert into race_refree(
+				rf_meet,
+				rf_rcNo,
+				rf_rcDate,
+				rf_prGubun,
+				rf_chulNo,
+				rf_prNo,
+				rf_prName,
+				rf_kind,
+				rf_reason,
+				rf_stDate,
+				rf_spDate,
+				rf_fine
+		) 
+		values(
+				#{meet},
+				#{rcNo},
+				#{rcDate},
+				#{prGubun},
+				#{chulNo},
+				#{prNo},
+				#{prName},
+				#{kind},
+				#{reason},
+				#{stDate},
+				#{spDate},
+				#{fine}
+		)
+	</insert>
+	
+	<select id="selRefree" parameterType="Map" resultType="RaceRefreeDto">
+		select * from race_refree where rf_rcDate = #{ri_rcDate} and rf_rcNo = #{ri_rcNo} and rf_meet = #{ri_meet}
 	</select>
 </mapper>

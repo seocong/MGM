@@ -1,5 +1,6 @@
 package com.gam.mgm;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -16,12 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceInfoDto;
 import com.gam.mgm.dto.RacePlanDto;
+import com.gam.mgm.dto.RaceRefreeDto;
 import com.gam.mgm.dto.RaceResultDto;
 import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
@@ -124,6 +127,11 @@ public class HorseController {
 		String jk_no = request.getParameter("jk_no");
 		System.out.println("jk_no: "+jk_no);
 		JockeyDto jkDto = jockeyService.getKisu(jk_no);
+		List<RaceTotalPrizeDto> rtpDto = jockeyService.rtPrize(jk_no);
+		List<RecordInfoDto> riDto = jockeyService.recordInfo(jk_no);
+		String jk_name = jkDto.getJk_name();
+//		String meet=null;
+		
 		int ord1cntt =jkDto.getJk_ord1CntT();
 		int rccntt = jkDto.getJk_rcCntT();
 		String totalWin = Util.round(ord1cntt, rccntt);//승률구하기 
@@ -139,6 +147,7 @@ public class HorseController {
 		String yearPass = Util.round(ord1cnty+ord2cnty, rccnty);//1년복승률 구하기
 		System.out.println("yearPass:"+yearPass);
 		int jk_meet = jkDto.getJk_meet();
+		List<ChampionDto> chamDto = jockeyService.selChampion(jk_name);
 		/*List<ChampionDto> list = trainerService.getChampionList(tr_name);*/
 		//위탁관리 말필도 리스트 SELECT후 반환 (경주마테이블에서 가져오면 될듯)
 		model.addAttribute("jkDto",jkDto);
@@ -147,6 +156,9 @@ public class HorseController {
 		model.addAttribute("yearWin",yearWin);
 		model.addAttribute("yearPass",yearPass);
 		model.addAttribute("jk_meet",jk_meet);
+		model.addAttribute("record",riDto);
+		model.addAttribute("rtprize",rtpDto);
+		model.addAttribute("champion",chamDto);
 		/*model.addAttribute("list",list);*/
 		return "HorseInfo/JockeyDetail";
 	}
@@ -294,9 +306,10 @@ public class HorseController {
 	}	
 	
 	@RequestMapping(value="/recordDetail.do",method=RequestMethod.GET)
-	public String recordDetail(Locale locale, HttpServletRequest request,Model model){
+	public String recordDetail(Locale locale, HttpServletRequest request,Model model) throws ParseException{
 		logger.info("경주상세성적표", locale);
 		SimpleDateFormat fmt= new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat fmt2 = new SimpleDateFormat("yyyy.MM.dd");
 		int ri_meet = Integer.parseInt(request.getParameter("ri_meet"));
 		int ri_rcDate = Integer.parseInt(request.getParameter("ri_rcDate"));
 		System.out.println(ri_rcDate);
@@ -309,11 +322,21 @@ public class HorseController {
 		System.out.println("list:"+list);
 		RaceInfoDto riDto = raceService.getRiDetail(map);
 		List<RaceResultDto> rrList = raceService.getRrDetail(map);
-		
+		List<RaceRefreeDto> refreeList = raceService.selRefree(map);
+		for(RaceRefreeDto refree:refreeList) {
+			if(refree.getRf_stDate().equals("-")) {
+				refree.setRf_stDate(null);
+				refree.setRf_spDate(null);
+			}else {
+				refree.setRf_stDate(fmt2.format(fmt.parse(refree.getRf_stDate())));
+				refree.setRf_spDate(fmt2.format(fmt.parse(refree.getRf_spDate())));
+			}
+		}
 		model.addAttribute("riDto", riDto);
 		model.addAttribute("rrList", rrList);
 		model.addAttribute("ri_meet", ri_meet);
 		model.addAttribute("list", list);
+		model.addAttribute("refreeList",refreeList);
 		return "HorseInfo/RecordDetail";
 	}
 

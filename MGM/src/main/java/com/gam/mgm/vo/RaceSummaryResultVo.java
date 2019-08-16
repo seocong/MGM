@@ -48,7 +48,9 @@ public class RaceSummaryResultVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{  
-				private Date rcDate;
+				private String rcDate;
+				private int meet;
+				private int rcNo;
 				private String winChulNo;
 				private String winOdds;
 				private String plcChulNo;
@@ -64,10 +66,10 @@ public class RaceSummaryResultVo {
 				private String triChulNo;
 				private String triOdds;
 				
-				public Date getRcDate() {
+				public String getRcDate() {
 					return rcDate;
 				}
-				public void setRcDate(Date rcDate) {
+				public void setRcDate(String rcDate) {
 					this.rcDate = rcDate;
 				}
 				public String getWinChulNo() {
@@ -153,6 +155,18 @@ public class RaceSummaryResultVo {
 				}
 				public void setTriOdds(String triOdds) {
 					this.triOdds = triOdds;
+				}
+				public int getMeet() {
+					return meet;
+				}
+				public void setMeet(int meet) {
+					this.meet = meet;
+				}
+				public int getRcNo() {
+					return rcNo;
+				}
+				public void setRcNo(int rcNo) {
+					this.rcNo = rcNo;
 				}
 				
 			

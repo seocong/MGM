@@ -19,13 +19,16 @@
  		<typeAlias type="com.gam.mgm.dto.JockeyDto" alias="JockeyDto" />
  		<typeAlias type="com.gam.mgm.dto.HrCountDto" alias="HrCountDto" />
  		<typeAlias type="com.gam.mgm.dto.OwnerDto" alias="OwnerDto" />
- 		<typeAlias type="com.gam.mgm.vo.RaceScheduleVo" alias="RaceScheduleVo" />
  		<typeAlias type="com.gam.mgm.dto.RaceResultDto" alias="RaceResultDto" />
  		<typeAlias type="com.gam.mgm.dto.RaceInfoDto" alias="RaceInfoDto" />
  		<typeAlias type="com.gam.mgm.dto.RecordInfoDto" alias="RecordInfoDto" />
  		<typeAlias type="com.gam.mgm.dto.RaceTotalPrizeDto" alias="RTPrizeDto" />
  		<typeAlias type="com.gam.mgm.dto.RacePlanDto" alias="RacePlanDto" />
  		<typeAlias type="com.gam.mgm.dto.RaceEntryDto" alias="RaceEntryDto" />
+ 		<typeAlias type="com.gam.mgm.vo.RaceSummaryResultVo" alias="RaceSummaryResultVo" />
+ 		<typeAlias type="com.gam.mgm.vo.RaceSectionRecordVo" alias="RaceSectionRecordVo" />
+ 		<typeAlias type="com.gam.mgm.vo.RaceRefreeVo" alias="RaceRefreeVo" />
+ 		<typeAlias type="com.gam.mgm.dto.RaceRefreeDto" alias="RaceRefreeDto" />
      </typeAliases>
      
   <mappers>

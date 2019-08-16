@@ -22,18 +22,18 @@ public class RecordInfoDto {
 	private String rcName;
 	private int ord;
 	private int hrCount;
-	private float rcTime;
+	private double rcTime;
 	private String wgHr;
 	private int rating;
 	private String track;
-	private float wgBudam;
+	private double wgBudam;
 	public RecordInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RecordInfoDto(String jkName, String jkNo, String owName, String owNo, String trName, String trNo,
 			String hrName, String hrNo, Date rcDate, int rcNo, int meet, String ranks, int rcDist, String rcName,
-			int ord, int hrCount, float rcTime, String wgHr, int rating, String track, float wgBudam) {
+			int ord, int hrCount, double rcTime, String wgHr, int rating, String track, double wgBudam) {
 		super();
 		this.jkName = jkName;
 		this.jkNo = jkNo;
@@ -161,10 +161,10 @@ public class RecordInfoDto {
 	public void setHrCount(int hrCount) {
 		this.hrCount = hrCount;
 	}
-	public float getRcTime() {
+	public double getRcTime() {
 		return rcTime;
 	}
-	public void setRcTime(float rcTime) {
+	public void setRcTime(double rcTime) {
 		this.rcTime = rcTime;
 	}
 	public String getWgHr() {
@@ -185,10 +185,10 @@ public class RecordInfoDto {
 	public void setTrack(String track) {
 		this.track = track;
 	}
-	public float getWgBudam() {
+	public double getWgBudam() {
 		return wgBudam;
 	}
-	public void setWgBudam(float wgBudam) {
+	public void setWgBudam(double wgBudam) {
 		this.wgBudam = wgBudam;
 	}
 		

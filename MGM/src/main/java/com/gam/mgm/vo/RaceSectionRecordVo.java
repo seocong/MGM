@@ -48,7 +48,9 @@ public class RaceSectionRecordVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{  
-				private Date rcDate;
+				private String rcDate;
+				private int rcNo;
+				private int meet;
 				private int dist_1f;
 				private int dist_2f;
 				private int dist_3f;
@@ -59,28 +61,28 @@ public class RaceSectionRecordVo {
 				private int dist_8f;
 				private int dist_9f;
 				private int dist_10f;
-				private float time_1f;
-				private float time_2f;
-				private float time_3f;
-				private float time_4f;
-				private float time_5f;
-				private float time_6f;
-				private float time_7f;
-				private float time_8f;
-				private float time_9f;
-				private float time_10f;
-				private float time_11f;
-				private float time_12f;
-				private float passTime_1f;
-				private float passTime_2f;
-				private float passTime_3f;
-				private float passTime_4f;
-				private float passTime_5f;
-				private float passTime_6f;
-				private float passTime_7f;
-				private float passTime_8f;
-				private float passTime_9f;
-				private float passTime_10f;
+				private double time_1f;
+				private double time_2f;
+				private double time_3f;
+				private double time_4f;
+				private double time_5f;
+				private double time_6f;
+				private double time_7f;
+				private double time_8f;
+				private double time_9f;
+				private double time_10f;
+				private double time_11f;
+				private double time_12f;
+				private double passtime_1f;
+				private double passtime_2f;
+				private double passtime_3f;
+				private double passtime_4f;
+				private double passtime_5f;
+				private double passtime_6f;
+				private double passtime_7f;
+				private double passtime_8f;
+				private double passtime_9f;
+				private double passtime_10f;
 				private String passrankS1f;
 				private String passrankG8f_1c;
 				private String passrankG6f_2c;
@@ -88,10 +90,10 @@ public class RaceSectionRecordVo {
 				private String passrankG3f_4c;
 				private String passrankG2f;
 				private String passrankG1f;
-				public Date getRcDate() {
+				public String getRcDate() {
 					return rcDate;
 				}
-				public void setRcDate(Date rcDate) {
+				public void setRcDate(String rcDate) {
 					this.rcDate = rcDate;
 				}
 				public int getDist_1f() {
@@ -154,137 +156,137 @@ public class RaceSectionRecordVo {
 				public void setDist_10f(int dist_10f) {
 					this.dist_10f = dist_10f;
 				}
-				public float getTime_1f() {
+				public double getTime_1f() {
 					return time_1f;
 				}
-				public void setTime_1f(float time_1f) {
+				public void setTime_1f(double time_1f) {
 					this.time_1f = time_1f;
 				}
-				public float getTime_2f() {
+				public double getTime_2f() {
 					return time_2f;
 				}
-				public void setTime_2f(float time_2f) {
+				public void setTime_2f(double time_2f) {
 					this.time_2f = time_2f;
 				}
-				public float getTime_3f() {
+				public double getTime_3f() {
 					return time_3f;
 				}
-				public void setTime_3f(float time_3f) {
+				public void setTime_3f(double time_3f) {
 					this.time_3f = time_3f;
 				}
-				public float getTime_4f() {
+				public double getTime_4f() {
 					return time_4f;
 				}
-				public void setTime_4f(float time_4f) {
+				public void setTime_4f(double time_4f) {
 					this.time_4f = time_4f;
 				}
-				public float getTime_5f() {
+				public double getTime_5f() {
 					return time_5f;
 				}
-				public void setTime_5f(float time_5f) {
+				public void setTime_5f(double time_5f) {
 					this.time_5f = time_5f;
 				}
-				public float getTime_6f() {
+				public double getTime_6f() {
 					return time_6f;
 				}
-				public void setTime_6f(float time_6f) {
+				public void setTime_6f(double time_6f) {
 					this.time_6f = time_6f;
 				}
-				public float getTime_7f() {
+				public double getTime_7f() {
 					return time_7f;
 				}
-				public void setTime_7f(float time_7f) {
+				public void setTime_7f(double time_7f) {
 					this.time_7f = time_7f;
 				}
-				public float getTime_8f() {
+				public double getTime_8f() {
 					return time_8f;
 				}
-				public void setTime_8f(float time_8f) {
+				public void setTime_8f(double time_8f) {
 					this.time_8f = time_8f;
 				}
-				public float getTime_9f() {
+				public double getTime_9f() {
 					return time_9f;
 				}
-				public void setTime_9f(float time_9f) {
+				public void setTime_9f(double time_9f) {
 					this.time_9f = time_9f;
 				}
-				public float getTime_10f() {
+				public double getTime_10f() {
 					return time_10f;
 				}
-				public void setTime_10f(float time_10f) {
+				public void setTime_10f(double time_10f) {
 					this.time_10f = time_10f;
 				}
-				public float getTime_11f() {
+				public double getTime_11f() {
 					return time_11f;
 				}
-				public void setTime_11f(float time_11f) {
+				public void setTime_11f(double time_11f) {
 					this.time_11f = time_11f;
 				}
-				public float getTime_12f() {
+				public double getTime_12f() {
 					return time_12f;
 				}
-				public void setTime_12f(float time_12f) {
+				public void setTime_12f(double time_12f) {
 					this.time_12f = time_12f;
 				}
-				public float getPassTime_1f() {
-					return passTime_1f;
+				public double getPasstime_1f() {
+					return passtime_1f;
 				}
-				public void setPassTime_1f(float passTime_1f) {
-					this.passTime_1f = passTime_1f;
+				public void setPasstime_1f(double passtime_1f) {
+					this.passtime_1f = passtime_1f;
 				}
-				public float getPassTime_2f() {
-					return passTime_2f;
+				public double getPasstime_2f() {
+					return passtime_2f;
 				}
-				public void setPassTime_2f(float passTime_2f) {
-					this.passTime_2f = passTime_2f;
+				public void setPasstime_2f(double passtime_2f) {
+					this.passtime_2f = passtime_2f;
 				}
-				public float getPassTime_3f() {
-					return passTime_3f;
+				public double getPasstime_3f() {
+					return passtime_3f;
 				}
-				public void setPassTime_3f(float passTime_3f) {
-					this.passTime_3f = passTime_3f;
+				public void setPasstime_3f(double passtime_3f) {
+					this.passtime_3f = passtime_3f;
 				}
-				public float getPassTime_4f() {
-					return passTime_4f;
+				public double getPasstime_4f() {
+					return passtime_4f;
 				}
-				public void setPassTime_4f(float passTime_4f) {
-					this.passTime_4f = passTime_4f;
+				public void setPasstime_4f(double passtime_4f) {
+					this.passtime_4f = passtime_4f;
 				}
-				public float getPassTime_5f() {
-					return passTime_5f;
+				public double getPasstime_5f() {
+					return passtime_5f;
 				}
-				public void setPassTime_5f(float passTime_5f) {
-					this.passTime_5f = passTime_5f;
+				public void setPasstime_5f(double passtime_5f) {
+					this.passtime_5f = passtime_5f;
 				}
-				public float getPassTime_6f() {
-					return passTime_6f;
+				public double getPasstime_6f() {
+					return passtime_6f;
 				}
-				public void setPassTime_6f(float passTime_6f) {
-					this.passTime_6f = passTime_6f;
+				public void setPasstime_6f(double passtime_6f) {
+					this.passtime_6f = passtime_6f;
 				}
-				public float getPassTime_7f() {
-					return passTime_7f;
+				public double getPasstime_7f() {
+					return passtime_7f;
 				}
-				public void setPassTime_7f(float passTime_7f) {
-					this.passTime_7f = passTime_7f;
+				public void setPasstime_7f(double passtime_7f) {
+					this.passtime_7f = passtime_7f;
 				}
-				public float getPassTime_8f() {
-					return passTime_8f;
+				public double getPasstime_8f() {
+					return passtime_8f;
 				}
-				public void setPassTime_8f(float passTime_8f) {
-					this.passTime_8f = passTime_8f;
+				public void setPasstime_8f(double passtime_8f) {
+					this.passtime_8f = passtime_8f;
 				}
-				public float getPassTime_9f() {
-					return passTime_9f;
+				public double getPasstime_9f() {
+					return passtime_9f;
 				}
-				public void setPassTime_9f(float passTime_9f) {
-					this.passTime_9f = passTime_9f;
+				public void setPasstime_9f(double passtime_9f) {
+					this.passtime_9f = passtime_9f;
 				}
-				public float getPassTime_10f() {
-					return passTime_10f;
+				public double getPasstime_10f() {
+					return passtime_10f;
 				}
-				public void setPassTime_10f(float passTime_10f) {
-					this.passTime_10f = passTime_10f;
+				public void setPasstime_10f(double passtime_10f) {
+					this.passtime_10f = passtime_10f;
 				}
 				public String getPassrankS1f() {
 					return passrankS1f;
@@ -327,6 +329,18 @@ public class RaceSectionRecordVo {
 				}
 				public void setPassrankG1f(String passrankG1f) {
 					this.passrankG1f = passrankG1f;
+				}
+				public int getMeet() {
+					return meet;
+				}
+				public void setMeet(int meet) {
+					this.meet = meet;
+				}
+				public int getRcNo() {
+					return rcNo;
+				}
+				public void setRcNo(int rcNo) {
+					this.rcNo = rcNo;
 				}
 				
 			}

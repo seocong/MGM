@@ -340,83 +340,117 @@
 													<table class="table table-bordered ">
 														<tr>
 															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">매출액</th>
-															<td width="40%" style="text-align:left;">단승식 : </td>
-															<td width="40%" style="text-align:left;">연승식 : </td>
+															<td width="40%" style="text-align:left;">단승식 : <fmt:formatNumber value="${riDto.ri_winAmt}" type="number" /></td>
+															<td width="40%" style="text-align:left;">연승식 : <fmt:formatNumber value="${riDto.ri_plcAmt}" type="number" /></td>
 														</tr>
 														<tr>
-															<td style="text-align:left;">복승식 : </td>
-															<td style="text-align:left;">쌍승식 : </td>
+															<td style="text-align:left;">복승식 : <fmt:formatNumber value="${riDto.ri_qnlAmt}" type="number" /></td>
+															<td style="text-align:left;">쌍승식 : <fmt:formatNumber value="${riDto.ri_qplAmt}" type="number" /></td>
 														</tr>
 														<tr>
-															<td style="text-align:left;">복연승 : </td>
-															<td style="text-align:left;">삼복승 : </td>
+															<td style="text-align:left;">복연승 : <fmt:formatNumber value="${riDto.ri_exaAmt}" type="number" /></td>
+															<td style="text-align:left;">삼복승 : <fmt:formatNumber value="${riDto.ri_tlaAmt}" type="number" /></td>
 														</tr>
 														<tr>
-															<td style="text-align:left;">삼쌍승 : </td>
-															<td style="text-align:left;">합계 : </td>
+															<td style="text-align:left;">삼쌍승 : <fmt:formatNumber value="${riDto.ri_triAmt}" type="number" /></td>
+															<td style="text-align:left;">합계 : <fmt:formatNumber value="${riDto.ri_totalAmt}" type="number" /></td>
 														</tr>
 													</table>
 													</div>
 													<div>
-													<table class="table table-bordered ">
+													<table class="table table-bordered oddsTable" height="100%">
 														<tr>
 															<th class="titleColor"  width="20%" rowspan="4"  style="text-align: center;">배당률</th>
-															<td width="40%" style="text-align:left;">단승식 : </td>
-															<td width="40%" style="text-align:left;">연승식 : </td>
+															<td width="40%" style="text-align:left;" data-winNo="${riDto.ri_winChulNo}" data-winOdds="${riDto.ri_winOdds}">단승식 : </td>
+															<td width="40%" style="text-align:left;" data-plcNo="${riDto.ri_plcChulNo}" data-plcOdds="${riDto.ri_plcOdds}">연승식 : </td>
 														</tr>
 														<tr>
-															<td style="text-align:left;">복승식 : </td>
-															<td style="text-align:left;">쌍승식 : </td>
+															<td style="text-align:left;" data-qnlNo="${riDto.ri_qnlChulNo}" data-qnlOdds="${riDto.ri_qnlOdds}">복승식 : </td>
+															<td style="text-align:left;" data-exaNo="${riDto.ri_exaChulNo}" data-exaOdds="${riDto.ri_exaOdds}">쌍승식 : </td>
 														</tr>
 														<tr>
-															<td style="text-align:left;">복연승 : </td>
-															<td style="text-align:left;">삼복승 : </td>
+															<td style="text-align:left;" data-qplNo="${riDto.ri_qplChulNo}" data-qplOdds="${riDto.ri_qplOdds}">복연승 : </td>
+															<td style="text-align:left;" data-tlaNo="${riDto.ri_tlaChulNo}" data-tlaOdds="${riDto.ri_tlaOdds}">삼복승 : </td>
 														</tr>
 														<tr>
-															<td colspan="2" style="text-align:left;">삼쌍승 : </td>
+															<td colspan="2" style="text-align:left;" data-triNo="${riDto.ri_triChulNo}" data-triOdds="${riDto.ri_triOdds}">삼쌍승 : </td>
 														</tr>
 													</table>
 												</div>
+												<div>
+													<table class="table table-bordered ">
+														<tr>
+														</tr>
+														<tr>
+														</tr>
+													</table>
+												</div>										
 												<div>
 													<table class="table table-bordered ">
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">S-1F</th>
-															<td width="45%" style="text-align:left;"></td>
-															<th class="titleColor"  width="10%" style="text-align: center;">3F</th>
-															<td width="30%" style="text-align:left;"></td>
+															<td width="45%" style="text-align:left;">${riDto.ri_passrankS1f}</td>
+															<!-- <th class="titleColor"  width="10%" style="text-align: center;">3F</th>
+															<td width="30%" style="text-align:left;"></td> -->
 														</tr>
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">1코너</th>
-															<td width="45%" style="text-align:left;"></td>
-															<th class="titleColor"  width="10%" style="text-align: center;">4F</th>
-															<td width="30%" style="text-align:left;"></td>
+															<td width="45%" style="text-align:left;">${riDto.ri_passrankG8f_1c}</td>
+															<!-- <th class="titleColor"  width="10%" style="text-align: center;">4F</th>
+															<td width="30%" style="text-align:left;"></td> -->
 														</tr>
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">2코너</th>
-															<td width="85%" style="text-align:left;" colspan="3"></td>
+															<td width="85%" style="text-align:left;" colspan="3">${riDto.ri_passrankG6f_2c}</td>
 														</tr>
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">3코너</th>
-															<td width="85%" style="text-align:left;" colspan="3"></td>
+															<td width="85%" style="text-align:left;" colspan="3">${riDto.ri_passrankG4f_3c}</td>
 														</tr>
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">4코너</th>
-															<td width="85%" style="text-align:left;" colspan="3"></td>
+															<td width="85%" style="text-align:left;" colspan="3">${riDto.ri_passrankG3f_4c}</td>
 														</tr>
 														<tr>
 															<th class="titleColor"  width="15%" style="text-align: center;">G-1F</th>
-															<td width="85%" style="text-align:left;" colspan="3"></td>
+															<td width="85%" style="text-align:left;" colspan="3">${riDto.ri_passrankG1f}</td>
 														</tr>
 													</table>
 												</div>
 												<div>
 													<table class="table table-bordered ">
-													<tr>
-														<th class="titleColor" style="text-align: center;">재결사항</th>
-													</tr>
-													<tr>
-														<td style="text-align:left;"></td>
-													</tr>
+														<tr>
+															<th class="titleColor" colspan="6"
+																style="text-align: center;">재결사항</th>
+														</tr>
+														<tr>
+															<th class="titleColor" width="10%" style="text-align: center">구분</th>
+															<th class="titleColor" width="6%" style="text-align: center">출전번호</th>
+															<th class="titleColor" width="15%" style="text-align: center">대상명</th>
+															<th class="titleColor" width="12%" style="text-align: center">처분종류</th>
+															<th class="titleColor" width="19%" style="text-align: center">처분내용</th>
+															<th class="titleColor" width="38%" style="text-align: center">세부내용</th>
+														</tr>
+														<c:forEach items="${refreeList}" var="list">
+															<tr>
+																<td>${list.rf_prGubun}</td>
+																<td>${list.rf_chulNo}</td>
+																<td>${list.rf_prName}</td>
+																<td>${list.rf_kind}</td>
+																<c:choose>
+																	<c:when test="${list.rf_fine ne 0}">
+																		<td>과태료 ${list.rf_fine}</td>
+																	</c:when>
+																	<c:when test="${not empty list.rf_stDate}">
+																		<td>${list.rf_stDate}~${list.rf_spDate}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td>-</td>
+																	</c:otherwise>
+																</c:choose>
+																<td>${list.rf_reason}</td>
+															</tr>
+														</c:forEach>
 													</table>
 												</div>
 												<div>
@@ -485,6 +519,8 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- 만든거만든거 배당률 -->
+	<script src="resources/js/recordjs.js"></script>
 
 	<!-- ADD-ONS JS FILES -->
 	<script>
@@ -522,7 +558,9 @@
 				});
 				}
 	});
-		</script>
+	
+	
+	</script>
 		
  	
 	</body>

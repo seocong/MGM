@@ -48,7 +48,7 @@ public class RaceResultVo {
 			@XmlRootElement(name="item")
 			@XmlAccessorType(XmlAccessType.FIELD)
 			public static class Item{  
-				private Date rcDate;  
+				private String rcDate;  
 				private int rcNo;
 				private String hrNo;
 				private String hrName;  
@@ -56,7 +56,7 @@ public class RaceResultVo {
 				private int chulNo;  
 				private String wgBudam;  
 				private String wgHr;  
-				private float rcTime;  
+				private double rcTime;  
 				private String diffUnit;  
 				private int ordS1f;  
 				private int g8f_1c;  
@@ -65,16 +65,16 @@ public class RaceResultVo {
 				private int g3f_4c;  
 				private int g2f;  
 				private int ordG1f;  
-				private float rcTimeS1f;  
-				private float rcTime_1c;  
-				private float rcTime_2c;  
-				private float rcTime_3c;  
-				private float rcTime_4c;  
-				private float rcTimeG3f;  
-				private float rcTimeG2f;  
-				private float rcTimeG1f;  
-				private float winOdds;  
-				private float plcOdds;
+				private double rcTimeS1f;  
+				private double rcTime_1c;  
+				private double rcTime_2c;  
+				private double rcTime_3c;  
+				private double rcTime_4c;  
+				private double rcTimeG3f;  
+				private double rcTimeG2f;  
+				private double rcTimeG1f;  
+				private double winOdds;  
+				private double plcOdds;
 				private String trName;
 				private String trNo;
 				private String owName;
@@ -82,10 +82,10 @@ public class RaceResultVo {
 				private String jkName;
 				private String jkNo;
 				private int rating;
-				public Date getRcDate() {
+				public String getRcDate() {
 					return rcDate;
 				}
-				public void setRcDate(Date rcDate) {
+				public void setRcDate(String rcDate) {
 					this.rcDate = rcDate;
 				}
 				public int getRcNo() {
@@ -130,10 +130,10 @@ public class RaceResultVo {
 				public void setWgHr(String wgHr) {
 					this.wgHr = wgHr;
 				}
-				public float getRcTime() {
+				public double getRcTime() {
 					return rcTime;
 				}
-				public void setRcTime(float rcTime) {
+				public void setRcTime(double rcTime) {
 					this.rcTime = rcTime;
 				}
 				public String getDiffUnit() {
@@ -184,64 +184,64 @@ public class RaceResultVo {
 				public void setOrdG1f(int ordG1f) {
 					this.ordG1f = ordG1f;
 				}
-				public float getRcTimeS1f() {
+				public double getRcTimeS1f() {
 					return rcTimeS1f;
 				}
-				public void setRcTimeS1f(float rcTimeS1f) {
+				public void setRcTimeS1f(double rcTimeS1f) {
 					this.rcTimeS1f = rcTimeS1f;
 				}
-				public float getRcTime_1c() {
+				public double getRcTime_1c() {
 					return rcTime_1c;
 				}
-				public void setRcTime_1c(float rcTime_1c) {
+				public void setRcTime_1c(double rcTime_1c) {
 					this.rcTime_1c = rcTime_1c;
 				}
-				public float getRcTime_2c() {
+				public double getRcTime_2c() {
 					return rcTime_2c;
 				}
-				public void setRcTime_2c(float rcTime_2c) {
+				public void setRcTime_2c(double rcTime_2c) {
 					this.rcTime_2c = rcTime_2c;
 				}
-				public float getRcTime_3c() {
+				public double getRcTime_3c() {
 					return rcTime_3c;
 				}
-				public void setRcTime_3c(float rcTime_3c) {
+				public void setRcTime_3c(double rcTime_3c) {
 					this.rcTime_3c = rcTime_3c;
 				}
-				public float getRcTime_4c() {
+				public double getRcTime_4c() {
 					return rcTime_4c;
 				}
-				public void setRcTime_4c(float rcTime_4c) {
+				public void setRcTime_4c(double rcTime_4c) {
 					this.rcTime_4c = rcTime_4c;
 				}
-				public float getRcTimeG3f() {
+				public double getRcTimeG3f() {
 					return rcTimeG3f;
 				}
-				public void setRcTimeG3f(float rcTimeG3f) {
+				public void setRcTimeG3f(double rcTimeG3f) {
 					this.rcTimeG3f = rcTimeG3f;
 				}
-				public float getRcTimeG2f() {
+				public double getRcTimeG2f() {
 					return rcTimeG2f;
 				}
-				public void setRcTimeG2f(float rcTimeG2f) {
+				public void setRcTimeG2f(double rcTimeG2f) {
 					this.rcTimeG2f = rcTimeG2f;
 				}
-				public float getRcTimeG1f() {
+				public double getRcTimeG1f() {
 					return rcTimeG1f;
 				}
-				public void setRcTimeG1f(float rcTimeG1f) {
+				public void setRcTimeG1f(double rcTimeG1f) {
 					this.rcTimeG1f = rcTimeG1f;
 				}
-				public float getWinOdds() {
+				public double getWinOdds() {
 					return winOdds;
 				}
-				public void setWinOdds(float winOdds) {
+				public void setWinOdds(double winOdds) {
 					this.winOdds = winOdds;
 				}
-				public float getPlcOdds() {
+				public double getPlcOdds() {
 					return plcOdds;
 				}
-				public void setPlcOdds(float plcOdds) {
+				public void setPlcOdds(double plcOdds) {
 					this.plcOdds = plcOdds;
 				}
 				public String getTrName() {

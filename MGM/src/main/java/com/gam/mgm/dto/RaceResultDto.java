@@ -12,7 +12,7 @@ public class RaceResultDto {
 	private int rr_chulNo;  
 	private String rr_wgBudam;  
 	private String rr_wgHr;  
-	private float rr_rcTime;  
+	private String rr_rcTime;  
 	private String rr_diffUnit;  
 	private int rr_ordS1f;  
 	private int rr_g8f_1c;  
@@ -21,16 +21,16 @@ public class RaceResultDto {
 	private int rr_g3f_4c;  
 	private int rr_g2f;  
 	private int rr_ordG1f;  
-	private float rr_rcTimeS1f;  
-	private float rr_rcTime_1c;  
-	private float rr_rcTime_2c;  
-	private float rr_rcTime_3c;  
-	private float rr_rcTime_4c;  
-	private float rr_rcTimeG3f;  
-	private float rr_rcTimeG2f;  
-	private float rr_rcTimeG1f;  
-	private float rr_winOdds;  
-	private float rr_plcOdds;
+	private String rr_rcTimeS1f;  
+	private String rr_rcTime_1c;  
+	private String rr_rcTime_2c;  
+	private String rr_rcTime_3c;  
+	private String rr_rcTime_4c;  
+	private String rr_rcTimeG3f;  
+	private String rr_rcTimeG2f;  
+	private String rr_rcTimeG1f;  
+	private double rr_winOdds;  
+	private double rr_plcOdds;
 	private String rr_trName;
 	private String rr_trNo;
 	private String rr_owName;
@@ -46,10 +46,10 @@ public class RaceResultDto {
 		// TODO Auto-generated constructor stub
 	}
 	public RaceResultDto(int rr_meet, Date rr_rcDate, int rr_rcNo, String rr_hrNo, String rr_hrName, int rr_ord,
-			int rr_chulNo, String rr_wgBudam, String rr_wgHr, float rr_rcTime, String rr_diffUnit, int rr_ordS1f,
-			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, float rr_rcTimeS1f,
-			float rr_rcTime_1c, float rr_rcTime_2c, float rr_rcTime_3c, float rr_rcTime_4c, float rr_rcTimeG3f,
-			float rr_rcTimeG2f, float rr_rcTimeG1f, float rr_winOdds, float rr_plcOdds, String rr_trName,
+			int rr_chulNo, String rr_wgBudam, String rr_wgHr, String rr_rcTime, String rr_diffUnit, int rr_ordS1f,
+			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, String rr_rcTimeS1f,
+			String rr_rcTime_1c, String rr_rcTime_2c, String rr_rcTime_3c, String rr_rcTime_4c, String rr_rcTimeG3f,
+			String rr_rcTimeG2f, String rr_rcTimeG1f, double rr_winOdds, double rr_plcOdds, String rr_trName,
 			String rr_trNo, String rr_owName, String rr_owNo, String rr_jkName, String rr_jkNo, int rr_rating,int hr_age,String hr_sex,String hr_name) {
 		super();
 		this.rr_meet = rr_meet;
@@ -177,10 +177,10 @@ public class RaceResultDto {
 	public void setRr_wgHr(String rr_wgHr) {
 		this.rr_wgHr = rr_wgHr;
 	}
-	public float getRr_rcTime() {
+	public String getRr_rcTime() {
 		return rr_rcTime;
 	}
-	public void setRr_rcTime(float rr_rcTime) {
+	public void setRr_rcTime(String rr_rcTime) {
 		this.rr_rcTime = rr_rcTime;
 	}
 	public String getRr_diffUnit() {
@@ -231,64 +231,64 @@ public class RaceResultDto {
 	public void setRr_ordG1f(int rr_ordG1f) {
 		this.rr_ordG1f = rr_ordG1f;
 	}
-	public float getRr_rcTimeS1f() {
+	public String getRr_rcTimeS1f() {
 		return rr_rcTimeS1f;
 	}
-	public void setRr_rcTimeS1f(float rr_rcTimeS1f) {
+	public void setRr_rcTimeS1f(String rr_rcTimeS1f) {
 		this.rr_rcTimeS1f = rr_rcTimeS1f;
 	}
-	public float getRr_rcTime_1c() {
+	public String getRr_rcTime_1c() {
 		return rr_rcTime_1c;
 	}
-	public void setRr_rcTime_1c(float rr_rcTime_1c) {
+	public void setRr_rcTime_1c(String rr_rcTime_1c) {
 		this.rr_rcTime_1c = rr_rcTime_1c;
 	}
-	public float getRr_rcTime_2c() {
+	public String getRr_rcTime_2c() {
 		return rr_rcTime_2c;
 	}
-	public void setRr_rcTime_2c(float rr_rcTime_2c) {
+	public void setRr_rcTime_2c(String rr_rcTime_2c) {
 		this.rr_rcTime_2c = rr_rcTime_2c;
 	}
-	public float getRr_rcTime_3c() {
+	public String getRr_rcTime_3c() {
 		return rr_rcTime_3c;
 	}
-	public void setRr_rcTime_3c(float rr_rcTime_3c) {
+	public void setRr_rcTime_3c(String rr_rcTime_3c) {
 		this.rr_rcTime_3c = rr_rcTime_3c;
 	}
-	public float getRr_rcTime_4c() {
+	public String getRr_rcTime_4c() {
 		return rr_rcTime_4c;
 	}
-	public void setRr_rcTime_4c(float rr_rcTime_4c) {
+	public void setRr_rcTime_4c(String rr_rcTime_4c) {
 		this.rr_rcTime_4c = rr_rcTime_4c;
 	}
-	public float getRr_rcTimeG3f() {
+	public String getRr_rcTimeG3f() {
 		return rr_rcTimeG3f;
 	}
-	public void setRr_rcTimeG3f(float rr_rcTimeG3f) {
+	public void setRr_rcTimeG3f(String rr_rcTimeG3f) {
 		this.rr_rcTimeG3f = rr_rcTimeG3f;
 	}
-	public float getRr_rcTimeG2f() {
+	public String getRr_rcTimeG2f() {
 		return rr_rcTimeG2f;
 	}
-	public void setRr_rcTimeG2f(float rr_rcTimeG2f) {
+	public void setRr_rcTimeG2f(String rr_rcTimeG2f) {
 		this.rr_rcTimeG2f = rr_rcTimeG2f;
 	}
-	public float getRr_rcTimeG1f() {
+	public String getRr_rcTimeG1f() {
 		return rr_rcTimeG1f;
 	}
-	public void setRr_rcTimeG1f(float rr_rcTimeG1f) {
+	public void setRr_rcTimeG1f(String rr_rcTimeG1f) {
 		this.rr_rcTimeG1f = rr_rcTimeG1f;
 	}
-	public float getRr_winOdds() {
+	public double getRr_winOdds() {
 		return rr_winOdds;
 	}
-	public void setRr_winOdds(float rr_winOdds) {
+	public void setRr_winOdds(double rr_winOdds) {
 		this.rr_winOdds = rr_winOdds;
 	}
-	public float getRr_plcOdds() {
+	public double getRr_plcOdds() {
 		return rr_plcOdds;
 	}
-	public void setRr_plcOdds(float rr_plcOdds) {
+	public void setRr_plcOdds(double rr_plcOdds) {
 		this.rr_plcOdds = rr_plcOdds;
 	}
 	public String getRr_trName() {

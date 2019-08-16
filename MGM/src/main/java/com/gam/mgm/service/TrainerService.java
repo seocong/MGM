@@ -22,8 +22,8 @@ public class TrainerService implements ITrainerService {
 	}
 
 	@Override
-	public boolean trDel(int tr_meet) {
-		return trainerDao.trDel(tr_meet);
+	public boolean trDel() {
+		return trainerDao.trDel();
 	}
 
 	@Override
@@ -54,5 +54,11 @@ public class TrainerService implements ITrainerService {
 	@Override
 	public List<RaceTotalPrizeDto> rtPrize(String tr_no){
 		return trainerDao.rtPrize(tr_no);
+	}
+
+	@Override
+	public boolean resetSeq() {
+		// TODO Auto-generated method stub
+		return trainerDao.resetSeq();
 	}
 }

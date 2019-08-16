@@ -12,10 +12,11 @@
 		#{tr_stdate},#{tr_rccntt},#{tr_ord1cntt},#{tr_ord2cntt},#{tr_ord3cntt},#{tr_rccnty},#{tr_ord1cnty},#{tr_ord2cnty},#{tr_ord3cnty},#{tr_meet})
 	</insert>
 	<delete id="trdel" parameterType="int">
-		delete from trainers where
-		tr_meet = #{tr_meet}
+		DELETE FROM TRAINERS
 	</delete>
-
+	<update id="resetSeq">
+		ALTER TABLE TRAINERS AUTO_INCREMENT=1
+	</update>
 	<select id="getList" parameterType="int" resultType="TrainerDto">
 		select
 		tr_no,tr_name,tr_part,tr_age,tr_stdate,tr_rccntt,tr_ord1cntt,tr_ord2cntt,tr_rccnty,tr_ord1cnty,tr_ord2cnty

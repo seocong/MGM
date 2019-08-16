@@ -86,7 +86,7 @@ public class Scheduler {
 			System.out.println(is);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 			System.out.println(reader);
-			boolean isDel = trainerService.trDel(tr_meet);
+			boolean isDel = trainerService.trDel();
 			if(isDel) {
 				System.out.println("초기화되었습니다");
 			}else{
@@ -149,7 +149,7 @@ public class Scheduler {
 			System.out.println(is);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 			System.out.println(reader);
-			boolean isDel = trainerService.trDel(tr_meet);
+			boolean isDel = trainerService.trDel();
 			if(isDel) {
 				System.out.println("초기화되었습니다");
 			}else{
@@ -213,7 +213,7 @@ public class Scheduler {
 			System.out.println(is);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 			System.out.println(reader);
-			boolean isDel = trainerService.trDel(tr_meet);
+			boolean isDel = trainerService.trDel();
 			if(isDel) {
 				System.out.println("초기화되었습니다");
 			}else{

@@ -128,18 +128,21 @@ public class Util {
 		return Integer.parseInt(rs);
 	}
 	
-	public static String time(int j) {
-		/*int j = Integer.parseInt(i);*/
-		 int MIN = 60;
-		int HOUR = MIN*60;
-		
-		int s = j%MIN;
-		int m = j>=HOUR? j%HOUR/MIN : j/MIN;
-		int h = j/HOUR;
-		
-		String val = j>=HOUR? h+":"+m+":"+s : m+":"+s;
-		
-		return val;
+	public static String time(double j) {
+		String test = Double.toString(j);
+		int parseInt=(int)j;
+		SimpleDateFormat parseTool = new SimpleDateFormat("ss.S");
+		SimpleDateFormat formatTool = new SimpleDateFormat("m:ss.S");
+		Date ssSS;
+		try {
+			ssSS = parseTool.parse(test);
+			String mssSS = formatTool.format(ssSS);
+			return mssSS;
+		} catch (ParseException e) {
+			System.out.println("변환 오류");
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	//String date로 변환

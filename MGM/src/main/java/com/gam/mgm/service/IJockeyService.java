@@ -1,9 +1,11 @@
 package com.gam.mgm.service;
 
 import java.util.List;
+import java.util.Map;
 
-import com.gam.mgm.dto.HorsesDto;
+import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.RaceTotalPrizeDto;
 import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IJockeyService {
@@ -19,4 +21,8 @@ public interface IJockeyService {
 	public boolean jkUpdate(String jkno);
 	
 	public List<RecordInfoDto> recordInfo(String jkno);
+	
+	public List<RaceTotalPrizeDto> rtPrize(String jk_no);
+	
+	public List<ChampionDto> selChampion(String jk_name);
 }

@@ -304,7 +304,7 @@
 											<tr>
 												<td>상금</td>
 												<c:forEach items="${rtprize}" var="list">
-													<td><fmt:formatNumber value="${list.totalPrize}" pattern="#,###,###,###" /></td>
+													<td><fmt:formatNumber value="${list.totalPrize}" type="number" /></td>
 												</c:forEach>
 											</tr>
 										</tbody>

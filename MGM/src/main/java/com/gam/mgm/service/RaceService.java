@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.IRaceDao;
 import com.gam.mgm.dto.RaceInfoDto;
+import com.gam.mgm.dto.RaceRefreeDto;
 import com.gam.mgm.dto.RaceResultDto;
+import com.gam.mgm.vo.RaceRefreeVo;
+import com.gam.mgm.vo.RaceSectionRecordVo;
+import com.gam.mgm.vo.RaceSummaryResultVo;
 
 @Service
 public class RaceService implements IRaceService{
@@ -59,6 +63,28 @@ public class RaceService implements IRaceService{
 	@Override
 	public List<RaceInfoDto> getRacePaging(Map<String, Object> map) {
 		return raceDao.getRacePaging(map);
+	}
+
+	@Override
+	public boolean raceInfoUpdate1(RaceSummaryResultVo.Body.Item riDto) {
+		return raceDao.raceInfoUpdate1(riDto);
+	}
+
+	@Override
+	public boolean raceInfoUpdate2(RaceSectionRecordVo.Body.Item riDto) {
+		// TODO Auto-generated method stub
+		return raceDao.raceInfoUpdate2(riDto);
+	}
+
+	@Override
+	public boolean refreeInsert(RaceRefreeVo.Body.Item rfDto) {
+		return raceDao.refreeInsert(rfDto);
+	}
+
+	@Override
+	public List<RaceRefreeDto> selRefree(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return raceDao.selRefree(map);
 	}
 	
 	

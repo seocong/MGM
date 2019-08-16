@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gam.mgm.dto.RaceInfoDto;
+import com.gam.mgm.dto.RaceRefreeDto;
 import com.gam.mgm.dto.RaceResultDto;
+import com.gam.mgm.vo.RaceRefreeVo;
+import com.gam.mgm.vo.RaceSectionRecordVo;
+import com.gam.mgm.vo.RaceSummaryResultVo;
 
 @Repository
 public class RaceDao implements IRaceDao{
@@ -53,5 +57,24 @@ public class RaceDao implements IRaceDao{
 	public List<RaceInfoDto> getRacePaging(Map<String, Object> map) {
 		return sqlSession.selectList(namespace+"getracepaging", map);
 	}
+	@Override
+	public boolean raceInfoUpdate1(RaceSummaryResultVo.Body.Item riDto) {
+		int rs = sqlSession.update(namespace+"raceInfoUpdate1", riDto);
+		return rs>0?true:false;
+	}
+	@Override
+	public boolean raceInfoUpdate2(RaceSectionRecordVo.Body.Item riDto) {
+		int rs = sqlSession.update(namespace+"raceInfoUpdate2", riDto);
+		return rs>0?true:false;
+	}
 	
+	@Override
+	public boolean refreeInsert(RaceRefreeVo.Body.Item rfDto) {
+		int rs = sqlSession.insert(namespace+"refreeInsert",rfDto);
+		return rs>0?true:false;
+	}
+	@Override
+	public List<RaceRefreeDto> selRefree(Map<String,Object> map){
+		return sqlSession.selectList(namespace+"selRefree",map);
+	}
 }

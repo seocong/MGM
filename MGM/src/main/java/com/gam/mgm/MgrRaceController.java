@@ -50,6 +50,7 @@ import com.gam.mgm.vo.OwnerVo;
 import com.gam.mgm.vo.RaceEntryVo;
 import com.gam.mgm.vo.RaceInfoVo;
 import com.gam.mgm.vo.RacePlanVo;
+import com.gam.mgm.vo.RaceRefreeVo;
 import com.gam.mgm.vo.RaceResultVo;
 import com.gam.mgm.vo.RaceSectionRecordVo;
 import com.gam.mgm.vo.RaceSummaryResultVo;
@@ -82,7 +83,7 @@ public class MgrRaceController {
 	 * @throws UnsupportedEncodingException
 	 * @throws URISyntaxException
 	 */
-	
+
 	// 조교사 등록
 	@RequestMapping(value = "/trainerInput.do", method = RequestMethod.GET)
 	public String trainers(Model model) throws UnsupportedEncodingException {
@@ -117,7 +118,13 @@ public class MgrRaceController {
 			area[0] = "jeju";
 			db[0] = "cdb3";
 		}
-
+		boolean isDel = trainerService.trDel();
+		boolean resetSeq = trainerService.resetSeq();
+		if (isDel && resetSeq) {
+			System.out.println("초기화되었습니다");
+		} else {
+			System.out.println("초기화실패하였습니다");
+		}
 		String[] link = new String[3];
 		link[0] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/trainer/20190801sdb3.txt";
 		link[1] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/jeju/trainer/20190731cdb3.txt";
@@ -134,12 +141,6 @@ public class MgrRaceController {
 				System.out.println(is);
 				BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 				System.out.println(reader);
-				boolean isDel = trainerService.trDel(tr_meet);
-				if (isDel) {
-					System.out.println("초기화되었습니다");
-				} else {
-					System.out.println("초기화실패하였습니다");
-				}
 				// api
 
 				StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API19/trainerInfo");
@@ -279,7 +280,7 @@ public class MgrRaceController {
 				System.out.println(is);
 				BufferedReader reader = new BufferedReader(new InputStreamReader(is, "EUC-KR"));
 				System.out.println(reader);
-				boolean isDel = trainerService.trDel(jk_meet);
+				boolean isDel = jockeyService.jkDel(jk_meet);
 				if (isDel) {
 					System.out.println("초기화되었습니다");
 				} else {
@@ -623,10 +624,15 @@ public class MgrRaceController {
 				} else {
 					List<RaceResultVo.Body.Item> resultList = rcResult.getBody().getItems();
 					for (RaceResultVo.Body.Item item : resultList) {
-						int date = Integer.parseInt(fmt.format(item.getRcDate()));
+						int date = Integer.parseInt(item.getRcDate());
 						if (date > beforeMonth) {
 							raceRsDto.setRr_meet(meet);
-							raceRsDto.setRr_rcDate(item.getRcDate());
+							try {
+								raceRsDto.setRr_rcDate(fmt.parse(item.getRcDate()));
+							} catch (ParseException e) {
+								System.out.println("raceResult parseException!!!!!");
+								e.printStackTrace();
+							}
 							raceRsDto.setRr_rcNo(item.getRcNo());
 							raceRsDto.setRr_hrNo(item.getHrNo());
 							raceRsDto.setRr_hrName(item.getHrName());
@@ -634,7 +640,7 @@ public class MgrRaceController {
 							raceRsDto.setRr_chulNo(item.getChulNo());
 							raceRsDto.setRr_wgBudam(item.getWgBudam());
 							raceRsDto.setRr_wgHr(item.getWgHr());
-							raceRsDto.setRr_rcTime(item.getRcTime());
+							raceRsDto.setRr_rcTime(Util.time(item.getRcTime()));
 							raceRsDto.setRr_diffUnit(item.getDiffUnit());
 							raceRsDto.setRr_ordS1f(item.getOrdS1f());
 							raceRsDto.setRr_g8f_1c(item.getG8f_1c());
@@ -643,21 +649,20 @@ public class MgrRaceController {
 							raceRsDto.setRr_g3f_4c(item.getG3f_4c());
 							raceRsDto.setRr_g2f(item.getG2f());
 							raceRsDto.setRr_ordG1f(item.getOrdG1f());
-							raceRsDto.setRr_rcTimeS1f(item.getRcTimeS1f());
-							raceRsDto.setRr_rcTime_1c(item.getRcTime_1c());
-							raceRsDto.setRr_rcTime_2c(item.getRcTime_2c());
-							raceRsDto.setRr_rcTime_3c(item.getRcTime_3c());
-							raceRsDto.setRr_rcTime_4c(item.getRcTime_4c());
-							raceRsDto.setRr_rcTimeG3f(item.getRcTimeG3f());
-							raceRsDto.setRr_rcTimeG2f(item.getRcTimeG2f());
-							raceRsDto.setRr_rcTimeG1f(item.getRcTimeG1f());
+							raceRsDto.setRr_rcTimeS1f(Util.time(item.getRcTimeS1f()));
+							raceRsDto.setRr_rcTime_1c(Util.time(item.getRcTime_1c()));
+							raceRsDto.setRr_rcTime_2c(Util.time(item.getRcTime_2c()));
+							raceRsDto.setRr_rcTime_3c(Util.time(item.getRcTime_3c()));
+							raceRsDto.setRr_rcTime_4c(Util.time(item.getRcTime_4c()));
+							raceRsDto.setRr_rcTimeG3f(Util.time(item.getRcTimeG3f()));
+							raceRsDto.setRr_rcTimeG2f(Util.time(item.getRcTimeG2f()));
+							raceRsDto.setRr_rcTimeG1f(Util.time(item.getRcTimeG1f()));
 							raceRsDto.setRr_winOdds(item.getWinOdds());
 							raceRsDto.setRr_plcOdds(item.getPlcOdds());
 							raceRsDto.setRr_trName(item.getTrName());
 							raceRsDto.setRr_owName(item.getOwName());
 							raceRsDto.setRr_jkName(item.getJkName());
 							raceRsDto.setRr_rating(item.getRating());
-							System.out.println(item.getTrNo() + ',' + item.getOwNo() + ',' + item.getJkNo());
 							raceRsDto.setRr_trNo(item.getTrNo());
 							raceRsDto.setRr_jkNo(item.getJkNo());
 							raceRsDto.setRr_owNo(item.getOwNo());
@@ -783,61 +788,97 @@ public class MgrRaceController {
 	public String raceInfo(Model model) {
 		long start = System.currentTimeMillis();
 		URI url = null;
-		RaceInfoDto rcInfoDto = new RaceInfoDto();
+		URI url2 = null;
+		URI url3 = null;
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, -1);
-		int month = cal.get(Calendar.MONTH) + 1;
+		List<Integer> year = new ArrayList<Integer>();
+		year.add(cal.get(Calendar.YEAR));
+		cal.add(Calendar.YEAR,-1);
+		year.add(cal.get(Calendar.YEAR));
 		int beforeMonth = Integer.parseInt(fmt.format(cal.getTime()));
 		System.out.println(beforeMonth);
-		List<RaceInfoVo.Body.Item> infoList = new ArrayList<RaceInfoVo.Body.Item>();
-		List<RaceSummaryResultVo.Body.Item> infoList2 = new ArrayList<RaceSummaryResultVo.Body.Item>();
-		List<RaceSectionRecordVo.Body.Item> infoList3 = new ArrayList<RaceSectionRecordVo.Body.Item>();
 		for (int meet = 1; meet <= 3; meet++) {
 			int pageNo = 1;
-			BB: while (true) {
-				try {
-					StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API3/raceInfo");
-					urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-					+ "=emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
-					urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
-					urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
-					urlBuilder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
-					url = new URI(urlBuilder.toString());
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (URISyntaxException uriE) {
-					uriE.printStackTrace();
-				}
-				System.out.println(url);
-				RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-				RaceInfoVo rcResult = restTemplate.getForObject(url, RaceInfoVo.class);
-				RaceInfoVo.Header result = rcResult.getHeader();
-				if (result.getResultCode() != 0) {
-					System.out.println("result Code: " + result.getResultCode());
-					System.out.println("result Message: " + result.getResultMsg());
-					System.out.println("{RaceSchedule Info error}");
-				} else {
-					List<RaceInfoVo.Body.Item> resultList = rcResult.getBody().getItems();
-					if (resultList.size() != 0) {
-						for (RaceInfoVo.Body.Item item : resultList) {
-							if (Integer.parseInt(fmt.format(item.getRcDate())) >= beforeMonth) {
-								infoList.add(item);
-							} else {
-								break BB;
-							}
-						}
-						System.out.println("배열길이" + resultList.size());
-						pageNo++;
+			for(int yearLoop:year){
+				BB: while (true) {
+					//경주개요
+					try {
+						StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API3/raceInfo");
+						urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
+						+ "=emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
+						urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
+						urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
+						urlBuilder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
+						urlBuilder.append("&" + URLEncoder.encode("rc_year", "UTF-8") + "=" + yearLoop);
+						url = new URI(urlBuilder.toString());
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (URISyntaxException uriE) {
+						uriE.printStackTrace();
+					}
+					System.out.println(url);
+					RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+					RaceInfoVo rcResult = restTemplate.getForObject(url, RaceInfoVo.class);			
+					RaceInfoVo.Header result = rcResult.getHeader();
+					if (result.getResultCode() != 0) {
+						System.out.println("result Code: " + result.getResultCode());
+						System.out.println("result Message: " + result.getResultMsg());
+						System.out.println("{RaceSchedule Info error}");
 					} else {
-						System.out.println("불러올 정보가 없습니다.");
-						break BB;
+						List<RaceInfoVo.Body.Item> resultList = rcResult.getBody().getItems();
+						System.out.println("배열길이" + resultList.size());
+						if (resultList.size() != 0) {
+							for (RaceInfoVo.Body.Item item : resultList) {
+								if (Integer.parseInt(item.getRcDate()) >= beforeMonth) {
+									RaceInfoDto rcInfoDto = new RaceInfoDto();
+									rcInfoDto.setRi_meet(meet);
+									try {
+										rcInfoDto.setRi_rcDate(fmt.parse(item.getRcDate()));
+									} catch (ParseException e) {
+										System.out.println("raceInfo parseException!!!!!");
+										e.printStackTrace();
+									}
+									rcInfoDto.setRi_rcNo(item.getRcNo());
+									rcInfoDto.setRi_ilsu(item.getIlsu());
+									rcInfoDto.setRi_rcDist(item.getRcDist());
+									rcInfoDto.setRi_rank(item.getRank());
+									rcInfoDto.setRi_budam(item.getBudam());
+									rcInfoDto.setRi_rcName(item.getRcName());
+									rcInfoDto.setRi_ageCond(item.getAgeCond());
+									rcInfoDto.setRi_weather(item.getWeather());
+									rcInfoDto.setRi_track(item.getTrack());
+									rcInfoDto.setRi_chaksun1(item.getChaksun1());
+									rcInfoDto.setRi_chaksun2(item.getChaksun2());
+									rcInfoDto.setRi_chaksun3(item.getChaksun3());
+									rcInfoDto.setRi_chaksun4(item.getChaksun4());
+									rcInfoDto.setRi_chaksun5(item.getChaksun5());
+									rcInfoDto.setRi_winAmt(item.getWinAmt());
+									rcInfoDto.setRi_plcAmt(item.getPlcAmt());
+									rcInfoDto.setRi_qnlAmt(item.getQnlAmt());
+									rcInfoDto.setRi_exaAmt(item.getExaAmt());
+									rcInfoDto.setRi_qplAmt(item.getQplAmt());
+									rcInfoDto.setRi_tlaAmt(item.getTlaAmt());
+									rcInfoDto.setRi_triAmt(item.getTriAmt());
+									rcInfoDto.setRi_totalAmt(item.getTotalAmt());
+									raceService.raceInfoInput(rcInfoDto);
+								} else {
+									pageNo=1;
+									break BB;
+								}
+							}
+							pageNo++;
+						} else {
+							System.out.println("불러올 정보가 없습니다.");
+							pageNo=1;
+							break BB;
+						}
 					}
 				}
-			}
-			//경주 요약성적표
-			BB: while (true) {
+			CC: while (true) {
+				//경주개요
+				//경주 요약성적표
 				try {
 					StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API34/raceSummaryResult");
 					urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
@@ -845,6 +886,7 @@ public class MgrRaceController {
 					urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
 					urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
 					urlBuilder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
+					urlBuilder.append("&" + URLEncoder.encode("rc_year", "UTF-8") + "=" + yearLoop);
 					url = new URI(urlBuilder.toString());
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
@@ -862,30 +904,83 @@ public class MgrRaceController {
 					System.out.println("{RaceSchedule Info error}");
 				} else {
 					List<RaceSummaryResultVo.Body.Item> resultList = rcResult.getBody().getItems();
+					System.out.println("배열길이" + resultList.size());
 					if (resultList.size() != 0) {
 						for (RaceSummaryResultVo.Body.Item item : resultList) {
-							if (Integer.parseInt(fmt.format(item.getRcDate())) >= beforeMonth) {
-								infoList2.add(item);
+							if (Integer.parseInt(item.getRcDate()) >= beforeMonth) {
+								item.setMeet(meet);
+								raceService.raceInfoUpdate1(item);
 							} else {
-								break BB;
+								pageNo=1;
+								break CC;
 							}
 						}
-						System.out.println("배열길이" + resultList.size());
 						pageNo++;
 					} else {
 						System.out.println("불러올 정보가 없습니다.");
-						break BB;
+						pageNo=1;
+						break CC;
 					}
 				}
 			}
-			BB: while (true) {
+				DD: while (true) {
+					//경주개요
+					//경주 구간별 통과순위
+					try {
+						StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API6/raceDetailSectionRecord");
+						urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
+						+ "=emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
+						urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
+						urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
+						urlBuilder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
+						urlBuilder.append("&" + URLEncoder.encode("rc_year", "UTF-8") + "=" + yearLoop);
+						url = new URI(urlBuilder.toString());
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (URISyntaxException uriE) {
+						uriE.printStackTrace();
+					}
+					System.out.println(url);
+					RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+					RaceSectionRecordVo rcResult = restTemplate.getForObject(url, RaceSectionRecordVo.class);
+					RaceSectionRecordVo.Header result = rcResult.getHeader();
+					if (result.getResultCode() != 0) {
+						System.out.println("result Code: " + result.getResultCode());
+						System.out.println("result Message: " + result.getResultMsg());
+						System.out.println("{RaceSchedule Info error}");
+					} else {
+						List<RaceSectionRecordVo.Body.Item> resultList = rcResult.getBody().getItems();
+						System.out.println("배열길이" + resultList.size());
+						if (resultList.size() != 0) {
+							for (RaceSectionRecordVo.Body.Item item : resultList) {
+								if (Integer.parseInt(item.getRcDate()) >= beforeMonth) {
+									item.setMeet(meet);
+									raceService.raceInfoUpdate2(item);
+								} else {
+									pageNo=1;
+									break DD;
+								}
+							}
+							pageNo++;
+						} else {
+							System.out.println("불러올 정보가 없습니다.");
+							pageNo=1;
+							break DD;
+						}
+					}
+				}
+			DD: while (true) {
+				//경주개요
+				//심판정보
 				try {
-					StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API6/raceDetailSectionRecord");
+					StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551015/API7/raceRefereeDetails");
 					urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
 					+ "=emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
 					urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
 					urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
 					urlBuilder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
+					urlBuilder.append("&" + URLEncoder.encode("rc_year", "UTF-8") + "=" + yearLoop);
 					url = new URI(urlBuilder.toString());
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
@@ -895,117 +990,41 @@ public class MgrRaceController {
 				}
 				System.out.println(url);
 				RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-				RaceSectionRecordVo rcResult = restTemplate.getForObject(url, RaceSectionRecordVo.class);
-				RaceSectionRecordVo.Header result = rcResult.getHeader();
+				RaceRefreeVo rcResult = restTemplate.getForObject(url, RaceRefreeVo.class);
+				RaceRefreeVo.Header result = rcResult.getHeader();
 				if (result.getResultCode() != 0) {
 					System.out.println("result Code: " + result.getResultCode());
 					System.out.println("result Message: " + result.getResultMsg());
 					System.out.println("{RaceSchedule Info error}");
 				} else {
-					List<RaceSectionRecordVo.Body.Item> resultList = rcResult.getBody().getItems();
+					List<RaceRefreeVo.Body.Item> resultList = rcResult.getBody().getItems();
+					System.out.println("배열길이" + resultList.size());
 					if (resultList.size() != 0) {
-						for (RaceSectionRecordVo.Body.Item item : resultList) {
-							if (Integer.parseInt(fmt.format(item.getRcDate())) >= beforeMonth) {
-								infoList3.add(item);
+						for (RaceRefreeVo.Body.Item item : resultList) {
+							if (Integer.parseInt(item.getRcDate()) >= beforeMonth) {
+								item.setMeet(meet);
+								raceService.refreeInsert(item);
 							} else {
-								break BB;
+								pageNo=1;
+								break DD;
 							}
 						}
-						System.out.println("배열길이" + resultList.size());
 						pageNo++;
 					} else {
 						System.out.println("불러올 정보가 없습니다.");
-						break BB;
+						pageNo=1;
+						break DD;
 					}
 				}
 			}
-			for (int l=0;l<infoList.size();l++) {
-				rcInfoDto.setRi_meet(meet); rcInfoDto.setRi_rcDate(infoList.get(l).getRcDate());
-				rcInfoDto.setRi_rcNo(infoList.get(l).getRcNo());
-				rcInfoDto.setRi_ilsu(infoList.get(l).getIlsu());
-				rcInfoDto.setRi_rcDist(infoList.get(l).getRcDist());
-				rcInfoDto.setRi_rank(infoList.get(l).getRank());
-				rcInfoDto.setRi_budam(infoList.get(l).getBudam());
-				rcInfoDto.setRi_rcName(infoList.get(l).getRcName());
-				rcInfoDto.setRi_ageCond(infoList.get(l).getAgeCond());
-				rcInfoDto.setRi_weather(infoList.get(l).getWeather());
-				rcInfoDto.setRi_track(infoList.get(l).getTrack());
-				rcInfoDto.setRi_chaksun1(infoList.get(l).getChaksun1());
-				rcInfoDto.setRi_chaksun2(infoList.get(l).getChaksun2());
-				rcInfoDto.setRi_chaksun3(infoList.get(l).getChaksun3());
-				rcInfoDto.setRi_chaksun4(infoList.get(l).getChaksun4());
-				rcInfoDto.setRi_chaksun5(infoList.get(l).getChaksun5());
-				rcInfoDto.setRi_winAmt(infoList.get(l).getWinAmt());
-				rcInfoDto.setRi_plcAmt(infoList.get(l).getPlcAmt());
-				rcInfoDto.setRi_qnlAmt(infoList.get(l).getQnlAmt());
-				rcInfoDto.setRi_exaAmt(infoList.get(l).getExaAmt());
-				rcInfoDto.setRi_qplAmt(infoList.get(l).getQplAmt());
-				rcInfoDto.setRi_tlaAmt(infoList.get(l).getTlaAmt());
-				rcInfoDto.setRi_triAmt(infoList.get(l).getTriAmt());
-				rcInfoDto.setRi_totalAmt(infoList.get(l).getTotalAmt());
-				rcInfoDto.setRi_winChulNo(infoList2.get(l).getWinChulNo());
-				rcInfoDto.setRi_winOdds(infoList2.get(l).getWinOdds());
-				rcInfoDto.setRi_plcChulNo(infoList2.get(l).getPlcChulNo());
-				rcInfoDto.setRi_plcOdds(infoList2.get(l).getPlcOdds());
-				rcInfoDto.setRi_qnlChulNo(infoList2.get(l).getQnlChulNo());
-				rcInfoDto.setRi_qnlOdds(infoList2.get(l).getQnlOdds());
-				rcInfoDto.setRi_exaChulNo(infoList2.get(l).getExaChulNo());
-				rcInfoDto.setRi_exaOdds(infoList2.get(l).getExaOdds());
-				rcInfoDto.setRi_qplChulNo(infoList2.get(l).getQplChulNo());
-				rcInfoDto.setRi_qplOdds(infoList2.get(l).getQplOdds());
-				rcInfoDto.setRi_tlaChulNo(infoList2.get(l).getTlaChulNo());
-				rcInfoDto.setRi_tlaOdds(infoList2.get(l).getTlaOdds());
-				rcInfoDto.setRi_triChulNo(infoList2.get(l).getTriChulNo());
-				rcInfoDto.setRi_triOdds(infoList2.get(l).getTriOdds());
-				rcInfoDto.setRi_dist_1f(infoList3.get(l).getDist_1f());
-				rcInfoDto.setRi_dist_2f(infoList3.get(l).getDist_2f());
-				rcInfoDto.setRi_dist_3f(infoList3.get(l).getDist_3f());
-				rcInfoDto.setRi_dist_4f(infoList3.get(l).getDist_4f());
-				rcInfoDto.setRi_dist_5f(infoList3.get(l).getDist_5f());
-				rcInfoDto.setRi_dist_6f(infoList3.get(l).getDist_6f());
-				rcInfoDto.setRi_dist_7f(infoList3.get(l).getDist_7f());
-				rcInfoDto.setRi_dist_8f(infoList3.get(l).getDist_8f());
-				rcInfoDto.setRi_dist_9f(infoList3.get(l).getDist_9f());
-				rcInfoDto.setRi_dist_10f(infoList3.get(l).getDist_10f());
-				rcInfoDto.setRi_time_1f(infoList3.get(l).getTime_1f());
-				rcInfoDto.setRi_time_2f(infoList3.get(l).getTime_2f());
-				rcInfoDto.setRi_time_3f(infoList3.get(l).getTime_3f());
-				rcInfoDto.setRi_time_4f(infoList3.get(l).getTime_4f());
-				rcInfoDto.setRi_time_5f(infoList3.get(l).getTime_5f());
-				rcInfoDto.setRi_time_6f(infoList3.get(l).getTime_6f());
-				rcInfoDto.setRi_time_7f(infoList3.get(l).getTime_7f());
-				rcInfoDto.setRi_time_8f(infoList3.get(l).getTime_8f());
-				rcInfoDto.setRi_time_9f(infoList3.get(l).getTime_9f());
-				rcInfoDto.setRi_time_10f(infoList3.get(l).getTime_10f());
-				rcInfoDto.setRi_time_11f(infoList3.get(l).getTime_11f());
-				rcInfoDto.setRi_time_12f(infoList3.get(l).getTime_12f());
-				rcInfoDto.setRi_passTime_1f(infoList3.get(l).getPassTime_1f());
-				rcInfoDto.setRi_passTime_2f(infoList3.get(l).getPassTime_2f());
-				rcInfoDto.setRi_passTime_3f(infoList3.get(l).getPassTime_3f());
-				rcInfoDto.setRi_passTime_4f(infoList3.get(l).getPassTime_4f());
-				rcInfoDto.setRi_passTime_5f(infoList3.get(l).getPassTime_5f());
-				rcInfoDto.setRi_passTime_6f(infoList3.get(l).getPassTime_6f());
-				rcInfoDto.setRi_passTime_7f(infoList3.get(l).getPassTime_7f());
-				rcInfoDto.setRi_passTime_8f(infoList3.get(l).getPassTime_8f());
-				rcInfoDto.setRi_passTime_9f(infoList3.get(l).getPassTime_9f());
-				rcInfoDto.setRi_passTime_10f(infoList3.get(l).getPassTime_10f());
-				rcInfoDto.setRi_passrankS1f(infoList3.get(l).getPassrankS1f());
-				rcInfoDto.setRi_passrankG8f_1c(infoList3.get(l).getPassrankG8f_1c());
-				rcInfoDto.setRi_passrankG6f_2c(infoList3.get(l).getPassrankG6f_2c());
-				rcInfoDto.setRi_passrankG4f_3c(infoList3.get(l).getPassrankG4f_3c());
-				rcInfoDto.setRi_passrankG3f_4c(infoList3.get(l).getPassrankG3f_4c());
-				rcInfoDto.setRi_passrankG2f(infoList3.get(l).getPassrankG2f());
-				rcInfoDto.setRi_passrankG1f(infoList3.get(l).getPassrankG1f());
 			}
 		}
-
-		raceService.raceInfoInput(rcInfoDto);
 		long end = System.currentTimeMillis();
 		System.out.println("시간: " + ((end - start) / 1000) + "초");
 		model.addAttribute("Msg", "메소드 종료");
 		return "forward:/adminPage.do";
 	}
-	
+
 	//출마표 등록
 	@RequestMapping(value = "/rcPlanInput.do", method = RequestMethod.GET)
 	public String rcPlanInput(Model model) throws ParseException {
@@ -1045,7 +1064,7 @@ public class MgrRaceController {
 				second = Integer.parseInt(fmt.format(cal.getTime()));
 				break;
 			case 3:
-				cal.set(Calendar.DAY_OF_WEEK,Calendar.SATURDAY);
+				cal.set(Calendar.DAY_OF_WEEK,Calendar.FRIDAY);
 				first = Integer.parseInt(fmt.format(cal.getTime()));
 				cal.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
 				cal.add(Calendar.DATE,7);
@@ -1112,7 +1131,7 @@ public class MgrRaceController {
 							rcPlDto.setRp_rank(item.getRank());
 							rcPlDto.setRp_prizeCond(item.getPrizeCond());
 							rcPlDto.setRp_ageCond(item.getAgeCond());
-							rcPlDto.setRp_stTime(item.getStTime());
+							rcPlDto.setRp_stTime(item.getStTime().substring(4));
 							rcPlDto.setRp_budam(item.getBudam());
 							rcPlDto.setRp_rcName(item.getRcName());
 							rcPlDto.setRp_chaksun1(item.getChaksun1());
@@ -1132,7 +1151,7 @@ public class MgrRaceController {
 		model.addAttribute("msg", "메소드 종료");
 		return "forward:/adminPage.do";
 	}
-	
+
 	//출전마 등록정보 등록
 	@RequestMapping(value = "/rcEntryInput.do", method = RequestMethod.GET)
 	public String rcEntryInput(Model model) throws ParseException {

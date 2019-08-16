@@ -11,7 +11,7 @@ public interface ITrainerService {
 
 	public boolean trInsert(TrainerDto trainerDto);
 
-	public boolean trDel(int tr_meet);
+	public boolean trDel();
 
 	public List<TrainerDto> getAllList(int tr_meet);
 	
@@ -20,6 +20,8 @@ public interface ITrainerService {
 	public TrainerDto getJokyo(String tr_no);
 	
 	public boolean trUpdate(String trno);
+	
+	public boolean resetSeq();
 	
 	public List<RecordInfoDto> recordInfo(String tr_no);
 	

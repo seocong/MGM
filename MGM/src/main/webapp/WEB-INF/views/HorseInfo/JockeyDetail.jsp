@@ -281,38 +281,73 @@
 										최근 6개월간 전적 및 수득상금
 									</h4>
 									<table class="table table-bordered ">
+										<c:choose>
+										<c:when test="${empty rtprize}">
+										<tbody>
+											<tr>
+												<td>---전적 및 정보가 없습니다.---</td>
+											</tr>
+										</tbody>
+										</c:when>
+										<c:otherwise>
 										<thead>
 											<tr class="titleColor"  style="text-align: center;">
 												<th width="10%">월별</th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
-												<th width="15%"></th>
+												<c:forEach items="${rtprize}" var="list">
+													<th width="15%">${list.raceMonth}</th>
+												</c:forEach>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>전적</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<c:forEach items="${rtprize}" var="list">
+													<td>${list.totalCount}전 ${list.ord1Count}/${list.ord2Count}</td>
+												</c:forEach>
 											</tr>
 											<tr>
 												<td>상금</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<c:forEach items="${rtprize}" var="list">
+													<td><fmt:formatNumber value="${list.totalPrize}" type="number" /></td>
+												</c:forEach>
 											</tr>
 										</tbody>
+										</c:otherwise>
+										</c:choose>	
 									</table>
+								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+										<span class="text-dark"><i class="icon-trophy"></i></span>
+										대상경주 우승전적
+									</h4>
+									<table class="table table-bordered ">
+										<thead>
+										<tr class="titleColor"  style="text-align: center;">
+											<th width="16%">경주일자</th>
+											<th width="35%">경주명</th>
+											<th width="29%">경주마명</th>
+											<th width="25%">우승상금</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:choose>
+									<c:when test="${empty champion}">
+										<tr><td colspan = "6">---전적 및 정보가 없습니다.---</td></tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${champion}" var="list">
+													<tr>
+														<td>${list.rc_date}</td>
+														<td style="font-weight: bold;">${list.rc_name}</td>
+														<td>${list.hr_name}</td>
+														<td><fmt:formatNumber value="${list.rc_chaksun}" type="number" /></td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+											</c:choose>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-content clearfix" id="tab-responsive-2">
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
 										최근 6개월간 마필기승 내역
@@ -332,65 +367,23 @@
 										</thead>
 										<tbody>
 											<c:choose>
-									<c:when test="${empty list}">
+									<c:when test="${empty record}">
 										<tr><td colspan = "8">---전적 및 정보가 없습니다.---</td></tr>
 											</c:when>
 											<c:otherwise>
-												<c:forEach items="${list}" var="list">
+												<c:forEach items="${record}" var="record">
 													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td><a href="recordDetail.do?ri_rcDate=<fmt:formatDate value="${record.rcDate}" pattern="yyyyMMdd" />&ri_meet=${record.meet}&ri_rcNo=${record.rcNo}"><fmt:formatDate value="${record.rcDate}" pattern="yyyy-MM-dd" />/${record.rcNo}R</a></td>
+														<td><a href="horseDetail.do?hr_no=${record.hrNo}">${record.hrName}</a></td>
+														<td>${record.ord}/${record.hrCount}</td>
+														<td>${record.ranks}</td>
+														<td>${record.rcDist}</td>
+														<td>${record.rcName}</td>
+														<td><a href="jokyoDetail.do?tr_no=${record.trNo}">${record.trName}</a></td>
+														<td><a href="ownerDetail.do?ow_no=${record.owNo}">${record.owName}</a></td>
 													</tr>
 												</c:forEach>
 												
-											</c:otherwise>
-											</c:choose>
-										</tbody>
-									</table>
-								</div>
-								<div class="tab-content clearfix" id="tab-responsive-2">
-									<table class="table table-bordered ">
-										<thead>
-										<tr class="titleColor"  style="text-align: center;">
-											<th width="10%">년도</th>
-											<th width="18%">출추횟수</th>
-											<th width="18%">1착횟수</th>
-											<th width="18%">2착횟수</th>
-											<th width="18%">승률</th>
-											<th width="18%">복승률</th>
-											
-											</tr>
-										</thead>
-										<tbody>
-											<c:choose>
-									<c:when test="${empty list}">
-										<tr><td colspan = "6">---전적 및 정보가 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${jkList}" var="jkList">
-													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>														
-													</tr>
-												</c:forEach>
-												<tr>
-													<td>합계</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>	
-												</tr>
 											</c:otherwise>
 											</c:choose>
 										</tbody>
