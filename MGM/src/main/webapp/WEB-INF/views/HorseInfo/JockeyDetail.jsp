@@ -268,8 +268,8 @@
 											<div class="tabs tabs-responsive clearfix">
 
 							<ul class="tab-nav clearfix">
-								<li><a href="#tab-responsive-1">최근6개월 전적</a></li>
-								<li><a href="#tab-responsive-2">년도별월별성적</a></li>								
+								<li><a href="#tab-responsive-1">전적 및 상금</a></li>
+								<li><a href="#tab-responsive-2">최근6개월 전적</a></li>								
 							</ul>
 							
 							
