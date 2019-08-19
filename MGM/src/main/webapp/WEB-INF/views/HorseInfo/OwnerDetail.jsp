@@ -230,7 +230,7 @@
 																	<td class="titleColor" style="text-align: center;"width="15%">등록번호</td>
 																	<td style="text-align: center;" width="20%">${owDto.ow_no}</td>
 																	<td class="titleColor" rowspan="2" style="text-align: center;"width="10%">마주복색</td>
-																	<td style="text-align: center;padding: 0px;" width="20%" rowspan="2"><img alt="" src="https://race.kra.co.kr/down/owner_cloth/seoul/117038a.jpg"></td>															
+																	<td style="text-align: center;padding: 0px;" width="20%" rowspan="2"><img id="owimg" alt="미등록" data-owno="${owDto.ow_no}"></td>															
 																</tr>
 																<tr>
 																	<td class="titleColor"  style="text-align: center;">마주등록일</td>
@@ -434,17 +434,21 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
+		var ow_no = $("#owimg").attr("data-owno");
 		var ow_meet = $("#ow_meet").attr("data-ow_meet");
 		if(ow_meet == 1){
 			$("#tabseoul").addClass('current');
+			$("#owimg").attr("src","https://race.kra.co.kr/down/owner_cloth/seoul/" + ow_no + "a.jpg");
 			$(".titleColor").css("background-color","#fbeae6");
 			$(".tableColor").css("border-top","solid #b30003 3px");
 		}else if(ow_meet == 2){
 			$("#tabjeju").addClass('current');
+			$("#owimg").attr("src","https://race.kra.co.kr/down/owner_cloth/jeju/" + ow_no + "a.jpg");
 			$(".titleColor").css("background-color","#ecf5f9");
 			$(".tableColor").css("border-top","solid #2a4e8b 3px");
 		}else if(ow_meet == 3){
 			$("#tabbusan").addClass('current');
+			$("#owimg").attr("src","https://race.kra.co.kr/down/owner_cloth/busanl/" + ow_no + "a.jpg");
 			$(".titleColor").css("background-color","#e9f3d9");
 			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	

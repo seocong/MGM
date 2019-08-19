@@ -250,7 +250,7 @@
 																</tr>
 																<c:forEach items="${owDto}" var="owDto">
 																<tr>																
-																	<td style="text-align: center;"><a href="ownerDetail.do?ow_name=${owDto.ow_name}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
+																	<td style="text-align: center;"><a href="ownerDetail.do?ow_no=${owDto.ow_no}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
 																	<td style="text-align: center;">${owDto.ow_totHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_cancledHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>

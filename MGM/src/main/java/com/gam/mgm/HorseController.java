@@ -266,18 +266,19 @@ public class HorseController {
 	public String ownerDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("마주상세보기", locale);
 		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
-		String ow_name = request.getParameter("ow_name");
+		int ow_no = Integer.parseInt(request.getParameter("ow_no"));
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("ow_meet", ow_meet);
-		map.put("ow_name", ow_name);
+		map.put("ow_no", ow_no);
 		OwnerDto owDto = ownerService.getOwner(map);
+		String ow_name=owDto.getOw_name();
+		map.put("ow_name",ow_name);
 		List<HorsesDto> hrDto = horsesService.getOwnerList(map);
 		model.addAttribute("owDto", owDto);
 		model.addAttribute("ow_meet", ow_meet);
 		model.addAttribute("hrDto", hrDto);
-		//대상경주,최근경주성적 
+		//대상경주,최근경주성적
 		return "HorseInfo/OwnerDetail";
-		
 		}
 	
 	@RequestMapping(value="/recordInfo.do",method=RequestMethod.GET)
