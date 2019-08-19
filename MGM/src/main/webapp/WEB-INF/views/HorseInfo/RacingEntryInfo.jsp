@@ -4,8 +4,6 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <!DOCTYPE html >
 <html>
 <head>
@@ -171,20 +169,9 @@
 
 							
 							<div class="row clearfix">
-							<div id="rp_meet" data-rp_meet = "${rp_meet}" ></div>	 
-								<div class="col-md-12 mt-5">
-						
-								<table class="allmargin">
-								<%-- <col width="120px">
-								<col width="120px">
-								<col width="120px">
-								<col width="110px">
-								<col width="120px">
-								<col width="110px">
-								<col width="130px">
-								<col width="120px"> --%>
-								
-								
+							<div id="re_meet" data-re_meet = "${re_meet}" ></div>	
+								<div class="col-md-12 mt-5">						
+								<table class="allmargin">																					
 								<tr style="text-align: center; white-space: nowrap;">
 									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingInfo.do?rp_meet=1">출전정보</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10">경주성적표</a></td>
@@ -196,94 +183,69 @@
 									<td width="11%" style="font-size: 120%;font-weight: bold;"><a href="raceoperView.do">시행정보</a></td>
 								</tr>
 								</table>
-								
-								
-								
-								
+
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										출전상세정보<span style="font-size: 60%;"></span>
+										출전등록현황 <span style="font-size: 60%;"> </span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
 									<div id="container" class="nomargin">
 
 
-										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="racingInfo.do?rp_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="racingInfo.do?rp_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="racingInfo.do?rp_meet=2"> 제주경마</a></li>
+										<ul class="tab">
+											<li id="tabseoul"><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10"> 서울경마</a></li>
+											<li id="tabbusan"><a href="racingEntryInfo.do?re_meet=3&pagenum=1&contentnum=10"> 부산경마</a></li>
+											<li id="tabjeju"><a href="racingEntryInfo.do?re_meet=2&pagenum=1&contentnum=10"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
-												
 												<div>
-												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>일자별 경주정보</h4>
 													<table class="table table-bordered table-striped tableColor">
+																												
 														<thead>
-															<tr class="titleColor" style="text-align: center;white-space: nowrap; ">
+															<tr class="titleColor"  style="text-align: center;">
 																
-																<th width="15%">경주일자</th>
-																<th width="5%">경주</th>
-																<th width="10%">등급</th>
-																<th width="8%">거리</th>
-																<th width="6%">편성</th>
-																<th width="6%">출전</th>
+																<th width="20%">경주일자</th>
+																<th width="8%">경주</th>
+																<th width="12%">등급</th>
+																<th width="10%">거리</th>
 																<th width="20%">경주명</th>
-																<th width="10%">출발시각</th>
-																<th width="10%">비고</th>
-																<th width="10%">PDF</th>
-																
+																<th width="15%">부담종류</th>
+																<th width="15%">등록두수</th>																
 															</tr>
 														</thead>
 
 														<tbody>
-															
+
 															<c:forEach items="${list}" var="list">
-																<tr style="white-space: nowrap;">
-																
-																	<td style="text-align: center;"><fmt:formatDate value="${list.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${list.rp_rcDay})</td>
-																	<td style="text-align: center;"><a href="racingDetail.do?rp_rcDate=<fmt:formatDate value="${list.rp_rcDate}" pattern="yyyyMMdd"/>&rp_meet=${list.rp_meet}&rp_rcNo=${list.rp_rcNo}">${list.rp_rcNo}</a></td>
-																	<td style="text-align: center;">${list.rp_rank}</td>
-																	<td style="text-align: center;">${list.rp_rcDist}</td>
-																	<td style="text-align: center;">${list.rp_dusu}</td>
-																	<td style="text-align: center;">${list.rp_dusu}</td>
-																	<td style="text-align: center;">${list.rp_rcName}</td>
-																	<td style="text-align: center;">${list.rp_stTime}</td>
-																	<td style="text-align: center;"></td>
-																	<c:choose>
-																	<c:when test="${list.rp_meet==1}">
-																		<c:if test="${list.rp_rcNo < 10}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	<c:when test="${list.rp_meet==3}">
-																		<c:if test="${list.rp_rcNo < 10}">	
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	<c:when test="${list.rp_meet==2}">
-																		<c:if test="${list.rp_rcNo < 10}">					 
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	</c:choose>
-																	
-																	  
+																<tr style="text-align: center;">
+																	<td><fmt:formatDate value="${list.re_pgDate}" pattern="yyyy년MM월dd일 (E)"/></td>
+																	<td><a href="racingEntryDetail.do?re_pgDate=<fmt:formatDate value="${list.re_pgDate}" pattern="yyyyMMdd"/>&re_meet=${list.re_meet}&re_pgNo=${list.re_pgNo}">${list.re_pgNo}</a></td>
+																	<td>${list.re_rank}</td>
+																	<td>${list.re_rcDist}M</td>
+																	<td>${list.re_rcName}</td>
+																	<td>${list.re_budam}</td>
+																	<td>${list.entryCnt}</td>
 																</tr>
 															</c:forEach>
-
+																<tr>
+  																	 <td colspan="7">
+   																		<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button">
+   																		<c:if test="${page.prev}">
+   																		<li class="page-item"><a class="page-link" href="javascript:page4(${page.getStartPage()-1});"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+   																		</c:if>
+   																		<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
+   																		<li class="page-item"><a class="page-link" href="javascript:page4(${idx});">${idx}</a></li>
+   																			</c:forEach>
+   																			<c:if test="${page.next }">
+   																	 <li class="page-item"><a class="page-link" href="javascript:page4(${page.getEndPage()+1});" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+   																			</c:if>
+ 																			</ul>
+       																			 </td>
+       
+																			</tr>
 
 														</tbody>
 
@@ -297,7 +259,6 @@
 
 									</div>
 								</div>
-
 
 								
 							</div>
@@ -360,25 +321,47 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var rp_meet = $("#rp_meet").attr("data-rp_meet");
-		if(rp_meet == 1){
+		var re_meet = $("#re_meet").attr("data-re_meet");
+		if(re_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
-			$(".tableColor").css("border-top","solid #b30003 3px");
-		}else if(rp_meet == 2){
+			$(".tableColor").css("border-top","solid #b30003 3px")
+		}else if(re_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
-			$(".tableColor").css("border-top","solid #2a4e8b 3px");
-		}else if(rp_meet == 3){
+			$(".tableColor").css("border-top","solid #2a4e8b 3px")
+		}else if(re_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
-			$(".tableColor").css("border-top","solid #5a9e01 3px");
+			$(".tableColor").css("border-top","solid #5a9e01 3px")
 		}	
 	});
-
+	
+	function page4(idx) {
+		var pagenum = idx;
+		var contentnum = 10;//$("#contentnum option:selected").val();
+		var re_meet = $('#re_meet').attr("data-re_meet");//boardname을 받아옴
+		location.href="racingEntryInfo.do?pagenum="+pagenum+"&contentnum="+contentnum+"&re_meet="+re_meet;
+	}
+	
+	/* function list(cnt) {
+		var pagenum = cnt;
+		var contentnum = 10;//$("#contentnum option:selected").val();
+		var board_name = $('#board_name').attr("data-board_name");//boardname을 받아옴
+		location.href="detail.do?pagenum="+pagenum+"&contentnum="+contentnum+"&board_name="+board_name;
+	} */
+	$(function(){
+		var pagenum = ${page.pagenum};
+		if(pagenum>=5){
+			pagenum=parseInt(pagenum)-4;
+		}
+		$(".page-link").eq(pagenum).css({
+			"background-color":"#3A486E",
+			"color":"white"
+		});
+	});
 		</script>
 		
  	
 	</body>
 	</html>
-</html>

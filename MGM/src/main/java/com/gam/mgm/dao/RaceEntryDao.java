@@ -1,5 +1,8 @@
 package com.gam.mgm.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,5 +27,25 @@ public class RaceEntryDao implements IRaceEntryDao{
 	@Override
 	public boolean resetSeq() {
 		return sqlSession.update(namespace+"resetSeq")>0?true:false;
+	}
+
+	@Override
+	public List<RaceEntryDto> getList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getlist", map);
+	}
+
+	@Override
+	public int getAllCnt(int re_meet) {
+		return sqlSession.selectOne(namespace+"getCnt", re_meet);
+	}
+
+	@Override
+	public RaceEntryDto getDetail(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"getDetail", map);
+	}
+
+	@Override
+	public List<RaceEntryDto> getDetailList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"getDetailList", map);
 	}
 }

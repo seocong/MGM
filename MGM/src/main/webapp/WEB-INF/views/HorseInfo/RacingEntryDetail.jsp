@@ -4,8 +4,6 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <!DOCTYPE html >
 <html>
 <head>
@@ -82,7 +80,7 @@
 		/* Style the tab content */
 		.tabcontent {
 			display: block;
-			color:#fff;
+			color:#000;
 		}
 		ul.tab li.current{
 			background-color: #fff;
@@ -92,6 +90,9 @@
 		ul.tab li{
 		background-color:#F2F2F2;
 		}
+		/* #tableSt td{
+			text-align: center;border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;
+		} */
 	</style>
 	
 
@@ -171,18 +172,11 @@
 
 							
 							<div class="row clearfix">
-							<div id="rp_meet" data-rp_meet = "${rp_meet}" ></div>	 
+							 <div id="re_meet" data-re_meet = "${re_meet}" ></div>	
 								<div class="col-md-12 mt-5">
-						
+								
 								<table class="allmargin">
-								<%-- <col width="120px">
-								<col width="120px">
-								<col width="120px">
-								<col width="110px">
-								<col width="120px">
-								<col width="110px">
-								<col width="130px">
-								<col width="120px"> --%>
+	
 								
 								
 								<tr style="text-align: center; white-space: nowrap;">
@@ -202,7 +196,7 @@
 								
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										출전상세정보<span style="font-size: 60%;"></span>
+										출전 등록 현황<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 
@@ -210,85 +204,96 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="racingInfo.do?rp_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="racingInfo.do?rp_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="racingInfo.do?rp_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10"> 서울경마</a></li>
+											<li id="tabbusan"><a href="racingEntryInfo.do?re_meet=3&pagenum=1&contentnum=10"> 부산경마</a></li>
+											<li id="tabjeju"><a href="racingEntryInfo.do?re_meet=2&pagenum=1&contentnum=10"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
-												
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
-												<span class="text-dark"><i class="icon-trophy"></i></span>일자별 경주정보</h4>
-													<table class="table table-bordered table-striped tableColor">
-														<thead>
-															<tr class="titleColor" style="text-align: center;white-space: nowrap; ">
-																
-																<th width="15%">경주일자</th>
-																<th width="5%">경주</th>
-																<th width="10%">등급</th>
-																<th width="8%">거리</th>
-																<th width="6%">편성</th>
-																<th width="6%">출전</th>
-																<th width="20%">경주명</th>
-																<th width="10%">출발시각</th>
-																<th width="10%">비고</th>
-																<th width="10%">PDF</th>
-																
-															</tr>
-														</thead>
+												<span class="text-dark"><i class="icon-trophy">출전등록 상세정보</i></span></h4>
+												
+												
+											</div>
+											<div >
+											<!-- 	<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>소유말 현황</h4> -->
+												<table class="table table-bordered tableColor" style="border-bottom: solid #DDD 1px;">
+												<tr style="text-align: center;">
+												<th class="titleColor"  width="100%" colspan="4"><fmt:formatDate value="${reDto.re_pgDate}" pattern="yyyy년MM월dd일(E)"/> 제${reDto.re_pgNo}경주 </th>
+												
+											</tr>
+											<tr style="text-align: center;">
+												<td width="25%"> ${reDto.re_rank} ${reDto.re_rcDist}M ${reDto.re_budam}</td>
+												<td width="25%">${reDto.re_rcName}</td>
+												<td width="25%">${reDto.re_prizeCond}</td>
+												<td width="25%">${reDto.re_ageCond}</td>
+												
+											</tr>
+											</table>
+											<table class="table table-bordered ">
+											<tr style="text-align: center;">
+												<th width="20%" class="titleColor" >순위상금</th>
+												<td width="16%"><fmt:formatNumber value="${reDto.re_chaksun1}" pattern="#,###.##"/>원</td>
+												<td width="16%"><fmt:formatNumber value="${reDto.re_chaksun2}" pattern="#,###.##"/>원</td>
+												<td width="16%"><fmt:formatNumber value="${reDto.re_chaksun3}" pattern="#,###.##"/>원</td>
+												<td width="16%"><fmt:formatNumber value="${reDto.re_chaksun4}" pattern="#,###.##"/>원</td>
+												<td width="16%"><fmt:formatNumber value="${reDto.re_chaksun5}" pattern="#,###.##"/>원</td>
+											</tr>
+											</table>
+											</div>
+											
+											
+							
+							
+							<div>
 
-														<tbody>
-															
-															<c:forEach items="${list}" var="list">
-																<tr style="white-space: nowrap;">
-																
-																	<td style="text-align: center;"><fmt:formatDate value="${list.rp_rcDate}" pattern="yyyy년MM월dd일"/>(${list.rp_rcDay})</td>
-																	<td style="text-align: center;"><a href="racingDetail.do?rp_rcDate=<fmt:formatDate value="${list.rp_rcDate}" pattern="yyyyMMdd"/>&rp_meet=${list.rp_meet}&rp_rcNo=${list.rp_rcNo}">${list.rp_rcNo}</a></td>
-																	<td style="text-align: center;">${list.rp_rank}</td>
-																	<td style="text-align: center;">${list.rp_rcDist}</td>
-																	<td style="text-align: center;">${list.rp_dusu}</td>
-																	<td style="text-align: center;">${list.rp_dusu}</td>
-																	<td style="text-align: center;">${list.rp_rcName}</td>
-																	<td style="text-align: center;">${list.rp_stTime}</td>
-																	<td style="text-align: center;"></td>
-																	<c:choose>
-																	<c:when test="${list.rp_meet==1}">
-																		<c:if test="${list.rp_rcNo < 10}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/seoul/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	<c:when test="${list.rp_meet==3}">
-																		<c:if test="${list.rp_rcNo < 10}">	
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/busan/chulma/run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	<c:when test="${list.rp_meet==2}">
-																		<c:if test="${list.rp_rcNo < 10}">					 
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_0${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	<c:if test="${list.rp_rcNo > 9}">
-																	<td style="text-align: center;"><a target="_blank" href="http://race.kra.co.kr/down/pdf/jeju/chulma/j_run_hr_<fmt:formatDate value="${list.rp_rcDate}" pattern="yyMMdd"/>_${list.rp_rcNo}.pdf"><i class="icon-file-pdf1"></i></a></td>
-																	</c:if>
-																	</c:when>
-																	</c:choose>
-																	
-																	  
-																</tr>
-															</c:forEach>
+								
+								
+											
+												
+													<table class="table table-bordered table-striped tableColor">													
+											<tr class="titleColor"  style="text-align: center; white-space:nowrap; ">
+												<th width="15%" >마명</th>
+												<th width="5%">레이팅</th>
+												<th width="5%">산지</th>
+												<th width="5%">성별</th>
+												<th width="5%">연령</th>												
+												<th width="10%">조교사</th>
+												<th width="12%">마주명</th>
+												<th width="5%">1년승수</th>
+												<th width="12%">최근3회상금</th>
+												<th width="12%">최근6회상금</th>
+												<th width="14%">통산수득상금</th>
+											</tr>
+											<c:forEach items="${list}" var="list">									
+											<tr>							
+												<td><a href="horseDetail.do?hr_htName=${list.re_hrName}&hr_meet=${list.re_meet}">${list.re_hrName}</a></td>
+												<td>${list.re_recentRating}</td>
+												<td>${list.re_name}</td>
+												<td>${list.re_sex}</td>
+												<td>${list.re_age}</td>
+												<td>${list.re_trName}</td>
+												<td>${list.re_owName}</td>
+												<td>${list.re_rcCntY}</td>
+												<td><fmt:formatNumber value="${list.re_calPrize_6m}" pattern="#,###.##"/></td>
+												<td><fmt:formatNumber value="${list.re_calPrizeY}" pattern="#,###.##"/></td>
+												<td><fmt:formatNumber value="${list.re_chaksunT}" pattern="#,###.##"/></td>
+											</tr>
+											</c:forEach>
+									</table>
 
+								
+								
+						
+								
+								
 
-														</tbody>
+							
 
-													</table>
-												</div>
+						</div>
 
 											</div>
 
@@ -298,21 +303,12 @@
 									</div>
 								</div>
 
-
 								
 							</div>
 
 
 
 							<div class="line"></div>
-
-
-
-
-
-
-
-
 
 						</div>
 						<!-- 본문내용끝 -->
@@ -360,25 +356,25 @@
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
-		var rp_meet = $("#rp_meet").attr("data-rp_meet");
-		if(rp_meet == 1){
+		var re_meet = $("#re_meet").attr("data-re_meet");
+		if(re_meet == 1){
 			$("#tabseoul").addClass('current');
 			$(".titleColor").css("background-color","#fbeae6");
 			$(".tableColor").css("border-top","solid #b30003 3px");
-		}else if(rp_meet == 2){
+		}else if(re_meet == 2){
 			$("#tabjeju").addClass('current');
 			$(".titleColor").css("background-color","#ecf5f9");
 			$(".tableColor").css("border-top","solid #2a4e8b 3px");
-		}else if(rp_meet == 3){
+		}else if(re_meet == 3){
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
 	});
-
+	
+	
 		</script>
 		
  	
 	</body>
 	</html>
-</html>

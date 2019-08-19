@@ -186,8 +186,8 @@
 									<td width="11%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;" ><a href="jockeyInfo.do?jk_meet=1">기수정보</a></td>
 									<td width="13%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="jokyoInfo.do?tr_meet=1">조교사정보</a></td>
 									<td width="11%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="ownerInfo.do?ow_meet=1">마주정보</a></td>
-									<td width="14%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="#">출주예정마필</a></td>
-									<td width="11%" style="font-size: 120%;font-weight: bold;"><a href="#">시행정보</a></td>
+									<td width="14%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10">출전등록현황</a></td>
+									<td width="11%" style="font-size: 120%;font-weight: bold;"><a href="raceoperView.do">시행정보</a></td>
 								</tr>
 								</table>
 								
@@ -427,7 +427,27 @@
 			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
 	});
-
+	
+	$(function(){
+		var page = ${rpDto.rp_rcNo}-1;
+		var rp_meet = $("#rp_meet").attr("data-rp_meet");
+		if(rp_meet == 1){
+		$(".link").eq(page).css({
+			"background-color":"#b30003",
+			"color":"white"
+		});
+		}else if(rp_meet == 2){
+			$(".link").eq(page).css({
+				"background-color":"#2a4e8b",
+				"color":"white"
+			});
+			}else if(rp_meet == 3){
+				$(".link").eq(page).css({
+					"background-color":"#5a9e01",
+					"color":"white"
+				});
+				}
+	});
 		</script>
 		
  	
