@@ -22,6 +22,7 @@ import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.OwnerDto;
+import com.gam.mgm.dto.RaceEntryDto;
 import com.gam.mgm.dto.RaceInfoDto;
 import com.gam.mgm.dto.RacePlanDto;
 import com.gam.mgm.dto.RaceRefreeDto;
@@ -33,6 +34,7 @@ import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IHorsesService;
 import com.gam.mgm.service.IJockeyService;
 import com.gam.mgm.service.IOwnerService;
+import com.gam.mgm.service.IRaceEntryService;
 import com.gam.mgm.service.IRacePlanService;
 import com.gam.mgm.service.IRaceService;
 import com.gam.mgm.service.ITrainerService;
@@ -55,6 +57,8 @@ public class HorseController {
 	private IRaceService raceService;
 	@Autowired
 	private IRacePlanService racePlanService;
+	@Autowired
+	private IRaceEntryService raceEntryService;
 	
 	@RequestMapping(value = "/jokyoInfo.do", method = RequestMethod.GET)
 	public String jokyoInfo(Locale locale, Model model,HttpServletRequest request) {
@@ -396,5 +400,50 @@ public class HorseController {
 	public String raceoperView(Locale locale, HttpServletRequest request,Model model){
 		logger.info("경마시행개요", locale);
 		return "HorseInfo/RaceoperView";		
+	}
+	
+	@RequestMapping(value="/racingEntryInfo.do",method=RequestMethod.GET)
+	public String racingEntry(Locale locale, HttpServletRequest request,Model model){
+		logger.info("출전등록현황", locale);
+		int re_meet = Integer.parseInt(request.getParameter("re_meet"));
+		PageMaker pagemaker = new PageMaker();
+		String pagenum = request.getParameter("pagenum");
+		String contentnum = request.getParameter("contentnum");
+		int cpagenum = Integer.parseInt(pagenum);
+		int ccontentnum = Integer.parseInt(contentnum);
+		pagemaker.setTotalcount(raceEntryService.getAllCnt(re_meet));
+		pagemaker.setPagenum(cpagenum-1);	
+		pagemaker.setContentnum(ccontentnum);
+		pagemaker.setCurrentblock(cpagenum);
+		pagemaker.setLastblock(pagemaker.getTotalcount());			
+		pagemaker.prevnext(cpagenum); 
+		pagemaker.setStartPage(pagemaker.getCurrentblock());
+		pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock());
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("pagenum", pagemaker.getPagenum()*10);
+		map.put("contentnum", pagemaker.getContentnum());
+		map.put("re_meet",re_meet);
+		List<RaceEntryDto> list = raceEntryService.getList(map);
+		model.addAttribute("list", list);
+		model.addAttribute("re_meet", re_meet);
+		model.addAttribute("page", pagemaker);
+		return "HorseInfo/RacingEntryInfo";		
+	}
+	@RequestMapping(value="/racingEntryDetail.do",method=RequestMethod.GET)
+	public String racingEntryDetail(Locale locale, HttpServletRequest request,Model model){
+		logger.info("출전등록현황 상세보기", locale);
+		int re_meet = Integer.parseInt(request.getParameter("re_meet"));
+		int re_pgDate = Integer.parseInt(request.getParameter("re_pgDate"));
+		int re_pgNo = Integer.parseInt(request.getParameter("re_pgNo"));
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("re_meet", re_meet);
+		map.put("re_pgDate", re_pgDate);
+		map.put("re_pgNo",re_pgNo);
+		RaceEntryDto reDto = raceEntryService.getDetail(map);
+		List<RaceEntryDto> list = raceEntryService.getDetailList(map);
+		model.addAttribute("list", list);
+		model.addAttribute("re_meet", re_meet);
+		model.addAttribute("reDto", reDto);
+		return "HorseInfo/RacingEntryDetail";		
 	}
 }
