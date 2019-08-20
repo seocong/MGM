@@ -7,8 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.MonthlyPrizeDto;
 import com.gam.mgm.dto.OwnerDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 @Repository
 public class OwnerDao implements IOwnerDao{
@@ -37,6 +38,16 @@ public class OwnerDao implements IOwnerDao{
 	@Override
 	public OwnerDto getOwner(Map<String, Object> map) {
 		return sqlSession.selectOne(namespace+"getowner",map);
+	}
+
+	@Override
+	public MonthlyPrizeDto monthlyPrize(String hr_no) {
+		return sqlSession.selectOne(namespace+"monthlyPrize",hr_no);
+	}
+	
+	@Override
+	public List<RecordInfoDto> recordInfo(String ow_no) {
+		return sqlSession.selectList(namespace+"recordInfo",ow_no);
 	}
 
 }

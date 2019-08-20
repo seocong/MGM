@@ -3,8 +3,9 @@ package com.gam.mgm.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.MonthlyPrizeDto;
 import com.gam.mgm.dto.OwnerDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IOwnerDao {
 	public boolean owInsert(OwnerDto ownerDto);
@@ -14,4 +15,8 @@ public interface IOwnerDao {
 	public List<OwnerDto> getAllList(int ow_meet);
 
 	public OwnerDto getOwner(Map<String, Object> map);
+	
+	public MonthlyPrizeDto monthlyPrize(String hr_no);
+	
+	public List<RecordInfoDto> recordInfo(String ow_no);
 }

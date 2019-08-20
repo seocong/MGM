@@ -108,6 +108,6 @@
 	</select>
 	
 	<select id="getownerlist" parameterType="Map" resultType="HorsesDto">
-		select hr_htName,hr_rank,hr_name,hr_sex,hr_age,hr_trName,debut,hr_part,hr_meet from horses where hr_owName = #{ow_name} AND hr_meet = #{ow_meet}
+		select hr_no,hr_htName,hr_rank,hr_name,hr_sex,hr_age,hr_trName,debut,hr_part,hr_meet from horses where hr_owName = #{ow_name} AND hr_meet = #{ow_meet}
 	</select>
 </mapper>

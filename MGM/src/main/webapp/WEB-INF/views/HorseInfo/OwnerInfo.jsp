@@ -255,9 +255,9 @@
 																	<td style="text-align: center;">${owDto.ow_cancledHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_stDate}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntY}전(?/?/?)</td>
+																	<td style="text-align: center;">${owDto.ow_rcCntY}전(${owDto.ow_ord1CntY}/${owDto.ow_ord2CntY}/${owDto.ow_ord3CntY})</td>
 																	<td style="text-align: center;"><fmt:formatNumber value="${owDto.ow_chaksunY}" pattern="#,###.##"/></td>
-																	<td style="text-align: center;">${owDto.ow_rcCntT}전(?/?/?)</td>
+																	<td style="text-align: center;">${owDto.ow_rcCntT}전(${owDto.ow_ord1CntT}/${owDto.ow_ord2CntT}/${owDto.ow_ord3CntT})</td>
 																	<td style="text-align: center;"><fmt:formatNumber value="${owDto.ow_chaksunT}" pattern="#,###.##"/></td>																
 																</tr>
 																</c:forEach>

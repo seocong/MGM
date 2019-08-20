@@ -290,32 +290,29 @@
 								
 								<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 										<span class="text-dark"><i class="icon-trophy"></i></span>
-										대상경주 우승전적
+										월별 순위 상금
 									</h4>								
 									<table class="table table-bordered tableColor">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
-											<th width="33%">경주일자</th>
-											<th width="33%">대상경주명</th>
-											<th width="33%">마명</th>
+											<th width="15%" rowspan="2" style="vertical-align: middle;">마명</th>
+											<th width="85%" colspan="6" >상금 (단위: 천원)</th>
 											</tr>
+										<tr class="titleColor" id="sixMonth" class="titleColor"  style="text-align: center; font-weight: bold;">
+										</tr>
 										</thead>
 										<tbody>
-											<c:choose>
-									<c:when test="${empty list}">
-										<tr><td colspan = "3">---경주 내역이 없습니다.---</td></tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="list">
-													<tr>
-														<td></td>
-														<td></td>
-														<td></td>														
-													</tr>
-												</c:forEach>
-												
-											</c:otherwise>
-											</c:choose>
+											<c:forEach items="${monthlyPrize}" var="result" varStatus="status">
+											<tr>
+												<td style="font-weight: bold;">${result.hrName}</td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result1}</c:otherwise></c:choose></fmt:formatNumber></td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result2}</c:otherwise></c:choose></fmt:formatNumber></td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result3}</c:otherwise></c:choose></fmt:formatNumber></td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result4}</c:otherwise></c:choose></fmt:formatNumber></td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result5}</c:otherwise></c:choose></fmt:formatNumber></td>
+												<td><fmt:formatNumber type="number"><c:choose><c:when test="${empty result.result1}">0</c:when><c:otherwise>${result.result6}</c:otherwise></c:choose></fmt:formatNumber></td>
+											</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -327,35 +324,33 @@
 									<table class="table table-bordered tableColor">
 										<thead>
 										<tr class="titleColor"  style="text-align: center;">
-											<th width="12%">경주일자</th>
+											<th width="15%">경주일자</th>
 											<th width="6%">마번</th>
 											<th width="12%">마명</th>
 											<th width="10%">조교사명</th>
-											<th width="6%">격</th>
 											<th width="10%">등급</th>
-											<th width="12%">순위</th>
+											<th width="6%">순위</th>
 											<th width="6%">중량</th>
 											<th width="6%">거리</th>
 											<th width="6%">기록</th>
-											<th width="6%">도착차</th>
-											<th width="8%">마체중</th>
+											<th width="7%">도착차</th>
+											<th width="7%">마체중</th>
 											</tr>
 										</thead>
 										<tbody>
-										<c:forEach items="${racelist}" var="racelist">
+										<c:forEach items="${recordInfo}" var="recordInfo">
 													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>														
-														<td></td>														
-														<td></td>														
-														<td></td>
-														<td></td>														
-														<td></td>														
-														<td></td>														
+														<td><fmt:formatDate value="${recordInfo.rcDate}" pattern="yyyy-MM-dd"/> /${recordInfo.rcNo}R</td>
+														<td>${recordInfo.hrNo}</td>
+														<td>${recordInfo.hrName}</td>
+														<td>${recordInfo.trName}</td>
+														<td>${recordInfo.ranks}</td>
+														<td>${recordInfo.ord}/${recordInfo.hrCount}</td>
+														<td>${recordInfo.wgHr}</td>														
+														<td>${recordInfo.rcDist}</td>														
+														<td>${recordInfo.rcTime}</td>														
+														<td>${recordInfo.diffUnit}</td>
+														<td>${recordInfo.wgBudam}</td>														
 													</tr>
 												</c:forEach>												
 										</tbody>
@@ -433,6 +428,9 @@
 
 	<!-- ADD-ONS JS FILES -->
 	<script>
+	var today = new Date();
+	var mm = today.getMonth()+1;//8
+	var yyyy = today.getFullYear();	
 	$(function() {
 		var ow_no = $("#owimg").attr("data-owno");
 		var ow_meet = $("#ow_meet").attr("data-ow_meet");
@@ -452,9 +450,16 @@
 			$(".titleColor").css("background-color","#e9f3d9");
 			$(".tableColor").css("border-top","solid #5a9e01 3px");
 		}	
+		
+		for(var i=0;i<6;i++){
+			mm2=mm-i;
+			if(mm2<10){
+				mm2='0'+mm2;
+			}
+			$('#sixMonth').append('<td>'+yyyy+'.'+mm2+'</td>');
+		}
 	});
-
-		</script>
+	</script>
 		
  	
 	</body>

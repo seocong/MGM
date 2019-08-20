@@ -581,105 +581,7 @@ public class MgrRaceController {
 		return "forward:/adminPage.do";
 	}
 
-	// 경주기록 등록
-	@RequestMapping(value = "/rcResultInput.do", method = RequestMethod.GET)
-	public String rcResultInput(Model model) {
-		RaceResultDto raceRsDto = new RaceResultDto();
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, -5);
-		int month = cal.get(Calendar.MONTH) + 1;
-		int beforeMonth = Integer.parseInt(fmt.format(cal.getTime()));
-		System.out.println(month);
-		System.out.println(beforeMonth);
-		long start = System.currentTimeMillis();
-		URI url2 = null;
-		AA: for (int meet = 1; meet <= 3; meet++) {
-			boolean loop = true;
-			int pageNo = 1;
-			BB: while (true) {
-				try {
-					StringBuilder builder = new StringBuilder("http://apis.data.go.kr/B551015/API4/raceResult");
-					builder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "="
-							+ "emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
-					builder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
-					builder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
-					builder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
-					url2 = new URI(builder.toString());
-				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (URISyntaxException uriE) {
-					uriE.printStackTrace();
-				}
-				System.out.println(url2);
-				RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-				RaceResultVo rcResult = restTemplate.getForObject(url2, RaceResultVo.class);
-				RaceResultVo.Header result = rcResult.getHeader();
-				if (result.getResultCode() != 0) {
-					System.out.println("result Code: " + result.getResultCode());
-					System.out.println("result Message: " + result.getResultMsg());
-					System.out.println("{RaceSchedule Info error}");
-					break AA;
-				} else {
-					List<RaceResultVo.Body.Item> resultList = rcResult.getBody().getItems();
-					for (RaceResultVo.Body.Item item : resultList) {
-						int date = Integer.parseInt(item.getRcDate());
-						if (date > beforeMonth) {
-							raceRsDto.setRr_meet(meet);
-							try {
-								raceRsDto.setRr_rcDate(fmt.parse(item.getRcDate()));
-							} catch (ParseException e) {
-								System.out.println("raceResult parseException!!!!!");
-								e.printStackTrace();
-							}
-							raceRsDto.setRr_rcNo(item.getRcNo());
-							raceRsDto.setRr_hrNo(item.getHrNo());
-							raceRsDto.setRr_hrName(item.getHrName());
-							raceRsDto.setRr_ord(item.getOrd());
-							raceRsDto.setRr_chulNo(item.getChulNo());
-							raceRsDto.setRr_wgBudam(item.getWgBudam());
-							raceRsDto.setRr_wgHr(item.getWgHr());
-							raceRsDto.setRr_rcTime(Util.time(item.getRcTime()));
-							raceRsDto.setRr_diffUnit(item.getDiffUnit());
-							raceRsDto.setRr_ordS1f(item.getOrdS1f());
-							raceRsDto.setRr_g8f_1c(item.getG8f_1c());
-							raceRsDto.setRr_g6f_2c(item.getG6f_2c());
-							raceRsDto.setRr_g4f_3c(item.getG4f_3c());
-							raceRsDto.setRr_g3f_4c(item.getG3f_4c());
-							raceRsDto.setRr_g2f(item.getG2f());
-							raceRsDto.setRr_ordG1f(item.getOrdG1f());
-							raceRsDto.setRr_rcTimeS1f(Util.time(item.getRcTimeS1f()));
-							raceRsDto.setRr_rcTime_1c(Util.time(item.getRcTime_1c()));
-							raceRsDto.setRr_rcTime_2c(Util.time(item.getRcTime_2c()));
-							raceRsDto.setRr_rcTime_3c(Util.time(item.getRcTime_3c()));
-							raceRsDto.setRr_rcTime_4c(Util.time(item.getRcTime_4c()));
-							raceRsDto.setRr_rcTimeG3f(Util.time(item.getRcTimeG3f()));
-							raceRsDto.setRr_rcTimeG2f(Util.time(item.getRcTimeG2f()));
-							raceRsDto.setRr_rcTimeG1f(Util.time(item.getRcTimeG1f()));
-							raceRsDto.setRr_winOdds(item.getWinOdds());
-							raceRsDto.setRr_plcOdds(item.getPlcOdds());
-							raceRsDto.setRr_trName(item.getTrName());
-							raceRsDto.setRr_owName(item.getOwName());
-							raceRsDto.setRr_jkName(item.getJkName());
-							raceRsDto.setRr_rating(item.getRating());
-							raceRsDto.setRr_trNo(item.getTrNo());
-							raceRsDto.setRr_jkNo(item.getJkNo());
-							raceRsDto.setRr_owNo(item.getOwNo());
-							raceService.raceResultInput(raceRsDto);
-						} else {
-							break BB;
-						}
-					}
-				}
-				pageNo++;
-			}
-		}
-		long end = System.currentTimeMillis();
-		System.out.println("시간: " + ((end - start) / 1000) + "초");
-		model.addAttribute("msg", "메소드 종료");
-		return "forward:/adminPage.do";
-	}
+
 
 	// 경주마 등록
 	@RequestMapping(value = "hrInset.do", method = RequestMethod.GET)
@@ -716,7 +618,7 @@ public class MgrRaceController {
 			db[0] = "cdb1";
 		}
 		String[] link = new String[3];
-		link[0] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/horse/20190801sdb1.txt";
+		link[0] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/seoul/horse/20190818sdb1.txt";
 		link[1] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/jeju/horse/20190731cdb1.txt";
 		link[2] = "http://race.kra.co.kr/dbdata/fileDownLoad.do?fn=internet/busan/horse/20190731pdb1.txt";
 		for (int i = 0; i < link.length; i++) {
@@ -782,7 +684,117 @@ public class MgrRaceController {
 		model.addAttribute("msg", "메소드 종료");
 		return "forward:/adminPage.do";
 	}
-
+	// 경주기록 등록
+	@RequestMapping(value = "/rcResultInput.do", method = RequestMethod.GET)
+	public String rcResultInput(Model model) {
+		RaceResultDto raceRsDto = new RaceResultDto();
+		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		List<Integer> year = new ArrayList<Integer>();
+		year.add(cal.get(Calendar.YEAR));
+		cal.add(Calendar.YEAR,-1);
+		year.add(cal.get(Calendar.YEAR));
+		int beforeMonth = Integer.parseInt(fmt.format(cal.getTime()));
+		long start = System.currentTimeMillis();
+		URI url2 = null;
+		AA: for (int meet = 1; meet <= 3; meet++) {
+			boolean loop = true;
+			int pageNo = 1;
+			for(int yearLoop:year){
+				BB: while (true) {
+					long start2 = System.currentTimeMillis();
+					try {
+						StringBuilder builder = new StringBuilder("http://apis.data.go.kr/B551015/API4/raceResult");
+						builder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "="
+								+ "emflkTpia4VRlESSmKr8tGZbjCeJO%2Fn2263wtUm6OFA%2FTkX06rfsrQOR%2Bu5aECgJ%2B%2BciVWIRU5EaZG1kRFJfoQ%3D%3D");
+						builder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + pageNo);
+						builder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + "999");
+						builder.append("&" + URLEncoder.encode("meet", "UTF-8") + "=" + meet);
+						builder.append("&" + URLEncoder.encode("rc_year", "UTF-8") + "=" + yearLoop);
+						url2 = new URI(builder.toString());
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (URISyntaxException uriE) {
+						uriE.printStackTrace();
+					}
+					System.out.println(url2);
+					RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+					RaceResultVo rcResult = restTemplate.getForObject(url2, RaceResultVo.class);
+					RaceResultVo.Header result = rcResult.getHeader();
+					if (result.getResultCode() != 0) {
+						System.out.println("result Code: " + result.getResultCode());
+						System.out.println("result Message: " + result.getResultMsg());
+						System.out.println("{RaceSchedule Info error}");
+						break AA;
+					} else {
+						List<RaceResultVo.Body.Item> resultList = rcResult.getBody().getItems();
+						if(resultList.size()!=0){
+							for (RaceResultVo.Body.Item item : resultList) {
+								int date = Integer.parseInt(item.getRcDate());
+								if (date >= beforeMonth) {
+									raceRsDto.setRr_meet(meet);
+									try {
+										raceRsDto.setRr_rcDate(fmt.parse(item.getRcDate()));
+									} catch (ParseException e) {
+										System.out.println("raceResult parseException!!!!!");
+										e.printStackTrace();
+									}
+									raceRsDto.setRr_rcNo(item.getRcNo());
+									raceRsDto.setRr_hrNo(item.getHrNo());
+									raceRsDto.setRr_hrName(item.getHrName());
+									raceRsDto.setRr_ord(item.getOrd());
+									raceRsDto.setRr_chulNo(item.getChulNo());
+									raceRsDto.setRr_wgBudam(item.getWgBudam());
+									raceRsDto.setRr_wgHr(item.getWgHr());
+									raceRsDto.setRr_rcTime(Util.time(item.getRcTime()));
+									raceRsDto.setRr_diffUnit(item.getDiffUnit());
+									raceRsDto.setRr_ordS1f(item.getOrdS1f());
+									raceRsDto.setRr_g8f_1c(item.getG8f_1c());
+									raceRsDto.setRr_g6f_2c(item.getG6f_2c());
+									raceRsDto.setRr_g4f_3c(item.getG4f_3c());
+									raceRsDto.setRr_g3f_4c(item.getG3f_4c());
+									raceRsDto.setRr_g2f(item.getG2f());
+									raceRsDto.setRr_ordG1f(item.getOrdG1f());
+									raceRsDto.setRr_rcTimeS1f(Util.time(item.getRcTimeS1f()));
+									raceRsDto.setRr_rcTime_1c(Util.time(item.getRcTime_1c()));
+									raceRsDto.setRr_rcTime_2c(Util.time(item.getRcTime_2c()));
+									raceRsDto.setRr_rcTime_3c(Util.time(item.getRcTime_3c()));
+									raceRsDto.setRr_rcTime_4c(Util.time(item.getRcTime_4c()));
+									raceRsDto.setRr_rcTimeG3f(Util.time(item.getRcTimeG3f()));
+									raceRsDto.setRr_rcTimeG2f(Util.time(item.getRcTimeG2f()));
+									raceRsDto.setRr_rcTimeG1f(Util.time(item.getRcTimeG1f()));
+									raceRsDto.setRr_winOdds(item.getWinOdds());
+									raceRsDto.setRr_plcOdds(item.getPlcOdds());
+									raceRsDto.setRr_trName(item.getTrName());
+									raceRsDto.setRr_owName(item.getOwName());
+									raceRsDto.setRr_jkName(item.getJkName());
+									raceRsDto.setRr_rating(item.getRating());
+									raceRsDto.setRr_trNo(item.getTrNo());
+									raceRsDto.setRr_jkNo(item.getJkNo());
+									raceRsDto.setRr_owNo(item.getOwNo());
+									raceService.raceResultInput(raceRsDto);
+								} else {
+									break BB;
+								}
+							}
+							pageNo++;
+						}else {
+							System.out.println("불러올 정보가 없습니다.");
+							pageNo=1;
+							break BB;
+						}
+					}
+					long end2 = System.currentTimeMillis();
+					System.out.println("시간: " + ((end2 - start2) / 1000) + "초");
+				}
+			}
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("시간: " + ((end - start) / 1000) + "초");
+		model.addAttribute("msg", "메소드 종료");
+		return "forward:/adminPage.do";
+	}
 	// 경주 개요 등록
 	@RequestMapping(value = "/raceInfo.do", method = RequestMethod.GET)
 	public String raceInfo(Model model) {
@@ -832,6 +844,7 @@ public class MgrRaceController {
 						if (resultList.size() != 0) {
 							for (RaceInfoVo.Body.Item item : resultList) {
 								if (Integer.parseInt(item.getRcDate()) >= beforeMonth) {
+
 									RaceInfoDto rcInfoDto = new RaceInfoDto();
 									rcInfoDto.setRi_meet(meet);
 									try {

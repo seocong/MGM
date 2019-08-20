@@ -22,18 +22,20 @@ public class RecordInfoDto {
 	private String rcName;
 	private int ord;
 	private int hrCount;
-	private double rcTime;
+	private String rcTime;
 	private String wgHr;
 	private int rating;
 	private String track;
 	private double wgBudam;
+	private String diffUnit;
 	public RecordInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RecordInfoDto(String jkName, String jkNo, String owName, String owNo, String trName, String trNo,
 			String hrName, String hrNo, Date rcDate, int rcNo, int meet, String ranks, int rcDist, String rcName,
-			int ord, int hrCount, double rcTime, String wgHr, int rating, String track, double wgBudam) {
+			int ord, int hrCount, String rcTime, String wgHr, int rating, String track, double wgBudam,
+			String diffUnit) {
 		super();
 		this.jkName = jkName;
 		this.jkNo = jkNo;
@@ -56,6 +58,7 @@ public class RecordInfoDto {
 		this.rating = rating;
 		this.track = track;
 		this.wgBudam = wgBudam;
+		this.diffUnit = diffUnit;
 	}
 	@Override
 	public String toString() {
@@ -63,7 +66,7 @@ public class RecordInfoDto {
 				+ ", trName=" + trName + ", trNo=" + trNo + ", hrName=" + hrName + ", hrNo=" + hrNo + ", rcDate="
 				+ rcDate + ", rcNo=" + rcNo + ", meet=" + meet + ", ranks=" + ranks + ", rcDist=" + rcDist + ", rcName="
 				+ rcName + ", ord=" + ord + ", hrCount=" + hrCount + ", rcTime=" + rcTime + ", wgHr=" + wgHr
-				+ ", rating=" + rating + ", track=" + track + ", wgBudam=" + wgBudam + "]";
+				+ ", rating=" + rating + ", track=" + track + ", wgBudam=" + wgBudam + ", diffUnit=" + diffUnit + "]";
 	}
 	public String getJkName() {
 		return jkName;
@@ -161,10 +164,10 @@ public class RecordInfoDto {
 	public void setHrCount(int hrCount) {
 		this.hrCount = hrCount;
 	}
-	public double getRcTime() {
+	public String getRcTime() {
 		return rcTime;
 	}
-	public void setRcTime(double rcTime) {
+	public void setRcTime(String rcTime) {
 		this.rcTime = rcTime;
 	}
 	public String getWgHr() {
@@ -191,5 +194,11 @@ public class RecordInfoDto {
 	public void setWgBudam(double wgBudam) {
 		this.wgBudam = wgBudam;
 	}
-		
+	public String getDiffUnit() {
+		return diffUnit;
+	}
+	public void setDiffUnit(String diffUnit) {
+		this.diffUnit = diffUnit;
+	}
+			
 }

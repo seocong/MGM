@@ -4,21 +4,163 @@
 
 <mapper namespace="com.gam.owner">
 	<insert id="owinsert" parameterType="OwnerDto">
-		INSERT INTO OWNER 
-		(OW_NO, OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE, OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT, OW_CHAKSUNT,OW_MEET,OW_ORD1CNTT,OW_ORD2CNTT,OW_ORD3CNTT,OW_ORD1CNTY,OW_ORD2CNTY,OW_ORD3CNTY)
+		INSERT INTO OWNER
+		(OW_NO, OW_NAME, OW_TOTHORSES, OW_CANCLEDHORSES, OW_NOWHORSES, OW_STDATE,
+		OW_RCCNTY, OW_CHAKSUNY,OW_RCCNTT,
+		OW_CHAKSUNT,OW_MEET,OW_ORD1CNTT,OW_ORD2CNTT,OW_ORD3CNTT,OW_ORD1CNTY,OW_ORD2CNTY,OW_ORD3CNTY)
 		VALUES
 		(#{ow_no},#{ow_name},#{ow_totHorses},#{ow_cancledHorses},#{ow_nowHorses},#{ow_stDate},#{ow_rcCntY},#{ow_chaksunY},#{ow_rcCntT},#{ow_chaksunT},#{ow_meet},#{ow_ord1CntT},#{ow_ord2CntT},#{ow_ord3CntT},
 		#{ow_ord1CntY},#{ow_ord2CntY},#{ow_ord3CntY}
 		)
 	</insert>
 	<delete id="owdel" parameterType="int">
-		DELETE FROM OWNER WHERE OW_MEET = #{ow_meet}
+		DELETE FROM OWNER WHERE OW_MEET
+		= #{ow_meet}
 	</delete>
-	
+
 	<select id="getList" parameterType="int" resultType="OwnerDto">
-		select ow_no,ow_name,ow_totHorses,ow_cancledHorses,ow_nowHorses,ow_stDate,ow_rcCntT,ow_rcCntY,ow_chaksunY,ow_chaksunT,ow_meet from owner where ow_meet=#{ow_meet}
+		select
+		ow_no,ow_name,ow_totHorses,ow_cancledHorses,ow_nowHorses,ow_stDate,ow_rcCntT,ow_rcCntY,ow_chaksunY,ow_chaksunT,ow_meet,
+		ow_ord1CntT,ow_ord2CntT,ow_ord3CntT,ow_ord1CntY,ow_ord2CntY,ow_ord3CntY
+		from owner where ow_meet=#{ow_meet}
 	</select>
 	<select id="getowner" parameterType="Map" resultType="OwnerDto">
-		select ow_no,ow_name,ow_stDate,ow_nowHorses,ow_meet from owner where ow_no=#{ow_no} and ow_meet=#{ow_meet}
+		select
+		ow_no,ow_name,ow_stDate,ow_nowHorses,ow_meet from owner where
+		ow_no=#{ow_no} and ow_meet=#{ow_meet}
+	</select>
+	<!-- 6개월 월별 착순상금 -->
+	<select id="monthlyPrize" parameterType="String" resultType="MonthlyPrizeDto">
+	<![CDATA[
+	select
+	if(result1 is null,0,result1) as result1,
+	if(result2 is null,0,result2) as result2,
+	if(result3 is null,0,result3) as result3,
+	if(result4 is null,0,result4) as result4,
+	if(result5 is null,0,result5) as result5,
+	if(result6 is null,0,result6) as result6
+	from
+	(select
+	(SELECT
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE1
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval 0 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result1
+	,
+	(SELECT
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE2
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval -1 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result2
+	,
+	(select
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE3
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval -2 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result3
+	,
+	(SELECT
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE4
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval -3 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result4
+	,
+	(SELECT
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE5
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval -4 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result5
+	,
+	(SELECT
+	sum(
+	IF(RACE_RESULT.RR_ORD=1,RACE_INFO.RI_CHAKSUN1,
+	IF(RACE_RESULT.RR_ORD=2,RACE_INFO.RI_CHAKSUN2,
+	IF(RACE_RESULT.RR_ORD=3,RACE_INFO.RI_CHAKSUN3,
+	IF(RACE_RESULT.RR_ORD=4,RACE_INFO.RI_CHAKSUN4,
+	IF(RACE_RESULT.RR_ORD=5,RACE_INFO.RI_CHAKSUN5,0))))))
+	AS WINPRIZE6
+	FROM RACE_INFO AS RACE_INFO
+	JOIN
+	(SELECT RR_HRNAME,RR_RCDATE,RR_RCNO, RR_ORD,RR_MEET FROM RACE_RESULT WHERE
+	RR_HRNO = #{hr_no} AND RR_ORD<=5 AND date_format(RR_RCDATE,'%y%m') =
+	date_format(date_add(now(),interval -5 month),'%y%m')) AS RACE_RESULT
+	ON RACE_INFO.RI_RCDATE = RACE_RESULT.RR_RCDATE AND RACE_INFO.RI_RCNO =
+	RACE_RESULT.RR_RCNO WHERE RACE_INFO.RI_MEET = RACE_RESULT.rr_meet) as
+	result6
+	from dual) as resultTable
+	]]>
+	</select>
+	
+	<select id="recordInfo" resultType="RecordInfoDto" parameterType="String">
+		SELECT
+		*,
+		(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND
+		RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
+		AS HRCOUNT
+		FROM(
+		SELECT RR.RR_TRNAME AS TRNAME,RR.RR_TRNO AS TRNO,
+		RR.RR_HRNAME AS HRNAME,RR.RR_HRNO AS HRNO,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO,
+		RI.RI_MEET AS MEET,
+		RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RR.RR_ORD AS ORD, RR.RR_WGHR AS WGHR,RR.RR_DIFFUNIT AS DIFFUNIT,RR.RR_RCTIME AS RCTIME, RR.RR_WGBUDAM AS WGBUDAM
+		FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
+		ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND
+		RI.RI_MEET
+		= RR.RR_MEET
+		WHERE RR.rr_owno =#{ow_no}) AS RS ORDER BY RS.RCDATE DESC
 	</select>
 </mapper>

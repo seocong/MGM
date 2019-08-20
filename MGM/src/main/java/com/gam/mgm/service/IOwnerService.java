@@ -3,7 +3,9 @@ package com.gam.mgm.service;
 import java.util.List;
 import java.util.Map;
 
+import com.gam.mgm.dto.MonthlyPrizeDto;
 import com.gam.mgm.dto.OwnerDto;
+import com.gam.mgm.dto.RecordInfoDto;
 
 public interface IOwnerService {
 	
@@ -14,4 +16,8 @@ public interface IOwnerService {
 	public List<OwnerDto> getAllList(int ow_meet);
 
 	public OwnerDto getOwner(Map<String, Object> map);
+	
+	public MonthlyPrizeDto monthlyPrize(String hr_no);
+	
+	public List<RecordInfoDto> recordInfo(String ow_no);
 }

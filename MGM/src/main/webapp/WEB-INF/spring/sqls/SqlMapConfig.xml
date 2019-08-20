@@ -29,6 +29,7 @@
  		<typeAlias type="com.gam.mgm.vo.RaceSectionRecordVo" alias="RaceSectionRecordVo" />
  		<typeAlias type="com.gam.mgm.vo.RaceRefreeVo" alias="RaceRefreeVo" />
  		<typeAlias type="com.gam.mgm.dto.RaceRefreeDto" alias="RaceRefreeDto" />
+ 		<typeAlias type="com.gam.mgm.dto.MonthlyPrizeDto" alias="MonthlyPrizeDto" />
      </typeAliases>
      
   <mappers>

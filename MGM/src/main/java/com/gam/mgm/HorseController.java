@@ -2,6 +2,9 @@ package com.gam.mgm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +24,7 @@ import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
+import com.gam.mgm.dto.MonthlyPrizeDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceEntryDto;
 import com.gam.mgm.dto.RaceInfoDto;
@@ -274,9 +278,21 @@ public class HorseController {
 		String ow_name=owDto.getOw_name();
 		map.put("ow_name",ow_name);
 		List<HorsesDto> hrDto = horsesService.getOwnerList(map);
+		List<MonthlyPrizeDto> mothylPrizeList = new ArrayList<MonthlyPrizeDto>();
+		for(HorsesDto loop:hrDto) {
+			System.out.println("말번호: "+loop.getHr_no());
+			MonthlyPrizeDto monthlyPrize = ownerService.monthlyPrize(loop.getHr_no());
+			System.out.println(monthlyPrize);
+			monthlyPrize.setHrNo(loop.getHr_no());
+			monthlyPrize.setHrName(loop.getHr_htName());
+			mothylPrizeList.add(monthlyPrize);
+		}
+		List<RecordInfoDto> recordInfo = ownerService.recordInfo(request.getParameter("ow_no"));
 		model.addAttribute("owDto", owDto);
 		model.addAttribute("ow_meet", ow_meet);
 		model.addAttribute("hrDto", hrDto);
+		model.addAttribute("monthlyPrize",mothylPrizeList);
+		model.addAttribute("recordInfo",recordInfo);
 		//대상경주,최근경주성적
 		return "HorseInfo/OwnerDetail";
 		}
