@@ -113,7 +113,7 @@ public class Util {
 	public static String round(int x,int y){
 		
 		double total =  ((double)x/(double)y)*100;
-		String val = String.format("%.2f", total);
+		String val = String.format("%.1f", total);
 		val=val+"%";
 		return val;
 		
@@ -144,7 +144,15 @@ public class Util {
 		}
 		return null;
 	}
-	
+	public static double getBackTime(String time) {
+		String[] splitTime = time.split(":");
+		double min = Double.parseDouble(splitTime[0])*60;
+//		System.out.println("min: "+min);
+		double sec = Double.parseDouble(splitTime[1]);
+//		System.out.println("sec: " + sec);
+		double getBackTime = min+sec;
+		return getBackTime;
+	}
 	//String date로 변환
 	public static Date parse(String date) {
 		SimpleDateFormat parse = new SimpleDateFormat("yyyyMMdd");

@@ -3,6 +3,8 @@ package com.gam.mgm.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.gam.mgm.dto.DistRecordDto;
+import com.gam.mgm.dto.HorsePrizeDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.RecordInfoDto;
@@ -32,6 +34,15 @@ public interface IHorsesDao {
 
 	public List<HorsesDto> getOwnerList(Map<String, Object> map);
 	
+	public List<RecordInfoDto> recordInfo(String hrno);
 	
-	public List<RecordInfoDto> recordInfo(int hrno);
+	public HorsePrizeDto getPrize(String hr_no);
+	
+	public List<DistRecordDto> distRecord(String hr_no);
+	
+	public List<DistRecordDto> chulNoRecord(String hr_no);
+	
+	public List<DistRecordDto> jkRecord(String hr_no);
+	
+	public List<DistRecordDto> wgBudamRecord(String hr_no);
 }

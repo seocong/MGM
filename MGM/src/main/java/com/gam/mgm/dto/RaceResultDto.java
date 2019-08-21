@@ -12,7 +12,7 @@ public class RaceResultDto {
 	private int rr_chulNo;  
 	private String rr_wgBudam;  
 	private String rr_wgHr;  
-	private String rr_rcTime;  
+	private double rr_rcTime;  
 	private String rr_diffUnit;  
 	private int rr_ordS1f;  
 	private int rr_g8f_1c;  
@@ -46,7 +46,7 @@ public class RaceResultDto {
 		// TODO Auto-generated constructor stub
 	}
 	public RaceResultDto(int rr_meet, Date rr_rcDate, int rr_rcNo, String rr_hrNo, String rr_hrName, int rr_ord,
-			int rr_chulNo, String rr_wgBudam, String rr_wgHr, String rr_rcTime, String rr_diffUnit, int rr_ordS1f,
+			int rr_chulNo, String rr_wgBudam, String rr_wgHr, double rr_rcTime, String rr_diffUnit, int rr_ordS1f,
 			int rr_g8f_1c, int rr_g6f_2c, int rr_g4f_3c, int rr_g3f_4c, int rr_g2f, int rr_ordG1f, String rr_rcTimeS1f,
 			String rr_rcTime_1c, String rr_rcTime_2c, String rr_rcTime_3c, String rr_rcTime_4c, String rr_rcTimeG3f,
 			String rr_rcTimeG2f, String rr_rcTimeG1f, double rr_winOdds, double rr_plcOdds, String rr_trName,
@@ -177,10 +177,10 @@ public class RaceResultDto {
 	public void setRr_wgHr(String rr_wgHr) {
 		this.rr_wgHr = rr_wgHr;
 	}
-	public String getRr_rcTime() {
+	public double getRr_rcTime() {
 		return rr_rcTime;
 	}
-	public void setRr_rcTime(String rr_rcTime) {
+	public void setRr_rcTime(double rr_rcTime) {
 		this.rr_rcTime = rr_rcTime;
 	}
 	public String getRr_diffUnit() {

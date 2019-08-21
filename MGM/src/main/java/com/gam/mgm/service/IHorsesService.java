@@ -3,13 +3,11 @@ package com.gam.mgm.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.gam.mgm.dao.IHorsesDao;
+import com.gam.mgm.dto.DistRecordDto;
+import com.gam.mgm.dto.HorsePrizeDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.RecordInfoDto;
-import com.gam.mgm.dto.TrainerDto;
 
 public interface IHorsesService {
 	
@@ -37,5 +35,15 @@ public interface IHorsesService {
 
 	public List<HorsesDto> getOwnerList(Map<String, Object> map);
 	
-	public List<RecordInfoDto> recordInfo(int hrno);
+	public List<RecordInfoDto> recordInfo(String hrno);
+	
+	public HorsePrizeDto getPrize(String hr_no);
+	
+	public List<DistRecordDto> distRecord(String hr_no);
+	
+	public List<DistRecordDto> chulNoRecord(String hr_no);
+	
+	public List<DistRecordDto> jkRecord(String hr_no);
+	
+	public List<DistRecordDto> wgBudamRecord(String hr_no);
 }

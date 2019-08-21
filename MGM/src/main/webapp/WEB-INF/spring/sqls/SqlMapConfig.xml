@@ -30,6 +30,8 @@
  		<typeAlias type="com.gam.mgm.vo.RaceRefreeVo" alias="RaceRefreeVo" />
  		<typeAlias type="com.gam.mgm.dto.RaceRefreeDto" alias="RaceRefreeDto" />
  		<typeAlias type="com.gam.mgm.dto.MonthlyPrizeDto" alias="MonthlyPrizeDto" />
+ 		<typeAlias type="com.gam.mgm.dto.HorsePrizeDto" alias="HorsePrizeDto" />
+ 		<typeAlias type="com.gam.mgm.dto.DistRecordDto" alias="DistRecordDto" />
      </typeAliases>
      
   <mappers>

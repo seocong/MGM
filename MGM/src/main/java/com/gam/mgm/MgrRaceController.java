@@ -515,7 +515,7 @@ public class MgrRaceController {
 		model.addAttribute("msg", "메소드 종료");
 		return "forward:/adminPage.do";
 	}
-
+	
 	// 마주 등록
 	@RequestMapping(value = "/owInput.do", method = RequestMethod.GET)
 	public String owInput(Model model) {
@@ -747,7 +747,7 @@ public class MgrRaceController {
 									raceRsDto.setRr_chulNo(item.getChulNo());
 									raceRsDto.setRr_wgBudam(item.getWgBudam());
 									raceRsDto.setRr_wgHr(item.getWgHr());
-									raceRsDto.setRr_rcTime(Util.time(item.getRcTime()));
+									raceRsDto.setRr_rcTime(item.getRcTime());
 									raceRsDto.setRr_diffUnit(item.getDiffUnit());
 									raceRsDto.setRr_ordS1f(item.getOrdS1f());
 									raceRsDto.setRr_g8f_1c(item.getG8f_1c());

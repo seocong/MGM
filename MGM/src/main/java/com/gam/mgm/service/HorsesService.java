@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.IHorsesDao;
+import com.gam.mgm.dto.DistRecordDto;
+import com.gam.mgm.dto.HorsePrizeDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.RecordInfoDto;
-import com.gam.mgm.dto.TrainerDto;
 
 @Service
 public class HorsesService implements IHorsesService{
@@ -77,10 +78,33 @@ public class HorsesService implements IHorsesService{
 	}
 
 	@Override
-	public List<RecordInfoDto> recordInfo(int hrno) {
+	public List<RecordInfoDto> recordInfo(String hrno) {
 		return horsesDao.recordInfo(hrno);
 	}
 
-	
+	@Override
+	public HorsePrizeDto getPrize(String hr_no) {
+		return horsesDao.getPrize(hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> distRecord(String hr_no) {
+		return horsesDao.distRecord(hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> chulNoRecord(String hr_no) {
+		return horsesDao.chulNoRecord(hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> jkRecord(String hr_no) {
+		return horsesDao.jkRecord(hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> wgBudamRecord(String hr_no) {
+		return horsesDao.wgBudamRecord(hr_no);
+	}
 
 }

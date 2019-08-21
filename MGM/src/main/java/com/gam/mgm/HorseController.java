@@ -3,9 +3,8 @@ package com.gam.mgm;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -21,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gam.mgm.dto.ChampionDto;
+import com.gam.mgm.dto.DistRecordDto;
+import com.gam.mgm.dto.HorsePrizeDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.JockeyDto;
@@ -247,10 +248,32 @@ public class HorseController {
 		System.out.println("totalWin:"+totalWin);
 		int ord2cntt = hrDto.getHr_ord2CntT();
 		String pass = Util.round(ord1cntt+ord2cntt, rccntt);//복승률 구하기
+		List<RecordInfoDto> recordInfo = horsesService.recordInfo(hrDto.getHr_no()); //경주기록
+		System.out.println("recordInfo: "+recordInfo);
+		HorsePrizeDto prize = horsesService.getPrize(hrDto.getHr_no()); //월별 수득상금
+		List<DistRecordDto> distRecordList = horsesService.distRecord(hrDto.getHr_no());
+		List<DistRecordDto> chulNoRecordList = horsesService.chulNoRecord(hrDto.getHr_no());
+		List<DistRecordDto> wgBudamRecordList = horsesService.wgBudamRecord(hrDto.getHr_no());
+		List<DistRecordDto> jkRecordList = horsesService.jkRecord(hrDto.getHr_no());
+		for(DistRecordDto list:distRecordList) {
+//			System.out.println(list.getOrd1st()+","+list.getOrd2nd()+","+list.getOrd3nd());
+			list.setOdds1(Util.round(list.getOrd1st(),list.getTotalRace()));
+			list.setOdds2(Util.round(list.getOrd1st()+list.getOrd2nd(),list.getTotalRace()));
+			list.setOdds3(Util.round(list.getOrd1st()+list.getOrd2nd()+list.getOrd3nd(),list.getTotalRace()));
+//			System.out.println(list.getOdds1()+","+list.getOdds2()+","+list.getOdds3());
+			list.setRecord(Util.time(Double.parseDouble(list.getRecord())));
+			list.setAvgRecord(Util.time(Double.parseDouble(list.getAvgRecord())));
+		}
 		model.addAttribute("hr_meet", hr_meet);	
 		model.addAttribute("hrDto", hrDto);	
 		model.addAttribute("totalWin",totalWin);
 		model.addAttribute("pass",pass);
+		model.addAttribute("recordInfo",recordInfo);
+		model.addAttribute("prize",prize);
+		model.addAttribute("distRecord",distRecordList);
+		model.addAttribute("chulNoRecord",chulNoRecordList);
+		model.addAttribute("jkNoRecord",jkRecordList);
+		model.addAttribute("wgBudamNoRecord",wgBudamRecordList);
 		return "HorseInfo/HorseDetail";
 	}
 	

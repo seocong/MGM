@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gam.mgm.dto.DistRecordDto;
+import com.gam.mgm.dto.HorsePrizeDto;
 import com.gam.mgm.dto.HorsesDto;
 import com.gam.mgm.dto.HrCountDto;
 import com.gam.mgm.dto.RecordInfoDto;
@@ -81,7 +83,32 @@ public class HorsesDao implements IHorsesDao{
 	}
 	
 	@Override
-	public List<RecordInfoDto> recordInfo(int hrno) {
-		return sqlSession.selectList(namespace+"recordInfo",hrno);
+	public List<RecordInfoDto> recordInfo(String hr_no) {
+		return sqlSession.selectList(namespace+"recordInfo",hr_no);
+	}
+	
+	@Override
+	public HorsePrizeDto getPrize(String hr_no) {
+		return sqlSession.selectOne(namespace+"getPrize",hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> distRecord(String hr_no) {
+		return sqlSession.selectList(namespace+"distRecord",hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> chulNoRecord(String hr_no) {
+		return sqlSession.selectList(namespace+"chulNoRecord",hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> jkRecord(String hr_no) {
+		return sqlSession.selectList(namespace+"jkRecord",hr_no);
+	}
+
+	@Override
+	public List<DistRecordDto> wgBudamRecord(String hr_no) {
+		return sqlSession.selectList(namespace+"wgBudamRecord",hr_no);
 	}
 }

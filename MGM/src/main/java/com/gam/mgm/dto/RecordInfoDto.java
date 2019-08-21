@@ -28,6 +28,7 @@ public class RecordInfoDto {
 	private String track;
 	private double wgBudam;
 	private String diffUnit;
+	private int chulNo;
 	public RecordInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -35,7 +36,7 @@ public class RecordInfoDto {
 	public RecordInfoDto(String jkName, String jkNo, String owName, String owNo, String trName, String trNo,
 			String hrName, String hrNo, Date rcDate, int rcNo, int meet, String ranks, int rcDist, String rcName,
 			int ord, int hrCount, String rcTime, String wgHr, int rating, String track, double wgBudam,
-			String diffUnit) {
+			String diffUnit, int chulNo) {
 		super();
 		this.jkName = jkName;
 		this.jkNo = jkNo;
@@ -59,6 +60,7 @@ public class RecordInfoDto {
 		this.track = track;
 		this.wgBudam = wgBudam;
 		this.diffUnit = diffUnit;
+		this.chulNo = chulNo;
 	}
 	@Override
 	public String toString() {
@@ -66,7 +68,7 @@ public class RecordInfoDto {
 				+ ", trName=" + trName + ", trNo=" + trNo + ", hrName=" + hrName + ", hrNo=" + hrNo + ", rcDate="
 				+ rcDate + ", rcNo=" + rcNo + ", meet=" + meet + ", ranks=" + ranks + ", rcDist=" + rcDist + ", rcName="
 				+ rcName + ", ord=" + ord + ", hrCount=" + hrCount + ", rcTime=" + rcTime + ", wgHr=" + wgHr
-				+ ", rating=" + rating + ", track=" + track + ", wgBudam=" + wgBudam + ", diffUnit=" + diffUnit + "]";
+				+ ", rating=" + rating + ", track=" + track + ", wgBudam=" + wgBudam + ", diffUnit=" + diffUnit + chulNo + "]";
 	}
 	public String getJkName() {
 		return jkName;
@@ -199,6 +201,12 @@ public class RecordInfoDto {
 	}
 	public void setDiffUnit(String diffUnit) {
 		this.diffUnit = diffUnit;
+	}
+	public int getChulNo() {
+		return chulNo;
+	}
+	public void setChulNo(int chulNo) {
+		this.chulNo = chulNo;
 	}
 			
 }

@@ -87,19 +87,22 @@
 	</update>
 	
 	<select id="recordInfo" resultType="RecordInfoDto" parameterType="String">
-	SELECT 
-	*,
-	(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
-	AS HRCOUNT
-	FROM(
-	SELECT RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO, RI.RI_MEET AS MEET,
-	RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RI.RI_RCNAME AS RCNAME,
-	RR.RR_WGBUDAM AS WGBUDAM, RR.RR_TRNAME AS TRNAME, RR.RR_RCTIME AS RCTIME,
-	RR.RR_WGHR AS WGHR, RR.RR_RATING AS RATING,RI.RI_TRACK AS TRACK,RR.RR_ORD AS ORD
-	FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
-	ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET
-	= RR.RR_MEET
-	WHERE RR.RR_HRNO = #{value}) AS RS;
+		SELECT
+		*,
+		(SELECT COUNT(*) FROM RACE_RESULT AS RRS WHERE RRS.RR_RCDATE = RS.RCDATE AND
+		RRS.RR_RCNO = RS.RCNO AND RRS.RR_MEET = RS.MEET)
+		AS HRCOUNT
+		FROM(
+		SELECT RR.RR_jkNAME AS jkNAME,RR.RR_jkNO AS jkNO,
+		RR.RR_HRNAME AS HRNAME,RR.RR_HRNO AS HRNO,RI.RI_RCDATE AS RCDATE, RI.RI_RCNO AS RCNO,
+		RI.RI_MEET AS MEET,
+		RI.RI_RANK AS RANKS, RI.RI_RCDIST AS RCDIST, RR.RR_ORD AS ORD, RR.RR_WGHR AS WGHR,RR.RR_DIFFUNIT AS DIFFUNIT,RR.RR_RCTIME AS RCTIME, RR.RR_WGBUDAM AS WGBUDAM,
+		ri.ri_rcName as rcname, rr.rr_rating as rating, ri.ri_track as track, rr.rr_chulNo as chulNo
+		FROM RACE_INFO AS RI INNER JOIN RACE_RESULT AS RR
+		ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND
+		RI.RI_MEET
+		= RR.RR_MEET
+		WHERE RR.rr_hrno = #{hr_no}) AS RS ORDER BY RS.RCDATE DESC
 	</select>
 	
 	<select id="getDetail" parameterType="Map" resultType="HorsesDto">
@@ -109,5 +112,64 @@
 	
 	<select id="getownerlist" parameterType="Map" resultType="HorsesDto">
 		select hr_no,hr_htName,hr_rank,hr_name,hr_sex,hr_age,hr_trName,debut,hr_part,hr_meet from horses where hr_owName = #{ow_name} AND hr_meet = #{ow_meet}
+	</select>
+<!-- 개월별 수득상금 -->
+	<select id="getPrize" parameterType="String" resultType='HorsePrizeDto'>
+		<![CDATA[
+		select
+		hr.hr_chaksunT as totalPrize,
+		sum(case
+		when rr.rr_ord=1 and ri.ri_rcDate >= date_add(now(),interval -1 year) then
+		ri.ri_chaksun1
+		when rr.rr_ord=2 and ri.ri_rcDate >= date_add(now(),interval -1 year) then
+		ri.ri_chaksun2
+		when rr.rr_ord=3 and ri.ri_rcDate >= date_add(now(),interval -1 year) then
+		ri.ri_chaksun3
+		when rr.rr_ord=4 and ri.ri_rcDate >= date_add(now(),interval -1 year) then
+		ri.ri_chaksun4
+		when rr.rr_ord=5 and ri.ri_rcDate >= date_add(now(),interval -1 year) then
+		ri.ri_chaksun5
+		end) as yearPrize,
+		sum(case
+		when rr.rr_ord=1 and ri.ri_rcDate >= date_add(now(),interval -6 month)
+		then ri.ri_chaksun1
+		when rr.rr_ord=2 and ri.ri_rcDate >= date_add(now(),interval -6 month)
+		then ri.ri_chaksun2
+		when rr.rr_ord=3 and ri.ri_rcDate >= date_add(now(),interval -6 month)
+		then ri.ri_chaksun3
+		when rr.rr_ord=4 and ri.ri_rcDate >= date_add(now(),interval -6 month)
+		then ri.ri_chaksun4
+		when rr.rr_ord=5 and ri.ri_rcDate >= date_add(now(),interval -6 month)
+		then ri.ri_chaksun5
+		end) as sixMonthPrize,
+		sum(case
+		when rr.rr_ord=1 and date_format(ri.ri_rcDate,'%Y%m') =
+		date_format(now(),'%Y%m') then ri.ri_chaksun1
+		when rr.rr_ord=2 and date_format(ri.ri_rcDate,'%Y%m') =
+		date_format(now(),'%Y%m') then ri.ri_chaksun2
+		when rr.rr_ord=3 and date_format(ri.ri_rcDate,'%Y%m') =
+		date_format(now(),'%Y%m') then ri.ri_chaksun3
+		when rr.rr_ord=4 and date_format(ri.ri_rcDate,'%Y%m') =
+		date_format(now(),'%Y%m') then ri.ri_chaksun4
+		when rr.rr_ord=5 and date_format(ri.ri_rcDate,'%Y%m') =
+		date_format(now(),'%Y%m') then ri.ri_chaksun5
+		else 0
+		end) as MonthPrize
+		from race_info as ri join race_result as rr join horses as hr on
+		rr.rr_hrno = hr.hr_no and ri.ri_rcDate = rr.rr_rcdate and ri.ri_rcNo =
+		rr.rr_rcno and ri.ri_meet = rr.rr_meet where rr.rr_hrno=#{hr_no} and rr.rr_ord<=5
+		]]>
+	</select>
+	<select id="distRecord" parameterType="String" resultType="DistRecordDto">
+		SELECT ri.ri_rcDist as rcDist,MIN(rr.rr_rcTime) as record,round(avg(rr.rr_rcTime),1) as avgRecord, count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd,count(if(rr.rr_ord=3,1,null)) as ord3nd  FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by ri_rcDist
+	</select>
+	<select id="chulNoRecord" parameterType="String" resultType="DistRecordDto">
+		SELECT rr.rr_chulNo as chulNo, count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by rr.rr_chulNo order by rr.rr_chulNo;
+	</select>
+	<select id="jkRecord" parameterType="String" resultType="DistRecordDto">
+		SELECT rr.rr_jkNo as jkNo,rr.rr_jkName as jkName, count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by rr.rr_jkNo;
+	</select>
+	<select id="wgBudamRecord" parameterType="String" resultType="DistRecordDto">
+		SELECT rr.rr_wgBudam as wgBudam,count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by rr.rr_wgBudam order by rr.rr_wgBudam;
 	</select>
 </mapper>
