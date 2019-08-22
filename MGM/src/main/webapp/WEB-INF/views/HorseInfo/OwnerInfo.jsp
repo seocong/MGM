@@ -120,8 +120,8 @@
 						<div class="swiper-slide dark" style="background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.5)), url('resources/demos/nonprofit/images/slider/kuyngma.jpg') no-repeat center center ; background-size: cover;max-height: 400px; ">
 							<div class="container clearfix">
 								<div class="slider-caption">
-									<h2 class="nott" data-animate="fadeInUp">Help the Homeless & Hungry People.</h2>
-									<p style="font-size: 17px;" data-animate="fadeInUp" data-delay="200">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem molestiae, cum ratione at temporibus aperiam repudiandae consectetur, illo nam maiores.</p>
+									<h2 class="nott" data-animate="fadeInUp">Game & Agency & Management</h2>
+									<p style="font-size: 17px;" data-animate="fadeInUp" data-delay="200">We will become a software company that works harder and harder.Please enjoy various contents.</p>
 									<!-- <a href="#" data-animate="fadeInUp" data-delay="400" class="button button-rounded button-large button-light text-dark bgcolor shadow nott ls0 ml-0 mt-4">Know More</a> -->
 								</div>
 							</div>
@@ -129,8 +129,8 @@
 						<div class="swiper-slide dark" style="background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.8)), url('resources/demos/nonprofit/images/slider/6.jpeg') no-repeat center center; background-size: cover;max-height: 400px;">
 							<div class="container clearfix">
 								<div class="slider-caption">
-									<h2 class="nott" data-animate="fadeInUp">Welcome to Canvas</h2>
-									<p style="font-size: 17px;" data-animate="fadeInUp" data-delay="200">Seamlessly transition standardized channels whereas maintainable web services. Competently unleash exceptional portals through timely infomediaries.</p>
+									<h2 class="nott" data-animate="fadeInUp">Game & Agency & Management</h2>
+									<p style="font-size: 17px;" data-animate="fadeInUp" data-delay="200">We will become a software company that works harder and harder.Please enjoy various contents.</p>
 									<!-- <a href="#" data-animate="fadeInUp" data-delay="400" class="button button-rounded button-large button-light text-dark bgcolor shadow nott ls0 ml-0 mt-4">Know More</a> -->
 								</div>
 							</div>
@@ -250,14 +250,14 @@
 																</tr>
 																<c:forEach items="${owDto}" var="owDto">
 																<tr>																
-																	<td style="text-align: center;"><a href="ownerDetail.do?ow_no=${owDto.ow_no}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
+																	<td style="text-align: center;"><a href="ownerDetail.do?ow_name=${owDto.ow_name}&ow_meet=${owDto.ow_meet}">${owDto.ow_name}</a></td>
 																	<td style="text-align: center;">${owDto.ow_totHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_cancledHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_nowHorses}</td>
 																	<td style="text-align: center;">${owDto.ow_stDate}</td>
-																	<td style="text-align: center;">${owDto.ow_rcCntY}전(${owDto.ow_ord1CntY}/${owDto.ow_ord2CntY}/${owDto.ow_ord3CntY})</td>
+																	<td style="text-align: center;">${owDto.ow_rcCntY}전(?/?/?)</td>
 																	<td style="text-align: center;"><fmt:formatNumber value="${owDto.ow_chaksunY}" pattern="#,###.##"/></td>
-																	<td style="text-align: center;">${owDto.ow_rcCntT}전(${owDto.ow_ord1CntT}/${owDto.ow_ord2CntT}/${owDto.ow_ord3CntT})</td>
+																	<td style="text-align: center;">${owDto.ow_rcCntT}전(?/?/?)</td>
 																	<td style="text-align: center;"><fmt:formatNumber value="${owDto.ow_chaksunT}" pattern="#,###.##"/></td>																
 																</tr>
 																</c:forEach>
