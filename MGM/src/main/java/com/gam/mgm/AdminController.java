@@ -42,6 +42,15 @@ public class AdminController {
 		System.out.println(request.getParameter("tr_name"));
 		String tr_name=request.getParameter("tr_name");
 		List<ChampionDto> list = trainerService.getChampionList(tr_name);
+		List<Integer> testList = new ArrayList<>();
+		testList.add(1);
+		testList.add(3);
+		testList.add(5);
+		testList.add(7);
+		testList.add(9);
+		testList.add(10);
+		model.addAttribute("num",12);
+		model.addAttribute("testList",testList);
 		model.addAttribute("champList",list);
 		return "testpage";
 	}

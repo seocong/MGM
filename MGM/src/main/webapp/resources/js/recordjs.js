@@ -78,6 +78,14 @@ $(function(){
 	$('.oddsTable').find('td').eq(6).append(" "+tri+" "+triOdds);
 });
 
+$(function(){
+	var no = $('.chulNum');
+	for(var i in no){
+		var changeNo = chnNo($('.chulNum').eq(i).attr('data-num'));
+		$('.chulNum').eq(i).prepend(changeNo);
+	}
+});
+
 function chnNo(no){
 	switch(no){
 	case '1':

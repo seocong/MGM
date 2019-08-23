@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gam.mgm.dao.IRacePlanDao;
+import com.gam.mgm.dto.RaceHistoryDto;
 import com.gam.mgm.dto.RacePlanDto;
 
 @Service
@@ -48,6 +49,26 @@ public class RacePlanService implements IRacePlanService {
 	@Override
 	public List<RacePlanDto> roundlist(Map<String, Object> map) {
 		return rcPlanDao.roundlist(map);
+	}
+
+	@Override
+	public int maxRcNo(Map<String, Object> map) {
+		return rcPlanDao.maxRcNo(map);
+	}
+
+	@Override
+	public List<RaceHistoryDto> racePlanCount(Map<String, Object> map) {
+		return rcPlanDao.racePlanCount(map);
+	}
+
+	@Override
+	public List<RaceHistoryDto> planList(Map<String, Object> map) {
+		return rcPlanDao.planList(map);
+	}
+
+	@Override
+	public List<RacePlanDto> selRcDate(int meet) {
+		return rcPlanDao.selRcDate(meet);
 	}
 
 }

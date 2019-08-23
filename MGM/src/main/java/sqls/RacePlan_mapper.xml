@@ -102,4 +102,29 @@
  		select rp_rcDate,rp_rcNo,rp_meet,rp_rank,rp_rcDist,rp_dusu,rp_stTime,rp_rcName,rp_rcDay from race_plan 
 		where rp_meet = #{rp_meet} AND rp_rcDate = #{rp_rcDate} group by rp_rcDate,rp_rcNo,rp_rcDist,rp_rank,rp_dusu,rp_stTime,rp_rcName,rp_rcDay
  	</select>
+ 	
+ 	<select id="maxRcNo" parameterType="Map" resultType="int">
+ 		select Max(rp_rcNo) as maxRcNo from race_plan where rp_rcDate=#{rcDate} and rp_meet = #{rcMeet};
+ 	</select>
+ 	<select id="racePlanCount" parameterType="Map" resultType="RaceHistoryDto">
+ 		<choose>
+ 			<when test="object.equals('tr')">
+ 				select count(rp.rp_trName) as rcNo, rp.rp_trName as objName, rp_trNo as objNo, tr.tr_part as part from race_plan as rp join trainers as tr on rp.rp_trNo = tr.tr_no  where rp_rcDate=#{rcDate} and rp_meet = #{rcMeet} group by objName order by tr.tr_part;
+ 			</when>
+ 			<when test="object.equals('ow')">
+ 				select count(rp_${object}Name) as rcNo, rp_${object}Name as objName,rp_${object}No as objNo from race_plan where rp_rcDate=#{rcDate} and rp_meet = #{rcMeet} group by rp_${object}Name order by objName asc;
+ 			</when>
+ 			<otherwise>
+ 				select count(rp_${object}Name) as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName ,rp_${object}No as objNo from race_plan where rp_rcDate=#{rcDate} and rp_meet = #{rcMeet} group by rp_${object}Name order by objName asc;	
+ 			</otherwise>
+ 		</choose>
+ 	</select>
+ 	<select id="planList" parameterType="Map" resultType="RaceHistoryDto">
+ 		<!-- select rp_rcNo as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName, rp_chulNo as chulNo, rp_hrName as hrName from race_plan where rp_rcDate = #{rcDate} and rp_meet= #{rcMeet} and rp_${object}No = #{objNo} order by objName, rcNo; -->
+ 		select rp_rcNo as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName, rp_chulNo as chulNo, rp_hrName as hrName from race_plan where rp_rcDate = #{rcDate} and rp_meet= #{rcMeet} order by objName, rcNo;
+ 	</select>
+ 	
+ 	<select id="selRcDate" parameterType="int" resultType="RacePlanDto">
+ 		select rp_rcDate,rp_meet, rp_rcDay from race_plan where rp_meet = #{value} group by rp_rcDate;
+ 	</select>
   </mapper>

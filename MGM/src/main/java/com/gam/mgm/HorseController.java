@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -28,6 +27,7 @@ import com.gam.mgm.dto.JockeyDto;
 import com.gam.mgm.dto.MonthlyPrizeDto;
 import com.gam.mgm.dto.OwnerDto;
 import com.gam.mgm.dto.RaceEntryDto;
+import com.gam.mgm.dto.RaceHistoryDto;
 import com.gam.mgm.dto.RaceInfoDto;
 import com.gam.mgm.dto.RacePlanDto;
 import com.gam.mgm.dto.RaceRefreeDto;
@@ -433,6 +433,78 @@ public class HorseController {
 	@RequestMapping(value="/racingHistory.do",method=RequestMethod.GET)
 	public String raceHistory(Locale locale, HttpServletRequest request,Model model){
 		logger.info("출전내역", locale);
+		Map<String,Object> map = new HashMap<String,Object>();
+		int meet = Integer.parseInt(request.getParameter("meet"));
+		List<RacePlanDto> dateList = racePlanService.selRcDate(meet); 
+		map.put("rcMeet",meet);
+		map.put("rcDate",request.getParameter("rcDate"));
+		map.put("object",request.getParameter("object"));
+		int maxNo = racePlanService.maxRcNo(map);
+		List<List<RaceHistoryDto>> planListList = new ArrayList<List<RaceHistoryDto>>();
+		List<List<RaceHistoryDto>> planListList2 = new ArrayList<List<RaceHistoryDto>>();
+		List<RaceHistoryDto> chkPlanList = new ArrayList<RaceHistoryDto>();
+		List<RaceHistoryDto> objCount = racePlanService.racePlanCount(map);
+//		for(RaceHistoryDto loop:objCount) {
+//			map.put("objNo",loop.getObjNo());
+//			List<RaceHistoryDto> planList2 = racePlanService.planList(map);
+//			planListList.add(planList2);
+//		}
+//		for(int i=0;i<planListList.size();i++){
+//			for(int j=0;j<planListList.get(i).size();i++) {
+//				if(!chkPlanList.get(j).getObjNo().equals(planListList.get(i).get(j).getObjName())){
+//					planListList.get(i).get(j).setFusion(planListList.get(i).get(j).getChulNo()+planListList.get(i).get(j).getHrName());
+//					chkPlanList.add(planListList.get(i).get(j));
+//				}else{
+//					String temp = planListList.get(i).get(j).getFusion();
+//					temp+=planListList.get(i).get(j).getChulNo()+planListList.get(i).get(j).getHrName();
+//					chkPlanList.get(j).setFusion(temp);
+//					planListList2.add(chkPlanList);
+//				}
+//			}
+//		}
+		List<RaceHistoryDto> planList = racePlanService.planList(map);
+		for(RaceHistoryDto jk:objCount) {
+			List<Integer> chkNo	= new ArrayList<Integer>();
+			for(int i=1;i<=maxNo;i++) {
+				chkNo.add(i);
+			}
+			for(int i=1;i<=maxNo;i++) {
+				for(int j=0;j<planList.size();j++) {
+					if(jk.getObjName().equals(planList.get(j).getObjName()) && i==planList.get(j).getRcNo()) {
+						for(int k=0;k<chkNo.size();k++) {
+							if(chkNo.get(k) == planList.get(j).getRcNo()) {
+								chkNo.remove(k);
+							}
+						}
+					}
+				}
+			}
+			for(int loop:chkNo) {
+				RaceHistoryDto addDto = new RaceHistoryDto();
+				addDto.setRcNo(loop);
+				addDto.setObjName(jk.getObjName());
+				addDto.setChulNo(0);
+				planList.add(addDto);
+			}
+		}
+		for(RaceHistoryDto jk:objCount) {
+			System.out.println("기수명: "+jk.getObjName()+"[");
+			for(int i=0;i<planList.size();i++){
+				if(jk.getObjName().equals(planList.get(i).getObjName())) {
+					System.out.println("raceNo: "+planList.get(i).getRcNo()+"/"+"chulNo: "+planList.get(i).getChulNo());
+				}
+			}
+			System.out.println("]");
+		}
+		
+		System.out.println("listsize: "+planList.size());
+		model.addAttribute("maxNo",maxNo);
+		model.addAttribute("objCount",objCount);
+		model.addAttribute("planList",planList);
+		model.addAttribute("dateList",dateList);
+		model.addAttribute("selDate",request.getParameter("rcDate"));
+		model.addAttribute("object",request.getParameter("object"));
+		model.addAttribute("planListList",planListList);
 		return "HorseInfo/RacingHistory";		
 	}
 	

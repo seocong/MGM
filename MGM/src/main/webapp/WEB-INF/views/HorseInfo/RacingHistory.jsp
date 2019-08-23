@@ -169,7 +169,7 @@
 
 							
 							<div class="row clearfix">
-							<div id="hr_meet" data-hr_meet = "${hr_meet}" ></div>	
+							<div id="hr_meet" data-hr_meet = "${dateList[0].rp_meet}" ></div>	
 								<div class="col-md-12 mt-5">
 						
 								<table class="allmargin">
@@ -199,32 +199,33 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="horseInfo.do?hr_meet=1"> 서울경마</a></li>
-											<li id="tabbusan"><a href="horseInfo.do?hr_meet=3"> 부산경마</a></li>
-											<li id="tabjeju"><a href="horseInfo.do?hr_meet=2"> 제주경마</a></li>
+											<li id="tabseoul"><a href="racingHistory.do?meet=1&rcDate=20190824&object=jk"> 서울경마</a></li>
+											<li id="tabbusan"><a href="racingHistory.do?meet=3&rcDate=20190823&object=jk"> 부산경마</a></li>
+											<li id="tabjeju"><a href="racingHistory.do?meet=2&rcDate=20190824&object=jk"> 제주경마</a></li>
 										</ul>
 
 										<div>
 											<div class="tabcontent">
 											<br>
 											<div>
-												<form action="#" method="get">
-												<table class="table" style="border-bottom: solid #DDD 1px;">
+												<form action="racingHistory.do" method="get" >
+												<input type="hidden" name="meet" value="${dateList[0].rp_meet}">
+	 											<table class="table" style="border-bottom: solid #DDD 1px;">
 												<tr>
 												
 												<td width="10%">기간선택</td>
 												<td width="15%">
-													<select class="selectpicker" name="date">
-															<%-- <c:forEach items="${list}" var="list">
-  															<option value="<fmt:formatDate value="${list.Date}" pattern="yyyyMMdd"/>"><fmt:formatDate value="${list.Date} pattern="yyyy년MM월dd일 (E)"/></option>
-  															</c:forEach> --%>
-  															<option value="">111111111111</option>
+													<select class="selectpicker" name="rcDate">
+															<c:forEach items="${dateList}" var="list">
+  																<option value="<fmt:formatDate value="${list.rp_rcDate}" pattern="yyyyMMdd"/>"><fmt:formatDate value="${list.rp_rcDate}" pattern="yyyy년MM월dd일"/></option>
+  															</c:forEach>
 													</select>
 												</td>
 												<td width="10%">정보선택</td>
-												<td width="35%"><input type="radio" name="Exhibit" value="${list.jockey}" checked="checked" class="radio-style"> 기수 기승현황 
-												<input type="radio" name="Exhibit" value="${list.trainer}" class="radio-style"> 조별 출전현황 
-												<input type="radio" name="Exhibit" value="${list.owner}" class="radio-style"> 마주별 출전현황</td>
+												<td width="35%">
+												<input type="radio" name="object" value="jk" class="radio-style"> 기수 기승현황 
+												<input type="radio" name="object" value="tr" class="radio-style"> 조별 출전현황 
+												<input type="radio" name="object" value="ow" class="radio-style"> 마주별 출전현황</td>
 												<td width="10%"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button></td>
 												
 											</tr>
@@ -233,7 +234,9 @@
 											</form>
 											</div>
 											
-
+											<c:choose>	
+												<c:when test="${object eq 'jk'}">
+												<!-- 기수 -->
 												<div>
 												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy"></i></span>기수 기승 현황</h4>
@@ -242,48 +245,123 @@
 																<tr>
 																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">기수명</th>
 																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="5%">출전</th>													
-																	<th class="titleColor"  style="text-align: center;" colspan="15" width="85%">경주</th>
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="85%">경주</th>
 																</tr>
 																<tr>
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
-																	<th style="text-align: center;"></th>																	
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	</c:forEach>																	
 																</tr>
+																<c:forEach items="${objCount}" var="list">
 																<tr>
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																	<td style="text-align: center;"></td>																
-																														
+																	<td style="text-align: center;">${list.objName}</td>															
+																	<td style="text-align: center;">${list.rcNo}</td>
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																		<c:forEach items="${planList}" var="planList">
+																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
+																				<c:choose>
+																					<c:when test="${planList.chulNo ne '0'}">
+																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																					</c:when>
+																					<c:otherwise>
+																						<td style="text-align: center;"></td>
+																					</c:otherwise>
+																				</c:choose>
+																			</c:if>
+																		</c:forEach>			
+																	</c:forEach>													
 																</tr>
-
-
+																</c:forEach>
 														</tbody>
-														
-													
 													</table>
 												</div>
-												
-
+												</c:when>
+												<c:when test="${object eq 'tr'}">
+												<!-- 조교사 -->
+												<div>
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>조별 출전현황</h4>
+													<table class="table table-bordered table-striped">
+															<tbody>
+																<tr>
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="2%">조</th>
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">기수명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="2%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="86%">경주</th>
+																</tr>
+																<tr>
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	</c:forEach>																	
+																</tr>
+																<c:forEach items="${objCount}" var="list">
+																<tr>
+																	<td style="text-align: center;">${list.part}</td>
+																	<td style="text-align: center;">${list.objName}</td>															
+																	<td style="text-align: center;">${list.rcNo}</td>
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																		<c:forEach items="${planList}" var="planList">
+																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
+																				<c:choose>
+																					<c:when test="${planList.chulNo ne '0'}">
+																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																					</c:when>
+																					<c:otherwise>
+																						<td style="text-align: center;"></td>
+																					</c:otherwise>
+																				</c:choose>
+																			</c:if>
+																		</c:forEach>			
+																	</c:forEach>													
+																</tr>
+																</c:forEach>
+														</tbody>
+													</table>
+												</div>
+												</c:when>
+												<c:when test="${object eq 'ow'}">
+												<!-- 마주 -->
+												<div>
+												<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
+												<span class="text-dark"><i class="icon-trophy"></i></span>마주별 출전현황</h4>
+													<table class="table table-bordered table-striped">
+															<tbody>
+																<tr>
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">마주명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="5%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="85%">경주</th>
+																</tr>
+																<tr>
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	</c:forEach>																	
+																</tr>
+																<c:forEach items="${objCount}" var="list">
+																<tr>
+																	<td style="text-align: center;">${list.objName}</td>															
+																	<td style="text-align: center;">${list.rcNo}</td>
+																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
+																		<c:forEach items="${planList}" var="planList">
+																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
+																				<c:choose>
+																					<c:when test="${planList.chulNo ne '0'}">
+																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																					</c:when>
+																					<c:otherwise>
+																						<td style="text-align: center;"></td>
+																					</c:otherwise>
+																				</c:choose>
+																			</c:if>
+																		</c:forEach>			
+																	</c:forEach>													
+																</tr>
+																</c:forEach>
+														</tbody>
+													</table>
+												</div>
 											</div>
-
+										</c:when>
+										</c:choose>
 
 										</div>
 
@@ -363,7 +441,7 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-
+	<script src="resources/js/recordjs.js"></script>
 	<!-- ADD-ONS JS FILES -->
 	<script>
 	$(function() {
@@ -378,11 +456,28 @@
 			$("#tabbusan").addClass('current');
 			$(".titleColor").css("background-color","#e9f3d9");
 		}	
+		
+		var selectForm = $('.selectpicker').children('option');
+		for(var i in selectForm){
+			if(selectForm.eq(i).attr('value') == '${selDate}'){
+				selectForm.eq(i).attr('selected','selected');
+			}
+		}
+		var radioForm = $('input:radio[name=object]');
+		var obj = '${object}'
+			if(obj=='jk'){
+				radioForm.eq(0).prop('checked',true);
+			}else if(obj=='tr'){
+				radioForm.eq(1).prop('checked',true);
+			}else if(obj=='ow'){
+				radioForm.eq(2).prop('checked',true);
+			}
+		
 	});
 	
 		</script>
-		
- 	
-	</body>
+
+
+</body>
 	</html>
 </html>

@@ -32,6 +32,7 @@
  		<typeAlias type="com.gam.mgm.dto.MonthlyPrizeDto" alias="MonthlyPrizeDto" />
  		<typeAlias type="com.gam.mgm.dto.HorsePrizeDto" alias="HorsePrizeDto" />
  		<typeAlias type="com.gam.mgm.dto.DistRecordDto" alias="DistRecordDto" />
+ 		<typeAlias type="com.gam.mgm.dto.RaceHistoryDto" alias="RaceHistoryDto" />
      </typeAliases>
      
   <mappers>
