@@ -69,7 +69,7 @@
 							<li class="#"><a href="#"><div  style="font-weight: bold;">지난경기</div></a>
 							
 							</li>
-							<li><a href="#"><div  style="font-weight: bold;">게임랜드</div></a>
+							<li><a href="GameLand.do"><div  style="font-weight: bold;">게임랜드</div></a>
 								
 							</li>
 							<li class="#"><a href="#"><div  style="font-weight: bold;">마이페이지</div></a>
