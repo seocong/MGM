@@ -441,27 +441,8 @@ public class HorseController {
 		map.put("object",request.getParameter("object"));
 		int maxNo = racePlanService.maxRcNo(map);
 		List<List<RaceHistoryDto>> planListList = new ArrayList<List<RaceHistoryDto>>();
-		List<List<RaceHistoryDto>> planListList2 = new ArrayList<List<RaceHistoryDto>>();
-		List<RaceHistoryDto> chkPlanList = new ArrayList<RaceHistoryDto>();
 		List<RaceHistoryDto> objCount = racePlanService.racePlanCount(map);
-//		for(RaceHistoryDto loop:objCount) {
-//			map.put("objNo",loop.getObjNo());
-//			List<RaceHistoryDto> planList2 = racePlanService.planList(map);
-//			planListList.add(planList2);
-//		}
-//		for(int i=0;i<planListList.size();i++){
-//			for(int j=0;j<planListList.get(i).size();i++) {
-//				if(!chkPlanList.get(j).getObjNo().equals(planListList.get(i).get(j).getObjName())){
-//					planListList.get(i).get(j).setFusion(planListList.get(i).get(j).getChulNo()+planListList.get(i).get(j).getHrName());
-//					chkPlanList.add(planListList.get(i).get(j));
-//				}else{
-//					String temp = planListList.get(i).get(j).getFusion();
-//					temp+=planListList.get(i).get(j).getChulNo()+planListList.get(i).get(j).getHrName();
-//					chkPlanList.get(j).setFusion(temp);
-//					planListList2.add(chkPlanList);
-//				}
-//			}
-//		}
+
 		List<RaceHistoryDto> planList = racePlanService.planList(map);
 		for(RaceHistoryDto jk:objCount) {
 			List<Integer> chkNo	= new ArrayList<Integer>();
@@ -483,19 +464,20 @@ public class HorseController {
 				RaceHistoryDto addDto = new RaceHistoryDto();
 				addDto.setRcNo(loop);
 				addDto.setObjName(jk.getObjName());
-				addDto.setChulNo(0);
+				addDto.setChulNo("0");
 				planList.add(addDto);
 			}
 		}
-		for(RaceHistoryDto jk:objCount) {
-			System.out.println("기수명: "+jk.getObjName()+"[");
-			for(int i=0;i<planList.size();i++){
-				if(jk.getObjName().equals(planList.get(i).getObjName())) {
-					System.out.println("raceNo: "+planList.get(i).getRcNo()+"/"+"chulNo: "+planList.get(i).getChulNo());
-				}
-			}
-			System.out.println("]");
-		}
+		//리스트 확인 
+//		for(RaceHistoryDto jk:objCount) {
+//			System.out.println("기수명: "+jk.getObjName()+"[");
+//			for(int i=0;i<planList.size();i++){
+//				if(jk.getObjName().equals(planList.get(i).getObjName())) {
+//					System.out.println("raceNo: "+planList.get(i).getRcNo()+"/"+"chulNo: "+planList.get(i).getChulNo());
+//				}
+//			}
+//			System.out.println("]");
+//		}
 		
 		System.out.println("listsize: "+planList.size());
 		model.addAttribute("maxNo",maxNo);

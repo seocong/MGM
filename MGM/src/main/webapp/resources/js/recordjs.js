@@ -81,8 +81,13 @@ $(function(){
 $(function(){
 	var no = $('.chulNum');
 	for(var i in no){
-		var changeNo = chnNo($('.chulNum').eq(i).attr('data-num'));
-		$('.chulNum').eq(i).prepend(changeNo);
+		var str="";
+		var splitNo = $('.chulNum').eq(i).attr('data-num').split(",");
+		var splitName = $('.chulNum').eq(i).attr('data-hrName').split(",");
+		for(var j in splitNo){
+			str+=chnNo(splitNo[j])+"<br>"+splitName[j]+"<br>";
+		}
+		$('.chulNum').eq(i).append(str);
 	}
 });
 

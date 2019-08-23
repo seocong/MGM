@@ -243,13 +243,13 @@
 													<table class="table table-bordered table-striped">
 															<tbody>
 																<tr>
-																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">기수명</th>
-																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="5%">출전</th>													
-																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="85%">경주</th>
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="6%">기수명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="2%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="92%">경주</th>
 																</tr>
 																<tr>
 																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
-																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	<th class="titleColor"  style="text-align: center;" width="4%" >${sta.count}</th>
 																	</c:forEach>																	
 																</tr>
 																<c:forEach items="${objCount}" var="list">
@@ -261,7 +261,7 @@
 																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
 																				<c:choose>
 																					<c:when test="${planList.chulNo ne '0'}">
-																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}" data-hrName="${planList.hrName}"></td>
 																					</c:when>
 																					<c:otherwise>
 																						<td style="text-align: center;"></td>
@@ -285,13 +285,13 @@
 															<tbody>
 																<tr>
 																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="2%">조</th>
-																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">기수명</th>
-																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="2%">출전</th>													
-																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="86%">경주</th>
+																	<th class="titleColor"  style="text-align: center; padding-left: 6px;padding-right:6px;"rowspan="2" width="8%">기수명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap; padding-left: 4px;padding-right:4px;" rowspan="2" width="2%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="88%">경주</th>
 																</tr>
 																<tr>
 																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
-																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	<th class="titleColor"  style="text-align: center;" width="8%">${sta.count}</th>
 																	</c:forEach>																	
 																</tr>
 																<c:forEach items="${objCount}" var="list">
@@ -304,7 +304,7 @@
 																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
 																				<c:choose>
 																					<c:when test="${planList.chulNo ne '0'}">
-																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																						<td style="text-align: center; " class="chulNum" data-num="${planList.chulNo}" data-hrName="${planList.hrName}"></td>
 																					</c:when>
 																					<c:otherwise>
 																						<td style="text-align: center;"></td>
@@ -327,13 +327,13 @@
 													<table class="table table-bordered table-striped">
 															<tbody>
 																<tr>
-																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="10%">마주명</th>
-																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="5%">출전</th>													
-																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="85%">경주</th>
+																	<th class="titleColor"  style="text-align: center;"rowspan="2" width="7%">마주명</th>
+																	<th class="titleColor"  style="text-align: center;white-space: nowrap;" rowspan="2" width="3%">출전</th>													
+																	<th class="titleColor"  style="text-align: center;" colspan="${maxNo}" width="90%">경주</th>
 																</tr>
 																<tr>
 																	<c:forEach begin="1" end="${maxNo}" varStatus="sta">
-																	<th class="titleColor"  style="text-align: center;">${sta.count}</th>
+																	<th class="titleColor"  style="text-align: center;"  width="4%" >${sta.count}</th>
 																	</c:forEach>																	
 																</tr>
 																<c:forEach items="${objCount}" var="list">
@@ -345,7 +345,7 @@
 																			<c:if test="${list.objName eq planList.objName && sta.count eq planList.rcNo}">
 																				<c:choose>
 																					<c:when test="${planList.chulNo ne '0'}">
-																						<td style="text-align: center;" class="chulNum" data-num="${planList.chulNo}">${planList.hrName}</td>
+																						<td style="text-align: center; text-overflow:ellipsis;" class="chulNum" data-num="${planList.chulNo}" data-hrName="${planList.hrName}"></td>
 																					</c:when>
 																					<c:otherwise>
 																						<td style="text-align: center;"></td>

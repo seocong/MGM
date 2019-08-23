@@ -4,7 +4,7 @@ public class RaceHistoryDto {
 	private int rcNo;
 	private String objNo;
 	private String objName;
-	private int chulNo;
+	private String chulNo;
 	private String hrName;
 	private int part;
 	private String fusion;
@@ -12,7 +12,7 @@ public class RaceHistoryDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RaceHistoryDto(int rcNo, String objNo, String objName, int chulNo, String hrName, int part, String fusion) {
+	public RaceHistoryDto(int rcNo, String objNo, String objName, String chulNo, String hrName, int part, String fusion) {
 		super();
 		this.rcNo = rcNo;
 		this.objNo = objNo;
@@ -45,10 +45,10 @@ public class RaceHistoryDto {
 	public void setObjName(String objName) {
 		this.objName = objName;
 	}
-	public int getChulNo() {
+	public String getChulNo() {
 		return chulNo;
 	}
-	public void setChulNo(int chulNo) {
+	public void setChulNo(String chulNo) {
 		this.chulNo = chulNo;
 	}
 	public String getHrName() {

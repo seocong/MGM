@@ -121,7 +121,7 @@
  	</select>
  	<select id="planList" parameterType="Map" resultType="RaceHistoryDto">
  		<!-- select rp_rcNo as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName, rp_chulNo as chulNo, rp_hrName as hrName from race_plan where rp_rcDate = #{rcDate} and rp_meet= #{rcMeet} and rp_${object}No = #{objNo} order by objName, rcNo; -->
- 		select rp_rcNo as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName, rp_chulNo as chulNo, rp_hrName as hrName from race_plan where rp_rcDate = #{rcDate} and rp_meet= #{rcMeet} order by objName, rcNo;
+ 		select rp_rcNo as rcNo, if(rp_${object}Name like '(%',substring_index(rp_${object}Name,')',-1),rp_${object}Name) as objName, group_concat(rp_chulNo) as chulNo, group_concat(rp_hrName) as hrName from race_plan where rp_rcDate = #{rcDate} and rp_meet= #{rcMeet} group by rp_rcNo, rp_${object}Name order by objName, rcNo;
  	</select>
  	
  	<select id="selRcDate" parameterType="int" resultType="RacePlanDto">
