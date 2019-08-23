@@ -126,7 +126,34 @@
 						<div class="col-lg-9">
 						
 						
-						
+						<h4 class="mb-2 ls1 uppercase t700 topmargin" style="font-size: 150%;">
+										<span class="text-warning"><i class="icon-user-friends"></i></span>
+										체스<span style="font-size: 60%;"></span>
+									</h4>
+									<div class="line line-xs line-sports"></div>
+								
+								<div class="card border">
+											<div class="card-body nopadding">
+									<!-- Post Article -->
+									<article class="ipost">
+									<div class="entry-image">
+												<iframe style="width: 100%; height: 550px; overflow: hidden;" src="https://playpager.com/embed/chess/index.html" scrolling="no"> </iframe>
+											</div>
+										
+									</article>
+									
+									
+									
+									<article class="spost clearfix"  style="float: right;">
+										<ul class="entry-meta clearfix" >
+										<li><a href="#" class="button button-border button-rounded button-red">메인가기</a></li>
+										
+										<li><a href="#" class="button button-border button-rounded button-black">목록가기</a></li>
+										
+										</ul>									
+									</article>
+									</div>
+								</div>
 					
 										
 										

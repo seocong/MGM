@@ -669,6 +669,11 @@ public class KIMController implements ServletContextAware{
 				logger.info(" 게임랜드 이동하기{}.", locale);
 				return "Game_Land/GameLand";
 			}
+			@RequestMapping(value = "/PlayGame.do", method = RequestMethod.GET)
+			public String PlayGame(Locale locale, Model model) {
+				logger.info(" 게임랜드 이동하기{}.", locale);
+				return "Game_Land/PlayGame";
+			}
 			
 			/*
 			

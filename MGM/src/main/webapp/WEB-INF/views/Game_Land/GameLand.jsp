@@ -134,10 +134,10 @@
 
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="PlayGame.do?gameLand_seq=1" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg1.png" alt="Standard Post with Image"></a>
+								<a href="PlayGame.do" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg1.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="PlayGame.do?gameLand_seq=1">마스터 체스</a></h2>
+								<h2><a href="PlayGame.do">마스터 체스</a></h2>
 							</div>
 							
 							<div class="entry-content">
