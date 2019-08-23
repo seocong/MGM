@@ -60,7 +60,7 @@
 
 
 	<!-- <header id="header" class="full-header dark"> -->
-	<jsp:include page="Header.jsp" />
+	<jsp:include page="../Header.jsp" />
 	
 
 		<!-- Slider
@@ -117,7 +117,7 @@
 					<div class="row clearfix">
 
 
-					<jsp:include page="SideBar.jsp" />
+					<jsp:include page="../SideBar.jsp" />
 				 
 
 
@@ -164,7 +164,7 @@
 
 		<!-- Footer
 		============================================= -->
-		<jsp:include page="Footer.jsp" />
+		<jsp:include page="../Footer.jsp" />
 		<!-- #footer end -->
 
 	</div><!-- #wrapper end -->
