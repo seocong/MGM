@@ -50,7 +50,7 @@
 									<li><a href="racingInfo.do?rp_meet=1"><div style="font-weight: bold;">출전정보</div></a>
 										<ul>
 											<li><a href="racingInfo.do?rp_meet=1"><div  style="font-weight: bold;">출전상세정보</div></a></li>
-											<li><a href="racingHistory.do?meet=1&rcDate=20190824&object=jk"><div  style="font-weight: bold;">출전내역</div></a></li>
+											<li><a href="racingHistory.do?meet=1&object=jk"><div  style="font-weight: bold;">출전내역</div></a></li>
 										<!-- 	<li><a href="#"><div  style="font-weight: bold;">기승불가기수</div></a></li> -->
 											<li><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10"><div  style="font-weight: bold;">출전등록현황</div></a></li>
 										</ul>

@@ -127,4 +127,7 @@
  	<select id="selRcDate" parameterType="int" resultType="RacePlanDto">
  		select rp_rcDate,rp_meet, rp_rcDay from race_plan where rp_meet = #{value} group by rp_rcDate;
  	</select>
+ 	<select id="minDate" resultType="String" parameterType="int">
+ 		select date_format(Min(rp_rcDate),'%Y%m%d') from race_plan where rp_meet = #{meet};
+ 	</select>
   </mapper>

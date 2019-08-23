@@ -71,4 +71,9 @@ public class RacePlanService implements IRacePlanService {
 		return rcPlanDao.selRcDate(meet);
 	}
 
+	@Override
+	public String minDate(int meet) {
+		return rcPlanDao.minDate(meet);
+	}
+
 }

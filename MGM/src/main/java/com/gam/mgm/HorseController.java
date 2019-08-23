@@ -438,9 +438,15 @@ public class HorseController {
 		logger.info("출전내역", locale);
 		Map<String,Object> map = new HashMap<String,Object>();
 		int meet = Integer.parseInt(request.getParameter("meet"));
-		List<RacePlanDto> dateList = racePlanService.selRcDate(meet); 
+		List<RacePlanDto> dateList = racePlanService.selRcDate(meet);
+		String rcDate = null;
+		if(request.getParameter("rcDate") == null) {
+			rcDate = racePlanService.minDate(meet);
+		}else {
+			rcDate = request.getParameter("rcDate");
+		}
 		map.put("rcMeet",meet);
-		map.put("rcDate",request.getParameter("rcDate"));
+		map.put("rcDate",rcDate);
 		map.put("object",request.getParameter("object"));
 		int maxNo = racePlanService.maxRcNo(map);
 		List<List<RaceHistoryDto>> planListList = new ArrayList<List<RaceHistoryDto>>();

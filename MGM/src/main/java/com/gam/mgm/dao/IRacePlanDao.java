@@ -29,4 +29,6 @@ public interface IRacePlanDao {
 	public List<RaceHistoryDto> planList(Map<String,Object> map);
 	
 	public List<RacePlanDto> selRcDate(int meet);
+	
+	public String minDate(int meet);
 }

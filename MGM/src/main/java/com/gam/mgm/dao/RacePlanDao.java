@@ -70,4 +70,9 @@ public class RacePlanDao implements IRacePlanDao{
 	public List<RacePlanDto> selRcDate(int meet) {
 		return sqlSession.selectList(namespace+"selRcDate",meet);
 	}
+
+	@Override
+	public String minDate(int meet) {
+		return sqlSession.selectOne(namespace+"minDate",meet);
+	}
 }
