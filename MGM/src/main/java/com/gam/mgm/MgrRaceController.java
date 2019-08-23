@@ -747,7 +747,7 @@ public class MgrRaceController {
 									raceRsDto.setRr_chulNo(item.getChulNo());
 									raceRsDto.setRr_wgBudam(item.getWgBudam());
 									raceRsDto.setRr_wgHr(item.getWgHr());
-									raceRsDto.setRr_rcTime(item.getRcTime());
+									raceRsDto.setRr_rcTime(Double.toString(item.getRcTime()));
 									raceRsDto.setRr_diffUnit(item.getDiffUnit());
 									raceRsDto.setRr_ordS1f(item.getOrdS1f());
 									raceRsDto.setRr_g8f_1c(item.getG8f_1c());

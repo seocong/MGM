@@ -366,6 +366,9 @@ public class HorseController {
 		System.out.println("list:"+list);
 		RaceInfoDto riDto = raceService.getRiDetail(map);
 		List<RaceResultDto> rrList = raceService.getRrDetail(map);
+		for(int i=0;i<rrList.size();i++) {
+			rrList.get(i).setRr_rcTime(Util.time(Double.parseDouble(rrList.get(i).getRr_rcTime())));
+		}
 		List<RaceRefreeDto> refreeList = raceService.selRefree(map);
 		for(RaceRefreeDto refree:refreeList) {
 			if(refree.getRf_stDate().equals("-")) {

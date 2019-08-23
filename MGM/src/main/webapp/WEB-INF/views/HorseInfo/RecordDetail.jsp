@@ -323,14 +323,70 @@
 																	<td>${rrList.rr_ord}</td>
 																	<td>${rrList.rr_chulNo}</td>
 																	<td>${rrList.rr_ordS1f} - ${rrList.rr_g8f_1c} - ${rrList.rr_g6f_2c} - ${rrList.rr_g4f_3c} - ${rrList.rr_g3f_4c} - ${rrList.rr_ordG1f}</td>
-																	<td>0:${rrList.rr_rcTimeS1f}</td>
-																	<td></td>
-																	<td></td>
-																	<td>0:${rrList.rr_rcTime_3c}</td>
-																	<td>0:${rrList.rr_rcTime_4c}</td>
-																	<td>0:${rrList.rr_rcTimeG3f}</td>
-																	<td>0:${rrList.rr_rcTimeG1f}</td>
-																	<td>${rrList.rr_rcTime}</td>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTimeS1f ne '0:00.0'}">
+																		<td>${rrList.rr_rcTimeS1f}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTime_1c ne '0:00.0'}">
+																		<td>${rrList.rr_rcTime_1c}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTime_2c ne '0:00.0'}">
+																		<td>${rrList.rr_rcTime_2c}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTime_3c ne '0:00.0'}">
+																		<td>${rrList.rr_rcTime_3c}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTime_4c ne '0:00.0'}">
+																		<td>${rrList.rr_rcTime_4c}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTimeG3f ne '0:00.0'}">
+																		<td>${rrList.rr_rcTimeG3f}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTimeG1f ne '0:00.0'}">
+																		<td>${rrList.rr_rcTimeG1f}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>
+																	<c:choose>
+																	<c:when test="${rrList.rr_rcTime ne '0:00.0'}">
+																		<td>${rrList.rr_rcTime}</td>
+																	</c:when>
+																	<c:otherwise>
+																		<td></td>
+																	</c:otherwise>
+																	</c:choose>																	
 																</tr>
 															</c:forEach>
 														</tbody>
@@ -418,7 +474,9 @@
 													</table>
 												</div>
 												<div>
-													<table class="table table-bordered tableColor">
+												<c:choose>
+														<c:when test="${not empty refreeList}">
+																<table class="table table-bordered tableColor">
 														<tr>
 															<th class="titleColor" colspan="6"
 																style="text-align: center;">재결사항</th>
@@ -431,6 +489,7 @@
 															<th class="titleColor" width="19%" style="text-align: center">처분내용</th>
 															<th class="titleColor" width="38%" style="text-align: center">세부내용</th>
 														</tr>
+														
 														<c:forEach items="${refreeList}" var="list">
 															<tr>
 																<td>${list.rf_prGubun}</td>
@@ -452,6 +511,9 @@
 															</tr>
 														</c:forEach>
 													</table>
+														</c:when>
+												</c:choose>
+												
 												</div>
 												<div>
 												<table class="table" style="border-bottom: solid #DDD 1px;">
