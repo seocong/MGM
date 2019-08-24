@@ -124,122 +124,36 @@
 						<!-- Posts Area
 						============================================= -->
 						<div class="col-lg-9">
-<<<<<<< HEAD
 						
 						
-						
-=======
 						<h4 class="mb-2 ls1 uppercase t700 topmargin" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										게임랜드<span style="font-size: 60%;"></span>
+										체스<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
-						
-						<div id="posts" class="post-grid grid-container grid-3 clearfix " data-layout="fitRows">
-
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="PlayGame.do" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg1.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="PlayGame.do">마스터 체스</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg2.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">리버시</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg3.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">마스터 체커스</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg4.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">블랙잭</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg5.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">테트리스</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg6.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">핀볼</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg7.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">케이브볼</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-
-					
-
-					</div>
-
+								
+								<div class="card border">
+											<div class="card-body nopadding">
+									<!-- Post Article -->
+									<article class="ipost">
+									<div class="entry-image">
+												<iframe style="width: 100%; height: 550px; overflow: hidden;" src="https://playpager.com/embed/chess/index.html" scrolling="no"> </iframe>
+											</div>
+										
+									</article>
+									
+									
+									
+									<article class="spost clearfix"  style="float: right;">
+										<ul class="entry-meta clearfix" >
+										<li><a href="#" class="button button-border button-rounded button-red">메인가기</a></li>
+										
+										<li><a href="#" class="button button-border button-rounded button-black">목록가기</a></li>
+										
+										</ul>									
+									</article>
+									</div>
+								</div>
 					
 										
 										
