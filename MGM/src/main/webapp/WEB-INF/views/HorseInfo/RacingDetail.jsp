@@ -290,9 +290,9 @@
 												<td>${list.rp_age}</td>
 												<td>${list.rp_rating}</td>
 												<td>${list.rp_wgBudam}</td>
-												<td>${list.rp_jkName}</td>
-												<td>${list.rp_trName}</td>
-												<td>${list.rp_owName}</td>
+												<td><a href="jockeyDetail.do?jk_no=${list.rp_jkNo}">${list.rp_jkName}</a></td>
+												<td><a href="jokyoDetail.do?tr_no=${list.rp_trNo}">${list.rp_trName}</a></td>
+												<td><a href="ownerDetail.do?ow_no=${list.rp_owNo}&ow_meet=${list.rp_meet}">${list.rp_owName}</a></td>
 												<td></td>
 												<td></td>
 											</tr>

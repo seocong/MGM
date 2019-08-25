@@ -285,9 +285,9 @@
 																	<td>${rrList.hr_age}세</td>
 																	<td>${rrList.rr_wgBudam}</td>
 																	<td>${rrList.rr_rating}</td>
-																	<td>${rrList.rr_jkName}</td>
-																	<td>${rrList.rr_trName}</td>
-																	<td>${rrList.rr_owName}</td>
+																	<td><a href="jockeyDetail.do?jk_no=${rrList.rr_jkNo}">${rrList.rr_jkName}</a></td>
+																	<td><a href="jokyoDetail.do?tr_no=${rrList.rr_trNo}">${rrList.rr_trName}</a></td>
+																	<td><a href="ownerDetail.do?ow_no=${rrList.rr_owNo}&ow_meet=${rrList.rr_meet}">${rrList.rr_owName}</a></td>
 																	<td>${rrList.rr_diffUnit}</td>
 																	<td>${rrList.rr_wgHr}</td>
 																	<td>${rrList.rr_winOdds}</td>

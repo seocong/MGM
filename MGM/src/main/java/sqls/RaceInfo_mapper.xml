@@ -228,7 +228,7 @@
 		select
 		A.rr_meet,A.rr_rcDate,A.rr_rcNo,A.rr_hrno,A.rr_hrName,A.rr_ord,A.rr_chulNo,A.rr_wgBudam,A.rr_wgHr,A.rr_rcTime,A.rr_diffUnit,A.rr_ordS1f,A.rr_g8f_1c,A.rr_g6f_2c,A.rr_g4f_3c,A.rr_g3f_4c
 		,A.rr_g2f,A.rr_ordG1f,A.rr_rcTimeS1f,A.rr_rcTime_1c,A.rr_rcTime_2c,A.rr_rcTime_3c,A.rr_rcTime_4c,A.rr_rcTimeG3f,A.rr_rcTimeG2f,A.rr_rcTimeG1f,A.rr_winOdds,A.rr_plcOdds,A.rr_rating
-		,A.rr_owName,A.rr_TrName,A.rr_jkName,B.hr_sex,B.hr_age,B.hr_name from
+		,A.rr_owName,A.rr_TrName,A.rr_jkName,A.rr_jkNo,A.rr_owNo,A.rr_trNo,B.hr_sex,B.hr_age,B.hr_name from
 		race_result A INNER JOIN horses B ON A.rr_hrno = B.hr_no where
 		rr_meet=#{ri_meet} AND rr_rcNo=#{ri_rcNo} AND rr_rcDate = #{ri_rcDate}
 	</select>
