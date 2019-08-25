@@ -19,8 +19,8 @@ public class RaceEntryService implements IRaceEntryService{
 	}
 
 	@Override
-	public boolean resetTable() {
-		return rcEntryDao.resetTable();
+	public boolean resetTable(int meet) {
+		return rcEntryDao.resetTable(meet);
 	}
 
 	@Override

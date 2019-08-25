@@ -8,7 +8,7 @@ import com.gam.mgm.dto.RaceEntryDto;
 public interface IRaceEntryDao {
 	public boolean rcEntryInsert(RaceEntryDto raceentry);
 
-	public boolean resetTable();
+	public boolean resetTable(int meet);
 
 	public boolean resetSeq();
 

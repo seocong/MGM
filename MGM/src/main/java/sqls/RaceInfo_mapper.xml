@@ -3,7 +3,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gam.race">
-
+	<delete id="rcResultDel" parameterType="int">
+		<![CDATA[
+		delete from race_result where rr_rcdate<date_add(now(),interval -1 year) and meet=#{meet};
+		]]>
+	</delete>
+	<delete id="rcInfoDel" parameterType="int">
+		<![CDATA[
+		delete from race_info where ri_rcdate<date_add(now(),interval -1 year) and meet=#{meet};
+		]]>
+	</delete>
+	<select id="maxDate" parameterType="int" resultType="String">
+		<![CDATA[
+		select MAX(date_format(rr_rcdate,'%Y%m%d')) from race_result where rr_meet = #{meet};
+		]]>
+	</select>
 	<insert id="rcResultInsert" parameterType="RaceResultDto">
 		INSERT INTO
 		RACE_RESULT

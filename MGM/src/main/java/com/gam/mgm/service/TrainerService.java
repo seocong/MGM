@@ -1,6 +1,7 @@
 package com.gam.mgm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,10 @@ public class TrainerService implements ITrainerService {
 	public boolean resetSeq() {
 		// TODO Auto-generated method stub
 		return trainerDao.resetSeq();
+	}
+
+	@Override
+	public boolean meetDel(int meet) {
+		return trainerDao.meetDel(meet);
 	}
 }

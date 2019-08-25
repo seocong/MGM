@@ -67,8 +67,8 @@
 		#{re_chaksunT}
 		)
 	</insert>
-	<delete id="resetTable">
-		TRUNCATE RACE_ENTRY
+	<delete id="resetTable" parameterType="int">
+		delete from race_entry where re_meet = #{meet}
 	</delete>
 	<update id="resetSeq">
 		ALTER TABLE RACE_ENTRY AUTO_INCREMENT=1

@@ -14,8 +14,7 @@
 		)
 	</insert>
 	<delete id="owdel" parameterType="int">
-		DELETE FROM OWNER WHERE OW_MEET
-		= #{ow_meet}
+		DELETE FROM OWNER WHERE OW_MEET = #{ow_meet}
 	</delete>
 
 	<select id="getList" parameterType="int" resultType="OwnerDto">

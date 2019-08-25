@@ -86,6 +86,22 @@ public class RaceService implements IRaceService{
 		// TODO Auto-generated method stub
 		return raceDao.selRefree(map);
 	}
+
+	@Override
+	public boolean rcResultDel(int meet) {
+		// TODO Auto-generated method stub
+		return raceDao.rcResultDel(meet);
+	}
+
+	@Override
+	public boolean rcInfoDel(int meet) {
+		return raceDao.rcInfoDel(meet);
+	}
+
+	@Override
+	public String maxDate(int meet) {
+		return raceDao.maxDate(meet);
+	}
 	
 	
 }

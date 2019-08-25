@@ -12,7 +12,9 @@
 	<delete id="jkdel" parameterType="int">
 		DELETE FROM JOCKEY WHERE JK_MEET = #{jk_meet}
 	</delete>
-	
+	<delete id="meetDel" parameterType="int">
+		DELETE FROM JOCKEY where jk_meet = #{meet}
+	</delete>
 	<select id="getList" parameterType="int" resultType="JockeyDto">
 		select jk_no,jk_name,jk_part,jk_birthday,jk_age,jk_debut,jk_wgPart,jk_wgOther,jk_rcCntT,jk_ord1CntT,jk_ord2CntT,jk_ord3CntT,jk_rcCntY,jk_ord1CntY,jk_ord2CntY,jk_ord3CntY,jk_meet
 		 from JOCKEY where jk_meet = #{jk_meet}

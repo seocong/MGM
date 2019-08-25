@@ -56,4 +56,9 @@ public class JockeyService implements IJockeyService{
 		// TODO Auto-generated method stub
 		return jokeyDao.selChampion(jk_name);
 	}
+
+	@Override
+	public boolean meetDel(int meet) {
+		return jokeyDao.meetDel(meet);
+	}
 }

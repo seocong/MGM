@@ -20,8 +20,8 @@ public class RaceEntryDao implements IRaceEntryDao{
 	}
 
 	@Override
-	public boolean resetTable() {
-		return sqlSession.delete(namespace+"resetTable")>0?true:false;
+	public boolean resetTable(int meet) {
+		return sqlSession.delete(namespace+"resetTable",meet)>0?true:false;
 	}
 
 	@Override

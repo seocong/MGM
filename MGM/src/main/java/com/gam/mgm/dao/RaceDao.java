@@ -77,4 +77,16 @@ public class RaceDao implements IRaceDao{
 	public List<RaceRefreeDto> selRefree(Map<String,Object> map){
 		return sqlSession.selectList(namespace+"selRefree",map);
 	}
+	@Override
+	public boolean rcResultDel(int meet) {
+		return sqlSession.delete(namespace+"rcResultDel",meet)>0?true:false;
+	}
+	@Override
+	public boolean rcInfoDel(int meet) {
+		return sqlSession.delete(namespace+"rcInfoDel",meet)>0?true:false;
+	}
+	@Override
+	public String maxDate(int meet) {
+		return sqlSession.selectOne(namespace+"maxDate",meet);
+	}
 }

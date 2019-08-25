@@ -1,6 +1,7 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,10 @@ public class TrainerDao implements ITrainerDao {
 	@Override
 	public boolean resetSeq() {
 		return sqlSession.update(namespace+"resetSeq")>0?true:false;
+	}
+
+	@Override
+	public boolean meetDel(int meet) {
+		return sqlSession.delete(namespace+"meetDel",meet)>0?true:false;
 	}
 }

@@ -1,6 +1,7 @@
 package com.gam.mgm.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.gam.mgm.dto.ChampionDto;
 import com.gam.mgm.dto.RaceTotalPrizeDto;
@@ -12,6 +13,7 @@ public interface ITrainerDao {
 	public boolean trInsert(TrainerDto trainerDto);
 
 	public boolean trDel();
+	public boolean meetDel(int meet);
 
 	public List<TrainerDto> getAllList(int tr_meet);
 	

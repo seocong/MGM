@@ -60,4 +60,9 @@ public class JockeyDao implements IJockeyDao{
 	public List<ChampionDto> selChampion(String jk_name) {
 		return sqlSession.selectList(namespace+"selChampion",jk_name);
 	}
+
+	@Override
+	public boolean meetDel(int meet) {
+		return sqlSession.delete(namespace+"meetDel",meet)>0?true:false;
+	}
 }

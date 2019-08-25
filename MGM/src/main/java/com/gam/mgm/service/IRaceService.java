@@ -25,4 +25,7 @@ public interface IRaceService {
 	public List<RaceInfoDto> getRacePaging(Map<String, Object> map);
 	public boolean refreeInsert(RaceRefreeVo.Body.Item rfDto);
 	public List<RaceRefreeDto> selRefree(Map<String,Object> map);
+	public boolean rcResultDel(int meet);
+	public boolean rcInfoDel(int meet);
+	public String maxDate(int meet);
 }
