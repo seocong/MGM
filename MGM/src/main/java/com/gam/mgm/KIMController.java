@@ -669,10 +669,35 @@ public class KIMController implements ServletContextAware{
 				logger.info(" 게임랜드 이동하기{}.", locale);
 				return "Game_Land/GameLand";
 			}
-			@RequestMapping(value = "/PlayGame.do", method = RequestMethod.GET)
-			public String PlayGame(Locale locale, Model model) {
-				logger.info(" 게임랜드 이동하기{}.", locale);
-				return "Game_Land/PlayGame";
+			@RequestMapping(value = "/MasterChess.do", method = RequestMethod.GET)
+			public String MasterChess(Locale locale, Model model) {
+				logger.info("체스 이동하기{}.", locale);
+				return "Game_Land/MasterChess";
+			}
+			@RequestMapping(value = "/MasterCheckers.do", method = RequestMethod.GET)
+			public String MasterCheckers(Locale locale, Model model) {
+				logger.info("체커스 이동하기{}.", locale);
+				return "Game_Land/MasterCheckers";
+			}
+			@RequestMapping(value = "/Reversi.do", method = RequestMethod.GET)
+			public String Reversi(Locale locale, Model model) {
+				logger.info("리버스 이동하기{}.", locale);
+				return "Game_Land/Reversi";
+			}
+			@RequestMapping(value = "/BlackJack.do", method = RequestMethod.GET)
+			public String BlackJack(Locale locale, Model model) {
+				logger.info("블랙잭 이동하기{}.", locale);
+				return "Game_Land/BlackJack";
+			}
+			@RequestMapping(value = "/Tetris.do", method = RequestMethod.GET)
+			public String Tetris(Locale locale, Model model) {
+				logger.info("테트리스 이동하기{}.", locale);
+				return "Game_Land/Tetris";
+			}
+			@RequestMapping(value = "/CaveBalls.do", method = RequestMethod.GET)
+			public String CaveBalls(Locale locale, Model model) {
+				logger.info("케이브 이동하기{}.", locale);
+				return "Game_Land/CaveBalls";
 			}
 			
 			/*

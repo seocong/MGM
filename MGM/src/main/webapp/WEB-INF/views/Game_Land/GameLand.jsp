@@ -124,114 +124,118 @@
 						<!-- Posts Area
 						============================================= -->
 						<div class="col-lg-9">
-<<<<<<< HEAD
+
 						
 						
 						
-=======
+
 						<h4 class="mb-2 ls1 uppercase t700 topmargin" style="font-size: 150%;">
-										<span class="text-warning"><i class="icon-user-friends"></i></span>
+										<span class="text-success"><i class="icon-grin-tongue-wink"></i></span>
 										게임랜드<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 						
 						<div id="posts" class="post-grid grid-container grid-3 clearfix " data-layout="fitRows">
 
-						<div class="entry clearfix">
+						<div class="entry clearfix" >
 							<div class="entry-image">
-								<a href="PlayGame.do" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg1.png" alt="Standard Post with Image"></a>
+								<a href="MasterChess.do" ><img class="image_fade" src="resources/images/GameImg1.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="PlayGame.do">마스터 체스</a></h2>
+								<h2><a href="MasterChess.do">마스터 체스</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 마스터 체스(Master Chess)는 친구와 함께 즐길수 있는 2인용 체스 플래시 게임입니다.</p>
+								<p>* 깔끔하고 세련된 디자인으로 편안히 게임에 집중할 수 있습니다.</p>
+								
+							</div>
+						</div>
+						
+						<div class="entry clearfix" >
+							<div class="entry-image">
+								<a href="Reversi.do"><img class="image_fade" src="resources/images/GameImg2.png" alt="Standard Post with Image"></a>
+							</div>
+							<div class="entry-title">
+								<h2><a href="Reversi.do">리버시</a></h2>
+							</div>
+							
+							<div class="entry-content" style="height: 160px;">
+								<p>* 리버시는 오셀로라고 불리는 친구와 함께 즐길수 있는 게임입니다.</p>
+								
 							</div>
 						</div>
 						
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg2.png" alt="Standard Post with Image"></a>
+								<a href="MasterCheckers.do" ><img class="image_fade" src="resources/images/GameImg3.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">리버시</a></h2>
+								<h2><a href="MasterCheckers.do">마스터 체커스</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 마스터 체커스는 체스와 비슷한 보드게임으로,전략형 퍼즐 플래시게임입니다.</p>
+								<p>* 마스터 체커스 계의 알파고를 이겨 보세요.</p>
+								
 							</div>
 						</div>
 						
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg3.png" alt="Standard Post with Image"></a>
+								<a href="BlackJack.do" ><img class="image_fade" src="resources/images/GameImg4.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">마스터 체커스</a></h2>
+								<h2><a href="BlackJack.do">블랙잭</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 블랙 잭은 플레이어와 딜러 간의 행운과 기술을 비교하는 카드 게임입니다.</p>
+								<p>* "Twenty-One"으로 알려진 금융 게임의 변형이며 일반적으로 카지노에서 재생됩니다.</p>
+								
 							</div>
 						</div>
 						
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg4.png" alt="Standard Post with Image"></a>
+								<a href="Tetris.do" ><img class="image_fade" src="resources/images/GameImg5.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">블랙잭</a></h2>
+								<h2><a href="Tetris.do">테트리스</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 떨어지는 큐브 블록을 돌려서 큐브 스택에 맞춥니다.</p>
+								<p>* 스택에 구멍을 피하십시오!공간을 확보하기 위해 완성 된 줄이 제거됩니다.</p>
 							</div>
 						</div>
 						
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg5.png" alt="Standard Post with Image"></a>
+								<a href="PinBall.do" ><img class="image_fade" src="resources/images/GameImg6.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">테트리스</a></h2>
+								<h2><a href="PinBall.do">핀볼</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 핀볼은 최고의 고전 아케이드 게임입니다.</p>
+								<p>* 핀볼 머신(pinball machine)으로 불리는 유리로 덮힌 케이스 안에서 하나 이상의 금속 공을 이용하여 점수를 얻는 오락이다</p>
+								
 							</div>
 						</div>
 						
 						<div class="entry clearfix">
 							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg6.png" alt="Standard Post with Image"></a>
+								<a href="CaveBalls.do" ><img class="image_fade" src="resources/images/GameImg7.png" alt="Standard Post with Image"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">핀볼</a></h2>
+								<h2><a href="CaveBalls.do">케이브볼</a></h2>
 							</div>
 							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-						
-						<div class="entry clearfix">
-							<div class="entry-image">
-								<a href="images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="resources/images/GameImg7.png" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">케이브볼</a></h2>
-							</div>
-							
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div class="entry-content" style="height: 160px;">
+								<p>* 공을 던져 같은 구멍으로 들어가지 않게 하는 아케이드 게임입니다.</p>
+								
 							</div>
 						</div>
 
@@ -241,24 +245,7 @@
 					</div>
 
 					
-										
-										
-										
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						<div class="line"></div>
+	
 						
 	
 						

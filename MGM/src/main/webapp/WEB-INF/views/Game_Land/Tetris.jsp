@@ -128,7 +128,7 @@
 						
 						<h4 class="mb-2 ls1 uppercase t700 topmargin" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
-										체스<span style="font-size: 60%;"></span>
+										테트리스<span style="font-size: 60%;"></span>
 									</h4>
 									<div class="line line-xs line-sports"></div>
 								
@@ -137,15 +137,18 @@
 									<!-- Post Article -->
 									<article class="ipost">
 									<div class="entry-image nomargin">
-												<iframe style="width: 100%; height: 550px; overflow: hidden;" src="https://playpager.com/embed/chess/index.html" scrolling="no"> </iframe>
+												<iframe style="width: 100%; height: 550px; overflow: hidden;" src="https://playpager.com/play-cube/index.html" scrolling="no"> </iframe>
 											</div>
 										
 									</article>
-									<div><h4 class="mb-2 ls1 uppercase t700 " style="font-size: 150%;">게임방법</h4></div>
+									<div><h4 class="mb-2 ls1 uppercase t700 " style="font-size: 150%;"><i class="icon-line-play"></i>게임방법</h4></div>
+									<div>네 개의 사각형으로 이루어진 '큐브'는 무작위로 나타나 바닥과 블록 위에 떨어진다.</div>
+									<div>이 오락의 목표는 이 '테트로미노'를 움직이고 90도씩 회전하여, 수평선을 빈틈 없이 채우는 것이다.</div>
+									<div>수평선이 만들어질 때 이 선은 없어지며 그 위의 블록이 아래로 떨어지는데  블록을 꼭대기까지 가득 메워, 큐브가 더 들어갈 공간이 없게 되면 게임이 끝나게 된다.</div>
 									<article class="spost clearfix nomargin"  style="float: right;">
 										<ul class="entry-meta clearfix " >
-										<li><a href="#" class="button button-border button-rounded button-red">메인가기</a></li>									
-										<li><a href="#" class="button button-border button-rounded button-black">목록가기</a></li>
+										<li><a href="main.do" class="button button-border button-rounded button-red">메인가기</a></li>									
+										<li><a href="GameLand.do" class="button button-border button-rounded button-black">목록가기</a></li>
 										</ul>									
 									</article>
 									</div>
