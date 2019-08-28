@@ -63,7 +63,7 @@
 									<li><a href="raceoperView.do"><div style="font-weight: bold;">시행정보</div></a></li>
 								</ul> 
 							</li>
-							<li class="#"><a href="channelList.do"><div  style="font-weight: bold;">경마채널</div></a>
+							<li class="#"><a href="ytList.do?pagenum=1&contentnum=10"><div  style="font-weight: bold;">경마채널</div></a>
 								
 							</li>
 							<li class="#"><a href="#"><div  style="font-weight: bold;">지난경기</div></a>

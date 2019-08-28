@@ -700,6 +700,38 @@ public class KIMController implements ServletContextAware{
 				return "Game_Land/CaveBalls";
 			}
 			
+			@RequestMapping(value = "/ytList.do", method = RequestMethod.GET)
+			public String ytList(Locale locale,HttpServletRequest request, Model model) {
+				logger.info("경마채널 이동하기{}.", locale);
+				PageMaker pagemaker = new PageMaker();
+				String pagenum = request.getParameter("pagenum");
+				String contentnum = request.getParameter("contentnum");
+				String board_name = request.getParameter("board_name");//수정,토탈 페이지 수정,리스트 파라미터 수정
+				int cpagenum = Integer.parseInt(pagenum);
+				int ccontentnum = Integer.parseInt(contentnum);
+				pagemaker.setTotalcount(boardService.selectTotalPaging(board_name));//전체 게시글 개수를 저장한다
+				pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음			
+				pagemaker.setContentnum(ccontentnum);//한페이지에 몇개씩 게시글을 보여줄지 지정한다
+				pagemaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현대 페이지 번호를 통해서 지정한다.
+				pagemaker.setLastblock(pagemaker.getTotalcount());//마지막 블록 번호를 전체 게시글 수를 통해서 전한다
+				
+				pagemaker.prevnext(cpagenum); //현재 페이지 번호로 화살표를 나타낼지 정한다
+				pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
+				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("pagenum", pagemaker.getPagenum()*20);
+				map.put("contentnum", pagemaker.getContentnum());
+				map.put("board_name", board_name);
+				List<BoardDto> list = boardService.getAllList(map);
+				
+				/*int replyCount = boardService.getCount();*/
+				model.addAttribute("board_name",board_name);//board name파라미터를 따로 보냄
+				model.addAttribute("list", list);
+				model.addAttribute("page", pagemaker);
+				
+				return "ChannelBoard/YtList";
+			}
+			
 			/*
 			
 			
