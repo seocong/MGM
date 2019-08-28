@@ -53,7 +53,7 @@
 </head>
 
 <body class="stretched">
-<jsp:useBean id="util" class="com.gam.utils.Util"/>
+
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
@@ -124,114 +124,52 @@
 						<!-- Posts Area
 						============================================= -->
 						<div class="col-lg-9">
+						
+						<div class="col-md-12 mt-5">
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-youtube-play"></i></span> YOUTUBE 등록</h4>
+									<div class="line line-xs line-sports"></div>
+						<form action="ytUpload.do" method="post">
+							<div class="col_two_third ">
+									<label for="template-contactform-phone">제목</label>
+									<input type="text" id="ytTitle" name="ytTitle" value="" class="sm-form-control" />
+								</div>
+						<div class="clear"></div>
+					
+						<div class="col_two_third ">
+									<label for="template-contactform-phone">유튜브ID</label>
+									<input type="text" id="ytID" name="ytID" value="" class="sm-form-control" />
+								</div>
+						<div class="clear"></div>				
+						<div class="col_full">
+									<button class="button button-3d nomargin" type="submit">유투브 등록</button>
+									<button class="button button-3d nomargin" type="button" onclick="location.href='main.do'">메인가기</button>
+								</div>				
+						</form>				
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<div class="line"></div>
+						
+	
+						
 
-							<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-youtube-sign"></i></span> 경마 채널</h4>
-								<div class="line line-xs line-sports"></div>
-								<table class="table table-striped">
-									<col width="10%">
-									<col width="20%">
-									<col width="60%">
-									<col width="10%">
-									<thead>
-										<tr style="text-align: center;">
-											<th>번호</th>
-											<th></th>
-											<th>제목</th>
-											<th>작성자</th>
-
-										</tr>
-									</thead>
-
-									<tbody>
-										<c:choose>
-											<c:when test="${empty list}">
-												<!-- empty  null인지 확인 -->
-												<tr>
-													<td colspan="10">---작성된 글이 없습니다.---</td>
-												</tr>
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${list}" var="YoutubeDto">
-													<tr>
-														<td style="text-align: center;">${YoutubeDto.ytNum}</td>
-														<td style="text-align: center;"><a
-															href="ytDetail.do?ytNum=${YoutubeDto.ytNum}&pagenum=${page.pagenum+1}&contentnum=10"><img
-																width="120px" height="80px"
-																src="http://img.youtube.com/vi/${YoutubeDto.ytAddress}/0.jpg"></a></td>
-														<td style="text-align: center;"><a
-															href="ytDetail.do?ytNum=${YoutubeDto.ytNum}&pagenum=${page.pagenum+1}&contentnum=10">${YoutubeDto.ytTitle}</a></td>
-														<td style="text-align: center;">운영자</td>
-													</tr>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</tbody>
-									<tr>
-										<td colspan="3">
-											<ul
-												class="pagination pagination-rounded pagination-inside-transparent pagination-button">
-												<c:if test="${page.prev}">
-													<li class="page-item"><a class="page-link"
-														href="javascript:page4(${page.getStartPage()-1});"
-														aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-												</c:if>
-												<c:forEach begin="${page.getStartPage()}"
-													end="${page.getEndPage()}" var="idx">
-													<li class="page-item"><a class="page-link"
-														href="javascript:page4(${idx});">${idx}</a></li>
-												</c:forEach>
-												<c:if test="${page.next }">
-													<li class="page-item"><a class="page-link"
-														href="javascript:page4(${page.getEndPage()+1});"
-														aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-												</c:if>
-											</ul>
-										</td>
-										<c:choose>
-											<c:when
-												test="${uid.member_id ne 'admin' || empty uid.member_id  }">
-												<td>
-													<div class="row form-group" style="text-align: center;">
-														<div class="col-md-12">
-															<button class="button button-3d nomargin" type="button"
-																onclick="location.href='main.do'">메인가기</button>
-														</div>
-													</div>
-												</td>
-
-											</c:when>
-											<c:otherwise>
-												<td>
-													<div class="row form-group" style="text-align: center;">
-														<div class="col-md-12">
-															<button class="button button-3d nomargin" type="button"
-																onclick="location.href='youtubeInsert.do'">업로드하기</button>
-														</div>
-													</div>
-												</td>
-											</c:otherwise>
-										</c:choose>
-									</tr>
-								</table>
-
-							</div>
-
-
-
-
-							<div class="line"></div>
-
-
-
-
-
-
-
-
-
-						</div>
-						<!-- 본문내용끝 -->
+						
+						
+					
+						
+				
+					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
 				</div>
 				
@@ -253,7 +191,7 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
-	<!-- <script src="resources/js/tabsJs.js"></script> -->
+	<script src="resources/js/tabsJs.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
@@ -273,26 +211,6 @@
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="resources/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
 
-	<!-- ADD-ONS JS FILES -->
-	<script type="text/javascript">
-	function page4(idx) {
-		var pagenum = idx;
-		var contentnum = 10;
-		/* location.href="answerboard.do?pagenum="+pagenum+"&contentnum="+contentnum; */
-	}
-	</script>
-		
- 	<script>
-		$(function(){
-			var pagenum = ${page.pagenum};
-			if(pagenum>=5){
-				pagenum=parseInt(pagenum)-4;
-			}
-			$(".page-link").eq(pagenum).css({
-				"background-color":"#3A486E",
-				"color":"white"
-			});
-		});
-	</script> 
+	
 	</body>
 	</html>

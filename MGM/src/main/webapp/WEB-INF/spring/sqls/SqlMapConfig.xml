@@ -6,7 +6,6 @@
   <configuration>
      <typeAliases>
         <typeAlias type="com.gam.mgm.dto.AnswerDto" alias="AnswerDto"/>
-        <typeAlias type="com.gam.mgm.dto.ChannelDto" alias="ChannelDto"/>
         <typeAlias type="com.gam.mgm.dto.BoardDto" alias="BoardDto"/>
         <typeAlias type="com.gam.mgm.dto.MemberDto" alias="MemberDto"/>
         <typeAlias type="com.gam.mgm.dto.MessageDto" alias="MessageDto"/>
@@ -33,6 +32,8 @@
  		<typeAlias type="com.gam.mgm.dto.HorsePrizeDto" alias="HorsePrizeDto" />
  		<typeAlias type="com.gam.mgm.dto.DistRecordDto" alias="DistRecordDto" />
  		<typeAlias type="com.gam.mgm.dto.RaceHistoryDto" alias="RaceHistoryDto" />
+ 		<typeAlias type="com.gam.mgm.dto.YoutubeDto" alias="YoutubeDto" />
+ 		<typeAlias type="com.gam.mgm.dto.YtCommentDto" alias="YtCommentDto" />
      </typeAliases>
      
   <mappers>
@@ -51,6 +52,7 @@
      <mapper resource="/sqls/Owner_mapper.xml" />
      <mapper resource="/sqls/RacePlan_mapper.xml" />
      <mapper resource="/sqls/RaceEntry_mapper.xml" /> 
+
   </mappers>
   
   

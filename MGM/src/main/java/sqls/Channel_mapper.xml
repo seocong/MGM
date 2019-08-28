@@ -4,4 +4,16 @@
   
   <mapper namespace="com.gam.Channel">
     
+    <select id="cntPaging" resultType="int">
+    	select count(*) from mgm_youtube
+    </select>
+    
+    <select id="getList" parameterType="Map" resultType="YoutubeDto">
+    	select ytNum,ytAddress,ytTitle from mgm_youtube order by ytNum desc LIMIT #{pagenum},#{contentnum}
+    </select>
+    
+    <insert id="ytInsert" parameterType="Map">
+    	insert into mgm_youtube(ytNum,ytAddress,ytTitle)values
+		((SELECT IFNULL(MAX(ytNum) + 1, 1)from mgm_youtube A),#{ytAddress},#{ytTitle})
+    </insert>
   </mapper>

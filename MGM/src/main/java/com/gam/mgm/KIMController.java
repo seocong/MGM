@@ -36,9 +36,11 @@ import com.gam.mgm.dto.AnswerDto;
 import com.gam.mgm.dto.BoardDto;
 import com.gam.mgm.dto.CommentDto;
 import com.gam.mgm.dto.MemberDto;
+import com.gam.mgm.dto.YoutubeDto;
 import com.gam.mgm.paging.PageMaker;
 import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
+import com.gam.mgm.service.IChannelService;
 import com.gam.mgm.service.ICommentService;
 
 
@@ -58,6 +60,8 @@ public class KIMController implements ServletContextAware{
 	private IAnswerService answerService;
 	@Autowired
 	private ICommentService commentService;
+	@Autowired
+	private IChannelService channelService;
 	
 	@Override
 	public void setServletContext(ServletContext servletContext) {
@@ -701,15 +705,15 @@ public class KIMController implements ServletContextAware{
 			}
 			
 			@RequestMapping(value = "/ytList.do", method = RequestMethod.GET)
-			public String ytList(Locale locale,HttpServletRequest request, Model model) {
+			public String ytList(Locale locale,HttpServletRequest request,HttpSession session, Model model) {
 				logger.info("경마채널 이동하기{}.", locale);
+				
 				PageMaker pagemaker = new PageMaker();
 				String pagenum = request.getParameter("pagenum");
 				String contentnum = request.getParameter("contentnum");
-				String board_name = request.getParameter("board_name");//수정,토탈 페이지 수정,리스트 파라미터 수정
 				int cpagenum = Integer.parseInt(pagenum);
 				int ccontentnum = Integer.parseInt(contentnum);
-				pagemaker.setTotalcount(boardService.selectTotalPaging(board_name));//전체 게시글 개수를 저장한다
+				pagemaker.setTotalcount(channelService.selectTotalPaging());//전체 게시글 개수를 저장한다
 				pagemaker.setPagenum(cpagenum-1);//현재 페이지를 페잊 객체에 지정한다. -1을 해야 쿼리에서 사용할수 있음			
 				pagemaker.setContentnum(ccontentnum);//한페이지에 몇개씩 게시글을 보여줄지 지정한다
 				pagemaker.setCurrentblock(cpagenum);//현재 페이지 블록이 몇번인지 현대 페이지 번호를 통해서 지정한다.
@@ -720,16 +724,39 @@ public class KIMController implements ServletContextAware{
 				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
 				Map<String,Object> map = new HashMap<String,Object>();
 				map.put("pagenum", pagemaker.getPagenum()*20);
-				map.put("contentnum", pagemaker.getContentnum());
-				map.put("board_name", board_name);
-				List<BoardDto> list = boardService.getAllList(map);
-				
-				/*int replyCount = boardService.getCount();*/
-				model.addAttribute("board_name",board_name);//board name파라미터를 따로 보냄
+				map.put("contentnum", pagemaker.getContentnum());			
+				List<YoutubeDto> list = channelService.getAllList(map);
 				model.addAttribute("list", list);
 				model.addAttribute("page", pagemaker);
-				
+				model.addAttribute("uid",session.getAttribute("uid"));
 				return "ChannelBoard/YtList";
+			}
+			
+			@RequestMapping(value = "/youtubeInsert.do", method = RequestMethod.GET)
+			public String youtubeInsert(Locale locale, Model model) {
+				logger.info("유투브 업로드 이동하기{}.", locale);
+				return "ChannelBoard/YtUpload";
+			}
+			@RequestMapping(value = "/ytUpload.do", method = RequestMethod.POST)
+			public String ytUpload(Locale locale,HttpServletRequest request, Model model) {
+				logger.info("유투브 업로드{}.", locale);
+				
+				String ytTitle = request.getParameter("ytTitle");
+				String ytID = request.getParameter("ytID");
+				String ytAddress = ytID.substring(17);
+				System.out.println("ytAddress:"+ytAddress);
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("ytAddress", ytAddress);
+				map.put("ytTitle", ytTitle);
+				boolean isS = channelService.ytInsert(map);
+				if(isS) {
+				model.addAttribute("msg","업로드 되었습니다.");
+				model.addAttribute("url","ytList.do?pagenum=1&contentnum=10");
+				return "Redirect";
+				}else {
+					model.addAttribute("msg","업로드에 실패했습니다.다시 시도해주세요");
+					return "error";
+				}
 			}
 			
 			/*
