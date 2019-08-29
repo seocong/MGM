@@ -16,4 +16,17 @@
     	insert into mgm_youtube(ytNum,ytAddress,ytTitle)values
 		((SELECT IFNULL(MAX(ytNum) + 1, 1)from mgm_youtube A),#{ytAddress},#{ytTitle})
     </insert>
+    
+    <select id="replylist" parameterType="int" resultType="YtCommentDto">
+    	select ytNum,ytContents,ytDepth,ytStep,ytWriter,ytDelflag,ytRegDate from mgm_ytcomment where ytNum=#{ytNum} order by ytStep desc limit 15
+    </select>
+    
+    <select id="getyoutube" parameterType="int" resultType="YoutubeDto">
+    	select ytNum,ytAddress,ytTitle from mgm_youtube where ytNum=#{ytNum}
+    </select>
+    
+    <insert id="ytComment" parameterType="Map" >
+    	insert into mgm_ytcomment(ytNum,ytContents,ytDepth,ytStep,ytWriter,ytDelflag,ytRegDate)values
+    	(#{ytNum},#{ytContents},0,(SELECT IFNULL(MAX(ytStep) + 1, 1)from mgm_ytcomment A),#{ytWriter},2,now())
+    </insert>
   </mapper>

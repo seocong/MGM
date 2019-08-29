@@ -159,8 +159,8 @@
 															href="ytDetail.do?ytNum=${YoutubeDto.ytNum}&pagenum=${page.pagenum+1}&contentnum=10"><img
 																width="120px" height="80px"
 																src="http://img.youtube.com/vi/${YoutubeDto.ytAddress}/0.jpg"></a></td>
-														<td style="text-align: center;"><a
-															href="ytDetail.do?ytNum=${YoutubeDto.ytNum}&pagenum=${page.pagenum+1}&contentnum=10">${YoutubeDto.ytTitle}</a></td>
+														<td style="text-align: center;">
+														<a href="ytDetail.do?ytNum=${YoutubeDto.ytNum}&pagenum=${page.pagenum+1}&contentnum=10">${YoutubeDto.ytTitle}</a></td>
 														<td style="text-align: center;">운영자</td>
 													</tr>
 												</c:forEach>
@@ -278,7 +278,7 @@
 	function page4(idx) {
 		var pagenum = idx;
 		var contentnum = 10;
-		/* location.href="answerboard.do?pagenum="+pagenum+"&contentnum="+contentnum; */
+		location.href="ytList.do?pagenum="+pagenum+"&contentnum="+contentnum; 
 	}
 	</script>
 		

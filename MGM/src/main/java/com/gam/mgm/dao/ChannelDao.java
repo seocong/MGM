@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.gam.mgm.dto.YoutubeDto;
+import com.gam.mgm.dto.YtCommentDto;
 
 @Repository
 public class ChannelDao  implements IChannelDao {
@@ -28,4 +29,19 @@ public class ChannelDao  implements IChannelDao {
 		int cnt = sqlSession.insert(namespace+"ytInsert", map);
 		return cnt>0?true:false;
 	}
+	@Override
+	public List<YtCommentDto> replyList(int ytNum) {
+		return sqlSession.selectList(namespace+"replylist", ytNum) ;
+	}
+	@Override
+	public YoutubeDto getYoutube(int ytNum) {
+		return sqlSession.selectOne(namespace+"getyoutube", ytNum);
+	}
+	@Override
+	public boolean ytCommentInsert(Map<String, Object> map) {
+		int cnt = sqlSession.insert(namespace+"ytComment", map);
+		return cnt>0?true:false;
+		 
+	}
+	
 }
