@@ -1338,17 +1338,29 @@
 								<div class="ipost mb-4 mb-lg-4 row clearfix">
 									<div class="col-md-6">
 										<div class="entry-image mb-0">
-											<div class="fslider" data-arrows="false" data-speed="300" data-pause="4000">
+											<div class="fslider" data-arrows="false" data-speed="400" data-pause="3000">
 												<div class="flexslider">
 													<div class="slider-wrap">
 														<div class="slide">
-															<a href="#"><img src="resources/demos/news/images/mario.png" alt="Image 1"></a>
+															<a href="#"><img src="resources/images/GameImg1.png" alt="Image 1"></a>
 														</div>
 														<div class="slide">
-															<a href="#"><img src="resources/demos/news/images/tetris.png" alt="Image 2"></a>
+															<a href="#"><img src="resources/images/GameImg2.png" alt="Image 2"></a>
 														</div>
 														<div class="slide">
-															<a href="#"><img src="resources/demos/news/images/bubble.jpg" alt="Image 2"></a>
+															<a href="#"><img src="resources/images/GameImg3.png" alt="Image 3"></a>
+														</div>
+														<div class="slide">
+															<a href="#"><img src="resources/images/GameImg4.png" alt="Image 4"></a>
+														</div>
+														<div class="slide">
+															<a href="#"><img src="resources/images/GameImg5.png" alt="Image 5"></a>
+														</div>
+														<div class="slide">
+															<a href="#"><img src="resources/images/GameImg6.png" alt="Image 6"></a>
+														</div>
+														<div class="slide">
+															<a href="#"><img src="resources/images/GameImg7.png" alt="Image 7"></a>
 														</div>
 													</div>
 												</div>
@@ -1365,7 +1377,7 @@
 											<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 										</ul>
 										<div class="entry-content mt-0">
-											<p>재미있는 추억의 게임을 즐기세요.남녀노소 누구나 좋아하는 추억의 오락실 게임 </p>
+											<p>재미있는 추억의 게임을 즐기세요.남녀노소 누구나 좋아하는 재미있는 게임 </p>
 											<a href="resources/demos/news/demo-news-2.html" class="mt-4 button button-dark button-rounded ls1 uppercase load-next-portfolio" style="background-color: #3A486E;">더 보기</a>
 										</div>
 									</div>
@@ -1392,7 +1404,7 @@
 							</div>
 							<div class="col-md-6">
 							<div class="entry-image mb-0">
-								<iframe width="560" height="315" src="http://www.youtube.com/embed/SZEflIVnhH8" frameborder="0" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="http://www.youtube.com/embed/xm0gm_fUjc4" frameborder="0" allowfullscreen></iframe>
 							</div>
 							</div>
 						</div>

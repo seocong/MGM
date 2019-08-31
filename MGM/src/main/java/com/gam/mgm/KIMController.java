@@ -724,7 +724,7 @@ public class KIMController implements ServletContextAware{
 				pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
 				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("pagenum", pagemaker.getPagenum()*20);
+				map.put("pagenum", pagemaker.getPagenum()*10);
 				map.put("contentnum", pagemaker.getContentnum());			
 				List<YoutubeDto> list = channelService.getAllList(map);
 				model.addAttribute("list", list);
@@ -780,7 +780,7 @@ public class KIMController implements ServletContextAware{
 				pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
 				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("pagenum", pagemaker.getPagenum()*20);
+				map.put("pagenum", pagemaker.getPagenum()*10);
 				map.put("contentnum", pagemaker.getContentnum());			
 				List<YoutubeDto> list = channelService.getAllList(map);
 				model.addAttribute("list", list);
