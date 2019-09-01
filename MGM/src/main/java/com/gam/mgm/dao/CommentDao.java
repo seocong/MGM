@@ -44,4 +44,8 @@ public class CommentDao implements ICommentDao {
 		int cnt = sqlSession.update(namespace+"ansdel",comment_seq);
 		return cnt>0?true:false;
 	}
+	@Override
+	public int pushCheck(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"pushcheck", map);
+	}
 }

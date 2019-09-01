@@ -35,4 +35,8 @@
       <update id="ansdel" parameterType="int">
     	UPDATE mgm_comment SET comment_delflag = 'Y' where comment_seq = #{comment_seq}
     </update>	
+    
+    <select id="pushcheck" parameterType="Map" resultType="int">
+    	select count(*) from mgm_comment where comment_recommender like CONCAT('%',#{member_id},'%') and comment_seq=#{comment_seq}
+    </select>
   </mapper>

@@ -180,354 +180,112 @@
 
 											<div class="tab-content clearfix" id="tabs-1" >
 											<div id="recent-post-list-sidebar">
+											<c:choose>
+												<c:when test="${empty popularList}">
 													 <div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding" >07.03</div>															
+															<div class="col-lg-7 "  >-- 삭제된 글입니다 -- </div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> &nbsp</div>
+															<div class="col-lg-2 nopadding" >00.00</div>															
 														</div>
 													</div>
+													</c:when>
+												<c:otherwise>
+													<c:forEach items="${popularList}" var="popularList">
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-danger"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
+															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${popularList.board_seq}&pagenum=1&contentnum=20&board_name=${popularList.board_name}">${popularList.board_title}</a></div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> ${popularList.board_writer}</div>
+															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${popularList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-warning"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>													
-														</div>
-													</div>
-														<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-danger"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >인기글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>	
 												</div>
 											</div>
 											<div class="tab-content clearfix" id="tabs-2">
 												<div id="recent-post-list-sidebar">
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
+													<c:choose>
+												<c:when test="${empty AlertList}">
 													 <div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding" >07.03</div>															
+															<div class="col-lg-7 "  >-- 삭제된 글입니다 -- </div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> &nbsp</div>
+															<div class="col-lg-2 nopadding" >00.00</div>															
 														</div>
 													</div>
+													</c:when>
+												<c:otherwise>
+													<c:forEach items="${AlertList}" var="AlertList">
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>													
+															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${AlertList.board_seq}&pagenum=1&contentnum=20&board_name=${AlertList.board_name}">${AlertList.board_title}</a></div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${AlertList.board_writer}</div>
+															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${AlertList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
-														<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >공지사항입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >전체공지사항입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>	
+												
+													
 												</div>
 											</div>
 											<div class="tab-content clearfix" id="tabs-3">
 												<div id="recent-post-list-sidebar">
+													<c:choose>
+												<c:when test="${empty freeList}">
 													 <div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding" >07.03</div>															
+															<div class="col-lg-7 "  >-- 삭제된 글입니다 -- </div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> &nbsp</div>
+															<div class="col-lg-2 nopadding" >00.00</div>															
 														</div>
 													</div>
+													</c:when>
+												<c:otherwise>
+													<c:forEach items="${freeList}" var="freeList">
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
+															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${freeList.board_seq}&pagenum=1&contentnum=20&board_name=${freeList.board_name}">${freeList.board_title}</a></div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${freeList.board_writer}</div>
+															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${freeList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
-														<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>													
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >자유게시판글입니다.이번주부터는 열심히 합시다</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>	
+													 
+														
 												</div>
 											</div>
 												<div class="tab-content clearfix" id="tabs-4">
 												<div id="recent-post-list-sidebar">
+													<c:choose>
+												<c:when test="${empty funList}">
 													 <div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남rlasasdfasdfasdfas</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding" >07.03</div>															
+															<div class="col-lg-7 "  >-- 삭제된 글입니다 -- </div>
+															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> &nbsp</div>
+															<div class="col-lg-2 nopadding" >00.00</div>															
 														</div>
 													</div>
+													</c:when>
+												<c:otherwise>
+													<c:forEach items="${funList}" var="funList">
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
+															<div class="col-lg-7 " ><a href="detail.do?board_seq=${funList.board_seq}&pagenum=1&contentnum=20&board_name=${funList.board_name}">${funList.board_title}</a></div>
+															<div class="col-lg-3 nopadding" style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${funList.board_writer}</div>
+															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${funList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
-														<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남werqrqwerwqrsef</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-full"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>													
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남asdfsafsadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남aheresadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>															
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남asdfsfadf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남aasdfasafsadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-half"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남asdfsadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-three-quarters"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남asdfsafsadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-empty"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
-													<div class="spost pt-0  notopborder clearfix">
-														<div class="row no-gutters">
-															<div class="col-lg-7 "  >김일남김일남김일남asdfsafsadfasdf</div>
-															<div class="col-lg-3 nopadding"><span class="text-dark"><i class="icon-battery-quarter"></i></span> admin</div>
-															<div class="col-lg-2 nopadding">07.03</div>														
-														</div>
-													</div>
+													</c:forEach>
+													</c:otherwise>
+												</c:choose>	
+												
+													 
 												</div>
 											</div>	
 										</div>
@@ -535,7 +293,7 @@
 										</div>
 										</div>
 										</div>
-										<a href="#" class="card-footer ls1 uppercase t700 text-white btn-block border-top-0 text-center" style="background-color: #3A486E;">커뮤니티바로가기</a>	<!--카드세션-->
+										<a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" class="card-footer ls1 uppercase t700 text-white btn-block border-top-0 text-center" style="background-color: #3A486E;">커뮤니티바로가기</a>	<!--카드세션-->
 									</div>
 								</div>
 
@@ -1378,7 +1136,7 @@
 										</ul>
 										<div class="entry-content mt-0">
 											<p>재미있는 추억의 게임을 즐기세요.남녀노소 누구나 좋아하는 재미있는 게임 </p>
-											<a href="resources/demos/news/demo-news-2.html" class="mt-4 button button-dark button-rounded ls1 uppercase load-next-portfolio" style="background-color: #3A486E;">더 보기</a>
+											<a href="GameLand.do" class="mt-4 button button-dark button-rounded ls1 uppercase load-next-portfolio" style="background-color: #3A486E;">더 보기</a>
 										</div>
 									</div>
 								</div>
@@ -1399,12 +1157,12 @@
 							</ul>
 							<div class="entry-content">
 								<p>유투브 채널로 즐기세요.다양한 컨텐츠가 있는 유투브 방송 보세요 </p>
-								<a href="resources/demos/news/demo-news-2.html" class="mt-4 button button-dark button-rounded ls1 uppercase load-next-portfolio" style="background-color: #3A486E;">더 보기</a>
+								<a href="ytList.do?pagenum=1&contentnum=10" class="mt-4 button button-dark button-rounded ls1 uppercase load-next-portfolio" style="background-color: #3A486E;">더 보기</a>
 							</div>
 							</div>
 							<div class="col-md-6">
 							<div class="entry-image mb-0">
-								<iframe width="560" height="315" src="http://www.youtube.com/embed/xm0gm_fUjc4" frameborder="0" allowfullscreen></iframe>
+								<iframe width="560" height="315" src="http://www.youtube.com/embed/dMiQAF1xzok" frameborder="0" allowfullscreen></iframe>
 							</div>
 							</div>
 						</div>

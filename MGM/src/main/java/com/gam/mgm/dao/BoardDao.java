@@ -73,6 +73,36 @@ public class BoardDao implements IBoardDao{
 	}
 
 
+	@Override
+	public int pushCheck(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace+"pushcheck", map);
+	}
+
+
+	@Override
+	public List<BoardDto> getPopList() {
+		return sqlSession.selectList(namespace+"popularlist");
+	}
+
+
+	@Override
+	public List<BoardDto> getFreeList() {
+		return sqlSession.selectList(namespace+"freelist");
+	}
+
+
+	@Override
+	public List<BoardDto> getFunList() {
+		return sqlSession.selectList(namespace+"funlist");
+	}
+
+
+	@Override
+	public List<BoardDto> getAlertList() {
+		return sqlSession.selectList(namespace+"alertlist");
+	}
+
+
 	
 
 }

@@ -23,5 +23,15 @@ public interface IBoardService {
 
 	public boolean delete(int board_seq);
 
+	public int pushCheck(Map<String, Object> map);
+
+	public List<BoardDto> getPopList();
+
+	public List<BoardDto> getFreeList();
+
+	public List<BoardDto> getFunList();
+
+	public List<BoardDto> getAlertList();
+
 	
 }
