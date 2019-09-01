@@ -195,7 +195,7 @@
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
 															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${popularList.board_seq}&pagenum=1&contentnum=20&board_name=${popularList.board_name}">${popularList.board_title}</a></div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-half"></i></span> ${popularList.board_writer}</div>
+															<div class="col-lg-3 nopadding" style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;"><span class="text-secondary"><i class="icon-battery-half"></i></span> ${popularList.board_writer}</div>
 															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${popularList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
@@ -221,7 +221,7 @@
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
 															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${AlertList.board_seq}&pagenum=1&contentnum=20&board_name=${AlertList.board_name}">${AlertList.board_title}</a></div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${AlertList.board_writer}</div>
+															<div class="col-lg-3 nopadding" style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${AlertList.board_writer}</div>
 															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${AlertList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
@@ -249,7 +249,7 @@
 													<div class="spost pt-0  notopborder clearfix">
 														<div class="row no-gutters">
 															<div class="col-lg-7 "  ><a href="detail.do?board_seq=${freeList.board_seq}&pagenum=1&contentnum=20&board_name=${freeList.board_name}">${freeList.board_title}</a></div>
-															<div class="col-lg-3 nopadding"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${freeList.board_writer}</div>
+															<div class="col-lg-3 nopadding" style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;"><span class="text-secondary"><i class="icon-battery-quarter"></i></span> ${freeList.board_writer}</div>
 															<div class="col-lg-2 nopadding" ><fmt:formatDate value="${freeList.board_regdate}" pattern="MM-dd" /></div>															
 														</div>
 													</div>
