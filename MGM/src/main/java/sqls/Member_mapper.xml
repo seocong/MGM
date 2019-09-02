@@ -14,7 +14,10 @@
    		<select id="mypage" parameterType="String" resultType="MemberDto">
    			SELECT MEMBER_ID,MEMBER_ADDRESS, MEMBER_NAME, MEMBER_PHNUM,MEMBER_POINT,MEMBER_REGDATE,(SELECT COUNT(MESSAGE_SEQ) FROM MGM_MESSAGE WHERE MGM_MESSAGE.MESSAGE_RECEIVER = #{uid} AND MGM_MESSAGE.MESSAGE_SREAD="N" AND MGM_MESSAGE.MESSAGE_SDELFLAG="N") AS MESSAGE_COUNT,(SELECT COUNT(*) FROM MGM_BOARD WHERE BOARD_WRITER=#{uid} AND BOARD_DELFLAG="N") AS BOARD_COUNT FROM MGM_MEMBER WHERE MEMBER_ID=#{uid}
    		</select>
-   		
+   		<!-- 유저업데이트 검색 -->
+   		<select id="updateSearch" parameterType="String" resultType="MemberDto">
+   			SELECT MEMBER_ID, MEMBER_ADDRESS,MEMBER_NAME,MEMBER_PHNUM,MEMBER_BIRTH from mgm_member WHERE MEMBER_ID=#{id} AND member_delflag="N";
+   		</select>
    		<update id="withdrawal" parameterType="String">
    			UPDATE MGM_MEMBER SET MEMBER_DELFLAG ='Y' WHERE MEMBER_ID=#{uid};
    		</update>

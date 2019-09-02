@@ -42,4 +42,8 @@ public class MemberDao implements IMemberDao {
 		int check = sqlSession.selectOne(namespace+"phCheck",ph);
 		return check==0?true:false;
 	}
+	@Override
+	public MemberDto updateSearch(String id) {
+		return sqlSession.selectOne(namespace+"updateSearch",id);
+	}
 }

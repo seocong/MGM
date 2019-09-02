@@ -388,7 +388,7 @@
 															<c:when test="${not empty myPost}">
 															<c:forEach items="${myPost}" var="post">
 																<tr style="text-align: center;">
-																	<td>${post.board_name}</td>
+																	<td class="board_name">${post.board_name}</td>
 																	<td>${post.board_title}</td>
 																	<td><fmt:formatDate value="${post.board_regdate}" pattern="yyyy-MM-dd"/></td>
 																	<td>${post.board_readcount}</td>

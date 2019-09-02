@@ -128,61 +128,65 @@
 					
 
 						<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 회원가입</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 정보수정</h4>
 									<div class="line line-xs line-sports"></div>
 
-						<div class="form-widget">
-
+							<!-- <div class="form-widget"> -->
 							<div class="form-result"></div>
 
-							<form class="nobottommargin" id="template-contactform" name="template-contactform" action="signup.do" method="post">
+							<form action="userUpdate.do" method="post" class="nobottommargin" id="userUpdate">
 
 								<div class="form-process"></div>
 
 								<div class="col_one_third">
-									<label for="idBox t700">아이디 <small>*</small></label>
-									<input type="text" id="idBox" name="id" class="sm-form-control required mandatory" readonly="readonly" value="${member.member_id}"/>
+									<label for="idBox t700">아이디 </label>
+									<input style="text-align: center; font-weight: bold;" type="text" id="idBox" name="id" class="sm-form-control required mandatory" value="${userInfo.member_id}" readonly="readonly"/>
+									<div id="error_id" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
-									<label for="nameBox t700">이름 <small>*</small></label>
-									<input type="text" id="nameBox" name="name"  class="sm-form-control required mandatory" readonly="readonly" value="${member.member_name}"/>
+									<label for="nameBox t700">이름</label>
+									<input style="text-align: center; font-weight: bold;" type="text" id="nameBox" class="sm-form-control required mandatory" value="${userInfo.member_name}" readonly="readonly"/>
+									<div id="error_name" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
 									<label for="pwBox t700">비밀번호 <small>*</small></label>
 									<input type="password" id="pwBox" name="pw"  class="required  sm-form-control mandatory" />
+									<div id="error_pw" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 
 								<div class="col_one_third ">
-									<label for="pwchkBox t700">비밀번호확인</label>
-									<input type="password" id="pwchkBox" name="pwcheck" class="sm-form-control mandatory" />
+									<label for="pwchkBox t700">비밀번호 확인 <small>*</small></label>
+									<input type="password" id="pwchkBox" name="pwcheck" class="required sm-form-control mandatory" />
+									<div id="error_pwchk" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 				
 								<div class="clear"></div>
-								
-								<div class="col_one_sixth mr-2" style="display:inline;">
-									<label for="yearBox t700">생년월일</label>
-									<input type="text" id="yearBox" name="name"  class="sm-form-control required mandatory" readonly="readonly" value="${userBirth}"/>
+																								
+								<div class="col_one_third">
+									<label for="nameBox t700">생년월일</label>
+									<input style="text-align: center; font-weight: bold;" type="text" id="nameBox" class="sm-form-control required mandatory" value="${userBirth}" readonly="readonly"/>
+									<div id="error_name" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_two_fifth">
-									<label for="phnumBox t700">전화번호</label>
-									<input type="text" id="phnumBox" name="phnum" value="" class="sm-form-control mandatory" />
-									<div id="error_phnum" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<label for="phnumBox t700">전화번호 <small>*</small></label>
+									<input type="text" id="phnumBox" name="phnum" class="sm-form-control mandatory" value="${userInfo.member_phnum }"/>
+									<div id="error_phnum" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>	
 								<div class="col_one_sixth">
 									<label for="template-contactform-phone t700" >인증하기</label>
 									<input type="button" id="template-contactform-phone" name="template-contactform-phone" value="button" class="sm-form-control" />
 								</div>								
 								<div class="clear"></div>
-								
+								<div id="addr" date-addr="${userInfo.member_address}"></div>
 								<div class="col_one_sixth mb-1 mr-3" >
 									<label for="zipcode t700">우편번호 <small>*</small></label>
-									<input type="text" id="zipcode" name="zipcode" readonly="readonly" class="required sm-form-control" />
+									<input type="text" id="zipcode" name="zipcode" readonly="readonly" class="required sm-form-control"  />
 								</div>
 								<div class="col_one_sixth mb-1">
 									<label for="searchBtn t700" ><br></label>
@@ -192,17 +196,17 @@
 								<div class="col_half mb-1" >
 									<label for="address t700">주소<small>*</small></label>
 									<input type="text" id="address" name="address" readonly="readonly" class="required sm-form-control" />
-									<div id="error_addr" class="pt-1 t700" style="color:#E42C3E; font-size:12px; display:none;">주소를 입력해주세요.</div>
+									<div id="error_addr" class="pt-1 t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								<div class="col_one_fourth">
 									<label for="detailAddress t700">상세주소<small>*</small></label>
 									<input type="text" id="detailAddress" name="detailAddress"  class="required sm-form-control mandatory" />
-									<div id="error_detailAddr" class="pt-1 blur_alert click_alert t700" style="color:#E42C3E; font-size:12px; display:none;">상세주소를 입력해주세요.</div>
+									<div id="error_detailAddr" class="pt-1 blur_alert click_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="col_one_fourth">
 									<label for="notes t700">참고<small>*</small></label>
-									<input type="text" id="notes" name="notes" class="required sm-form-control" />
+									<input type="text" id="notes" name="notes" class="sm-form-control" />
 								</div>
 								<div class="clear"></div>
 
@@ -213,48 +217,14 @@
 								</div>
 
 								<div class="col_full">
-									<button class="button button-3d nomargin" type="submit">수정하기</button>
-									<button class="button button-3d nomargin" type="button" onclick="location.href='mypage.do'">돌아가기</button>
+									<button id="updateSubmit" class="button button-3d nomargin" type="button">정보수정</button>
+									<button class="button button-3d nomargin" type="button" onclick="location.href='main.do'">메인가기</button>
 								</div>
-
-								<input type="hidden" name="prefix" value="template-contactform-">
-
 							</form>
-						</div>
-
+						<!-- </div> -->
 					</div><!-- .postcontent end -->
-
-
-				</div>
-						
-					
-										
-										
-										
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+				</div>		
 						<div class="line"></div>
-						
-	
-						
-
-						
-						
-					
-						
-				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
 				</div>
@@ -282,7 +252,7 @@
 	<!-- kakao Map api -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<!-- signupForm js -->
-	<script src="resources/js/user/signup.js"></script>
+	<script src="resources/js/user/userUpdate.js"></script>
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>

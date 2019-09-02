@@ -141,10 +141,13 @@ function msgSend(){
 			$('#msgSend').submit();
 		}else{
 			$('#error_id').css('color','#E42C3E');
-			$('#error_id').addClass("error").html('아이디 검색이 필요합니다.');
+			$('#error_id').addClass("error").html('아이디를 검색해주세요.');
 		}
 	}
 }
+$('#idbox').on('change keyup paste',function(){
+	$('#idbox').attr('data-success','N');
+});
 //메시지 보내기 창 열기
 $(function(){
 	$('#msgWrite').click(function(){
@@ -183,4 +186,19 @@ $('#memberSearchBtn').click(function(){
 			//console.log("ajax통신 에러");
 		}
 	});
+});
+
+//게시판 이름 바꾸기
+$('.board_name').each(function(index,item){
+	switch($(item).html()){
+	case 'free':
+		$(item).html('자유');
+		break;
+	case 'fun':
+		$(item).html('유머');
+		break;
+	case 'game':
+		$(item).html('게임');
+		break;
+	}
 });

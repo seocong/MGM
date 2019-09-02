@@ -100,7 +100,7 @@ window.onload=function(){
 				success:function(result){
 //					console.log(result);
 					if(!(!result)){
-						$('#msgCount').html(result);	
+						$('#msgCount').html('<a href="mypage.do">'+result+'</a>');	
 					}
 				},
 				error:function(){

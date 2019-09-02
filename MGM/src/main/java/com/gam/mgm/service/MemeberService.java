@@ -60,5 +60,10 @@ public class MemeberService implements IMemberService{
 	public boolean phCheck(String ph) {
 		return memberDao.phCheck(ph);
 	}
+
+	@Override
+	public MemberDto updateSearch(String id) {
+		return memberDao.updateSearch(id);
+	}
 	
 }

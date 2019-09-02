@@ -17,4 +17,7 @@ public interface IMemberService {
 	public boolean idCheck(String id);
 	
 	public boolean phCheck(String ph);
+	
+	//회원 업데이트 검색
+	public MemberDto updateSearch(String id);
 }

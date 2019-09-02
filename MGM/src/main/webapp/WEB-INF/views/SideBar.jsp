@@ -102,7 +102,7 @@
 						<span style="color:#3A486E; font-weight:bold;">${uid.member_point}</span>
 						&nbsp;&nbsp;
 						<span style="font-weight:bold;">쪽지: </span>
-						<span id="msgCount" style="color:#3A486E; font-weight:bold;"><a href="mypage.do">${msgCount}</a></span>
+						<span id="msgCount" style="color:#3A486E; font-weight:bold;"><a href="mypage.do">${uid.msgCount}</a></span>
 						<span id="logout"><a class="py-1 px-1 logoutLink" href="logout.do" style="/* background-color: #3A486E;  */ font-weight: bold; color: black; font-size:12px; border:solid 1px; border-color: #e2e2e2; color:#555555;">로그아웃</a></span>
 						 </div>
 					</div>

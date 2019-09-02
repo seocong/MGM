@@ -62,12 +62,12 @@ public class UserController {
 		loginMap.put("member_id", request.getParameter("id"));
 		loginMap.put("member_pw", request.getParameter("pw"));
 		MemberDto memberDto = memberService.login(loginMap);
-		session.setAttribute("uid", memberDto);
-		System.out.println("로그인 아이디 확인: "+session.getAttribute("uid"));
+		System.out.println("로그인 아이디 확인: "+session.getAttribute("uid")); 
 		if(memberDto != null) {
-			System.out.println("로그인 아이디: "+memberDto.getMember_id());
 			int msgCount = messageService.msgTotalCount(memberDto.getMember_id());
-			session.setAttribute("msgCount",msgCount);
+			memberDto.setMsgCount(msgCount);
+			session.setAttribute("uid", memberDto);
+			System.out.println("로그인 아이디: "+memberDto.getMember_id());
 			return "redirect:main.do";
 		}else {
 			model.addAttribute("msg", "로그인실패");
@@ -92,7 +92,7 @@ public class UserController {
 		logger.info("회원가입");
 		MemberDto member = new MemberDto();
 		String addr = "";
-		addr = request.getParameter("zipcode")+" "+request.getParameter("address")+" "+request.getParameter("detailAddress")+" "+request.getParameter("notes");
+		addr = request.getParameter("zipcode")+","+request.getParameter("address")+","+request.getParameter("detailAddress")+","+request.getParameter("notes");
 		System.out.println("addr: "+addr);
 		member.setMember_address(addr);
 		member.setMember_id(request.getParameter("id"));
@@ -284,21 +284,6 @@ public class UserController {
 			return null;
 		}
 	}
-	@RequestMapping(value="/updateUserInfoForm",method=RequestMethod.GET)
-	public String updateUserForm(HttpServletRequest request, Model model) {
-		logger.info("updateUserForm Controller");
-		HttpSession session = request.getSession();
-		if(session!=null) {
-			MemberDto member = (MemberDto) session.getAttribute("uid");
-			String uid = member.getMember_id();
-			model.addAttribute("uid",uid);
-		}else {
-			model.addAttribute("msg", "로그인이 필요합니다.");
-			model.addAttribute("url","main.do");
-			return "user/failmsg";
-		}
-		return "user/updateUser";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value="/checkUser.do",method=RequestMethod.POST)
@@ -335,19 +320,26 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/userUpdateForm.do", method=RequestMethod.GET)
-	public String userUpdate(HttpServletRequest request, Model model) {
+	public String userUpdateForm(HttpServletRequest request, Model model) {
 		logger.info("업데이트 포옴");
 		HttpSession session = request.getSession();
 		MemberDto userInfo = (MemberDto)session.getAttribute("uid");
 		String id = userInfo.getMember_id();
-		MemberDto member = memberService.myPage(id);
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
-//		String userBirth = dateFormat.format(member.getMember_birth());
+		MemberDto member = memberService.updateSearch(id);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String userBirth = dateFormat.format(member.getMember_birth());
 		model.addAttribute("userInfo",member);
-//		model.addAttribute("userBirth",userBirth);
+		model.addAttribute("userBirth",userBirth);
 		return "user/userUpdate";
 	}
-
+	@RequestMapping(value="/userUpdate.do", method=RequestMethod.POST)
+	public String userUpdate(HttpServletRequest request, Model model) {
+		logger.info("업데이트");
+		
+		//여기 해야됨
+		return "user/userUpdate";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/idCheck.do",method= RequestMethod.POST)
 	public boolean idCheck(Locale locale,HttpServletRequest request) {
