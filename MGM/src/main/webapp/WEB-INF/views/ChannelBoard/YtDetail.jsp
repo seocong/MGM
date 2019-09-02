@@ -138,6 +138,7 @@
 											</div>
 										
 									</article>
+									<br>
 									<div><h4 class="mb-2 ls1 uppercase t700 " style="font-size: 150%;"><i class="icon-line-play"></i>${ytDto.ytTitle}</h4></div>
 									<div></div>
 									<c:choose>

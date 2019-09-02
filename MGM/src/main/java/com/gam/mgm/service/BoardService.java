@@ -59,15 +59,5 @@ public class BoardService implements IBoardService{
 		return boardDao.delete(board_seq);
 	}
 
-	@Override
-	public List<BoardDto> myPost(Map<String,Object> map){
-		return boardDao.myPost(map);
-	}
-
-	@Override
-	public double myPostCount(String id) {
-		return boardDao.myPostCount(id);
-	}
-
 	
 }

@@ -47,4 +47,9 @@ public class CommentService implements ICommentService {
 	public boolean ansdel(int comment_seq) {
 		return commentDao.ansdel(comment_seq);
 	}
+
+	@Override
+	public int pushCheck(Map<String, Object> map) {
+		return commentDao.pushCheck(map);
+	}
 }

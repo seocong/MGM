@@ -17,4 +17,6 @@ public interface ICommentService {
 
 	public boolean ansdel(int comment_seq);
 
+	public int pushCheck(Map<String, Object> map);
+
 }

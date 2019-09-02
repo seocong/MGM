@@ -5,7 +5,7 @@ public class PageMaker {
 
 		private int totalcount;//전체게시물개수
 		private int pagenum;//현재페이지번호
-		private int contentnum=20; //한 페이지에 몇개 표시할지
+		private int contentnum; //한 페이지에 몇개 표시할지
 		private int startPage=1; //현재페이지블록의시작페이지
 		private int endPage=5; //현재 페이지블록의마지막페이지
 		private boolean prev=false; //이전페이지로 가는 화살표

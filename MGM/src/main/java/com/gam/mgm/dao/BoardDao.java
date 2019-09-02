@@ -73,17 +73,6 @@ public class BoardDao implements IBoardDao{
 	}
 
 
-	@Override
-	public List<BoardDto> myPost(Map<String,Object> map){
-		return sqlSession.selectList(namespace+"myPost",map);
-	}
-
-	@Override
-	public double myPostCount(String id) {
-		return sqlSession.selectOne(namespace+"myPostCount",id);
-	}
-
-
 	
 
 }

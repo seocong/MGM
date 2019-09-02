@@ -545,7 +545,7 @@
 			document.getElementById("replyArea").style.display='block'
 		}
 	};	
-	function replypushnum(board_seq){
+	/* function replypushnum(board_seq){
 		alert("board_seq = ["+board_seq +"]");
 		var board_seq = board_seq;
 		$.ajax({
@@ -565,9 +565,20 @@
 				alert("에러발생");
 			},
 		});
+	} */
+	
+	function replypushnum(board_seq){
+		alert("board_seq = ["+board_seq +"]");
+		var board_seq = board_seq;
+		var board_name = $("#board_name").attr("data-boardname");
+		var pagenum = ${page.pagenum}+1;
+		if(confirm("추천하시겠습니까?")){
+			location.href = "push.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq;				
+		}
 	}
 	
-	function replyAnspushnum(comment_seq){
+	
+	/* function replyAnspushnum(comment_seq){
 		alert("comment_seq = ["+comment_seq +"]");
 		var comment_seq = comment_seq;
 		$.ajax({
@@ -587,6 +598,16 @@
 				alert("에러발생");
 			},
 		});
+	} */
+	
+	function replyAnspushnum(comment_seq){
+		alert("comment_seq = ["+comment_seq +"]");
+		var comment_seq = comment_seq;
+		var board_name = $("#board_name").attr("data-boardname");
+		var pagenum = ${page.pagenum}+1;
+		if(confirm("추천하시겠습니까?")){
+			location.href = "AnsPush.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&comment_seq="+comment_seq;				
+		}
 	}
 	
 	$("#btnDelete").click(function(){
