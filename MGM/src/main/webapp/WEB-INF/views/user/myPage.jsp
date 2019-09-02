@@ -8,6 +8,7 @@
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html >
 <html>
 <head>
@@ -26,6 +27,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.css"
 	type="text/css" />
 <link rel="stylesheet" href="resources/style.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/mypage.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/swiper.css" type="text/css" />
 
@@ -169,8 +171,8 @@
 									</h4>
 									<div class="line line-xs line-sports mb-5"></div>
 									<div class="row clearfix">
-										<div class="col-md-6">
-											<h4 class="mb-3 uppercase t700" style="font-size: 115%;">회원정보</h4>
+										<div class="col-md-6 mb-4">
+											<h4 class="mb-3 uppercase t700"><span class="icon-users2 t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;프로필 정보</span></h4>
 											<div class="card border">
 												<div class="card-body table-responsive">
 													<table class="table table-bordered mt-3 ">
@@ -188,12 +190,9 @@
 																<td class="text-center">${memberInfo.message_count}<span>개</span></td>
 															</tr>
 															<tr>
-																<td class="table-dark text-center">작성게시글</td>
-																<td class="text-center">${memberInfo.board_count}<span>개</span></td>
-															</tr>
-															<tr>
 																<td class="table-dark text-center">전화번호</td>
-																<td class="text-center">${memberInfo.member_phnum}</td>
+																<fmt:formatNumber var="phnum" value="${memberInfo.member_phnum}" pattern="###,####,####" />
+																<td class="text-center"><span>0<c:out value="${fn:replace(phnum,',','-')}" /></span></td>
 															</tr>
 														</tbody>
 													</table>
@@ -230,22 +229,22 @@
 											</div>
 										</div>
 
-										<div class="col-md-6">
-											<h4 class="mb-3 uppercase t700" style="font-size: 115%;">포인트
-												사용내역</h4>
+										<div class="col-md-6 mb-4">
+											<h4 class="mb-3 uppercase t700"><span class="icon-money t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;포인트 내역</span></h4>
 											<div class="card border">
-												<div class="card-body">
-													<div class="scroll-wrap" style="max-height: 321px;">
-														<table class="table table-striped mt-3">
+												<div class="card-body" style="height: 315px;">
+													<div class="scroll-wrap" style="height: 275px; border:1px solid #dee2e6;">
+														<table class="table table-striped">
 															<thead>
 																<tr style="text-align: center;">
-																	<th>일자</th>
+																	<th>날짜</th>
 																	<th>사용내용</th>
 																	<th>추가</th>
 																	<th>사용</th>
 																	<th>잔여 포인트</th>
 																</tr>
 															</thead>
+															<c:if test="${memberInfo.pointDto ne null}">
 															<c:forEach items="${memberInfo.pointDto}" var="point">
 																<tr style="text-align: center;">
 																	<td class="small"><fmt:formatDate
@@ -266,7 +265,147 @@
 																	<td class="align-middle">${memberInfo.member_point}</td>
 																</tr>
 															</c:forEach>
+															</c:if>
+															<c:if test="${memberInfo.pointDto eq null}">
+																<td colspan="5">--포인트 내역이 없습니다--</td>
+															</c:if>
 														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 받음쪽지 -->
+										<div class="col-md-6 mb-4">
+											<h4 class="mb-3 uppercase t700" ><span class="icon-line-mail t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;받은쪽지함</span></h4>
+											<div class="card border">
+												<div class="card-body" style="height: 315px;">
+													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
+														<table class="table table-striped">
+															<thead>
+																<tr style="text-align: center;">
+																	<th width="5%" ><input type="checkbox" id="sAllCheck"></th>
+																	<th width="21%">보낸사람</th>
+																	<th width="52%">내용</th>
+																	<th width="21%">날짜</th>
+																</tr>
+															</thead>
+															<form id="sMsgDel" action="sMsgDel.do" method="post">
+															<c:choose>
+															<c:when test="${not empty msgList}">
+															<c:forEach items="${msgList}" var="msg">
+																<tr style="text-align: center;">
+																	<td class="align-middle"><input class="sDelChk" type="checkbox" name="sDelChk" value="${msg.message_seq}"></td>
+																	<td class="align-middle">${msg.message_sender}</td>
+																	<td class="align-middle" style="text-overflow: ellipsis;"><a href="javascript:msgDetail(${msg.message_seq},'r')">${msg.message_content}</a></td>
+																	<td class="small"><fmt:formatDate
+																			value="${msg.message_regdate}" pattern="yyyy-MM-dd" /><br>
+																	<fmt:formatDate value="${msg.message_regdate}"
+																			pattern="HH:mm" /></td>
+																</tr>
+															</c:forEach>
+															</c:when>
+															<c:otherwise>
+																<tr style="text-align: center;">
+																	<td colspan="4"><span>쪽지가 없습니다.</span></td>
+																</tr>
+															</c:otherwise>
+															</c:choose>
+															</form>
+														</table>
+													</div>
+													<div class="floatreset">
+														<div class="paging mt-2" data-count="${rMsgCount}" data-pageNum="${rpageNum}"></div>
+														<div><button class="mypageBtn mt-2" id="sMsgDel">삭제</button></div>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 보낸 쪽지 -->
+										<div class="col-md-6 mb-4">
+											<h4 class="mb-3 uppercase t700""><span class="icon-email2 t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;&nbsp;보낸쪽지함</span></h4>
+											<div class="card border">
+												<div class="card-body" style="height: 315px;">
+													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
+														<table class="table table-striped">
+															<thead>
+																<tr style="text-align: center;">
+																	<th width="5%" ><input type="checkbox" id="rAllCheck"></th>
+																	<th width="21%">받는사람</th>
+																	<th width="51%">내용</th>
+																	<th width="22%">날짜</th>
+																</tr>
+															</thead>
+															<form id="rMsgDel" action="rMsgDel.do" method="post">
+															<c:choose>
+															<c:when test="${not empty msgSendList}">
+															<c:forEach items="${msgSendList}" var="msg">
+																<tr style="text-align: center;">
+																	<td class="align-middle"><input class="rDelChk" type="checkbox" name="rDelChk" value="${msg.message_seq}"></td>
+																	<td class="align-middle">${msg.message_receiver}</td>
+																	<td class="align-middle" style="text-overflow: ellipsis;"><a href="javascript:msgDetail(${msg.message_seq},'s')">${msg.message_content}</a></td>
+																	<td class="small"><fmt:formatDate
+																			value="${msg.message_regdate}" pattern="yyyy-MM-dd" /><br>
+																	<fmt:formatDate value="${msg.message_regdate}"
+																			pattern="HH:mm" /></td>
+																</tr>
+															</c:forEach>
+															</c:when>
+															<c:otherwise>
+																<tr>
+																	<td class="align-middle" colspan="4" style="text-align: center;">쪽지가 없습니다.</td>
+																</tr>
+															</c:otherwise>
+															</c:choose>
+															</form>
+														</table>
+													</div>
+													<div class="floatreset">
+														<div class="paging mt-2" data-count="${sMsgCount}" data-pageNum="${spageNum}"></div>
+														<div><button class="mypageBtn mt-2">삭제</button></div>
+														<div><button id="msgWrite" class="mypageBtn mt-2 mr-2">쪽지쓰기</button></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 내가 쓴 게시글 -->
+										<div class="col-md-12 mb-4">
+											<h4 class="mb-3 uppercase t700""><span class="icon-edit1 t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;&nbsp;내 게시글</span></h4>
+											<div class="card border">
+												<div class="card-body" style="height: 315px;">
+													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
+														<table class="table table-striped">
+															<thead>
+																<tr style="text-align: center;">
+																	<th width="10%">게시판</th>
+																	<th width="50%">제목</th>
+																	<th width="20%">작성일</th>
+																	<th width="10%">조회수</th>
+																	<th width="10%">추천수</th>
+																</tr>
+															</thead>
+															<c:choose>
+															<c:when test="${not empty myPost}">
+															<c:forEach items="${myPost}" var="post">
+																<tr style="text-align: center;">
+																	<td>${post.board_name}</td>
+																	<td>${post.board_title}</td>
+																	<td><fmt:formatDate value="${post.board_regdate}" pattern="yyyy-MM-dd"/></td>
+																	<td>${post.board_readcount}</td>
+																	<td>${post.board_pushnum}</td>
+																</tr>
+															</c:forEach>
+															</c:when>
+															<c:otherwise>
+																<tr>
+																	<td class="align-middle" colspan="5" style="text-align: center;">작성된 글이 없습니다.</td>
+																</tr>
+															</c:otherwise>
+															</c:choose>
+														</table>
+													</div>
+													<div class="floatreset">
+														<div class="paging mt-2" data-count="${postCount}" data-pageNum="${boardNum}"></div>
 													</div>
 												</div>
 											</div>

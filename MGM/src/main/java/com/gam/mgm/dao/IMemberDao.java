@@ -15,4 +15,7 @@ public interface IMemberDao {
 	public MemberDto myPage(String uid);
 	//회원탈퇴
 	public boolean withdrawal(String uid);
+	//중복체크
+	public boolean idCheck(String id);
+	public boolean phCheck(String ph);
 }

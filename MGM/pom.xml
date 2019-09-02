@@ -20,6 +20,12 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.4</version>
 		</dependency>
+		<!-- Spring security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>4.2.13.RELEASE</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -214,6 +220,9 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<!-- <repositories> <repository> <id>spring-snapshots</id> <name>Spring 
+		Snapshots</name> <url>https://repo.spring.io/libs-snapshot</url> <snapshots> 
+		<enabled>true</enabled> </snapshots> </repository> </repositories> -->
 	<build>
 		<plugins>
 			<plugin>

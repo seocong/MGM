@@ -46,4 +46,12 @@
     <update id="delete" parameterType="int">
     	UPDATE mgm_board SET board_delflag = 'Y' where board_seq = #{board_seq}
     </update>
+    
+    <!-- 마이페이지 내가 쓴 글 목록 -->
+    <select id="myPost" parameterType="Map" resultType="BoardDto">
+    	select board_seq, board_name, board_title,board_regdate,board_pushnum, board_readcount from mgm_board  where board_writer = #{id} and board_delflag = 'N' limit #{pagenum},18;
+    </select>
+    <select id="myPostCount" parameterType="String" resultType="double">
+    	select round(count(*)/18,1) from mgm_board  where board_writer = #{id} and board_delflag = 'N';
+    </select>
   </mapper>

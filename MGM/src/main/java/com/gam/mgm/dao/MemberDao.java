@@ -32,4 +32,14 @@ public class MemberDao implements IMemberDao {
 		int success = sqlSession.update(namespace+"withdrawal",uid);
 		return success>0?true:false;
 	}
+	@Override
+	public boolean idCheck(String id) {
+		int check = sqlSession.selectOne(namespace+"idCheck",id);
+		return check==0?true:false;
+	}
+	@Override
+	public boolean phCheck(String ph) {
+		int check = sqlSession.selectOne(namespace+"phCheck",ph);
+		return check==0?true:false;
+	}
 }

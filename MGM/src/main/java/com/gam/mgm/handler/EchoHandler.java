@@ -61,8 +61,10 @@ public class EchoHandler extends TextWebSocketHandler{
 		 * TextMessage("<div class='"+senderId+"'>"+senderId+": <br>"+message.getPayload
 		 * ()+"</div>")); }
 		 */
-		for(String id:userSessions.keySet()) {
-			userSessions.get(id).sendMessage(new TextMessage("<div class='"+id+"'>"+senderId+": <br>"+message.getPayload()+"</div"));
+		if(senderId!=null && !message.getPayload().equals("")) {
+			for(String id:userSessions.keySet()) {
+				userSessions.get(id).sendMessage(new TextMessage(senderId+":"+message.getPayload()));
+			}
 		}
 		//protocol: cmd(command), 댓글작성자, 게시글 작성자, bno(게시글 번호) 
 	}
@@ -72,7 +74,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		Map<String, Object> httpSession = session.getAttributes();
 		MemberDto loginUser = (MemberDto)httpSession.get("uid");
 		if(null == loginUser) {
-			return session.getId();
+			return null;
 		}else {
 			return loginUser.getMember_id();
 		}

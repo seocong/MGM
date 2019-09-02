@@ -8,6 +8,46 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
+<style>
+#logout{
+	float:right;
+}
+.chatId{
+	font-weight:bold;
+	border-radius: 6px;
+	background-color: #C02942;
+	color: white;
+	padding:5px 10px;
+	float:left;
+}
+.textMsg{
+	border-radius: 6px;
+	background-color: #f2f2f2;
+	padding:5px 10px;
+	float:left;
+	max-width: 265px;
+}
+.cahtBox-inner{
+	margin-bottom: 10px;
+	clear: both;
+}
+.mychat{
+	font-weight:bold;
+	border-radius: 6px;
+	background-color: #1265A8;
+	color: white;
+	padding:5px 10px;
+	float:right;
+}
+.myTextMsg{
+	border-radius: 6px;
+	background-color: #f2f2f2;
+	padding:5px 10px;
+	float:right;
+	max-width: 265px;
+}
+
+</style>
 <div class="col-lg-3 sticky-sidebar-wrap topmargin ">
 	<div class="sticky-sidebar">
 
@@ -16,15 +56,16 @@
 		<div class="widget clearfix">
 			<!-- <div class="line line-xs line-market"></div> -->
 			<div class="card">
-				<div class="card-body" style="padding: 5px;">
+				
 					<c:if test="${uid eq null }">
+					<div class="card-body" style="padding: 5px;">
 					<form class="form-signin" method="post" action="login.do">
 						<!-- <div class="center">
 												<i class="icon-sticker-mule text-muted mb-3" style="font-size: 48px;line-height: 1"></i>
 												<h3 class="h3 mb-3 font-weight-normal font-primary">묻지마 로고</h3>
 												<p class="font-secondary mb-2">로그인을 하시면 하시면 편리하게 이용하실수 있습니다.</p>
 											</div> -->
-					
+					<div id="hidden-box" style="display:none;">
 						<div class="form-label-group">
 							<input name="id" type="text" id="inputId" class="form-control" placeholder="아이디" required>
 								<label class="pt-2" for="inputId">아이디</label>
@@ -33,9 +74,12 @@
 							<input name="pw" type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
 							<label class="pt-2" for="inputPassword">비밀번호</label>
 						</div>
-						<button class="btn btn-lg text-white btn-block uppercase ls1"
-							style="background-color: #3A486E;" type="submit">Sign in</button>
-						<div class="center">
+						<button id="signup" class="btn btn-lg text-white btn-block uppercase ls1"
+							style="background-color: #3A486E;" type="submit">Login</button>
+					</div>
+						<button id="signup2" class="btn btn-lg text-white btn-block uppercase ls1"
+							style="background-color: #3A486E;" type="button">Login</button>
+						<div class="center mt-1">
 							<small class="mt-5 text-muted font-italic"><a href="#">아이디.비밀번호
 									찾기</a></small>
 						</div>
@@ -43,14 +87,27 @@
 							<small class="mt-5 text-muted font-italic"><a href="signupform.do">회원가입</a></small>
 						</div>
 					</form>
+					</div>
 					</c:if>
+					
 					<c:if test="${uid ne null }">
-						<div>${uid.member_id}</div>
-						<div>${uid.member_point }</div>
-						<a href="mypage.do">마이페이지</a>
-						<a href="logout.do">로그아웃</a>
+					<div class="px-4 py-3" >
+						<div class="mt-1 pb-1"style="border-bottom: solid 1px; border-color:#808080;">
+						<span id="idbox" style=" font-weight: bold; font-size: 20px;">${uid.member_id}</span><span>님</span>
+						&nbsp;
+						<span><a id="mypage" href="mypage.do" style="color:gray;">마이페이지</a></span>
+						</div>
+						<div class="mt-2">
+						<span style="font-weight:bold;">포인트: </span>
+						<span style="color:#3A486E; font-weight:bold;">${uid.member_point}</span>
+						&nbsp;&nbsp;
+						<span style="font-weight:bold;">쪽지: </span>
+						<span id="msgCount" style="color:#3A486E; font-weight:bold;"><a href="mypage.do">${msgCount}</a></span>
+						<span id="logout"><a class="py-1 px-1 logoutLink" href="logout.do" style="/* background-color: #3A486E;  */ font-weight: bold; color: black; font-size:12px; border:solid 1px; border-color: #e2e2e2; color:#555555;">로그아웃</a></span>
+						 </div>
+					</div>
 					</c:if>
-				</div>
+				
 			</div>
 		</div>
 
@@ -66,21 +123,8 @@
 			<!-- Post Article -->
 			<div class="card border">
 				<div class="card-body">
-					<div class="scroll-wrap" style="height: 400px;">
+					<div class="scroll-wrap" id="chatBox" style="height: 400px;">
 						<div class="scroll" id="output">
-							<article class="spost pt-0 notopborder clearfix">
-								<div class="entry-c">
-									<div class="entry-title">
-										<h4 class="t600">
-											<a href="#">UK government weighs Tesla's Model.</a>
-										</h4>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><span>by</span> <a href="#">John Doe</a></li>
-										<li><i class="icon-time"></i><a href="#">11 Mar 2016</a></li>
-									</ul>
-								</div>
-							</article>
 						</div>
 					</div>
 				</div>
@@ -99,59 +143,4 @@
 	</div>
 </div>
 <script src="resources/js/jquery.js"></script>
-<script>
-$(function(){
-	$('#btnSend').on('click', function(evt) {
-		evt.preventDefault();
-		if (socket.readyState !== 1){
-			return;
-		};
-		let msg = $('#msgs').val();
-		socket.send(msg);
-		$('#msgs').val('');
-	});
-	
-	connect();
-});
-</script>
-<script>
-	var socket = null;
-	
-	function connect() {
-		var output = $("#output");
-		var outputbox;
-		var ws = new WebSocket("ws://localhost:8888/mgm/echo-ws.do");
-		socket = ws;
-		ws.onopen = function() {/* 이벤트  리스너 커넥션이 연결되었을때 들어옴*/
-			console.log('Info: connection opened.');
-
-			//onmessage는 연결안에 적어도 상관없음. 연결외 된 후에 실행되는것이기 때문에
-			//밖에 적어도 상관은 없으나 원칙상 onopen 안에 있어야 된다.
-		};
-
-		ws.onmessage = function(event) {
-			console.log("ReCeiveMesssage",event.data + '\n');
-			writeResponse(event.data);
-		};
-
-		ws.onclose = function(event) {
-			console.log('Info: connection closed.');
-			//setTimeout(function() {connect();}, 1000); //retry connection!!
-		};
-		ws.onerror = function(error) {
-			console.log('Info: error.' + error);
-		};
-		
-		function writeResponse(text){
-			$(output).append(text+"<div></div>");
-			$(output).scrollTop($(output).prop('scrollHeight'));
-     }
-	}
-</script>
-<script>
-		$(function(){
-			$('#signup').click(function(){
-				location.href="signupform.do";
-			});
-		});
-</script>
+<script src="resources/js/sidebar.js"></script>

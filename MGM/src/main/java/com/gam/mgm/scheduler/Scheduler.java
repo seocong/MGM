@@ -22,12 +22,12 @@ public class Scheduler {
 		info.raceEntry();
 	}
 	
-	@Scheduled(cron = "0 30 16 ? * WED,THU")
-	public void racePlan() {
-		System.out.println("출전상세정보");
-		InfoMethod info = new InfoMethod();
-		info.racePlan();
-	}
+//	@Scheduled(cron = "0 30 16 ? * WED,THU")
+//	public void racePlan() {
+//		System.out.println("출전상세정보");
+//		InfoMethod info = new InfoMethod();
+//		info.racePlan();
+//	}
 	
 	@Scheduled(cron = "0 0 19 ? * FRI,SAT,SUN")
 	public void raceresult() {

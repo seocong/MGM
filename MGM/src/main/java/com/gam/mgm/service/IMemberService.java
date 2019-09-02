@@ -13,4 +13,8 @@ public interface IMemberService {
 	public MemberDto myPage(String id);
 	//회원탈퇴
 	public boolean withdrawal(String uid);
+	//아이디 중복 체크
+	public boolean idCheck(String id);
+	
+	public boolean phCheck(String ph);
 }

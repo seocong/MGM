@@ -131,38 +131,37 @@
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 회원가입</h4>
 									<div class="line line-xs line-sports"></div>
 
-						<div class="form-widget">
-
+							<!-- <div class="form-widget"> -->
 							<div class="form-result"></div>
 
-							<form class="nobottommargin" id="template-contactform" name="template-contactform" action="signup.do" method="post">
+							<form action="signup.do" method="post" class="nobottommargin" id="sign-up">
 
 								<div class="form-process"></div>
 
 								<div class="col_one_third">
 									<label for="idBox t700">아이디 <small>*</small></label>
 									<input type="text" id="idBox" name="id" class="sm-form-control required mandatory"/>
-									<div id="error_id" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<div id="error_id" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
 									<label for="nameBox t700">이름 <small>*</small></label>
 									<input type="text" id="nameBox" name="name"  class="sm-form-control required mandatory" />
-									<div id="error_name" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<div id="error_name" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								
 								<div class="col_one_third">
 									<label for="pwBox t700">비밀번호 <small>*</small></label>
 									<input type="password" id="pwBox" name="pw"  class="required  sm-form-control mandatory" />
-									<div id="error_pw" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<div id="error_pw" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 
 								<div class="col_one_third ">
 									<label for="pwchkBox t700">비밀번호확인</label>
 									<input type="password" id="pwchkBox" name="pwcheck" class="sm-form-control mandatory" />
-									<div id="error_pwchk" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<div id="error_pwchk" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 				
 								<div class="clear"></div>
@@ -170,7 +169,7 @@
 								<div class="col_one_sixth mr-2" style="display:inline;">
 									<label for="yearBox t700">생년월일</label>
 									<input type="text" id="yearBox" name="year" class="sm-form-control mandatory" maxlength="4" placeholder="년(4자)"/>
-									<div id="error_year" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">년도를 입력해주세요.</div>
+									<div id="error_year" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="col_one_sixth mr-2" style="display:inline;">
 									<label for="monthBox t700"><br></label>
@@ -189,7 +188,7 @@
 										<option value="11">11</option>
 										<option value="12">12</option>
 									</select>
-									<div id="error_month" class="pt-1 click_alert t700" style="color:#E42C3E; font-size:12px; display:none;">년도를 입력해주세요.</div>
+									<div id="error_month" class="pt-1 click_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="col_one_sixth" style="display:inline;">
 									<label for="dateBox t700"><br></label>
@@ -202,8 +201,8 @@
 								
 								<div class="col_two_fifth">
 									<label for="phnumBox t700">전화번호</label>
-									<input type="text" id="phnumBox" name="phnum" value="" class="sm-form-control mandatory" />
-									<div id="error_phnum" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px; display:none;">필수입력 항목 입니다.</div>
+									<input type="text" id="phnumBox" name="phnum" class="sm-form-control mandatory" placeholder="숫자만 입력해주세요."/>
+									<div id="error_phnum" class="pt-1 blur_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>	
 								<div class="col_one_sixth">
 									<label for="template-contactform-phone t700" >인증하기</label>
@@ -223,17 +222,17 @@
 								<div class="col_half mb-1" >
 									<label for="address t700">주소<small>*</small></label>
 									<input type="text" id="address" name="address" readonly="readonly" class="required sm-form-control" />
-									<div id="error_addr" class="pt-1 t700" style="color:#E42C3E; font-size:12px; display:none;">주소를 입력해주세요.</div>
+									<div id="error_addr" class="pt-1 t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="clear"></div>
 								<div class="col_one_fourth">
 									<label for="detailAddress t700">상세주소<small>*</small></label>
 									<input type="text" id="detailAddress" name="detailAddress"  class="required sm-form-control mandatory" />
-									<div id="error_detailAddr" class="pt-1 blur_alert click_alert t700" style="color:#E42C3E; font-size:12px; display:none;">상세주소를 입력해주세요.</div>
+									<div id="error_detailAddr" class="pt-1 blur_alert click_alert t700" style="color:#E42C3E; font-size:12px;"></div>
 								</div>
 								<div class="col_one_fourth">
 									<label for="notes t700">참고<small>*</small></label>
-									<input type="text" id="notes" name="notes" class="required sm-form-control" />
+									<input type="text" id="notes" name="notes" class="sm-form-control" />
 								</div>
 								<div class="clear"></div>
 
@@ -244,48 +243,14 @@
 								</div>
 
 								<div class="col_full">
-									<button class="button button-3d nomargin" type="submit">회원가입</button>
-									<button class="button button-3d nomargin" type="button" onclick="location.href='login.do'">메인가기</button>
+									<button id="signUpSubmit" class="button button-3d nomargin" type="button">회원가입</button>
+									<button class="button button-3d nomargin" type="button" onclick="location.href='main.do'">메인가기</button>
 								</div>
-
-								<input type="hidden" name="prefix" value="template-contactform-">
-
 							</form>
-						</div>
-
+						<!-- </div> -->
 					</div><!-- .postcontent end -->
-
-
-				</div>
-						
-					
-										
-										
-										
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+				</div>		
 						<div class="line"></div>
-						
-	
-						
-
-						
-						
-					
-						
-				
 					</div>                                                              <!-- 본문내용끝 -->
 				</div> <!-- Container End -->
 				</div>
