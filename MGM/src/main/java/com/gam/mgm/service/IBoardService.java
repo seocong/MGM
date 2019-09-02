@@ -16,12 +16,16 @@ public interface IBoardService {
 	public BoardDto getBoard(int board_seq);
 
 	public boolean readCount(int board_seq);
-	
+
 	public BoardDto getUpdateBoard(Map<String, Object> map);
 
 	public boolean push(BoardDto boardDto);
 
 	public boolean delete(int board_seq);
 
-	
+	//내가 쓸근 전체 조회
+	public List<BoardDto> myPost(Map<String,Object> map);
+	//내가 쓴글 카운트
+	public double myPostCount(String id);
+
 }
