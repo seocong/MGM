@@ -128,6 +128,7 @@
 							<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> NEWS</h4>
 									<div class="line line-xs line-sports"></div>
 							</div>
+							<div>전체:00건</div>
 							<div class="col-md-12 mt-5">
 							<div id="posts" class="small-thumbs">
 							<div class="mpost clearfix">
