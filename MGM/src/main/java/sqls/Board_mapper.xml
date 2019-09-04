@@ -54,4 +54,32 @@
     <select id="myPostCount" parameterType="String" resultType="double">
     	select round(count(*)/18,1) from mgm_board  where board_writer = #{id} and board_delflag = 'N';
     </select>
+    
+    <select id="pushcheck" parameterType="Map" resultType="int">
+    	 select count(*) from mgm_board where board_recommender   like CONCAT('%', #{member_id}, '%') and board_seq=#{board_seq}
+    </select>
+
+    <select id="popularlist" resultType="BoardDto">
+    	  SELECT board_seq,board_title,board_writer,
+		board_regdate,board_delflag,board_name,(select count(*) from mgm_comment where comment_group = board_group)AS board_replyCnt
+		FROM mgm_board  ORDER BY board_pushnum DESC ,board_readcount limit 12 
+    </select>
+
+    <select id="freelist" resultType="BoardDto">
+    	 SELECT board_seq,board_title,board_writer,
+		board_regdate,board_delflag, board_name,(select count(*) from mgm_comment where comment_group = board_group)AS board_replyCnt
+		FROM mgm_board where board_name ='free' ORDER BY board_regdate DESC limit 12
+    </select>
+
+    <select id="funlist" resultType="BoardDto">
+    	 SELECT board_seq,board_title,board_writer,
+		board_regdate,board_delflag, board_name,(select count(*) from mgm_comment where comment_group = board_group)AS board_replyCnt
+		FROM mgm_board where board_name ='fun' ORDER BY board_regdate DESC limit 12
+    </select>
+
+    <select id="alertlist" resultType="BoardDto">
+    	 SELECT board_seq,board_title,board_writer,
+		board_regdate,board_delflag, board_name,(select count(*) from mgm_comment where comment_group = board_group)AS board_replyCnt
+		FROM mgm_board where board_name ='alert' ORDER BY board_regdate DESC limit 12
+    </select>
   </mapper>

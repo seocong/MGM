@@ -68,4 +68,29 @@ public class BoardService implements IBoardService{
 	public double myPostCount(String id) {
 		return boardDao.myPostCount(id);
 	}
+	
+	@Override
+	public int pushCheck(Map<String, Object> map) {
+		return boardDao.pushCheck(map);
+	}
+
+	@Override
+	public List<BoardDto> getPopList() {
+		return boardDao.getPopList();
+	}
+
+	@Override
+	public List<BoardDto> getFreeList() {
+		return boardDao.getFreeList();
+	}
+
+	@Override
+	public List<BoardDto> getFunList() {
+		return boardDao.getFunList();
+	}
+
+	@Override
+	public List<BoardDto> getAlertList() {
+		return boardDao.getAlertList();
+	}
 }

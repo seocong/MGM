@@ -27,5 +27,15 @@ public interface IBoardService {
 	public List<BoardDto> myPost(Map<String,Object> map);
 	//내가 쓴글 카운트
 	public double myPostCount(String id);
+	
+	public int pushCheck(Map<String, Object> map);
+
+	public List<BoardDto> getPopList();
+
+	public List<BoardDto> getFreeList();
+
+	public List<BoardDto> getFunList();
+
+	public List<BoardDto> getAlertList();
 
 }

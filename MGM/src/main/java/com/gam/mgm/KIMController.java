@@ -72,6 +72,19 @@ public class KIMController implements ServletContextAware{
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
 		logger.info(" 메인 이동하기{}.", locale);
+		
+		List<BoardDto> popularList = boardService.getPopList();
+		//자유게시판
+		List<BoardDto> freeList = boardService.getFreeList();
+		//유머게시판
+		List<BoardDto> funList = boardService.getFunList();
+		//공지게시판
+		List<BoardDto> AlertList = boardService.getAlertList();
+
+		 model.addAttribute("popularList", popularList);
+		 model.addAttribute("freeList", freeList);
+		 model.addAttribute("funList", funList);
+		 model.addAttribute("AlertList", AlertList);
 		return "Main2";
 	}
 	
@@ -380,48 +393,93 @@ public class KIMController implements ServletContextAware{
 			}
 			
 			@RequestMapping(value = "/push.do", method = RequestMethod.POST)
-			public void push(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int board_seq) throws IOException {
+			public String push(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int board_seq) throws IOException {
 				logger.info("답글 추가하기 {}.", locale);
 				int seq = Integer.parseInt(request.getParameter("board_seq"));
 				System.out.println("seq:"+seq);
 				//중복체크해야함
-				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
-				System.out.println("memberDto:"+memberDto);
+				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+				String contentnum = request.getParameter("contentnum");
+				String board_name = request.getParameter("board_name");
 				
-					String board_recommender = memberDto.getMember_id();
-					BoardDto boardDto = new BoardDto();
-					boardDto.setBoard_recommender(board_recommender);
-					boardDto.setBoard_seq(seq);
-					PrintWriter writer = response.getWriter();	
-					boolean isS = boardService.push(boardDto);
-					if(isS) {				
-						writer.print("useble");
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq);
+					return "Redirect";
+				}else {	
+					Map<String,Object> map = new HashMap<String,Object>();
+					map.put("board_seq", seq);
+					map.put("member_id", memberDto.getMember_id());
+					int pushCheck = boardService.pushCheck(map);
+					System.out.println("memberDto:"+memberDto);
+					if(pushCheck > 0) {
+						model.addAttribute("msg","이미 추천하셨습니다.");
+						model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq);
+						return "Redirect";
 					}else {
-						writer.print("not_useble");
+					
+						String board_recommender = memberDto.getMember_id();
+						BoardDto boardDto = new BoardDto();
+						boardDto.setBoard_recommender(board_recommender);
+						boardDto.setBoard_seq(seq);
+						boolean isS = boardService.push(boardDto);
+						if(isS) {
+							model.addAttribute("msg","성공적으로 추천되었습니다.");
+							model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+board_seq);
+							return "Redirect";
+						}else {
+							model.addAttribute("msg","추천을 실패했습니다.");
+							return "error";
+						}
 					}
+
+				}							
 				}
 				
-			@RequestMapping(value = "/AnsPush.do", method = RequestMethod.POST)
-			public void anspush(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int comment_seq) throws IOException {
-				logger.info("답글 추가하기 {}.", locale);
+			@RequestMapping(value = "/AnsPush.do", method = RequestMethod.GET)
+			public String anspush(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int comment_seq) throws IOException {
+				logger.info("댓글 추천하기 {}.", locale);
 				int seq = Integer.parseInt(request.getParameter("comment_seq"));
 				System.out.println("seq:"+seq);
 				//중복체크해야함
-				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
-				System.out.println("memberDto:"+memberDto);
+				int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+				String contentnum = request.getParameter("contentnum");
+				String board_name = request.getParameter("board_name");
 				
-					String board_recommender = memberDto.getMember_id();
-					CommentDto commentDto = new CommentDto();
-					commentDto.setComment_recommender(board_recommender);
-					commentDto.setComment_seq(seq);
-					PrintWriter writer = response.getWriter();	
-					boolean isS = commentService.push(commentDto);
-					if(isS) {				
-						writer.print("useble");
+				MemberDto memberDto	=(MemberDto)session.getAttribute("uid");
+				if(memberDto == null) {
+					model.addAttribute("msg","로그인 후 이용하실수 있는 서비스입니다.");
+					model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+comment_seq);
+					return "Redirect";
+				}else {	
+					Map<String,Object> map = new HashMap<String,Object>();
+					map.put("comment_seq", seq);
+					map.put("member_id", memberDto.getMember_id());
+					int pushCheck = commentService.pushCheck(map);
+					System.out.println("memberDto:"+memberDto);
+					if(pushCheck > 0) {
+						model.addAttribute("msg","이미 추천하셨습니다.");
+						model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+comment_seq);
+						return "Redirect";
 					}else {
-						writer.print("not_useble");
+						String board_recommender = memberDto.getMember_id();
+						CommentDto commentDto = new CommentDto();
+						commentDto.setComment_recommender(board_recommender);
+						commentDto.setComment_seq(seq);
+						boolean isS = commentService.push(commentDto);
+						if(isS) {
+							model.addAttribute("msg","성공적으로 추천되었습니다.");
+							model.addAttribute("url","detail.do?pagenum="+pagenum+"&contentnum=20&board_name="+board_name+"&board_seq="+comment_seq);
+							return "Redirect";
+						}else {
+							model.addAttribute("msg","추천을 실패했습니다.");
+							return "error";
+						}
 					}
 				}
+
+			}
 			
 			
 			@RequestMapping(value = "/delete.do", method = {RequestMethod.GET,RequestMethod.POST})
@@ -724,7 +782,7 @@ public class KIMController implements ServletContextAware{
 				pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
 				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("pagenum", pagemaker.getPagenum()*20);
+				map.put("pagenum", pagemaker.getPagenum()*10);
 				map.put("contentnum", pagemaker.getContentnum());			
 				List<YoutubeDto> list = channelService.getAllList(map);
 				model.addAttribute("list", list);
@@ -780,7 +838,7 @@ public class KIMController implements ServletContextAware{
 				pagemaker.setStartPage(pagemaker.getCurrentblock()); //시작페이지를 페이지 블록 번호로 정한다
 				pagemaker.setEndPage(pagemaker.getLastblock(), pagemaker.getCurrentblock()); //마지막 페이지를 마지막 페이지 블록과 현재 페이지 블록 번호로 정한다
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("pagenum", pagemaker.getPagenum()*20);
+				map.put("pagenum", pagemaker.getPagenum()*10);
 				map.put("contentnum", pagemaker.getContentnum());			
 				List<YoutubeDto> list = channelService.getAllList(map);
 				model.addAttribute("list", list);
@@ -822,6 +880,12 @@ public class KIMController implements ServletContextAware{
 					}
 				}
 				
+			}
+			
+			@RequestMapping(value = "/newsList.do", method = RequestMethod.GET)
+			public String newsList(Locale locale, Model model) {
+				logger.info("뉴스 리스트 이동하기{}.", locale);
+				return "News/NewsList";
 			}
 			
 			/*
