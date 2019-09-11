@@ -888,6 +888,12 @@ public class KIMController implements ServletContextAware{
 				return "News/NewsList";
 			}
 			
+			@RequestMapping(value = "/faq.do", method = RequestMethod.GET)
+			public String faq(Locale locale, Model model) {
+				logger.info("FAQ 이동하기{}.", locale);
+				return "Faq";
+			}
+			
 			/*
 			
 			

@@ -17,7 +17,7 @@
 
 					<div class="col_half col_last tright">
 						<div class="copyrights-menu copyright-links fright clearfix">
-							<a href="#">Home</a>/<a href="#">회사소개</a>/<a href="termService.do">이용약관</a>/<a href="termService.do">개인정보 처리방침</a>/<a href="#">광고&제휴문의</a>/<a href="#">QnA</a>
+							<a href="#">Home</a>/<a href="#">회사소개</a>/<a href="termService.do">이용약관</a>/<a href="termService.do">개인정보 처리방침</a>/<a href="#">광고&제휴문의</a>/<a href="faq.do">FAQ</a>
 						</div>
 						<div class="fright clearfix">
 							<a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">
