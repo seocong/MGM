@@ -7,6 +7,8 @@
 	response.setContentType("text/html; charset=utf-8");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <style>
 #logout{
@@ -107,15 +109,23 @@
 						<div class="mt-1 pb-1"style="border-bottom: solid 1px; border-color:#808080;">
 						<span id="idbox" style=" font-weight: bold; font-size: 20px;">${uid.member_id}</span><span>님</span>
 						&nbsp;
-						<span><a id="mypage" href="mypage.do" style="color:gray;">마이페이지</a></span>
-						</div>
+						<c:if test="${uid.member_id eq 'admin'}">
+							<span><a id="mypage" href="adminPage.do" style="color:gray;">관리페이지</a></span>
+						&nbsp;&nbsp;
+						<span id="logout"><a class="py-1 px-1 logoutLink" href="logout.do" style="/* background-color: #3A486E;  */ font-weight: bold; color: black; font-size:12px; border:solid 1px; border-color: #e2e2e2; color:#555555;">로그아웃</a></span>
+						</c:if>
+						<c:if test="${uid.member_id ne 'admin'}">
+							<span><a id="mypage" href="mypage.do" style="color:gray;">마이페이지</a></span>
+						
 						<div class="mt-2">
 						<span style="font-weight:bold;">포인트: </span>
-						<span style="color:#3A486E; font-weight:bold;">${uid.member_point}</span>
+						<span style="color:#3A486E; font-weight:bold;"><fmt:formatNumber value="${uid.member_point}" type="number"></fmt:formatNumber></span>
 						&nbsp;&nbsp;
 						<span style="font-weight:bold;">쪽지: </span>
 						<span id="msgCount" style="color:#3A486E; font-weight:bold;"><a href="mypage.do">${uid.msgCount}</a></span>
 						<span id="logout"><a class="py-1 px-1 logoutLink" href="logout.do" style="/* background-color: #3A486E;  */ font-weight: bold; color: black; font-size:12px; border:solid 1px; border-color: #e2e2e2; color:#555555;">로그아웃</a></span>
+						 </div>
+						 </c:if>
 						 </div>
 					</div>
 					</c:if>

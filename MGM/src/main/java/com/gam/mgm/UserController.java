@@ -72,6 +72,10 @@ public class UserController {
 		if(memberDto != null) {
 			int msgCount = messageService.msgTotalCount(memberDto.getMember_id());
 			memberDto.setMsgCount(msgCount);
+			if(!memberDto.getMember_id().equals("admin") && !memberDto.getMember_id().equals("Admin")) {
+				int memberPoint = pointService.addPoint(memberDto.getMember_id());
+				memberDto.setMember_point(memberPoint);
+			}
 			session.setAttribute("uid", memberDto);
 			System.out.println("로그인 아이디: "+memberDto.getMember_id());
 			return "redirect:main.do";
@@ -229,6 +233,10 @@ public class UserController {
 			pointMap.put("pagenum",pointNum*18);
 			//마이페이지 기본정보
 			MemberDto memberInfo = memberService.myPage(uid);
+			if(!uid.equals("admin") && !uid.equals("Admin")) {
+				int memberPoint = pointService.addPoint(uid);
+				memberInfo.setMember_point(memberPoint);
+			}
 			//받은쪽지
 			List<MessageDto> rMsgList = messageService.msgList(rMap);
 			//보낸쪽지

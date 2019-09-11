@@ -72,6 +72,7 @@
 							<li><a href="GameLand.do"><div  style="font-weight: bold;">게임랜드</div></a>
 								
 							</li>
+							<c:if test="${not empty uid}">
 							<li class="#"><a href="#"><div  style="font-weight: bold;">마이페이지</div></a>
 								<ul>							
 									<li><a href="#"><div  style="font-weight: bold;">쪽지함</div></a>
@@ -88,10 +89,11 @@
 									</li>		
 									<li><a href="#"><div  style="font-weight: bold;">정보수정</div></a></li>
 									<li><a href="#"><div  style="font-weight: bold;">회원탈퇴</div></a></li>
-									<li><a href="hrinsert.do"><div  style="font-weight: bold;">임시페이지</div></a></li>
-									<li><a href="adminPage.do"><div  style="font-weight: bold;">관리자 임시</div></a></li>
+								<!-- 	<li><a href="hrinsert.do"><div  style="font-weight: bold;">임시페이지</div></a></li>
+									<li><a href="adminPage.do"><div  style="font-weight: bold;">관리자 임시</div></a></li> -->
 								</ul>
 							</li>
+							</c:if>
 							<!-- <li class="#"><a href="#"><div>고객센터</div></a>
 								<ul>
 									<li><a href="#"><div>회사소개</div></a></li>

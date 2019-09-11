@@ -27,5 +27,10 @@ public class PointService implements IPointService{
 	@Override
 	public int pointCount(String id) {
 		return pointDao.pointCount(id);
+	}
+
+	@Override
+	public int addPoint(String id) {
+		return pointDao.addPoint(id);
 	}	
 }

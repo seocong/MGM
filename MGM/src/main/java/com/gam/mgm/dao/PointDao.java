@@ -27,4 +27,9 @@ public class PointDao implements IPointDao {
 	public int pointCount(String id) {
 		return sqlSession.selectOne(namespace+"pointCount",id);
 	}
+	
+	@Override
+	public int addPoint(String id) {
+		return sqlSession.selectOne(namespace+"addPoint",id);
+	}
 }

@@ -181,10 +181,18 @@
 																<td class="table-dark text-center x-large">아이디</td>
 																<td class="text-center">${memberInfo.member_id}</td>
 															</tr>
+															<c:if test="${memberInfo.member_id ne 'admin' and memberInfo.member_id ne 'Admin' }">
 															<tr>
 																<td class="table-dark text-center">포인트</td>
-																<td class="text-center">${memberInfo.member_point}</td>
+																<td class="text-center"><fmt:formatNumber value="${memberInfo.member_point}" type="number"></fmt:formatNumber></td>
 															</tr>
+															</c:if>
+															<c:if test="${memberInfo.member_id eq 'admin' and memberInfo.member_id eq 'Admin' }">
+															<tr>
+																<td class="table-dark text-center">문의글</td>
+																<td class="text-center"><fmt:formatNumber value="${memberInfo.member_point}" type="number"></fmt:formatNumber></td>
+															</tr>
+															</c:if>
 															<tr>
 																<td class="table-dark text-center">받은 쪽지</td>
 																<td class="text-center">${memberInfo.message_count}<span>개</span></td>

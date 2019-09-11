@@ -9,4 +9,5 @@ public interface IPointDao {
 	public boolean insertPoint(PointDto pointDto);
 	public List<PointDto> selectPoint(Map<String,Object> map);
 	public int pointCount(String id);
+	public int addPoint(String id);
 }
