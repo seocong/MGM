@@ -7,15 +7,15 @@
 	<select id="msgList" parameterType="Map" resultType="MessageDto">
 		SELECT MESSAGE_SEQ,MESSAGE_SENDER,MESSAGE_RECEIVER,MESSAGE_CONTENT,MESSAGE_REGDATE,MESSAGE_RREAD FROM MGM_MESSAGE WHERE MESSAGE_RECEIVER = #{id} AND MESSAGE_RDELFLAG = 'N' order by message_seq desc limit #{pagenum},18;
 	</select>
-	<select id="msgCount" parameterType="String" resultType="double">
-    	SELECT ROUND(COUNT(*)/18,1) FROM MGM_MESSAGE WHERE MESSAGE_RECEIVER = #{id} AND MESSAGE_RDELFLAG = 'N';
+	<select id="msgCount" parameterType="String" resultType="int">
+    	SELECT COUNT(*) FROM MGM_MESSAGE WHERE MESSAGE_RECEIVER = #{id} AND MESSAGE_RDELFLAG = 'N';
     </select>
 <!-- 보낸메세지 -->
 	<select id="msgSendList" parameterType="Map" resultType="MessageDto">
 		SELECT MESSAGE_SEQ,MESSAGE_RECEIVER,MESSAGE_SENDER,MESSAGE_CONTENT,MESSAGE_REGDATE,MESSAGE_SREAD FROM MGM_MESSAGE WHERE MESSAGE_SENDER = #{id} AND MESSAGE_SDELFLAG = 'N' order by message_seq desc limit #{pagenum},18;
 	</select>
-	<select id="msgSendCount" parameterType="String" resultType="double">
-    	SELECT ROUND(COUNT(*)/18,1) FROM MGM_MESSAGE WHERE MESSAGE_SENDER = #{id} AND MESSAGE_SDELFLAG = 'N';
+	<select id="msgSendCount" parameterType="String" resultType="int">
+    	SELECT COUNT(*) FROM MGM_MESSAGE WHERE MESSAGE_SENDER = #{id} AND MESSAGE_SDELFLAG = 'N';
     </select>
 <!-- 쪽지보내기 -->
 	<insert id="msgSend" parameterType="MessageDto" >
@@ -23,20 +23,20 @@
 		values(#{message_content},now(),'N','N','N','N',#{message_sender},#{message_receiver});
 	</insert>
 <!-- 수신메세지 삭제 -->
-	<update id="msgSDel" parameterType="Map">
+	<update id="msgRDel" parameterType="Map">
 		update mgm_message set message_rDelflag='Y' where message_receiver=#{message_receiver} and message_seq=#{message_seq};
 	</update>
 <!-- 발신메세지 삭제 -->
-	<update id="msgRDel" parameterType="Map">
+	<update id="msgSDel" parameterType="Map">
 		update mgm_message set message_sDelflag='Y'where message_sender=#{message_sender} and message_seq=#{message_seq};
 	</update>
 <!-- 수신메세지 읽음 -->
-	<update id="msgSRead" parameterType="Map">
-		update mgm_message set message_rRead='Y' where message_receiver=#{message_receiver} and message_seq=#{message_seq};
+	<update id="msgRRead" parameterType="Map">
+		update mgm_message set message_rRead='Y' where message_receiver=#{id} and message_seq=#{message_seq};
 	</update>
 <!-- 발신메세지 읽음 -->	
-	<update id="msgRRead" parameterType="Map">
-		update mgm_message set message_sRead='Y'where message_sender=#{message_sender} and message_seq=#{message_seq};
+	<update id="msgSRead" parameterType="Map">
+		update mgm_message set message_sRead='Y'where message_sender=#{id} and message_seq=#{message_seq};
 	</update>
 <!-- 메세지 상세보기 -->
 	<select id="msgDetail" parameterType="MessageDto" resultType="MessageDto">

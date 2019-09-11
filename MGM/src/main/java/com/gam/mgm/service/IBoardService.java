@@ -26,7 +26,7 @@ public interface IBoardService {
 	//내가 쓸근 전체 조회
 	public List<BoardDto> myPost(Map<String,Object> map);
 	//내가 쓴글 카운트
-	public double myPostCount(String id);
+	public int myPostCount(String id);
 	
 	public int pushCheck(Map<String, Object> map);
 

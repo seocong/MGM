@@ -233,7 +233,7 @@
 											<h4 class="mb-3 uppercase t700"><span class="icon-money t700" style="font-size:20px;color:#444444; font-size: 16px;">&nbsp;포인트 내역</span></h4>
 											<div class="card border">
 												<div class="card-body" style="height: 315px;">
-													<div class="scroll-wrap" style="height: 275px; border:1px solid #dee2e6;">
+													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
 														<table class="table table-striped">
 															<thead>
 																<tr style="text-align: center;">
@@ -244,8 +244,8 @@
 																	<th>잔여 포인트</th>
 																</tr>
 															</thead>
-															<c:if test="${memberInfo.pointDto ne null}">
-															<c:forEach items="${memberInfo.pointDto}" var="point">
+															<c:if test="${pointNum ne null}">
+															<c:forEach items="${pointList}" var="point">
 																<tr style="text-align: center;">
 																	<td class="small"><fmt:formatDate
 																			value="${point.point_regdate}" pattern="yyyy-MM-dd" /><br>
@@ -266,10 +266,13 @@
 																</tr>
 															</c:forEach>
 															</c:if>
-															<c:if test="${memberInfo.pointDto eq null}">
+															<c:if test="${pointList eq null}">
 																<td colspan="5">--포인트 내역이 없습니다--</td>
 															</c:if>
 														</table>
+													</div>
+													<div class="floatreset">
+														<div class="paging mt-2" data-count="${pointCount}" data-pageNum="${pointNum}"></div>
 													</div>
 												</div>
 											</div>
@@ -280,23 +283,23 @@
 											<div class="card border">
 												<div class="card-body" style="height: 315px;">
 													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
-														<table class="table table-striped">
+														<table class="table table-striped" style="table-layout: fixed;">
 															<thead>
 																<tr style="text-align: center;">
-																	<th width="5%" ><input type="checkbox" id="sAllCheck"></th>
+																	<th width="5%" ><input type="checkbox" id="rAllCheck"></th>
 																	<th width="21%">보낸사람</th>
 																	<th width="52%">내용</th>
 																	<th width="21%">날짜</th>
 																</tr>
 															</thead>
-															<form id="sMsgDel" action="sMsgDel.do" method="post">
+															<form id="rMsgDel" action="rMsgDel.do" method="post">
 															<c:choose>
 															<c:when test="${not empty msgList}">
 															<c:forEach items="${msgList}" var="msg">
 																<tr style="text-align: center;">
-																	<td class="align-middle"><input class="sDelChk" type="checkbox" name="sDelChk" value="${msg.message_seq}"></td>
-																	<td class="align-middle">${msg.message_sender}</td>
-																	<td class="align-middle" style="text-overflow: ellipsis;"><a href="javascript:msgDetail(${msg.message_seq},'r')">${msg.message_content}</a></td>
+																	<td class="align-middle"><input class="rDelChk" type="checkbox" name="rDelChk" value="${msg.message_seq}"></td>
+																	<td class="align-middle"  style="text-overflow: ellipsis; overflow: hidden;">${msg.message_sender}</td>
+																	<td class="align-middle msgReadChk"  data-read="${msg.message_rRead}" onclick='readMsg(this)')><a href="javascript:msgDetail(${msg.message_seq},'r')" style="display:block; white-space: nowrap; width:183px; overflow:hidden; text-overflow:ellipsis;">${msg.message_content}</a></td>
 																	<td class="small"><fmt:formatDate
 																			value="${msg.message_regdate}" pattern="yyyy-MM-dd" /><br>
 																	<fmt:formatDate value="${msg.message_regdate}"
@@ -315,7 +318,7 @@
 													</div>
 													<div class="floatreset">
 														<div class="paging mt-2" data-count="${rMsgCount}" data-pageNum="${rpageNum}"></div>
-														<div><button class="mypageBtn mt-2" id="sMsgDel">삭제</button></div>
+														<div><button class="mypageBtn mt-2" id="rMsgDelBtn">삭제</button></div>
 														
 													</div>
 												</div>
@@ -327,23 +330,23 @@
 											<div class="card border">
 												<div class="card-body" style="height: 315px;">
 													<div class="scroll-wrap" style="height: 230px; border:1px solid #dee2e6;">
-														<table class="table table-striped">
+														<table class="table table-striped" style="table-layout: fixed;">
 															<thead>
 																<tr style="text-align: center;">
-																	<th width="5%" ><input type="checkbox" id="rAllCheck"></th>
+																	<th width="5%" ><input type="checkbox" id="sAllCheck"></th>
 																	<th width="21%">받는사람</th>
 																	<th width="51%">내용</th>
 																	<th width="22%">날짜</th>
 																</tr>
 															</thead>
-															<form id="rMsgDel" action="rMsgDel.do" method="post">
+															<form id="sMsgDel" action="sMsgDel.do" method="post">
 															<c:choose>
 															<c:when test="${not empty msgSendList}">
 															<c:forEach items="${msgSendList}" var="msg">
 																<tr style="text-align: center;">
-																	<td class="align-middle"><input class="rDelChk" type="checkbox" name="rDelChk" value="${msg.message_seq}"></td>
-																	<td class="align-middle">${msg.message_receiver}</td>
-																	<td class="align-middle" style="text-overflow: ellipsis;"><a href="javascript:msgDetail(${msg.message_seq},'s')">${msg.message_content}</a></td>
+																	<td class="align-middle"><input class="sDelChk" type="checkbox" name="sDelChk" value="${msg.message_seq}"></td>
+																	<td class="align-middle" style="text-overflow: ellipsis; overflow: hidden;">${msg.message_receiver}</td>
+																	<td class="align-middle msgReadChk" data-read="${msg.message_sRead}"><a href="javascript:msgDetail(${msg.message_seq},'s')" style="display:block; white-space: nowrap; width:183px; overflow:hidden; text-overflow:ellipsis;">${msg.message_content}</a></td>
 																	<td class="small"><fmt:formatDate
 																			value="${msg.message_regdate}" pattern="yyyy-MM-dd" /><br>
 																	<fmt:formatDate value="${msg.message_regdate}"
@@ -362,7 +365,7 @@
 													</div>
 													<div class="floatreset">
 														<div class="paging mt-2" data-count="${sMsgCount}" data-pageNum="${spageNum}"></div>
-														<div><button class="mypageBtn mt-2">삭제</button></div>
+														<div><button class="mypageBtn mt-2" id="sMsgDelBtn">삭제</button></div>
 														<div><button id="msgWrite" class="mypageBtn mt-2 mr-2">쪽지쓰기</button></div>
 													</div>
 												</div>

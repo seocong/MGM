@@ -7,8 +7,13 @@
 		INSERT INTO MGM_POINT(POINT_TITLE,POINT_ID,POINT_SIGN,POINT_PRICE,POINT_REGDATE)
 		VALUES (#{point_title},#{point_id},#{point_sign},#{point_price},now())
 	</insert>
-	
-	<select id="selectPoint" parameterType="String" resultType="PointDto">
-		SELECT POINT_TITLE, POINT_PRICE, POINT_REGDATE, POINT_SIGN FROM MGM_POINT WHERE POINT_ID = #{uid} ORDER BY POINT_REGDATE DESC LIMIT 20
+	<select id="selectPoint" parameterType="Map" resultType="PointDto">
+		SELECT POINT_TITLE, POINT_PRICE, POINT_REGDATE, POINT_SIGN FROM MGM_POINT WHERE POINT_ID = #{id} ORDER BY POINT_REGDATE DESC limit #{pagenum},18
 	</select>
+	<select id="pointCount" parameterType="String" resultType="int">
+    	select count(*) from mgm_point where point_id=#{id};
+    </select>
+    <select id="addPoint" parameterType="String" resultType="int">
+    	select sum(if(point_sign='P',point_price,0))-sum(if(point_sign='M',point_price,0)) from mgm_point where point_id = #{id};
+    </select>
 </mapper>

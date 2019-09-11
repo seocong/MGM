@@ -34,6 +34,7 @@
  		<typeAlias type="com.gam.mgm.dto.RaceHistoryDto" alias="RaceHistoryDto" />
  		<typeAlias type="com.gam.mgm.dto.YoutubeDto" alias="YoutubeDto" />
  		<typeAlias type="com.gam.mgm.dto.YtCommentDto" alias="YtCommentDto" />
+ 		<typeAlias type="com.gam.mgm.dto.ChatDto" alias="ChatDto" />
      </typeAliases>
      
   <mappers>
@@ -52,7 +53,8 @@
      <mapper resource="/sqls/Owner_mapper.xml" />
      <mapper resource="/sqls/RacePlan_mapper.xml" />
      <mapper resource="/sqls/RaceEntry_mapper.xml" /> 
-
+     <mapper resource="/sqls/Chat_mapper.xml" /> 
+     <mapper resource="/sqls/ManagerMapper.xml" /> 
   </mappers>
   
   

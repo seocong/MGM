@@ -1,6 +1,34 @@
 /**
  * 
  */
+//채팅 로그 아작스
+$(function(){
+	$.ajax({
+		type:"get",
+		url:"selCaht.do",
+		success:function(data){
+//			console.log(data);
+			var chatList = data.chatlist;
+			var loginId = data.id;
+			var chatTimeList = data.chatTime;
+//			console.log(chatList.lenght);
+//			console.log(loginId);
+			for(var i in chatList){
+				chatTime = chatTimeList[i];
+//				console.log(chatTime);
+				if(loginId==chatList[i].chat_id){
+					$('#output').append('<div class="chatBox-inner"><div class="mychat '+chatList[i].chat_id+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+chatList[i].chat_id+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+chatList[i].chat_content+'</div><div class="small chatTime" style="text-align:right;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+				}else{
+					$('#output').append('<div class="chatBox-inner"><div class="chatId '+chatList[i].chat_id+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+chatList[i].chat_id+'</div></div>'+'<div class="textMsg"><div class="realtext">'+chatList[i].chat_content+'</div><div class="small chatTime" style="text-align:left;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+				}
+			}
+			$('#chatBox').scrollTop($("#chatBox").prop('scrollHeight'));
+		},
+		error:function(status){
+			console.log('채팅로그 에러');
+		}
+	});
+});
 //소켓 
 $(function(){
 	var id = $('#idbox').html();
@@ -67,21 +95,24 @@ function connect() {
 	};
 
 	function writeResponse(text){
-		var message = text.split(':');
+		var message = text.split('_');
 		var senderId = null;
 		var textMsg = null;
+		var chatTime = null;
 		for(var i in message){
 			if(i==0){
 				senderId = message[i];
 			}else if(i==1){
 				textMsg = message[i];
+			}else if(i==2){
+				chatTime = message[i];
 			}
 		}
 		var loginId=$('#idbox').html();
 		if(loginId == senderId){
-			$('#output').append('<div class="chatBox-inner"><div class="mychat '+senderId+'">'+senderId+'</div>'+'<div class="myTextMsg">'+textMsg+'</div></div><div class="clearfix mb-3"></div>');
+			$('#output').append('<div class="chatBox-inner"><div class="mychat '+senderId+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+senderId+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+textMsg+'</div><div class="small chatTime" style="text-align:right;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
 		}else{
-			$('#output').append('<div class="chatBox-inner"><div class="chatId '+senderId+'">'+senderId+'</div>'+'<div class="textMsg">'+textMsg+'</div></div><div class="clearfix mb-3"></div>');
+			$('#output').append('<div class="chatBox-inner"><div class="chatId '+senderId+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+senderId+'</div></div>'+'<div class="textMsg"><div class="realtext">'+textMsg+'</div><div class="small chatTime" style="text-align:left;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
 		}
 		$('#chatBox').scrollTop($("#chatBox").prop('scrollHeight'));
 	}

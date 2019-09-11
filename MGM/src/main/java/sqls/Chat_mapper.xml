@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gam.mgm.chat">
+	<select id="chatlog" resultType="ChatDto">
+		select chat_id,chat_content,date_format(chat_time,'%H:%i') as chat_time from mgm_chat where chat_time>=date_add(now(), interval -1 hour);
+	</select>
+	<insert id="insertlog" parameterType="ChatDto">
+		insert into mgm_chat(chat_id,chat_content,chat_time) values(#{chat_id},#{chat_content},now());
+	</insert>
+	<delete id="logdel">
+		delete from mgm_chat;
+	</delete>
+	<update id="logreset">
+		alter table mgm_chat auto_increment=1;
+	</update>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gam.mgm.manager">
+  <!-- 회원리스트 -->
+  <select id="memberList" parameterType="Map" resultType="MemberDto">
+  	select * from mgm_member
+  	where member_delflag='N' and member_id != 'admin' and member_id != 'Admin'
+  	<if test="id != null">
+  		and member_id LIKE '%${id}%'
+  	</if>
+  	limit #{pagenum},20;
+  </select>
+  <!-- 총 회원 수 -->
+   <select id="memberCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM mgm_member where member_delflag='N' 
+		<if test="id != null">
+  			and member_id LIKE '%${id}%'
+  		</if>
+	</select> 
+  <!-- 게시판 리스트 -->
+   <select id="boardList" parameterType="Map" resultType="BoardDto">
+  	select * from mgm_board where board_delflag='N'
+  	<if test="id != null">
+  		and board_writer LIKE '%${id}%'
+  	</if>
+  	order by board_regdate desc
+  	limit #{pagenum},20;
+  </select>
+  <!-- 총 게시물 수-->
+  	<select id="boardCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM mgm_board where board_delflag='N'
+		<if test="id != null">
+  			and board_writer LIKE '%${id}%'
+  		</if>
+	</select>
+  <!-- 포인트리스트 -->
+  <select id="pointList" parameterType="Map" resultType="PointDto">
+  	select point_seq,point_title, point_id,point_sign,point_price, point_regdate from mgm_point
+  	<if test="id != null">
+  	where point_id LIKE '%${id}%'
+  	</if>  	
+  	order by point_regdate desc limit #{pagenum},20;
+  </select>
+   <!-- 포인트 리스트 수-->
+   <select id="pointCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*) FROM mgm_point 
+		<if test="id != null">
+  		where point_id LIKE '%${id}%'
+  		</if>
+	</select>
+  <!-- 회원 포인트 추가 및 변경 -->
+  <insert id="pointPlus" parameterType="Map">
+  		insert into mgm_point(point_title, point_id,point_sign,point_price, point_regdate) values(#{title},#{id},#{sign},#{point},now());
+  </insert>
+  <!-- 회원 삭제  -->
+  <update id="memberDel" parameterType="String">
+  	UPDATE mgm_member SET member_delflag = 'Y' where member_id = #{id}
+  </update>
+  <!-- 게시글 삭제 -->
+  <update id="boardDel" parameterType="int">
+  	UPDATE mgm_board SET board_delflag = 'Y' where board_seq = #{board_seq}
+  </update>
+  <!-- 포인트 내역 삭제 -->
+  <delete id="pointDel" parameterType="int">
+  	delete from mgm_point where point_seq = #{seq};
+  </delete>
+  <select id="allMember" resultType="String">
+  	Select member_id from mgm_member where member_delflag='N' and member_id != 'admin' and member_id != 'Admin'
+  </select>
+  </mapper>
+  
+   <!-- 유저 별 포인트 보기 -->
+ <!--   <select id="userPoint" parameterType="Map" resultType="PointDto">
+  	select point_seq,point_title, point_id,point_sign,point_price, point_regdate from mgm_point where point_id=#{id} limit #{pagenum},20;
+  </select>
+   포인트 리스트 수
+   <select id="userPointCount" parameterType="String"  resultType="int">
+		SELECT COUNT(*) FROM mgm_point where point_id =#{id}
+	</select> -->

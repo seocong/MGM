@@ -19,7 +19,7 @@ public class MessageService implements IMessageService{
 		return messageDao.msgList(map);
 	}
 	@Override
-	public double msgCount(String id) {
+	public int msgCount(String id) {
 		return messageDao.msgCount(id);
 	}
 	@Override
@@ -27,7 +27,7 @@ public class MessageService implements IMessageService{
 		return messageDao.msgSendList(map);
 	}
 	@Override
-	public double msgSendCount(String id) {
+	public int msgSendCount(String id) {
 		return messageDao.msgSendCount(id);
 	}
 	@Override

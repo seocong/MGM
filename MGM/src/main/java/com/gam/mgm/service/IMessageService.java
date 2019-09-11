@@ -8,10 +8,10 @@ import com.gam.mgm.dto.MessageDto;
 public interface IMessageService {
 	//수신 메세지 목록
 	public List<MessageDto> msgList(Map<String,Object> map);
-	public double msgCount(String id);
+	public int msgCount(String id);
 	//발신 메세지 목록
 	public List<MessageDto> msgSendList(Map<String,Object> map);
-	public double msgSendCount(String id);
+	public int msgSendCount(String id);
 	//메세지 보내기
 	public boolean msgSend(MessageDto dto);
 	//수신 메세지 삭제

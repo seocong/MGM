@@ -15,38 +15,50 @@
 .chatId{
 	font-weight:bold;
 	border-radius: 6px;
-	background-color: #C02942;
-	color: white;
-	padding:5px 10px;
-	float:left;
+	padding:0px;
+	text-align:left;
+}
+.mychat{
+	font-weight:bold;
+	border-radius: 6px;
+	padding:0px;
+	text-align:right;
+}
+.chatInner{
+	display:inline-block;
+	color:black;
+	padding:0;
+	border-radius: 20px;
 }
 .textMsg{
-	border-radius: 6px;
-	background-color: #f2f2f2;
-	padding:5px 10px;
+	max-width: 254.5px;
 	float:left;
-	max-width: 265px;
+}
+.myTextMsg{
+	max-width: 254.5px;
+	float:right;
 }
 .cahtBox-inner{
 	margin-bottom: 10px;
 	clear: both;
 }
-.mychat{
-	font-weight:bold;
-	border-radius: 6px;
-	background-color: #1265A8;
-	color: white;
-	padding:5px 10px;
-	float:right;
-}
-.myTextMsg{
-	border-radius: 6px;
-	background-color: #f2f2f2;
-	padding:5px 10px;
-	float:right;
-	max-width: 265px;
-}
 
+.myrealtext{
+	border-radius: 15px 0px 15px 15px;
+	background-color: #F3F3F3;
+	padding:5px 10px;
+	margin-right:2px;
+}
+.realtext{
+	border-radius: 0px 15px 15px 15px;
+	background-color: #F3F3F3;
+	padding:5px 10px;
+	margin-left:2px;
+}
+.chatTime{
+	font-weight: bold;
+	padding:0 7px;
+}
 </style>
 <div class="col-lg-3 sticky-sidebar-wrap topmargin ">
 	<div class="sticky-sidebar">

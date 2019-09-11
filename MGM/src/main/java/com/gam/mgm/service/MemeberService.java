@@ -1,9 +1,9 @@
 package com.gam.mgm.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,21 +29,30 @@ public class MemeberService implements IMemberService{
 	}
 
 	@Override
-	public MemberDto login(Map<String,String> uid) {
+	public Map<String,Object> login(Map<String,String> uid) {
+		Map<String,Object> loginMap = new HashMap<String,Object>();
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
 		String rawPassword = uid.get("member_pw");
 		MemberDto dto = memberDao.login(uid);
-		String encodedPassword = dto.getMember_pw();
-		if(scpwd.matches(rawPassword, encodedPassword)){
-			return dto;
+		boolean idChk = memberDao.idCheck(uid.get("member_id"));
+		System.out.println("idChk");
+		if(idChk) {
+			loginMap.put("msg","아이디를 다시 확인해주세요.");
+			loginMap.put("dto",null);
 		}else {
-			return dto=null;
+			String encodedPassword = dto.getMember_pw();
+			if(scpwd.matches(rawPassword, encodedPassword)){
+				loginMap.put("dto",dto);
+			}else {
+				loginMap.put("msg","비밀번호가 틀렸습니다.");
+				loginMap.put("dto",null);
+			}
 		}
+		return loginMap;
 	}
 	@Override
 	public MemberDto myPage(String uid) {
 		MemberDto mypageInfo = memberDao.myPage(uid);
-		mypageInfo.setPointDto(pointDao.selectPoint(uid));
 		return mypageInfo;
 	}
 	@Override

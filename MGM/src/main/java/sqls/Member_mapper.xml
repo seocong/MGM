@@ -5,14 +5,13 @@
     	<select id="login" parameterType="Map" resultType="MemberDto">
     		SELECT MEMBER_ID,MEMBER_PW,MEMBER_POINT FROM MGM_MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_DELFLAG='N'
     	</select>
-    	
     	<insert id="signup" parameterType="MemberDto">
     		INSERT INTO MGM_MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_ADDRESS, MEMBER_NAME, MEMBER_BIRTH, MEMBER_PHNUM, MEMBER_DELFLAG, MEMBER_POINT,MEMBER_REGDATE)
 			VALUES (#{member_id},#{member_pw},#{member_address},#{member_name},#{member_birth},#{member_phnum},'N',100,NOW())
     	</insert>
     	
    		<select id="mypage" parameterType="String" resultType="MemberDto">
-   			SELECT MEMBER_ID,MEMBER_ADDRESS, MEMBER_NAME, MEMBER_PHNUM,MEMBER_POINT,MEMBER_REGDATE,(SELECT COUNT(MESSAGE_SEQ) FROM MGM_MESSAGE WHERE MGM_MESSAGE.MESSAGE_RECEIVER = #{uid} AND MGM_MESSAGE.MESSAGE_SREAD="N" AND MGM_MESSAGE.MESSAGE_SDELFLAG="N") AS MESSAGE_COUNT,(SELECT COUNT(*) FROM MGM_BOARD WHERE BOARD_WRITER=#{uid} AND BOARD_DELFLAG="N") AS BOARD_COUNT FROM MGM_MEMBER WHERE MEMBER_ID=#{uid}
+   			SELECT MEMBER_ID,MEMBER_ADDRESS, MEMBER_NAME, MEMBER_PHNUM,MEMBER_POINT,MEMBER_REGDATE,(SELECT COUNT(MESSAGE_SEQ) FROM MGM_MESSAGE WHERE MGM_MESSAGE.MESSAGE_RECEIVER = #{uid} AND MGM_MESSAGE.MESSAGE_RREAD="N" AND MGM_MESSAGE.MESSAGE_RDELFLAG="N") AS MESSAGE_COUNT,(SELECT COUNT(*) FROM MGM_BOARD WHERE BOARD_WRITER=#{uid} AND BOARD_DELFLAG="N") AS BOARD_COUNT FROM MGM_MEMBER WHERE MEMBER_ID=#{uid}
    		</select>
    		<!-- 유저업데이트 검색 -->
    		<select id="updateSearch" parameterType="String" resultType="MemberDto">
@@ -23,7 +22,7 @@
    		</update>
    		<!-- 아이디 중복 체크 -->
    		<select id="idCheck" parameterType="String" resultType="int">
-   			select count(*) from mgm_member where member_id = #{id};
+   			select count(*) from mgm_member where member_id = #{id} AND MEMBER_DELFLAG='N';
    		</select>
    		<!-- 비밀번호 중복 체크 -->
    		<select id="phCheck" parameterType="String" resultType="int">

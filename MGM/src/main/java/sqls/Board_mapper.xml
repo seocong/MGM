@@ -51,8 +51,8 @@
     <select id="myPost" parameterType="Map" resultType="BoardDto">
     	select board_seq, board_name, board_title,board_regdate,board_pushnum, board_readcount from mgm_board  where board_writer = #{id} and board_delflag = 'N' limit #{pagenum},18;
     </select>
-    <select id="myPostCount" parameterType="String" resultType="double">
-    	select round(count(*)/18,1) from mgm_board  where board_writer = #{id} and board_delflag = 'N';
+    <select id="myPostCount" parameterType="String" resultType="int">
+    	select count(*)/18,1 from mgm_board  where board_writer = #{id} and board_delflag = 'N';
     </select>
     
     <select id="pushcheck" parameterType="Map" resultType="int">

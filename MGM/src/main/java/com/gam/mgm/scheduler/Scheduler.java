@@ -1,10 +1,20 @@
 package com.gam.mgm.scheduler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.gam.mgm.UserController;
+import com.gam.mgm.service.IChatService;
 
 @Component
 public class Scheduler {
+	private static final Logger logger = LoggerFactory.getLogger(Scheduler.class);
+	@Autowired
+	private IChatService chatService;
 	/*@Scheduled(cron = "0 55 16 ? * SUN,THU")*/
 	@Scheduled(cron = "0 30 19 ? * WED,THU,SAT,SUN")
 	public void basicInfo() {
@@ -35,5 +45,19 @@ public class Scheduler {
 		InfoMethod info = new InfoMethod();
 		info.raceInfo();
 		info.raceResult();
+	}
+	@Transactional
+	@Scheduled(cron = "0 0 8 ? * *")
+	public void chatReset() {
+		System.out.println("채팅리셋");
+		boolean is = chatService.logdel();
+		boolean is2 = chatService.logreset();
+		if(is&&is2) {
+			System.out.println("채팅 삭제 완료");
+		}else if(is&&!is2){
+			logger.info("채팅 seq 리셋 실패");
+		}else if(!is&&is2){
+			logger.info("채팅 전체 삭제 실패");
+		}
 	}
 }

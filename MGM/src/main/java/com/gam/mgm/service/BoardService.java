@@ -65,7 +65,7 @@ public class BoardService implements IBoardService{
 	}
 
 	@Override
-	public double myPostCount(String id) {
+	public int myPostCount(String id) {
 		return boardDao.myPostCount(id);
 	}
 	

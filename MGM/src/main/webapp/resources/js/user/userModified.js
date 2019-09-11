@@ -27,7 +27,7 @@ $(function(){
 				}
 			},
 			error:function(data,textStatus){
-				alert("에러");
+				console.log(data, textStatus)
 			},
 		});
 	});
@@ -37,62 +37,77 @@ $(function(){
 	var paging = $('.paging');
 	for(var i in paging){
 		var pageParam = '';
-		switch(paging){
-		case 0:
+		if(i==0){
+			pageParam='pointnum';
+		}else if(i==1){
 			pageParam='rpagenum';
-			break;
-		case 1:
+		}else if(i==2){
 			pageParam='spagenum';
-			break;
-		case 2:
+		}else{
 			pageParam='boardnum';
-			break;
 		}
 		var count = $('.paging').eq(i).attr('data-count');
-		if(count>Math.floor(count)){
-			count=Math.floor(count)+1;
+		if(count>18){
+			if(count%18==0){
+				count=Math.floor(count/18);
+			}else{
+				count=Math.floor(count/18)+1;
+			};
 		}else{
-			count=Math.floor(count);
-		};
-		var pageNum = $('.paging').eq(i).attr('data-pageNum');
-		//현재 보고있는 페이지 섹션
-		var pageSelSection = 0;
-		if(pageNum%5==0){
-			pageSelSection=pageNum/5;
-		}else{
-			pageSelSection = pageNum/5+1;
+			count=1;
 		}
+		var pageNum = $('.paging').eq(i).attr('data-pageNum');
+		//현재 보고있는 페이지 섹션 
+		var pageSelSection=Math.floor(pageNum/5);
+		
 		//전체 페이지 섹션
 		var pageTotalSection = 0;
 		if(count%5==0){
-			pageTotalSection=count/5;
+			pageTotalSection=Math.floor(count/5);
 		}else{
-			pageTotalSection = count/5+1;
+			pageTotalSection = Math.floor(count/5)+1;
 		}
-		for(var j=0;j<=count;j++){
+		console.log('pageNum:'+pageNum);
+		
+		for(var j=pageSelSection*5;j<(pageSelSection+1)*5;j++){
+			if(j==count){
+				break;
+			}
 			if(pageNum==j){
 				$('.paging').eq(i).append(
-					'<a class="pageLink" href="mypage.do?'+pageParam+'='+j+'"><div class="mr-1 pagingItem selpage">'+(j+1)+'</div></a>'
+					'<a class="pageLink" href="mypage.do?'+pageParam+'='+(j)+'"><div class="mr-1 pagingItem selpage">'+(j+1)+'</div></a>'
 				);
 			}else{
 				$('.paging').eq(i).append(
-					'<a class="pageLink" href="mypage.do?'+pageParam+'='+j+'"><div class="mr-1 pagingItem">'+(j+1)+'</div></a>'
+					'<a class="pageLink" href="mypage.do?'+pageParam+'='+(j)+'"><div class="mr-1 pagingItem">'+(j+1)+'</div></a>'
 				);
-			}
-			if(i==5){
-				break;
-			}
+			}	
 		}
+		
+		if(count>4 && (pageSelSection+1)!=pageTotalSection){
+			$('.paging').eq(i).append(
+					'<a class="pageLink" href="mypage.do?'+pageParam+'='+(pageSelSection+1)*5+'"><div class="mr-1 pagingItem">»</div></a>'
+			);
+		};
+
+		if(pageSelSection>0){
+			$('.paging').eq(i).prepend(
+			'<a class="pageLink" href="mypage.do?'+pageParam+'='+(pageSelSection-1)*5+'"><div class="mr-1 pagingItem">«</div></a>'
+			);
+		};
 	}
-	if(count>4 && pageSelSection!=pageTotalSection){
-		$('.paging').eq(i).append(
-				'<a class="pageLink" href="mypage.do?'+pageParam+'='+(pageNum+5)+'"><div class="mr-1 pagingItem">»</div></a>'
-		);
-	};
-	if(pageNum>5){
-		'<a class="pageLink" href="mypage.do?'+pageParam+'='+(pageNum-5)+'"><div class="mr-1 pagingItem">«</div></a>'
-	};
 });
+//메세지 읽음여부 표시
+var readChk = $('.msgReadChk');
+for(var i in readChk){
+	if(readChk.eq(i).attr('data-read')=='Y'){
+		readChk.eq(i).find('a').css('color','gray');
+	}
+}
+function readMsg(obj){
+	$(obj).attr('data-read','Y');
+	$(obj).find('a').css('color','gray');
+}
 //메세지 삭제
 $(function(){
 	$('#sAllCheck').change(function(){
@@ -105,11 +120,11 @@ $(function(){
 			$(this).prop('checked', !$(this).prop('checked'));
 		});
 	});
-	$('.mypageBtn').eq(0).click(function(){
-		$('#sMsgDel').submit();
-	});
-	$('.mypageBtn').eq(1).click(function(){
+	$('#rMsgDelBtn').click(function(){
 		$('#rMsgDel').submit();
+	});
+	$('#sMsgDelBtn').click(function(){
+		$('#sMsgDel').submit();
 	});
 });
 //상세보기 메세지 삭제
@@ -126,6 +141,7 @@ function msgDel(seq,div){
 function msgSend(){
 	var id = $('#idbox').val();
 	var textarea = $('textarea').val();
+	var sessionId = $("#idbox",opener.document).html();
 	if(!textarea&&!id){
 		if(!textarea){
 			$('#error_id').css('color','E42C3E');
@@ -137,8 +153,13 @@ function msgSend(){
 		}
 	}else{
 		if($('#idbox').attr('data-success')=='Y'){
-			$('#msgSend').attr('action','msgSend.do');
-			$('#msgSend').submit();
+			if(sessionId!=id){
+				$('#msgSend').attr('action','msgSend.do');
+				$('#msgSend').submit();
+			}else{
+				$('#error_id').css('color','#E42C3E');
+				$('#error_id').addClass("error").html('본인에게는 메세지를 보낼 수 없습니다.');
+			}
 		}else{
 			$('#error_id').css('color','#E42C3E');
 			$('#error_id').addClass("error").html('아이디를 검색해주세요.');
@@ -157,11 +178,27 @@ $(function(){
 		window.open("msgSendOpen.do","쪽지보내기","width=400px,height=420px,left="+ popupX + ", top="+ popupY+",toolbar=no,status=no,resizable=no,scrollbars=no,location=no,menubar=no");
 	});
 });
+//메세지 디테일 창 열기
 function msgDetail(seq,div){
-	var popupX = (window.screen.width / 2) - (400 / 2);
-	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-	var popupY= (window.screen.height / 2) - (405 / 2);
-	window.open("msgDetail.do?div="+div+"&msgSeq="+seq,"쪽지상세보기","width=400px,height=405px,left="+ popupX + ", top="+ popupY+",toolbar=no,status=no,resizable=no,scrollbars=no,location=no,menubar=no");
+		$.ajax({
+			type:"post",
+			url: "msgRead.do",
+			data:{"seq":seq,"div":div},
+			success:function(is){
+				if(is){
+					console.log("읽기 처리 완료");
+					var popupX = (window.screen.width / 2) - (400 / 2);
+					// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+					var popupY= (window.screen.height / 2) - (405 / 2);
+					window.open("msgDetail.do?div="+div+"&msgSeq="+seq,"쪽지상세보기","width=400px,height=405px,left="+ popupX + ", top="+ popupY+",toolbar=no,status=no,resizable=no,scrollbars=no,location=no,menubar=no");
+				}else{
+					console.log("읽기 처리 실패");
+				}
+			},
+			error:function(data){
+				console.log(data+"아작스 에러");
+			}
+		});
 };
 //메세지 수신인 검색 ajax
 $('#memberSearchBtn').click(function(){
@@ -201,4 +238,33 @@ $('.board_name').each(function(index,item){
 		$(item).html('게임');
 		break;
 	}
+});
+
+//이용약관 동의
+$('.btn-agree').click(function(){
+	var chkAgree = $('.chkAgree');
+	var useAgree = false;
+	var infoAgree = false;
+//	alert(chkAgree.length);
+	for(var i in chkAgree){
+		if(i==0){
+			useAgree = chkAgree.eq(i).is(":checked");
+		}else if(i==1){
+			infoAgree = chkAgree.eq(i).is(":checked");
+		}
+	}
+//	alert(useAgree);
+//	alert(infoAgree);
+	if(useAgree && infoAgree){
+		location.href='signupform.do';
+	}else{
+		if(!useAgree){
+			alert('이용약관에 동의해야합니다.');
+		}else if(!infoAgree){
+			alert('개인정보이용방침에 동의해야합니다.');
+		}
+	}
+});
+$('.btn-cancle').click(function(){
+	location.href="main.do";
 });

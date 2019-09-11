@@ -78,7 +78,7 @@ public class BoardDao implements IBoardDao{
 	}
 
 	@Override
-	public double myPostCount(String id) {
+	public int myPostCount(String id) {
 		return sqlSession.selectOne(namespace+"myPostCount",id);
 	}
 	

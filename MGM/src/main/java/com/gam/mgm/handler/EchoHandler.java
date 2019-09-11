@@ -1,24 +1,29 @@
 package com.gam.mgm.handler;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.gam.mgm.dto.ChatDto;
 import com.gam.mgm.dto.MemberDto;
+import com.gam.mgm.service.IChatService;
 
 @Repository
 public class EchoHandler extends TextWebSocketHandler{
+	@Autowired
+	private IChatService chatService;
 	private Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 	/*
 	 *서버에 연결한 사용자들을 저장하는 리스트 
@@ -61,9 +66,16 @@ public class EchoHandler extends TextWebSocketHandler{
 		 * TextMessage("<div class='"+senderId+"'>"+senderId+": <br>"+message.getPayload
 		 * ()+"</div>")); }
 		 */
+		ChatDto dto = new ChatDto();
+		dto.setChat_id(senderId);
+		dto.setChat_content(message.getPayload());
+		chatService.insertlog(dto);
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm");
+		String nowTime = fmt.format(cal.getTime());
 		if(senderId!=null && !message.getPayload().equals("")) {
 			for(String id:userSessions.keySet()) {
-				userSessions.get(id).sendMessage(new TextMessage(senderId+":"+message.getPayload()));
+				userSessions.get(id).sendMessage(new TextMessage(senderId+"_"+message.getPayload()+"_"+nowTime));
 			}
 		}
 		//protocol: cmd(command), 댓글작성자, 게시글 작성자, bno(게시글 번호) 

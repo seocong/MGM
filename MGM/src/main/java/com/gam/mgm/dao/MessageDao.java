@@ -19,7 +19,7 @@ public class MessageDao implements IMessageDao {
 		return sqlSession.selectList(namespace+"msgList",map);
 	}
 	@Override
-	public double msgCount(String id) {
+	public int msgCount(String id) {
 		return sqlSession.selectOne(namespace+"msgCount",id);
 	}
 	@Override
@@ -27,8 +27,8 @@ public class MessageDao implements IMessageDao {
 		return sqlSession.selectList(namespace+"msgSendList",map);
 	}
 	@Override
-	public double msgSendCount(String id) {
-		return sqlSession.selectOne(namespace+"msgCount",id);
+	public int msgSendCount(String id) {
+		return sqlSession.selectOne(namespace+"msgSendCount",id);
 	}
 	@Override
 	public boolean msgSend(MessageDto dto) {
