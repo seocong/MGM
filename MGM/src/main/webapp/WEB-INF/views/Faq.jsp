@@ -130,10 +130,12 @@
 									<div class="line line-xs line-sports"></div>
 							</div>
 						<div>
-							<div class="col-md-4 mt-5">
-								<table class="table" style="border-bottom: solid #DDD 1px;">
+							<div class="col_two_fifth">
+								<table class="table" style="border-bottom: solid #DDD 1px;white-space: nowrap;">
+								<tr>
+												<td><h4>자주 묻는 질문 검색</h4></td>
+								</tr>
 												<tr>
-												<td>마명입력</td>
 												<td>
 													<form class="form-inline my-2 my-lg-0">
 														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -141,44 +143,45 @@
 													</form>
 												</td>
 											</tr>
+											
 											</table>
 							</div>
-							<div class="col-md-8 mt-5">
+							
 								
-								<div class="col_one_third">
+								<div class="col_one_fifth">
 						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="600">
 							<div class="fbox-icon">
-								<a href="#"><i class="icon-line-play"></i></a>
+								<a href="#"><i class="icon-search"></i></a>
 							</div>
-							<h3>HTML5 Video</h3>
-							<p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background.</p>
+							<h3>자주 묻는 질문</h3>
+							<p>질문사항을 검색하거나 찾으실수 있습니다.</p>
 						</div>
 					</div>
 
-					<div class="col_one_third">
+					<div class="col_one_fifth">
 						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="800">
 							<div class="fbox-icon">
-								<a href="#"><i class="icon-params"></i></a>
+								<a href="#"><i class=icon-question></i></a>
 							</div>
-							<h3>Parallax Support</h3>
-							<p>Display your Content attractively using Parallax Sections that have unlimited customizable areas.</p>
+							<h3>문의 게시판 문의</h3>
+							<p>자주 묻는 질문에 없다면 문의 사항 게시판에 질문을 해주세요.</p>
 						</div>
 					</div>
 
-					<div class="col_one_third col_last">
+					<div class="col_one_fifth col_last">
 						<div class="feature-box fbox-small fbox-plain" data-animate="fadeIn" data-delay="1000">
 							<div class="fbox-icon">
-								<a href="#"><i class="icon-line-circle-check"></i></a>
+								<a href="#"><i class="icon-line-mail"></i></a>
 							</div>
-							<h3>Endless Possibilities</h3>
-							<p>Complete control on each &amp; every element that provides endless customization possibilities.</p>
+							<h3>메일 문의</h3>
+							<p>관리자에게 메일로 문의 주세요 확인 즉시 답변을 해드립니다.</p>
 						</div>
 					</div>
-							</div>
+							
 						</div>
-						
-						
-						<div class="col-md-12 mt-4">
+						<div class="line"></div>
+						<div class="clear"></div>
+						<div >
 								
 								
 											
@@ -196,20 +199,340 @@
 							<div class="tab-container">
 
 								<div class="tab-content clearfix" id="tabs-1">
-									Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-								</div>
+											<div class="toggle toggle-border nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle Title <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+										</div>
 								<div class="tab-content clearfix" id="tabs-2">
-									Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+									<div class="toggle toggle-border nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle Title <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
 								</div>
 								<div class="tab-content clearfix" id="tabs-3">
-									<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+									<div class="toggle toggle-border nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle Title <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
 									
 								</div>
 								<div class="tab-content clearfix" id="tabs-4">
-									Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+									<div class="toggle toggle-border nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle Title <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
 								</div>
 								<div class="tab-content clearfix" id="tabs-5">
-									Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+									<div class="toggle toggle-border nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle Title <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin  nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											<div class="toggle toggle-border notopmargin nobottommargin nobottomborder">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
+											
+											<div class="toggle toggle-border notopmargin">
+												<div class="togglet">
+													<i class="icon-quora"></i>This is a Toggle <span
+														class=" toggle-closed icon-chevron-down1"
+														style="float: right;"></span><span
+														class="toggle-open icon-chevron-up1" style="float: right;"></span>
+												</div>
+												<div class="togglec"><span class="text-warning"><i class="icon-font"></i></span> This is a Toggle Content???</div>
+											</div>
 								</div>
 
 							</div>
@@ -221,27 +544,13 @@
 											</div>
 										
 										
-										
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
 						
 						<div class="line"></div>
 						
-	
 						
 
-						
+					
 						
 					
 						
