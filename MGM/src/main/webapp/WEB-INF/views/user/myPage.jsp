@@ -249,7 +249,7 @@
 																	<th>사용내용</th>
 																	<th>추가</th>
 																	<th>사용</th>
-																	<th>잔여 포인트</th>
+																	<!-- <th>잔여 포인트</th> -->
 																</tr>
 															</thead>
 															<c:if test="${pointNum ne null}">
@@ -270,12 +270,12 @@
 																			<td class="align-middle">${point.point_price}</td>
 																		</c:otherwise>
 																	</c:choose>
-																	<td class="align-middle">${memberInfo.member_point}</td>
+																	<%-- <td class="align-middle">${memberInfo.member_point}</td> --%>
 																</tr>
 															</c:forEach>
 															</c:if>
 															<c:if test="${pointList eq null}">
-																<td colspan="5">--포인트 내역이 없습니다--</td>
+																<td colspan="4">--포인트 내역이 없습니다--</td>
 															</c:if>
 														</table>
 													</div>

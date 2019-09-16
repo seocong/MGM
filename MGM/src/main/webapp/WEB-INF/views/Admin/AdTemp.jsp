@@ -326,7 +326,7 @@
 																			<tr>
 																				<td><input type="checkbox"  name="chkvalue" value="${dto.board_seq}"></td>
 																				<td style="text-align: center;">${dto.board_seq}</td>
-																				<td style="text-align: center;">${dto.board_title}</td>
+																				<td style="text-align: center;"><a href="detail.do?board_seq=${dto.board_seq}&pagenum=1&contentnum=20&board_name=${dto.board_name}">${dto.board_title}</a></td>
 																				<td style="text-align: center;">${dto.board_writer}</td>
 																				<td style="text-align: center;"><fmt:formatDate
 																						value="${dto.board_regdate}" pattern="yyyy년MM월dd일" /></td>
