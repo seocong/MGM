@@ -60,7 +60,14 @@
 .chatTime{
 	font-weight: bold;
 	padding:0 7px;
+	color:gray;
 }
+/* .myChatTime{
+	float:right;
+	font-weight: bold;
+	padding:0 7px;
+	color:gray;
+} */
 </style>
 <div class="col-lg-3 sticky-sidebar-wrap topmargin ">
 	<div class="sticky-sidebar">

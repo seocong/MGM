@@ -17,9 +17,9 @@ $(function(){
 				chatTime = chatTimeList[i];
 //				console.log(chatTime);
 				if(loginId==chatList[i].chat_id){
-					$('#output').append('<div class="chatBox-inner"><div class="mychat '+chatList[i].chat_id+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+chatList[i].chat_id+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+chatList[i].chat_content+'</div><div class="small chatTime" style="text-align:right;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+					$('#output').append('<div class="chatBox-inner"><div class="mychat '+chatList[i].chat_id+'"><div class="chatInner"><span class="chatTime mt-1" style="text-align:right; font-size:5px">'+chatTime+'</span><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+chatList[i].chat_id+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+chatList[i].chat_content+'</div></div></div><div class="clearfix mb-3"></div>');
 				}else{
-					$('#output').append('<div class="chatBox-inner"><div class="chatId '+chatList[i].chat_id+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+chatList[i].chat_id+'</div></div>'+'<div class="textMsg"><div class="realtext">'+chatList[i].chat_content+'</div><div class="small chatTime" style="text-align:left;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+					$('#output').append('<div class="chatBox-inner"><div class="chatId '+chatList[i].chat_id+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+chatList[i].chat_id+'</div><span class="chatTime mt-1" style="text-align:left; font-size:5px">'+chatTime+'</span></div>'+'<div class="textMsg"><div class="realtext">'+chatList[i].chat_content+'</div></div></div><div class="clearfix mb-3"></div>');
 				}
 			}
 			$('#chatBox').scrollTop($("#chatBox").prop('scrollHeight'));
@@ -110,9 +110,9 @@ function connect() {
 		}
 		var loginId=$('#idbox').html();
 		if(loginId == senderId){
-			$('#output').append('<div class="chatBox-inner"><div class="mychat '+senderId+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+senderId+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+textMsg+'</div><div class="small chatTime" style="text-align:right;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+			$('#output').append('<div class="chatBox-inner"><div class="mychat '+senderId+'"><div class="chatInner"><span class="chatTime mt-1" style="text-align:right; font-size:5px">'+chatTime+'</span><i class="icon-battery-half" style="font-weight:normal; color:green;"></i>&nbsp'+senderId+'</div></div>'+'<div class="myTextMsg"><div class="myrealtext">'+textMsg+'</div></div></div><div class="clearfix mb-3"></div>');
 		}else{
-			$('#output').append('<div class="chatBox-inner"><div class="chatId '+senderId+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+senderId+'</div></div>'+'<div class="textMsg"><div class="realtext">'+textMsg+'</div><div class="small chatTime" style="text-align:left;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
+			$('#output').append('<div class="chatBox-inner"><div class="chatId '+senderId+'"><div class="chatInner"><i class="icon-battery-half" style="font-weight:normal; color:#C02942;"></i>&nbsp'+senderId+'</div><span class="chatTime mt-1" style="text-align:left; font-size:5px">'+chatTime+'</span></div>'+'<div class="textMsg"><div class="realtext">'+textMsg+'</div><div class="small chatTime" style="text-align:left;">'+chatTime+'</div></div></div><div class="clearfix mb-3"></div>');
 		}
 		$('#chatBox').scrollTop($("#chatBox").prop('scrollHeight'));
 	}
