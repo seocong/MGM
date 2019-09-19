@@ -36,4 +36,8 @@ public interface IRaceDao {
 	
 	public boolean rcInfoDel(int meet);
 	public String maxDate(int meet);
+	//main race info data
+	public List<Map<String,String>> mainInfo(Map<String,String> map);
+	//메인 경마정보 최신 날짜 3개 구하기
+	public List<String> mainInfoDate();
 }

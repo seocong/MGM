@@ -102,6 +102,16 @@ public class RaceService implements IRaceService{
 	public String maxDate(int meet) {
 		return raceDao.maxDate(meet);
 	}
+
+	@Override
+	public List<Map<String, String>> mainInfo(Map<String, String> map) {
+		return raceDao.mainInfo(map);
+	}
+
+	@Override
+	public List<String> mainInfoDate() {
+		return raceDao.mainInfoDate();
+	}
 	
 	
 }

@@ -89,4 +89,12 @@ public class RaceDao implements IRaceDao{
 	public String maxDate(int meet) {
 		return sqlSession.selectOne(namespace+"maxDate",meet);
 	}
+	@Override
+	public List<Map<String, String>> mainInfo(Map<String, String> map) {
+		return sqlSession.selectList(namespace+"mainInfo",map);
+	}
+	@Override
+	public List<String> mainInfoDate() {
+		return sqlSession.selectList(namespace+"mainInfoDate");
+	}
 }

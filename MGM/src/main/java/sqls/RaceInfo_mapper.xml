@@ -287,4 +287,14 @@
 	<select id="selRefree" parameterType="Map" resultType="RaceRefreeDto">
 		select * from race_refree where rf_rcDate = #{ri_rcDate} and rf_rcNo = #{ri_rcNo} and rf_meet = #{ri_meet}
 	</select>
+	<select id="mainInfo" parameterType="Map" resultType="Map">
+	<![CDATA[
+		SELECT DATE_FORMAT(RR.RR_RCDATE,'%Y%m%d') AS rcDATE,RR.RR_RCNO AS RCNO,RR.RR_MEET AS MEET, GROUP_CONCAT(RR.RR_ORD,',',RR.RR_CHULNO,',',RR.RR_HRNAME SEPARATOR '/') AS ALLINFO, RI.RI_QNLODDS AS QNLODDS, RI.RI_EXAODDS AS EXAODDS, RI.RI_TLAODDS AS TLAODDS FROM RACE_RESULT AS RR JOIN RACE_INFO AS RI
+ON RR.RR_RCDATE = RI.RI_RCDATE AND RR.RR_RCNO = RI.RI_RCNO AND RR.RR_MEET = RI.RI_MEET 
+WHERE RR.RR_ORD<=3 AND RR.RR_RCDATE= #{rcDate} AND RR.RR_MEET = #{meet} GROUP BY RR.RR_RCDATE, RR.RR_RCNO;
+	]]>
+	</select>
+	<select id="mainInfoDate" resultType="String">
+		SELECT DATE_FORMAT(RI_RCDATE,'%Y%m%d') FROM RACE_INFO GROUP BY RI_RCDATE  ORDER BY RI_RCDATE DESC LIMIT 3;
+	</select>
 </mapper>

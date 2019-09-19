@@ -404,32 +404,12 @@
 											<div class="card-body">
 											<div class="scroll-wrap" style="height: 500px;">
 													<div class="scroll"> 
-									<!-- Post Article -->
-									<!-- <article class="ipost">
-										<div class="entry-image mb-3">
-											<a href="#"><img src="resources/demos/news/images/posts/lifestyle/1.jpg" alt="Image 3"></a>
-											<div class="entry-categories"><a href="#" class="bg-lifestyle">lifestyle</a></div>
-										</div>
-										<div class="entry-title">
-											<h3><a href="#">Death, lifestyle And Taxes</a></h3>
-										</div>
-										<ul class="entry-meta clearfix">
-											<li><span>by</span> <a href="#">John Doe</a></li>
-											<li><i class="icon-time"></i><a href="#">11 Mar 2016</a></li>
-										</ul>
-										<div class="entry-content mt-0 clearfix">
-											<p>Pellentesque hic illo beatae rhoncus sint, quis, fugiat imperdiet unde architecto magna dui hymenaeos autem lorem eligendi, quae! Orci commodo, aute reiciendis, scelerisque inceptos, quibusdam iste debitis? Venenatis. Alias porta?</p>
-										</div>
-									</article> -->
+									
 									<div class="tabs nobottommargin clearfix" id="sidebar-tabs">
-										<!-- <h4 class="mb-0 pr-2 ls1 uppercase t700">커뮤니티</h4>
-										<br> -->
 										<ul class="tab-nav clearfix">
-											<li><a href="#tabs-1">6월28일(금)</a></li>
-											<li><a href="#tabs-2">6월29일(토)</a></li>
-											<li><a href="#tabs-3">6월30일(일)</a></li>
-											
-											<!-- <li><a href="#tabs-3"><i class="icon-comments-alt norightmargin"></i></a></li> -->
+											<c:forEach var="infoDate" items="${mainInfoDate}" varStatus="numbers">
+												<li><a href="#tabs-${numbers.count}" class="infoDate">${infoDate}</a></li>
+											</c:forEach>
 										</ul>
 										
 										<div class="tab-container">
@@ -451,96 +431,19 @@
 								  </tr>
 								</thead>
 								<tbody>
+								<c:forEach items="${mainInfo}" var="info">
+								<c:if test="${mainInfoDate[0] eq info.rcDATE}">
 								  <tr>
-									<td>서1R</td>
-									<td>⑥소망의탑</td>
-									<td>⑤다시두손</td>
-									<td>⑦골드히어로</td>
-									<td>19.9</td>
-									<td>43.6</td>
-									<td>292.2</td>
+									<td><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}</span></td>
+									<td class="odd1">${info.ALLINFO}</td>
+									<td class="odd2"></td>
+									<td class="odd3"></td>
+									<td>${info.QNLODDS}</td>
+									<td>${info.EXAODDS}</td>
+									<td>${info.TLAODDS}</td>
 								  </tr>
-								  <tr>
-									<td>서2R</td>
-									<td>⑨러닝복스</td>
-									<td>⑥버킥풀골드</td>
-									<td>⑩사이먼퀸</td>
-									<td>2.0</td>
-									<td>2.7</td>
-									<td>8.6</td>
-								  </tr>
-								  <tr>
-									<td>서3R</td>
-									<td>⑩금순이스타</td>
-									<td>⑤킹오브이글</td>
-									<td>⑫달리는웅지</td>
-									<td>6.1</td>
-									<td>10.8</td>
-									<td>16.2</td>
-								  </tr>
-								  <tr>
-									<td>서4R</td>
-									<td>⑫금매애크미</td>
-									<td>②투더빅토리</td>
-									<td>①만석지기</td>
-									<td>17.5</td>
-									<td>32.7</td>
-									<td>22.7</td>
-								  </tr>
-								  <tr>
-									<td>부1R</td>
-									<td>②영성스타</td>
-									<td>⑩유로신화</td>
-									<td>⑧담양최강</td>
-									<td>5.8</td>
-									<td>6.6</td>
-									<td>11.8</td>
-								  </tr>
-								  <tr>
-									<td>서5R</td>
-									<td>⑧업라이트</td>
-									<td>⑦황금들판</td>
-									<td>⑥슈퍼토끼</td>
-									<td>13.3</td>
-									<td>22.2</td>
-									<td>23.1</td>
-								  </tr>
-								    <tr>
-									<td>부2R</td>
-									<td>⑥소망의탑</td>
-									<td>⑤다시두손</td>
-									<td>⑦골드히어로</td>
-									<td>19.9</td>
-									<td>43.6</td>
-									<td>292.2</td>
-								  </tr>
-								  <tr>
-									<td>서6R</td>
-									<td>⑨러닝복스</td>
-									<td>⑥버킥풀골드</td>
-									<td>⑩사이먼퀸</td>
-									<td>2.0</td>
-									<td>2.7</td>
-									<td>8.6</td>
-								  </tr>
-								  <tr>
-									<td>부3R</td>
-									<td>⑩금순이스타</td>
-									<td>⑤킹오브이글</td>
-									<td>⑫달리는웅지</td>
-									<td>6.1</td>
-									<td>10.8</td>
-									<td>16.2</td>
-								  </tr>
-								    <tr>
-									<td>서7R</td>
-									<td>⑥소망의탑</td>
-									<td>⑤다시두손</td>
-									<td>⑦골드히어로</td>
-									<td>19.9</td>
-									<td>43.6</td>
-									<td>292.2</td>
-								  </tr>
+								  </c:if>
+								 </c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -1214,7 +1117,8 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
-
+	<!-- mainScript -->
+	<script src="resources/js/mainScript.js"></script>
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -29,8 +30,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gam.mgm.dto.AnswerDto;
 import com.gam.mgm.dto.BoardDto;
@@ -43,6 +44,7 @@ import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.IChannelService;
 import com.gam.mgm.service.ICommentService;
+import com.gam.mgm.service.IRaceService;
 
 
 
@@ -63,7 +65,8 @@ public class KIMController implements ServletContextAware{
 	private ICommentService commentService;
 	@Autowired
 	private IChannelService channelService;
-	
+	@Autowired
+	private IRaceService raceService;
 	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.context = servletContext;
@@ -80,11 +83,29 @@ public class KIMController implements ServletContextAware{
 		List<BoardDto> funList = boardService.getFunList();
 		//공지게시판
 		List<BoardDto> AlertList = boardService.getAlertList();
-
+		//메인 정보 최신날짜
+		List<String> mainInfoDate = raceService.mainInfoDate();
+		List<Map<String,String>> mainInfo = new ArrayList<>();
+		for(String date : mainInfoDate) {
+			for(int i = 1; i<=3; i++) {
+				Map<String,String> map = new HashMap<String,String>();
+				map.put("rcDate", date);
+				map.put("meet", Integer.toString(i));
+				List<Map<String,String>> tempMainInfo = raceService.mainInfo(map);
+				for(Map<String,String> tempMap : tempMainInfo) {
+					mainInfo.add(tempMap);
+				}
+			}
+		}
+		for(Map<String,String> map:mainInfo) {
+			System.out.println(map);
+		}
 		 model.addAttribute("popularList", popularList);
 		 model.addAttribute("freeList", freeList);
 		 model.addAttribute("funList", funList);
 		 model.addAttribute("AlertList", AlertList);
+		 model.addAttribute("mainInfo",mainInfo);
+		 model.addAttribute("mainInfoDate",mainInfoDate);
 		return "Main2";
 	}
 	
