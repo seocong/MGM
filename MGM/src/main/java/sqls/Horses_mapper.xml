@@ -172,4 +172,11 @@
 	<select id="wgBudamRecord" parameterType="String" resultType="DistRecordDto">
 		SELECT rr.rr_wgBudam as wgBudam,count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by rr.rr_wgBudam order by rr.rr_wgBudam;
 	</select>
+	<select id="mainInfo" parameterType="String" resultType="Map">
+	<![CDATA[
+		SELECT RR.RR_RCDATE,RR.RR_RCNO,RR.RR_MEET, GROUP_CONCAT(RR.RR_MEET,',',RR.RR_ORD,',',RR.RR_CHULNO,',',RR.RR_HRNAME SEPARATOR '/'), RI.RI_QNLODDS, RI.RI_EXAODDS, RI.RI_TLAODDS FROM RACE_RESULT AS RR JOIN RACE_INFO AS RI
+		ON RR.RR_RCDATE = RI.RI_RCDATE AND RR.RR_RCNO = RI.RI_RCNO AND RR.RR_MEET = RI.RI_MEET 
+		WHERE RR.RR_ORD<=3 AND RR.RR_RCDATE='20190818' GROUP BY RR.RR_RCDATE, RR.RR_RCNO;
+	]]>
+	</select>
 </mapper>
