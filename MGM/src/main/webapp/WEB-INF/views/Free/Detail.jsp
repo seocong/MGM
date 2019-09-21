@@ -324,7 +324,7 @@
 													</c:choose>
 													
 													
- 													<input type="button" style="float: right; margin-right:5px;" value="답글" onclick="javascript:ansreplyForm();"/>
+ 													<input type="button" style="float: right; margin-right:5px;" value="답글" onclick="javascript:ansreplyForm(this);"/>
 													<div class="line allmargin-sm divcenter" ></div>
 													<div id="replyArea" style="display: none;">
 														<form action="ansreply.do" method="post">
@@ -538,12 +538,18 @@
 		});
 	</script> 
  	<script type="text/javascript">
-	function ansreplyForm(){
-		if(document.getElementById("replyArea").style.display=='block'){
+	function ansreplyForm(sel){
+		var displayCon = sel.next().next();
+		if(displayCon.css('display')=='block'){
+			displayCon.css('display','none');
+		}else{
+			displayCon.css('display','block');
+		}
+		/* if(document.getElementById("replyArea").style.display=='block'){
 			document.getElementById("replyArea").style.display='none';
 		}else{
 			document.getElementById("replyArea").style.display='block'
-		}
+		} */
 	};	
 	/* function replypushnum(board_seq){
 		alert("board_seq = ["+board_seq +"]");
