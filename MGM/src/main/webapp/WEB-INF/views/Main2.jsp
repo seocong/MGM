@@ -57,6 +57,9 @@
 			font-weight: bold;
 			font-size: 17px;
 		}
+		.selBtn > li{
+			float:left;
+		}
 	</style>
 
 </head>
@@ -331,26 +334,29 @@
 									
 									
 									<article class="spost clearfix " >
-										<ul class="entry-meta clearfix selBtn" >
+									<div class="col-md-12 ml-4">
+										<ul class="clearfix selBtn mb-0" style="list-style: none;">
 										<li><button type="button" class="button button-border button-rounded button-red" onclick="selhorseBtn(this);">1번</button></li>
 										<li><button type="button" class="button button-border button-rounded button-yellow" onclick="selhorseBtn(this);">2번</button></li>
 										<li><button type="button" class="button button-border button-rounded button-green" onclick="selhorseBtn(this);">3번</button></li>
 										<li><button type="button" class="button button-border button-rounded button-black" onclick="selhorseBtn(this);">4번</button></li>
 										<li><button type="button" class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">5번</button></li>
+										<li><button type="button" class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">6번</button></li>
 										<!-- <li><a href="#" class="button button-border button-rounded button-orange">6번</a></li> -->
-										</ul>	
-									<div class="ml-2 clearfix col-12">
+										</ul>
+									</div>
+									<div class="clearfix col-md-11 ml-4 mb-3 mt-2" id="betArea" >
 										<div class="betting">
-										<input type="submit" value="BET" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
+										<input type="submit" id="betBtn" value="베팅" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
 										</div>
 										<div class="betting  col-md-4 mt-2">
 										<select style="font-weight:bold;" class="sm-form-control">
-											<option>10 point</option>
-											<option>50 point</option>
-											<option>100 point</option>
+											<option>10 포인트</option>
+											<option>50 포인트</option>
+											<option>100 포인트</option>
 										</select>
 										</div>
-										<div class="betting col-md-2 mt-3 nopadding"><span>선택 번호: </span><span id="selhorse"></span></div>
+										<!-- <div class="betting col-md-2 mt-3 nopadding"><span>선택: </span><span id="selhorse"></span></div> -->
 									</div>
 									</article>
 									</div>

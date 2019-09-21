@@ -90,6 +90,8 @@ function chnNo(no){
 };
 
 function selhorseBtn(num){
+//	document.getElementById('betArea').style.display="block";
 	var selNum =num.innerHTML;
-	document.getElementById('selhorse').innerHTML=selNum;
+	document.getElementById('betBtn').value=selNum+" 베팅";
+//	document.getElementById('selhorse').innerHTML=selNum;
 };
