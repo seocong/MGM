@@ -31,7 +31,7 @@ for(var i in meet){
 var odd1 = document.getElementsByClassName('odd1');
 var odd2 = document.getElementsByClassName('odd2');
 var odd3 = document.getElementsByClassName('odd3');
-console.log('이까지 출저번호 출력');
+
 for(var i in odd1){
 	var odds = odd1[i].innerHTML+"";
 	var oddList = odds.split("/");
@@ -87,4 +87,9 @@ function chnNo(no){
 	case '17':
 		return '⑰';
 	};
+};
+
+function selhorseBtn(num){
+	var selNum =num.innerHTML;
+	document.getElementById('selhorse').innerHTML=selNum;
 };

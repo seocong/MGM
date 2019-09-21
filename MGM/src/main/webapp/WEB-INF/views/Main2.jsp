@@ -52,7 +52,11 @@
 		.hesperiden .tp-tab { border-bottom: 0; }
 		.hesperiden .tp-tab:hover,
 		.hesperiden .tp-tab.selected { background-color: #E5E5E5; }
-		.betting{float:left;}
+		.betting{float:right;}
+		.betting > span{
+			font-weight: bold;
+			font-size: 17px;
+		}
 	</style>
 
 </head>
@@ -327,16 +331,18 @@
 									
 									
 									<article class="spost clearfix " >
-								
-										<ul class="entry-meta clearfix" >
-										<li><a href="#" class="button button-border button-rounded button-red">1번</a></li>
-										<li><a href="#" class="button button-border button-rounded button-yellow">2번</a></li>
-										<li><a href="#" class="button button-border button-rounded button-green">3번</a></li>
-										<li><a href="#" class="button button-border button-rounded button-black">4번</a></li>
-										<li><a href="#" class="button button-border button-rounded button-blue">5번</a></li>
+										<ul class="entry-meta clearfix selBtn" >
+										<li><button type="button" class="button button-border button-rounded button-red" onclick="selhorseBtn(this);">1번</button></li>
+										<li><button type="button" class="button button-border button-rounded button-yellow" onclick="selhorseBtn(this);">2번</button></li>
+										<li><button type="button" class="button button-border button-rounded button-green" onclick="selhorseBtn(this);">3번</button></li>
+										<li><button type="button" class="button button-border button-rounded button-black" onclick="selhorseBtn(this);">4번</button></li>
+										<li><button type="button" class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">5번</button></li>
 										<!-- <li><a href="#" class="button button-border button-rounded button-orange">6번</a></li> -->
 										</ul>	
 									<div class="ml-2 clearfix col-12">
+										<div class="betting">
+										<input type="submit" value="BET" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
+										</div>
 										<div class="betting  col-md-4 mt-2">
 										<select style="font-weight:bold;" class="sm-form-control">
 											<option>10 point</option>
@@ -344,10 +350,8 @@
 											<option>100 point</option>
 										</select>
 										</div>
-										<div class="betting">
-										<input type="submit" value="BET" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
-										</div>
-									</div>		
+										<div class="betting col-md-2 mt-3 nopadding"><span>선택 번호: </span><span id="selhorse"></span></div>
+									</div>
 									</article>
 									</div>
 								</div>
