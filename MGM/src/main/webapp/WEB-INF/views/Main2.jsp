@@ -443,7 +443,7 @@
 							<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
-								  <tr>
+								  <tr style="text-align: center; white-space: nowrap;">
 									<th>경주</th>
 									<th>1착</th>
 									<th>2착</th>
@@ -456,11 +456,11 @@
 								<tbody>
 								<c:forEach items="${mainInfo}" var="info">
 								<c:if test="${mainInfoDate[0] eq info.rcDATE}">
-								  <tr>
-									<td><span class="meet">${info.MEET}</span><br><span class="round">${info.RCNO}R</span></td>
-									<td class="odd1">${info.ALLINFO}</td>
-									<td class="odd2"></td>
-									<td class="odd3"></td>
+								  <tr >
+									<td class="nopadding" ><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}R</span></td>
+									<td class="odd1 nopadding">${info.ALLINFO}</td>
+									<td class="odd2 nopadding"></td>
+									<td class="odd3 nopadding"></td>
 									<td>${info.QNLODDS}</td>
 									<td>${info.EXAODDS}</td>
 									<td>${info.TLAODDS}</td>
@@ -482,7 +482,7 @@
 													<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
-								  <tr>
+								  <tr style="text-align: center; white-space: nowrap;">
 									<th>경주</th>
 									<th>1착</th>
 									<th>2착</th>
@@ -496,10 +496,10 @@
 								 <c:forEach items="${mainInfo}" var="info">
 								<c:if test="${mainInfoDate[1] eq info.rcDATE}">
 								  <tr>
-									<td><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}R</span></td>
-									<td class="odd1">${info.ALLINFO}</td>
-									<td class="odd2"></td>
-									<td class="odd3"></td>
+									<td class="nopadding"><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}R</span></td>
+									<td class="odd1 nopadding">${info.ALLINFO}</td>
+									<td class="odd2 nopadding"></td>
+									<td class="odd3 nopadding"></td>
 									<td>${info.QNLODDS}</td>
 									<td>${info.EXAODDS}</td>
 									<td>${info.TLAODDS}</td>
@@ -518,7 +518,7 @@
 													<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
-								  <tr>
+								  <tr style="text-align: center; white-space: nowrap;">
 									<th>경주</th>
 									<th>1착</th>
 									<th>2착</th>
@@ -532,10 +532,10 @@
 								 <c:forEach items="${mainInfo}" var="info">
 								<c:if test="${mainInfoDate[2] eq info.rcDATE}">
 								  <tr>
-									<td><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}R</span></td>
-									<td class="odd1">${info.ALLINFO}</td>
-									<td class="odd2"></td>
-									<td class="odd3"></td>
+									<td class="nopadding"><span class="meet">${info.MEET}</span><span class="round">${info.RCNO}R</span></td>
+									<td class="odd1 nopadding">${info.ALLINFO}</td>
+									<td class="odd2 nopadding"></td>
+									<td class="odd3 nopadding"></td>
 									<td>${info.QNLODDS}</td>
 									<td>${info.EXAODDS}</td>
 									<td>${info.TLAODDS}</td>
