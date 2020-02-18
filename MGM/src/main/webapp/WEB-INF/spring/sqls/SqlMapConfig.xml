@@ -35,6 +35,8 @@
  		<typeAlias type="com.gam.mgm.dto.YoutubeDto" alias="YoutubeDto" />
  		<typeAlias type="com.gam.mgm.dto.YtCommentDto" alias="YtCommentDto" />
  		<typeAlias type="com.gam.mgm.dto.ChatDto" alias="ChatDto" />
+ 		<typeAlias type="com.gam.mgm.dto.MiniRaceDto" alias="MiniRaceDto" />
+ 		<typeAlias type="com.gam.mgm.dto.ProProfileDto" alias="ProProfileDto" />
      </typeAliases>
      
   <mappers>
@@ -53,8 +55,10 @@
      <mapper resource="/sqls/Owner_mapper.xml" />
      <mapper resource="/sqls/RacePlan_mapper.xml" />
      <mapper resource="/sqls/RaceEntry_mapper.xml" /> 
-     <mapper resource="/sqls/Chat_mapper.xml" /> 
-     <mapper resource="/sqls/ManagerMapper.xml" /> 
+     <mapper resource="/sqls/Chat_mapper.xml" />
+     <mapper resource="/sqls/MiniRace_mapper.xml" /> 
+     <mapper resource="/sqls/ManagerMapper.xml" />
+     <mapper resource="/sqls/ProProfile_mapper.xml" /> 
   </mappers>
   
   

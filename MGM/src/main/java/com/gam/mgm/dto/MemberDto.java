@@ -11,7 +11,7 @@ public class MemberDto {
 	private Date member_birth;
 	private String member_phnum;
 	private String member_delflag;
-	
+	private String member_gubun;
 	private int member_point;
 	private int message_count;
 	private Date member_regdate;
@@ -24,7 +24,7 @@ public class MemberDto {
 	}
 	public MemberDto(String member_id, String member_pw, String member_address, String member_name, Date member_birth,
 			String member_phnum, String member_delflag, int member_point, int message_count, Date member_regdate,
-			int board_count, List<PointDto> pointDto, int msgCount) {
+			int board_count, List<PointDto> pointDto, int msgCount,String member_gubun) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -39,6 +39,7 @@ public class MemberDto {
 		this.board_count = board_count;
 		this.pointDto = pointDto;
 		this.msgCount = msgCount;
+		this.member_gubun = member_gubun;
 	}
 	@Override
 	public String toString() {
@@ -46,7 +47,7 @@ public class MemberDto {
 				+ ", member_name=" + member_name + ", member_birth=" + member_birth + ", member_phnum=" + member_phnum
 				+ ", member_delflag=" + member_delflag + ", member_point=" + member_point + ", message_count="
 				+ message_count + ", member_regdate=" + member_regdate + ", board_count=" + board_count + ", pointDto="
-				+ pointDto + ", msgCount=" + msgCount + "]";
+				+ pointDto + ", msgCount=" + msgCount + ", member_gubun=" + member_gubun + "]";
 	}
 	public String getMember_id() {
 		return member_id;
@@ -125,6 +126,12 @@ public class MemberDto {
 	}
 	public void setMsgCount(int msgCount) {
 		this.msgCount = msgCount;
+	}
+	public String getMember_gubun() {
+		return member_gubun;
+	}
+	public void setMember_gubun(String member_gubun) {
+		this.member_gubun = member_gubun;
 	}
 	
 }

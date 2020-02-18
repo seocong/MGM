@@ -11,7 +11,11 @@ $(function() {
 				$("#tabalert").addClass('current');
 			}else if(board_name == "game"){
 				$("#tabgame").addClass('current');
-			}		
+			}else if(board_name =="pro"){
+				$("#tabproboard").addClass('current');
+			}else if(board_name =="proProfile"){
+				$("#tabprolist").addClass('current');
+			}
 });
 $(function() {
 	var tr_meet = $("#tr_meet").attr("data-tr_meet");

@@ -243,6 +243,10 @@ public class AdminController {
 	public String pointplusOpen(){
 		return "pointPlus";
 	}
+	@RequestMapping(value="/entry.do",method=RequestMethod.GET)
+	public String entry(){
+		return "user/entrygame";
+	}
 	@RequestMapping(value="/pointplus.do",method=RequestMethod.POST)
 	public String pointPlus(HttpServletRequest request, Model model,HttpSession session){
 		logger.info("포인트 추가 들어옴");

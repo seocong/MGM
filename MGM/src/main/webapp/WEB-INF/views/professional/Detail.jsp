@@ -46,7 +46,7 @@
 	
 	<!-- Document Title
 	============================================= -->
-	<title>커뮤니티</title>
+	<title>전문가 예상</title>
 
 	<style>
 		#container {
@@ -92,45 +92,6 @@
 		background-color:#F2F2F2;
 		}
 	</style>
-	<!--  <script>
-		$(document).ready(function(){
-		
-			$("#btnReply").click(function(){
-				var comment_reply = $("#comment_reply").val();
-				var comment_group = "${Dto.board_group}"
-				var comment_name = "${Dto.board_name}"
-				var param="comment_contents="+comment_contents+"&comment_group="+comment_group+"&comment_name="+comment_name;
-				$.ajax({
-					type:"post",
-					url:"commentInsert.do",
-					data:param,
-					success: function(){
-						alert("댓글이 등록되었습니다.");
-						
-					}
-				)};
-			});
-			//게시글 추천시 이벤트 
-			$("#btnPush").click(function(){
-				location.href="pushup.do"
-			});
-			//게시글 삭제 이벤트
-			$("#btnDelete").click(function(){
-				if(comfirm("삭제하시겠습니까?")){
-					location.href = "delete.do";				
-				}
-			});
-			//게시글 수정시 이벤트
-			 $("#btnUpdate").click(function(){
-				 if(comfirm("삭제하시겠습니까?")){
-						location.href = "replyUpdate.do";				
-					}
-			}); 
-		});
-		
-
-	</script> -->
-	
 </head>
 
 <body class="stretched">
@@ -208,47 +169,11 @@
 						
 							<div class="row clearfix"> 
 							<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> 상세보기</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-chalkboard"></i></span> 전문가 예상 상세보기</h4>
 									<div class="line line-xs line-sports"></div>
 									
 									<div class="allmargin-sm">
-						 <%--  <table class="table">
-							
-							<tbody>
-							  <tr>
-							  	<td style="width: 100%;  padding: 0px;">
-							  		<table style="width: 100%;" >
-							  		<tr>
-							  			<td style="width: 10%;">제목</td>
-										<td style="width: 60%; float: left;">${Dto.board_title}</td>
-										<td style="width: 30%;">${Dto.board_regdate}</td>	
-							  			</tr>
-							  		</table>
-							  	</td>														
-							  </tr>
-							  <tr >
-							  <td style="width: 100%;  padding: 0px;">
-							  	<table style="width: 100%;">
-							  	<tr>
-								<td style="width: 10%;">작성자</td>
-								<td style="width: 30%; float: left;">${Dto.board_writer}</td>
-								<td style="width: 20%; float: right;">조회수</td>
-								<td style="width: 5%;">${Dto.board_readcount}</td>
-								<td style="width: 30%; float: right;">추천수</td>
-								<td style="width: 5%;">${Dto.board_pushnum}</td>
-							  	</tr>
-							  	</table>
-								
-							  </td>
-							  </tr>
-							 <tr>
-			
-								<td>${Dto.board_contents}</td>
-
-								</tr>
-							</tbody>
-						  </table> --%>
-						  
+					
 							<div id="board_name" data-boardname = "${Dto.board_name}" ></div>
 							<div id="board_seq" data-boardseq = "${Dto.board_seq}" ></div>
 							
@@ -371,10 +296,8 @@
 							
 							
 							<ul class="tab">
-								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" > 공지게시판</a></li>
-								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free" > 자유게시판</a></li>
-								<li id="tabfun"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=fun" > 유머게시판</a></li>
-								<li id="tabgame"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=game" > 게임게시판</a></li>
+								<li id="tabalert"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert" > 전체 전문가 예상</a></li>
+								<li id="tabfree"><a href="freeboard.do?pagenum=1&contentnum=20&board_name=free" > 프레임 전문가 보기</a></li>
 							</ul>
 
 							<div >

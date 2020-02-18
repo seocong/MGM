@@ -23,8 +23,8 @@
 						<a href="index.html" class="retina-logo" data-dark-logo="resources/images/logo-dark@2x.png"><img src="resources/images/logo@2x.png" alt="Canvas Logo"></a>
 					</div> --><!-- #logo end -->
 					<div id="logo">
-						<a href="main.do" class="standard-logo" data-dark-logo="resources/demos/business/images/logo-dark.png"><img src="resources/images/title2.png" alt="Canvas Logo"></a>
-						<a href="main.do" class="retina-logo" data-dark-logo="resources/demos/business/images/logo-dark@2x.png"><img src="resources/images/title2.png" alt="Canvas Logo"></a>
+						<a href="main.do" class="standard-logo" data-dark-logo="resources/demos/business/images/logo-dark.png"><img src="resources/images/title7.png" alt="Canvas Logo"></a>
+						<a href="main.do" class="retina-logo" data-dark-logo="resources/demos/business/images/logo-dark@2x.png"><img src="resources/images/title7.png" alt="Canvas Logo"></a>
 					</div>
 
 					<!-- Primary Navigation
@@ -34,7 +34,7 @@
 
 						<ul class="align-self-start">
 							<li><span class="menu-bg col-auto align-self-start d-flex"></span></li>
-							<li class="active"><a href="newsList.do"><div  style="font-weight: bold;">NEWS</div></a></li>
+							<li class="active"><a href="proboard.do?pagenum=1&contentnum=20"><div  style="font-weight: bold;">전문가예상</div></a></li>
 							<li ><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert"><div  style=" font-weight: bold;">커뮤니티</div></a>
 								 <ul>									
 									<li><a href="freeboard.do?pagenum=1&contentnum=20&board_name=alert"><div  style="font-weight: bold;">공지사항</div></a></li>

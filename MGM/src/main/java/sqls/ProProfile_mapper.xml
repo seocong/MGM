@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.gam.Pro">
+   		<select id="proSimple" parameterType="String" resultType="ProProfileDto">
+   			select mm.member_id as pro_id,mm.member_name as pro_name,pro.pro_simple from mgm_member as mm join pro_profile as pro on mm.member_id=pro.pro_id;
+   		</select>
+   		<select id="proDetail" parameterType="String" resultType="ProProfileDto">
+   			select pro_id,pro_detail from pro_profile where pro_id=#{id};
+   		</select>
+  </mapper>

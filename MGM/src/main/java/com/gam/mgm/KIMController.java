@@ -37,6 +37,7 @@ import com.gam.mgm.dto.AnswerDto;
 import com.gam.mgm.dto.BoardDto;
 import com.gam.mgm.dto.CommentDto;
 import com.gam.mgm.dto.MemberDto;
+import com.gam.mgm.dto.MiniRaceDto;
 import com.gam.mgm.dto.YoutubeDto;
 import com.gam.mgm.dto.YtCommentDto;
 import com.gam.mgm.paging.PageMaker;
@@ -44,6 +45,7 @@ import com.gam.mgm.service.IAnswerService;
 import com.gam.mgm.service.IBoardService;
 import com.gam.mgm.service.IChannelService;
 import com.gam.mgm.service.ICommentService;
+import com.gam.mgm.service.IMiniRaceService;
 import com.gam.mgm.service.IRaceService;
 
 
@@ -67,6 +69,8 @@ public class KIMController implements ServletContextAware{
 	private IChannelService channelService;
 	@Autowired
 	private IRaceService raceService;
+	@Autowired
+	private IMiniRaceService miniRaceService;
 	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.context = servletContext;
@@ -97,15 +101,31 @@ public class KIMController implements ServletContextAware{
 				}
 			}
 		}
-		for(Map<String,String> map:mainInfo) {
-			System.out.println(map);
-		}
+//		for(Map<String,String> map:mainInfo) {
+//			System.out.println(map);
+//		}
+		//최근경기내역
+		MiniRaceDto latelyResult = miniRaceService.latelyResult();
+		//최근경기내역
+		MiniRaceDto todayResult = miniRaceService.todayResult();
+		//1년경기내역
+		MiniRaceDto yearResult = miniRaceService.yearResult();
+		//1주경기내역
+		MiniRaceDto weekResult = miniRaceService.weekResult();
+		System.out.println(latelyResult);
+		System.out.println(todayResult);
+		System.out.println(yearResult);
+		System.out.println(weekResult);
 		 model.addAttribute("popularList", popularList);
 		 model.addAttribute("freeList", freeList);
 		 model.addAttribute("funList", funList);
 		 model.addAttribute("AlertList", AlertList);
 		 model.addAttribute("mainInfo",mainInfo);
 		 model.addAttribute("mainInfoDate",mainInfoDate);
+		 model.addAttribute("lrResult",latelyResult);
+		 model.addAttribute("yearResult",yearResult);
+		 model.addAttribute("weekResult",weekResult);
+		 model.addAttribute("todayResult",todayResult);
 		return "Main2";
 	}
 	

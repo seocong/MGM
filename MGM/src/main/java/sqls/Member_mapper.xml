@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.gam.Member">
     	<select id="login" parameterType="Map" resultType="MemberDto">
-    		SELECT MEMBER_ID,MEMBER_PW,MEMBER_POINT FROM MGM_MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_DELFLAG='N'
+    		SELECT MEMBER_ID,MEMBER_PW,MEMBER_POINT,MEMBER_GUBUN FROM MGM_MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_DELFLAG='N'
     	</select>
     	<insert id="signup" parameterType="MemberDto">
     		INSERT INTO MGM_MEMBER(MEMBER_ID, MEMBER_PW, MEMBER_ADDRESS, MEMBER_NAME, MEMBER_BIRTH, MEMBER_PHNUM, MEMBER_DELFLAG, MEMBER_POINT,MEMBER_REGDATE)
@@ -27,5 +27,14 @@
    		<!-- 비밀번호 중복 체크 -->
    		<select id="phCheck" parameterType="String" resultType="int">
    			select count(*) from mgm_member where member_phnum = #{ph};
+   		</select>
+   		<select id="proList" resultType="String">
+   			select member_id, member_name from mgm_member where member_gubun='pro';
+   		</select>
+   		<select id="proSimple" parameterType="String" resultType="String">
+   			select pro_simple where pro_id=#{id};
+   		</select>
+   		<select id="proDetail" parameterType="String" resultType="String">
+   			select pro_detail where pro_id=#{id};
    		</select>
   </mapper>

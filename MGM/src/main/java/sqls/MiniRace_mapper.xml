@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.gam.mgm.minirace">
+    	<select id="yearResult" resultType="MiniRaceDto">
+    		select count(if(mi_num1=1,"Y",null)) as mi_num1, count(if(mi_num2=1,"Y",null)) as mi_num2, count(if(mi_num3=1,"Y",null)) as mi_num3, count(if(mi_num4=1,"Y",null)) as mi_num4, count(if(mi_num1=5,"Y",null)) as mi_num5, count(if(mi_num6=1,"Y",null)) as mi_num6 from mini_race
+			where mi_date >= date_sub(now(), interval 1 year);
+    	</select>
+    	<select id="weekResult" resultType="MiniRaceDto">
+    		select count(if(mi_num1=1,"Y",null)) as mi_num1, count(if(mi_num2=1,"Y",null)) as mi_num2, count(if(mi_num3=1,"Y",null)) as mi_num3, count(if(mi_num4=1,"Y",null)) as mi_num4, count(if(mi_num1=5,"Y",null)) as mi_num5, count(if(mi_num6=1,"Y",null)) as mi_num6 from mini_race
+			where mi_date >= date_sub(now(), interval 7 day);
+    	</select>
+    	<select id="todayResult" resultType="MiniRaceDto">
+    		select count(if(mi_num1=1,"Y",null)) as mi_num1, count(if(mi_num2=1,"Y",null)) as mi_num2, count(if(mi_num3=1,"Y",null)) as mi_num3, count(if(mi_num4=1,"Y",null)) as mi_num4, count(if(mi_num1=5,"Y",null)) as mi_num5, count(if(mi_num6=1,"Y",null)) as mi_num6 from mini_race
+    		where date_format(mi_date,'%y%m%d')=date_format(now(),'%y%m%d');
+    	</select>
+    	<select id="latelyResult" resultType="MiniRaceDto">
+    		select mi_time,mi_num1,mi_num2,mi_num3,mi_num4,mi_num5,mi_num6 from mini_race order by mi_time desc limit 1;
+    	</select>
+    	<insert id="insertResult" parameterType="Map">
+    		insert into mini_race(mi_date,mi_num1,mi_num2,mi_num3,mi_num4,mi_num5,mi_num6) values(now(),#{num1},#{num2},#{num3},#{num4},#{num5},#{num6});
+    	</insert>
+  </mapper>

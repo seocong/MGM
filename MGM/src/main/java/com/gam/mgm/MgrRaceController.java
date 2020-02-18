@@ -717,17 +717,18 @@ public class MgrRaceController {
 		Calendar cal = Calendar.getInstance();
 		List<Integer> year = new ArrayList<Integer>();
 		year.add(cal.get(Calendar.YEAR));
-		cal.add(Calendar.YEAR,-1);
+		cal.add(Calendar.YEAR,-1);// 등록 당일 기준 최근 1년 정보 가져옴
 		year.add(cal.get(Calendar.YEAR));
 		int beforeMonth = Integer.parseInt(fmt.format(cal.getTime()));
 		long start = System.currentTimeMillis();
 		URI url2 = null;
 		AA: for (int meet = 1; meet <= 3; meet++) {
+			System.out.println("루프 확인: "+meet);
 			boolean loop = true;
 			int pageNo = 1;
 			for(int yearLoop:year){
 				BB: while (true) {
-					//					long start2 = System.currentTimeMillis();
+										long start2 = System.currentTimeMillis();
 					try {
 						StringBuilder builder = new StringBuilder("http://apis.data.go.kr/B551015/API4/raceResult");
 						builder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "="
@@ -743,7 +744,7 @@ public class MgrRaceController {
 					} catch (URISyntaxException uriE) {
 						uriE.printStackTrace();
 					}
-					//					System.out.println(url2);
+										System.out.println("접속 url: "+url2);
 					RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 					RaceResultVo rcResult = restTemplate.getForObject(url2, RaceResultVo.class);
 					RaceResultVo.Header result = rcResult.getHeader();
@@ -812,8 +813,9 @@ public class MgrRaceController {
 							break BB;
 						}
 					}
-					//					long end2 = System.currentTimeMillis();
-					//					System.out.println("시간: " + ((end2 - start2) / 1000) + "초");
+										long end2 = System.currentTimeMillis();
+										System.out.println("경주기록 등록 종료");
+										System.out.println("시간: " + ((end2 - start2) / 1000) + "초");
 				}
 			}
 		}

@@ -88,10 +88,113 @@ function chnNo(no){
 		return '⑰';
 	};
 };
-
+var color = ['#C02942','#EB9C4D','#59BA41','#40C0CB','#1265A8','#5D4157'];
 function selhorseBtn(num){
-//	document.getElementById('betArea').style.display="block";
-	var selNum =num.innerHTML;
-	document.getElementById('betBtn').value=selNum+" 베팅";
-//	document.getElementById('selhorse').innerHTML=selNum;
+	var parent = num.parentNode.parentNode;
+	var childBtn = parent.getElementsByTagName('button');
+	var buttonNum = ['button1','button2','button3','button4','button5','button6'];
+	for(var i in buttonNum){
+		document.getElementById(buttonNum[i]).style.borderColor=color[i];
+		document.getElementById(buttonNum[i]).style.color=color[i];
+		document.getElementById(buttonNum[i]).style.backgroundColor='white';
+		document.getElementById(buttonNum[i]).classList.remove('btnChk');
+	}
+	var selNum = Number(num.innerHTML.substr(0,1))-1;
+	num.classList.add('btnChk');
+	document.getElementById(buttonNum[selNum]).style.borderColor=color[selNum];
+	document.getElementById(buttonNum[selNum]).style.color='white';
+	document.getElementById(buttonNum[selNum]).style.backgroundColor=color[selNum];
 };
+
+document.getElementById("betBtn").onclick = function(){
+	var chkHr = document.getElementsByClassName('btnChk');
+//	if(!chkHr){
+//		alert('오잉?')
+//	}
+	var pointBox = document.getElementById('chkPoint');
+	var chkPoint = pointBox.options[pointBox.selectedIndex].text;
+	document.getElementById('chkMsg').innerHTML = chkHr[0].innerHTML + '에 '+ chkPoint+'베팅 하시겠습니까?';
+}
+
+//main chart 1
+var todayResult = document.getElementById("todayResult");
+var child = todayResult.getElementsByTagName('div');
+var ctx = document.getElementById('todayChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['1번', '2번', '3번', '4번', '5번', '6번'],
+        datasets: [{
+            label: 'none',
+            backgroundColor: ['#C02942','#EB9C4D','#59BA41','#40C0CB','#1265A8','#5D4157'],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [child[0].innerHTML,child[1].innerHTML,child[2].innerHTML,child[3].innerHTML,child[4].innerHTML,child[5].innerHTML]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+    	 legend: {
+             display:false
+         }
+    	
+    }
+});
+
+//main chart 2
+var todayResult2 = document.getElementById("weekResult");
+var child2 = todayResult2.getElementsByTagName('div');
+var ctx2 = document.getElementById('weekChart').getContext('2d');
+var chart2 = new Chart(ctx2, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['1번', '2번', '3번', '4번', '5번', '6번',],
+        datasets: [{
+            label: 'none',
+            backgroundColor: ['#C02942','#EB9C4D','#59BA41','#40C0CB','#1265A8','#5D4157'],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [child2[0].innerHTML,child2[1].innerHTML,child2[2].innerHTML,child2[3].innerHTML,child2[4].innerHTML,child2[5].innerHTML]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+    	 legend: {
+             display:false
+         }
+    }
+});
+
+//main chart 3
+var todayResult3 = document.getElementById("weekResult");
+var child3 = todayResult3.getElementsByTagName('div');
+var ctx3 = document.getElementById('yearChart').getContext('2d');
+var chart3 = new Chart(ctx3, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['1번', '2번', '3번', '4번', '5번', '6번',],
+        datasets: [{
+            label: 'none',
+            backgroundColor: ['#C02942','#EB9C4D','#59BA41','#40C0CB','#1265A8','#5D4157'],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [child3[0].innerHTML,child3[1].innerHTML,child3[2].innerHTML,child3[3].innerHTML,child3[4].innerHTML,child3[5].innerHTML]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+    	 legend: {
+             display:false
+         }
+    }
+});
+$('iframeA').contents().find()
