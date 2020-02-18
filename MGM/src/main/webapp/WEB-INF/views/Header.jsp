@@ -23,8 +23,8 @@
 						<a href="index.html" class="retina-logo" data-dark-logo="resources/images/logo-dark@2x.png"><img src="resources/images/logo@2x.png" alt="Canvas Logo"></a>
 					</div> --><!-- #logo end -->
 					<div id="logo">
-						<a href="main.do" class="standard-logo" data-dark-logo="resources/demos/business/images/logo-dark.png"><img src="resources/images/title7.png" alt="Canvas Logo"></a>
-						<a href="main.do" class="retina-logo" data-dark-logo="resources/demos/business/images/logo-dark@2x.png"><img src="resources/images/title7.png" alt="Canvas Logo"></a>
+						<a href="main.do" class="standard-logo" data-dark-logo="resources/demos/business/images/logo-dark.png"><img src="resources/images/title7.png" alt=" Logo"></a>
+						<a href="main.do" class="retina-logo" data-dark-logo="resources/demos/business/images/logo-dark@2x.png"><img src="resources/images/title7.png" alt=" Logo"></a>
 					</div>
 
 					<!-- Primary Navigation

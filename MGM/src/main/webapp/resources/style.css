@@ -6587,7 +6587,7 @@ body:not(.device-sm):not(.device-xs) .countdown.countdown-large.coming-soon .cou
 	cursor: pointer;
 	outline: none;
 	white-space: nowrap;
-	margin: 5px;
+	margin: 4px;
 	padding: 0 22px;
 	font-size: 14px;
 	height: 40px;
@@ -6717,7 +6717,7 @@ body:not(.device-touch) .button {
 -----------------------------------------------------------------*/
 
 .button.button-border {
-	border: 2px solid #444;
+	border: 2px solid #ccc;
 	background-color: transparent;
 	color: #333;
 	line-height: 36px;
@@ -13938,4 +13938,5 @@ body:not(.no-transition) #wrapper,
 .col-lg-7:first-child{
 	text-overflow: ellipsis;max-width: 250px; padding-right: 40px; white-space: nowrap; overflow: hidden; font-weight: bold;
 }
+
 

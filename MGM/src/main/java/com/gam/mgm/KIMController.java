@@ -433,7 +433,7 @@ public class KIMController implements ServletContextAware{
 				}
 			}
 			
-			@RequestMapping(value = "/push.do", method = RequestMethod.POST)
+			@RequestMapping(value = "/push.do", method = RequestMethod.GET)
 			public String push(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session,int board_seq) throws IOException {
 				logger.info("답글 추가하기 {}.", locale);
 				int seq = Integer.parseInt(request.getParameter("board_seq"));

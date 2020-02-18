@@ -101,11 +101,11 @@
 						<button id="signup2" class="btn btn-lg text-white btn-block uppercase ls1"
 							style="background-color: #3A486E;" type="button">Login</button>
 						<div class="center mt-1">
-							<small class="mt-5 text-muted font-italic"><a href="#">아이디.비밀번호
+							<small class="mt-5 text-muted t700"><a href="#">아이디.비밀번호
 									찾기</a></small>
 						</div>
 						<div class="center">
-							<small class="mt-5 text-muted font-italic"><a href="termService.do">회원가입</a></small>
+							<small class="mt-5 text-muted t700"><a href="termService.do">회원가입</a></small>
 						</div>
 					</form>
 					</div>
@@ -113,7 +113,7 @@
 					
 					<c:if test="${uid ne null }">
 					<div class="px-4 py-3" >
-						<div class="mt-1 pb-1"style="border-bottom: solid 1px; border-color:#808080;">
+						<div class="mt-1 pb-1">
 						<span id="idbox" style=" font-weight: bold; font-size: 20px;">${uid.member_id}</span><span>님</span>
 						&nbsp;
 						<c:if test="${uid.member_id eq 'admin'}">

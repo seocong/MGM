@@ -10,9 +10,9 @@
 				<div class="container clearfix">
 
 					<div class="col_half">
-						<img src="resources/images/footer-logo.png" alt="Footer Logo" class="footer-logo">
+						<img src="resources/images/frame2.png" alt="Footer Logo" class="footer-logo">
 
-						Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.
+						Copyrights &copy; 2020 All Rights Reserved by frame Inc.
 					</div>
 
 					<div class="col_half col_last tright">

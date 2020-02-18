@@ -71,7 +71,7 @@
 			color: #000;
 			text-align: center;
 			text-decoration: none;
-			padding: 14px 16px;
+			padding: 10px 16px;
 			font-size: 14px;
 			transition:0.3s;
 			border: solid #DDD 1px;
@@ -178,7 +178,7 @@
 								<!-- board name을 div에 불러옴 , script에서 받음 -->
 								<div id="board_name" data-board_name = "${board_name}" ></div>
 								<div class="col-md-12 mt-5">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-user-friends"></i></span> 커뮤니티</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-dark"><i class="icon-group"></i></span> 전문가 예상</h4>
 									<div class="line line-xs line-sports"></div>									
 
 						<div id="container" >
@@ -193,7 +193,7 @@
 								<div class="tabcontent" id="tab4">
 									<div >
 							<table class="table table-striped">
-							<col width="50px"><col width="300px"><col width="100px"><col width="150px"><col width="60px"><col width="50px">
+							<col width="10%"><col width="40%"><col width="10%"><col width="20%"><col width="10%"><col width="10%">
 								<thead>
 								  <tr style="text-align: center;">
 									<th>번호</th>
@@ -253,7 +253,7 @@
         <td>
 				<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="글쓰기" onclick="location.href='proinsertform.do?board_name=${board_name}'">
+                  <input type="button"class="button button-dark button-rounded" value="글쓰기" onclick="location.href='proinsertform.do?board_name=${board_name}'">
                 </div>
               </div>
 	
