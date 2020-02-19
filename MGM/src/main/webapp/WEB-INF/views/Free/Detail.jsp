@@ -569,7 +569,7 @@
 	} */
 	
 	function replypushnum(board_seq){
-		alert("board_seq = ["+board_seq +"]");
+		/* alert("board_seq = ["+board_seq +"]"); */
 		var board_seq = board_seq;
 		var board_name = $("#board_name").attr("data-boardname");
 		var pagenum = ${page.pagenum}+1;
@@ -602,7 +602,7 @@
 	} */
 	
 	function replyAnspushnum(comment_seq){
-		alert("comment_seq = ["+comment_seq +"]");
+		/* alert("comment_seq = ["+comment_seq +"]"); */
 		var comment_seq = comment_seq;
 		var board_name = $("#board_name").attr("data-boardname");
 		var pagenum = ${page.pagenum}+1;
@@ -612,7 +612,7 @@
 	}
 	
 	$("#btnDelete").click(function(){
-		alert("삭제안되냐")
+		/* alert("삭제안되냐") */
 		var board_name = $("#board_name").attr("data-boardname");
 		var board_seq = $("#board_seq").attr("data-boardseq");
 		var pagenum = ${page.pagenum}+1;
@@ -624,7 +624,7 @@
 		}
 	});
 	function delcomment(comment_seq){
-		alert("삭제되냐")
+		/* alert("삭제되냐") */
 		var comment_seq = comment_seq;
 		var board_name = $("#board_name").attr("data-boardname");
 		var board_seq = $("#board_seq").attr("data-boardseq");
@@ -634,7 +634,7 @@
 	}
 	}
 	$("#btnUpdate").click(function(){
-		alert("수정합시다")
+		/* alert("수정합시다") */
 		var board_seq = $("#board_seq").attr("data-boardseq");
 
 		if(confirm("수정하시겠습니까?")){

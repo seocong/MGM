@@ -71,10 +71,10 @@
 			color: #000;
 			text-align: center;
 			text-decoration: none;
-			padding: 14px 16px;
+			padding: 10px 24px;
 			font-size: 14px;
 			transition:0.3s;
-			border: solid #DDD 1px;
+			border: solid #ddd  1px;
 		
 		}
 		/* Style the tab content */

@@ -174,7 +174,7 @@
 							<div class="row clearfix">
 							<div id="ow_meet" data-ow_meet = "${ow_meet}" ></div>	
 								<div class="col-md-12 mt-5">							
-								<table class="allmargin">
+								<!-- <table class="allmargin">
 
 								<tr style="text-align: center; white-space: nowrap;">
 									<td width="12%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingInfo.do?rp_meet=1">출전정보</a></td>
@@ -186,11 +186,37 @@
 									<td width="14%" style="border-right : solid 2px #DDD; font-size: 120%;font-weight: bold;padding-right:0.5rem;padding-left:0.5rem;"><a href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10">출전등록현황</a></td>
 									<td width="11%" style="font-size: 120%;font-weight: bold;"><a href="raceoperView.do">시행정보</a></td>
 								</tr>
-								</table>
-								
-								
-								
-								
+								</table> -->
+									<div class=" center">
+										<ul class="clearfix" style="list-style: none;">
+											<li style="float: left;"><a
+												href="racingInfo.do?rp_meet=1"
+												class="button button-border button-border-thin ">출전정보</a></li>
+											<li style="float: left;"><a
+												href="recordInfo.do?ri_meet=1&pagenum=1&contentnum=10"
+												class="button button-border button-border-thin ">경주성적표</a></li>
+											<li style="float: left;"><a
+												href="horseInfo.do?hr_meet=1"
+												class="button button-border button-border-thin">경주마정보</a></li>
+											<li style="float: left;"><a
+												href="jockeyInfo.do?jk_meet=1"
+												class="button button-border button-border-thin ">기수정보</a></li>
+											<li style="float: left;"><a
+												href="jokyoInfo.do?tr_meet=1"
+												class="button button-border button-border-thin ">조교사정보</a></li>
+											<li style="float: left;"><a
+												href="ownerInfo.do?ow_meet=1"
+												class="button button-border button-border-thin ">마주정보</a></li>
+											<li style="float: left;"><a
+												href="racingEntryInfo.do?re_meet=1&pagenum=1&contentnum=10"
+												class="button button-border button-border-thin ">출전등록현황</a></li>
+											<li style="float: left;"><a href="raceoperView.do"
+												class="button button-border button-border-thin ">시행정보</a></li>
+										</ul>
+									</div>
+
+									<div class="line mt-2 mb-4"></div>
+
 									<h4 class="mb-2 ls1 uppercase t700" style="font-size: 150%;">
 										<span class="text-warning"><i class="icon-user-friends"></i></span>
 										마주 정보<!-- <span style="font-size: 60%;">경주마 등급 정보</span> -->
@@ -212,7 +238,7 @@
 											<div>
 											<h4 class="mb-3 mt-3 ls1 uppercase t700" style="font-size: 100%;float: left;">
 												<span class="text-dark"><i class="icon-trophy"></i></span>마주 정보 검색</h4>
-												<table class="table" style="border-bottom: solid #DDD 1px;">
+												<table class="table" style="border-bottom: solid #ddd 1px;">
 												<tr>
 												<td>마주입력</td>
 												<td>

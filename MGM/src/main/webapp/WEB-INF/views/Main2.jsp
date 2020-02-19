@@ -45,7 +45,7 @@
 	<link rel="stylesheet" href="resources/demos/nonprofit/nonprofit.css" type="text/css" />
 	<!-- Document Title
 	============================================= -->
-	<title>묻지마</title>
+	<title>프레임경마</title>
 
 	<style>
 		/* Revolution Slider Styles */
