@@ -65,7 +65,12 @@ public class HorsesDao implements IHorsesDao{
 	public List<HorsesDto> getRankList(Map<String, Object> map) {
 		return sqlSession.selectList(namespace+"rankList",map);
 	}
-
+	//마명검색
+	@Override
+	public List<HorsesDto> getSearchList(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"horseSearch",map);
+	}
+	
 	@Override
 	public boolean hrAddInfoUpdate(HorsesDto ai) {
 		int rs = sqlSession.update(namespace+"addInfo",ai);
@@ -111,4 +116,6 @@ public class HorsesDao implements IHorsesDao{
 	public List<DistRecordDto> wgBudamRecord(String hr_no) {
 		return sqlSession.selectList(namespace+"wgBudamRecord",hr_no);
 	}
+
+	
 }

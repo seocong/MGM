@@ -172,4 +172,8 @@
 	<select id="wgBudamRecord" parameterType="String" resultType="DistRecordDto">
 		SELECT rr.rr_wgBudam as wgBudam,count(rr.rr_ord) as totalRace,count(if(rr.rr_ord=1,1,null)) as ord1st,count(if(rr.rr_ord=2,1,null)) as ord2nd FROM RACE_INFO AS RI JOIN RACE_RESULT AS RR ON RI.RI_RCDATE = RR.RR_RCDATE AND RI.RI_RCNO = RR.RR_RCNO AND RI.RI_MEET = RR.RR_MEET WHERE RR.RR_HRNO =#{hr_no} group by rr.rr_wgBudam order by rr.rr_wgBudam;
 	</select>
+	<!-- 마명 검색 -->
+	<select id="horseSearch" parameterType="Map" resultType="HorsesDto">
+		select hr_htName,hr_part,hr_rank,hr_name,hr_sex,hr_age,hr_rcCntT,hr_ord1CntT,hr_ord2CntT,hr_ord3CntT,recentRcDate,hr_meet from horses where hr_htName like CONCAT('%', #{hr_name}, '%') AND hr_meet = #{hr_meet};
+	</select>
 </mapper>

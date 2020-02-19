@@ -107,4 +107,9 @@ public class HorsesService implements IHorsesService{
 		return horsesDao.wgBudamRecord(hr_no);
 	}
 
+	@Override
+	public List<HorsesDto> getSearchList(Map<String, Object> map) {
+		return horsesDao.getSearchList(map);
+	}
+
 }

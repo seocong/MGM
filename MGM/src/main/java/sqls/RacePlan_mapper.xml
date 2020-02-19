@@ -93,7 +93,7 @@
  	</select>
  	
  	<select id="getdetaillist" parameterType="Map" resultType="RacePlanDto">
- 		select A.rp_chulNo,A.rp_hrName,A.rp_prd,A.rp_rcNo,A.rp_sex,A.rp_age,A.rp_rating,A.rp_wgBudam,A.rp_jkName,A.rp_trName,A.rp_owName,A.rp_dusu,A.rp_ilsu,A.rp_meet,
+		select A.rp_chulNo,A.rp_hrName,A.rp_prd,A.rp_rcNo,A.rp_sex,A.rp_age,A.rp_rating,A.rp_wgBudam,A.rp_jkName,A.rp_jkNo,A.rp_trName,A.rp_trNo,A.rp_owNo,A.rp_owName,A.rp_dusu,A.rp_ilsu,A.rp_meet,
 		B.hr_rcCntT,B.hr_ord1CntT,B.hr_ord2CntT,B.hr_ord3CntT,B.hr_rcCntY,B.hr_ord1CntY,B.hr_ord2CntY,B.hr_ord3CntY
 		from race_plan A INNER JOIN horses B ON A.rp_hrNo = B.hr_no where rp_rcNo = #{rp_rcNo} and rp_rcDate=#{rp_rcDate} and rp_meet=#{rp_meet} order by rp_chulNo
  	</select>

@@ -138,7 +138,7 @@ public class HorseController {
 		JockeyDto jkDto = jockeyService.getKisu(jk_no);
 		List<RaceTotalPrizeDto> rtpDto = jockeyService.rtPrize(jk_no);
 		List<RecordInfoDto> riDto = jockeyService.recordInfo(jk_no);
-		String jk_name = jkDto.getJk_name();
+		String jk_name = jkDto.getJk_name(); //수정 요함. null point exeption
 //		String meet=null;
 		
 		int ord1cntt =jkDto.getJk_ord1CntT();
@@ -202,8 +202,6 @@ public class HorseController {
 	public String horseInfoList(Locale locale, HttpServletRequest request,Model model){
 		logger.info("경주마리스트", locale);
 		int hr_meet = Integer.parseInt(request.getParameter("hr_meet"));
-		String hr_rank = request.getParameter("hr_rank");
-		System.out.println("hr_rank:"+hr_rank);
 		if(hr_meet==2) {
 			HrCountDto hrCnt = horsesService.getJeju();
 			int totalHan= hrCnt.getForeign1()+hrCnt.getForeign2()+hrCnt.getForeign3()+hrCnt.getForeign4();
@@ -224,10 +222,20 @@ public class HorseController {
 			model.addAttribute("hrCnt", hrCnt); 
 		}
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("hr_rank", hr_rank);
+		String hr_rank="";
+		String hr_name ="";
+		List<HorsesDto> rankList = null;
 		map.put("hr_meet", hr_meet);
-		List<HorsesDto> rankList = horsesService.getRankList(map);
-		System.out.println("rankList:"+rankList);
+		if(request.getParameter("hr_rank")!=null) {
+			hr_rank = request.getParameter("hr_rank");
+			map.put("hr_rank", hr_rank);
+			rankList = horsesService.getRankList(map);
+		}else if(request.getParameter("hr_name")!=null) {
+			hr_name = request.getParameter("hr_name");
+			map.put("hr_name", hr_name);
+			rankList = horsesService.getSearchList(map);
+		}
+		System.out.println("hr_rank:"+hr_rank);
 		model.addAttribute("hr_meet", hr_meet);	
 		model.addAttribute("rankList", rankList);	
 		return "HorseInfo/HorseInfoList";
@@ -277,6 +285,17 @@ public class HorseController {
 		return "HorseInfo/HorseDetail";
 	}
 	
+//	//마명 검색
+//	@RequestMapping(value="/horseSearch.do",method=RequestMethod.GET)
+//	public String horseSearch(Locale locale, HttpServletRequest request,Model model){
+//		logger.info("마명 검색", locale);
+//		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
+//		List<OwnerDto> owDto = ownerService.getAllList(ow_meet);
+//		System.out.println("owDto:"+owDto);
+//		model.addAttribute("owDto", owDto);
+//		model.addAttribute("ow_meet", ow_meet);
+//		return "HorseInfo/OwnerInfo";
+//	}
 	
 	@RequestMapping(value="/ownerInfo.do",method=RequestMethod.GET)
 	public String ownerInfo(Locale locale, HttpServletRequest request,Model model){
@@ -293,7 +312,7 @@ public class HorseController {
 	public String ownerDetail(Locale locale, HttpServletRequest request,Model model){
 		logger.info("마주상세보기", locale);
 		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
-		int ow_no = Integer.parseInt(request.getParameter("ow_no"));
+		int ow_no = Integer.parseInt(request.getParameter("ow_no"));//수정요함.number format exeption
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("ow_meet", ow_meet);
 		map.put("ow_no", ow_no);
@@ -426,6 +445,10 @@ public class HorseController {
 			rounds.setWin1Y(Util.round(rounds.getHr_ord1CntY()+rounds.getHr_ord2CntY(),rounds.getHr_rcCntY()));
 			rounds.setWin2Y(Util.round(rounds.getHr_ord1CntY()+rounds.getHr_ord2CntY()+rounds.getHr_ord3CntY(),rounds.getHr_rcCntY()));
 		}
+		//마주명, 기수명 등 넘어오는 데이터 확인 for문
+//		for(RacePlanDto list2:list) {
+//			System.out.println(list2);
+//		}
 		model.addAttribute("roundlist", roundlist);
 		model.addAttribute("list", list);
 		model.addAttribute("rp_meet", rp_meet);
@@ -478,15 +501,15 @@ public class HorseController {
 			}
 		}
 		//리스트 확인 
-//		for(RaceHistoryDto jk:objCount) {
-//			System.out.println("기수명: "+jk.getObjName()+"[");
-//			for(int i=0;i<planList.size();i++){
-//				if(jk.getObjName().equals(planList.get(i).getObjName())) {
-//					System.out.println("raceNo: "+planList.get(i).getRcNo()+"/"+"chulNo: "+planList.get(i).getChulNo());
-//				}
-//			}
-//			System.out.println("]");
-//		}
+		for(RaceHistoryDto jk:objCount) {
+			System.out.println("기수명: "+jk.getObjName()+"[");
+			for(int i=0;i<planList.size();i++){
+				if(jk.getObjName().equals(planList.get(i).getObjName())) {
+					System.out.println("raceNo: "+planList.get(i).getRcNo()+"/"+"chulNo: "+planList.get(i).getChulNo());
+				}
+			}
+			System.out.println("]");
+		}
 		
 		System.out.println("listsize: "+planList.size());
 		model.addAttribute("maxNo",maxNo);
