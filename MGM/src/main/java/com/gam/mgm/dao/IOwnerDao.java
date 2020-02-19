@@ -13,7 +13,10 @@ public interface IOwnerDao {
 	public boolean owDel(int ow_meet);
 	
 	public List<OwnerDto> getAllList(int ow_meet);
-
+	
+	//마주검색
+	public List<OwnerDto> ownerSearch(Map<String,Object> map);
+	
 	public OwnerDto getOwner(Map<String, Object> map);
 	
 	public MonthlyPrizeDto monthlyPrize(String hr_no);

@@ -34,6 +34,10 @@ public class OwnerDao implements IOwnerDao{
 		return sqlSession.selectList(namespace+"getList",ow_meet);
 	}
 
+	@Override
+	public List<OwnerDto> ownerSearch(Map<String, Object> map) {
+		return sqlSession.selectList(namespace+"ownerSearch",map);
+	}
 
 	@Override
 	public OwnerDto getOwner(Map<String, Object> map) {
@@ -49,5 +53,4 @@ public class OwnerDao implements IOwnerDao{
 	public List<RecordInfoDto> recordInfo(String ow_no) {
 		return sqlSession.selectList(namespace+"recordInfo",ow_no);
 	}
-
 }

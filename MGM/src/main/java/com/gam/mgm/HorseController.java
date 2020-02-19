@@ -285,23 +285,22 @@ public class HorseController {
 		return "HorseInfo/HorseDetail";
 	}
 	
-//	//마명 검색
-//	@RequestMapping(value="/horseSearch.do",method=RequestMethod.GET)
-//	public String horseSearch(Locale locale, HttpServletRequest request,Model model){
-//		logger.info("마명 검색", locale);
-//		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
-//		List<OwnerDto> owDto = ownerService.getAllList(ow_meet);
-//		System.out.println("owDto:"+owDto);
-//		model.addAttribute("owDto", owDto);
-//		model.addAttribute("ow_meet", ow_meet);
-//		return "HorseInfo/OwnerInfo";
-//	}
-	
 	@RequestMapping(value="/ownerInfo.do",method=RequestMethod.GET)
 	public String ownerInfo(Locale locale, HttpServletRequest request,Model model){
 		logger.info("마주리스트", locale);
 		int ow_meet = Integer.parseInt(request.getParameter("ow_meet"));
-		List<OwnerDto> owDto = ownerService.getAllList(ow_meet);
+		String ow_name=null;
+		List<OwnerDto> owDto = null;
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("ow_meet", ow_meet);
+		if(request.getParameter("ow_name")!=null) {
+			ow_name = request.getParameter("ow_name");
+			map.put("ow_name",ow_name);
+			owDto = ownerService.ownerSearch(map);
+		}else {
+			 owDto = ownerService.getAllList(ow_meet);
+			 
+		}
 		System.out.println("owDto:"+owDto);
 		model.addAttribute("owDto", owDto);
 		model.addAttribute("ow_meet", ow_meet);

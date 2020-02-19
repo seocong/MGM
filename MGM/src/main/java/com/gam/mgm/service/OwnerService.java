@@ -29,6 +29,11 @@ public class OwnerService implements IOwnerService{
 	public List<OwnerDto> getAllList(int ow_meet) {
 		return ownerDao.getAllList(ow_meet);
 	}
+	
+	@Override
+	public List<OwnerDto> ownerSearch(Map<String, Object> map) {
+		return ownerDao.ownerSearch(map);
+	}
 
 	@Override
 	public OwnerDto getOwner(Map<String, Object> map) {
@@ -44,5 +49,4 @@ public class OwnerService implements IOwnerService{
 	public List<RecordInfoDto> recordInfo(String ow_no) {
 		return ownerDao.recordInfo(ow_no);
 	}
-
 }

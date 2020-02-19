@@ -162,4 +162,11 @@
 		= RR.RR_MEET
 		WHERE RR.rr_owno =#{ow_no}) AS RS ORDER BY RS.RCDATE DESC
 	</select>
+	<!-- 마주 검색 -->
+	<select id="ownerSearch" parameterType="Map" resultType="OwnerDto">
+		select
+		ow_no,ow_name,ow_totHorses,ow_cancledHorses,ow_nowHorses,ow_stDate,ow_rcCntT,ow_rcCntY,ow_chaksunY,ow_chaksunT,ow_meet,
+		ow_ord1CntT,ow_ord2CntT,ow_ord3CntT,ow_ord1CntY,ow_ord2CntY,ow_ord3CntY
+		from owner where ow_name like CONCAT('%', #{ow_name}, '%') and ow_meet=#{ow_meet}
+	</select>
 </mapper>

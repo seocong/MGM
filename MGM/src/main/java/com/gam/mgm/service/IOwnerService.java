@@ -14,6 +14,9 @@ public interface IOwnerService {
 	public boolean owDel(int ow_meet);
 	
 	public List<OwnerDto> getAllList(int ow_meet);
+	
+	//마주검색
+	public List<OwnerDto> ownerSearch(Map<String,Object> map);
 
 	public OwnerDto getOwner(Map<String, Object> map);
 	
