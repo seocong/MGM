@@ -862,7 +862,7 @@ public class MgrRaceController {
 					} catch (URISyntaxException uriE) {
 						uriE.printStackTrace();
 					}
-					System.out.println(url);
+//					System.out.println(url);
 					RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 					RaceInfoVo rcResult = restTemplate.getForObject(url, RaceInfoVo.class);			
 					RaceInfoVo.Header result = rcResult.getHeader();
