@@ -210,9 +210,9 @@
 
 
 										<ul class="tab" style="border-bottom: solid #DDD 1px;">
-											<li id="tabseoul"><a href="racingHistory.do?meet=1&rcDate=20190824&object=jk"> 서울경마</a></li>
-											<li id="tabbusan"><a href="racingHistory.do?meet=3&rcDate=20190823&object=jk"> 부산경마</a></li>
-											<li id="tabjeju"><a href="racingHistory.do?meet=2&rcDate=20190824&object=jk"> 제주경마</a></li>
+											<li id="tabseoul"><a href="racingHistory.do?meet=1&object=jk"> 서울경마</a></li>
+											<li id="tabbusan"><a href="racingHistory.do?meet=3&object=jk"> 부산경마</a></li>
+											<li id="tabjeju"><a href="racingHistory.do?meet=2&object=jk"> 제주경마</a></li>
 										</ul>
 
 										<div>

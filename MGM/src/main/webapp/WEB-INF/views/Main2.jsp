@@ -60,6 +60,9 @@
 		.selBtn > li{
 			float:left;
 		}
+		.modal-backdrop{
+			z-index:1; !important;
+		} 
 	</style>
 
 </head>
@@ -336,28 +339,43 @@
 									<article class="spost clearfix " >
 									<div class="col-md-12 ml-4">
 										<ul class="clearfix selBtn mb-0" style="list-style: none;">
-										<li><button type="button" class="button button-border button-rounded button-red" onclick="selhorseBtn(this);">1번</button></li>
-										<li><button type="button" class="button button-border button-rounded button-yellow" onclick="selhorseBtn(this);">2번</button></li>
-										<li><button type="button" class="button button-border button-rounded button-green" onclick="selhorseBtn(this);">3번</button></li>
-										<li><button type="button" class="button button-border button-rounded button-black" onclick="selhorseBtn(this);">4번</button></li>
-										<li><button type="button" class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">5번</button></li>
-										<li><button type="button" class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">6번</button></li>
-										<!-- <li><a href="#" class="button button-border button-rounded button-orange">6번</a></li> -->
+										<li><button type="button" id='button1' class="button button-border button-rounded button-red" onclick="selhorseBtn(this);">1번</button></li>
+										<li><button type="button" id='button2' class="button button-border button-rounded button-amber" onclick="selhorseBtn(this);">2번</button></li>
+										<li><button type="button" id='button3' class="button button-border button-rounded button-green" onclick="selhorseBtn(this);">3번</button></li>
+										<li><button type="button" id='button4' class="button button-border button-rounded button-aqua" onclick="selhorseBtn(this);">4번</button></li>
+										<li><button type="button" id='button5' class="button button-border button-rounded button-blue" onclick="selhorseBtn(this);">5번</button></li>
+										<li><button type="button" id='button6' class="button button-border button-rounded button-purple" onclick="selhorseBtn(this);">6번</button></li>
+
 										</ul>
 									</div>
 									<div class="clearfix col-md-11 ml-4 mb-3 mt-2" id="betArea" >
 										<div class="betting">
-										<input type="submit" id="betBtn" value="베팅" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
+										<input type="button" id="betBtn" value="베팅" data-toggle="modal" data-target="#bettingChk" class="button button-rounded button-reveal button-large button-border tright" style="float: right;">
 										</div>
 										<div class="betting  col-md-4 mt-2">
-										<select style="font-weight:bold;" class="sm-form-control">
-											<option>10 포인트</option>
-											<option>50 포인트</option>
-											<option>100 포인트</option>
+										<select style="font-weight:bold;" id="chkPoint" class="sm-form-control">
+											<option value="10">10 포인트</option>
+											<option value="50">50 포인트</option>
+											<option value="100">100 포인트</option>
 										</select>
 										</div>
 										<!-- <div class="betting col-md-2 mt-3 nopadding"><span>선택: </span><span id="selhorse"></span></div> -->
 									</div>
+									<!-- Modal -->
+														<div class="modal fade" id="bettingChk" tabindex="-1"
+															role="dialog" aria-labelledby="exampleModalLabel"
+															aria-hidden="true" style="position:absolute;">
+															<div class="modal-dialog nomargin" role="document" style="width:300px; z-index:2;">
+																<div class="modal-content">
+																	<div class="modal-body text-center">
+																	<div id="chkMsg" style="font-weight: bold;"></div>
+																	<br>
+																	<button type="button" class="btn btn-primary" ><!-- id="signOutBtn" -->베팅</button>
+																	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+																	</div>
+																</div>
+															</div>
+														</div>
 									</article>
 									</div>
 								</div>
@@ -368,7 +386,7 @@
 							<!-- Ad
 							============================================= -->
 							<!-- <a href="#"><img src="resources/demos/news/images/ad/728x90.jpg" width="728" alt="Ad" class="mt-5 mt-lg-2 mb-4 mb-lg-3 aligncenter"></a> -->
-							
+							<!-- 통계 그래프 영역 -->
 							<div class="col-md-12 mt-4">
 								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-secondary"><i class="icon-bars1"></i></span> 지난경기내역</h4>
 									<div class="line line-xs line-sports"></div>
@@ -386,18 +404,42 @@
 
 							<div class="tab-container">
 
-								<div class="tab-content clearfix" id="tabs-9">
-									Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
+								<div class="tab-content row clearfix" id="tabs-9">
+									<div class="col-md-6"></div>
+									<div class="col-md-6"></div>
 								</div>
 								<div class="tab-content clearfix" id="tabs-10">
-									Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+									<div id="todayResult" style="display:none;">
+										<div>${todayResult.mi_num1}</div>
+										<div>${todayResult.mi_num2}</div>
+										<div>${todayResult.mi_num3}</div>
+										<div>${todayResult.mi_num4}</div>
+										<div>${todayResult.mi_num5}</div>
+										<div>${todayResult.mi_num6}</div>
+									</div>
+									<canvas id="todayChart" height="70%"></canvas>
 								</div>
 								<div class="tab-content clearfix" id="tabs-11">
-									<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-									
+									<div id="weekResult" style="display:none;">
+										<div>${weekResult.mi_num1}</div>
+										<div>${weekResult.mi_num2}</div>
+										<div>${weekResult.mi_num3}</div>
+										<div>${weekResult.mi_num4}</div>
+										<div>${weekResult.mi_num5}</div>
+										<div>${weekResult.mi_num6}</div>
+									</div>
+									<canvas id="weekChart" height="70%"></canvas>
 								</div>
 								<div class="tab-content clearfix" id="tabs-12">
-									Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+									<div id="yearResult" style="display:none;">
+										<div>${yearResult.mi_num1}</div>
+										<div>${yearResult.mi_num2}</div>
+										<div>${yearResult.mi_num3}</div>
+										<div>${yearResult.mi_num4}</div>
+										<div>${yearResult.mi_num5}</div>
+										<div>${yearResult.mi_num6}</div>
+									</div>
+									<canvas id="yearChart" height="70%"></canvas>
 								</div>
 
 							</div>
@@ -413,9 +455,6 @@
 							============================================= -->
 						
 						</div>
-						
-						
-						
 						
 						 <div class="row clearfix"> 
 							<!-- <div class="line line-xs line-market"></div> -->
@@ -561,7 +600,7 @@
 							
 							 
 								<div class="col-md-6 mt-4">
-								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-info"><i class="icon-chess-knight"></i></span> NEWS</h4>
+								<h4 class="mb-2 ls1 uppercase t700" style="font-size: 120%;"><span class="text-info"><i class="icon-chess-knight"></i></span> 전문가예상</h4>
 									<div class="line line-xs line-sports"></div>
 							<div class="card border">
 											
@@ -934,7 +973,7 @@
 							</div>
 							<div class="col-md-6">
 							<div class="entry-image mb-0">
-								<iframe width="560" height="315" src="http://www.youtube.com/embed/dMiQAF1xzok" frameborder="0" allowfullscreen></iframe>
+								<iframe id="iframeA" width="560" height="315" src="http://www.youtube.com/embed/dMiQAF1xzok" frameborder="0" allowfullscreen></iframe>
 							</div>
 							</div>
 						</div>
@@ -986,12 +1025,15 @@
 	============================================= -->
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.js"></script>
+	<!-- chartjs -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<!-- mainScript -->
 	<script src="resources/js/mainScript.js"></script>
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="resources/js/functions.js"></script>
-
+	<!-- user message js -->
+	<script src="resources/js/user/userModified.js"></script>
 	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
 	<script src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
 	<script src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>

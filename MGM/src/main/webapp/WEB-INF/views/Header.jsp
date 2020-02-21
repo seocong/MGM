@@ -77,18 +77,18 @@
 								<ul>							
 									<li><a href="#"><div  style="font-weight: bold;">쪽지함</div></a>
 										<ul>
-											<li><a href="#"><div  style="font-weight: bold;">쪽지보내기</div></a></li>
-											<li><a href="#"><div  style="font-weight: bold;">받은메시지</div></a></li>
-											<li><a href="#"><div  style="font-weight: bold;">보낸메시지</div></a></li>
+											<li><a href="#" id="msgWrite"><div  style="font-weight: bold;">쪽지보내기</div></a></li>
+											<li><a href="mypage.do"><div  style="font-weight: bold;">받은메시지</div></a></li>
+											<li><a href="mypage.do"><div  style="font-weight: bold;">보낸메시지</div></a></li>
 										</ul>
 									</li>
 									<li><a href="#"><div  style="font-weight: bold;">포인트</div></a>
 										<ul>
-											<li><a href="#"><div  style="font-weight: bold;">포인트사용내역</div></a></li>									
+											<li><a href="mypage.do"><div  style="font-weight: bold;">포인트사용내역</div></a></li>									
 										</ul>
 									</li>		
-									<li><a href="#"><div  style="font-weight: bold;">정보수정</div></a></li>
-									<li><a href="#"><div  style="font-weight: bold;">회원탈퇴</div></a></li>
+									<li><a href="userUpdateForm.do"><div  style="font-weight: bold;">정보수정</div></a></li>
+									<li><a href="mypage.do"><div  style="font-weight: bold;">회원탈퇴</div></a></li>
 								<!-- 	<li><a href="hrinsert.do"><div  style="font-weight: bold;">임시페이지</div></a></li>
 									<li><a href="adminPage.do"><div  style="font-weight: bold;">관리자 임시</div></a></li> -->
 								</ul>
